@@ -1,4 +1,10 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "./build"
+  "framework": "create-react-app",
+  "buildCommand": "NODE_OPTIONS=--max-old-space-size=4096 npm run build",
+  "outputDirectory": "build",
+  "env": {
+    "NODE_OPTIONS": "--max-old-space-size=4096",
+    "GENERATE_SOURCEMAP": "false",
+    "CI": "false"
+  }
 }
