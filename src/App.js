@@ -138,7 +138,6 @@ const CollegeCard = ({ college, category, isExpanded, onToggle }) => {
           ) : (
             <>
               <span className="badge badge-gray">{college.Type || 'University'}</span>
-              {college.status && <span className="badge badge-teal">{college.status}</span>}
             </>
           )}
         </div>
