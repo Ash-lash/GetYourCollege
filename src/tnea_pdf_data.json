@@ -1,0 +1,4552 @@
+{
+  "1": {
+    "name": "University Departments of Anna University , Chennai - CEG Campus, Sardar",
+    "principal": "Dr.P. HARIHARAN",
+    "phone": "9790736548",
+    "email": "deanceg@annauniv .edu",
+    "website": "https://ceg.annauniv .edu/",
+    "hostel": "Yes",
+    "nearest_railway": "SAIDAPET  GUINDY",
+    "transport": ""
+  },
+  "2": {
+    "name": "University Departments of Anna University , Chennai - ACT Campus, Sardar",
+    "principal": "DR S MEENAKSHISUNDARAM",
+    "phone": "9840348173",
+    "email": "actechau@gmail.com",
+    "website": "https://www .annauniv .edu/act/",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "3": {
+    "name": "School of Architecture and Planning, Anna University ,Chennai 600025",
+    "principal": "DR K R SIT ALAKSHMI",
+    "phone": "4422359295",
+    "email": "deansap@annauniv .edu",
+    "website": "www .annauniv .edu",
+    "hostel": "Yes",
+    "nearest_railway": "KASTHURIBAI NAGAR",
+    "transport": ""
+  },
+  "4": {
+    "name": "University Departments of Anna University , Chennai - MIT Campus, Chrompet,",
+    "principal": "PROF K RA VICHANDRAN",
+    "phone": "4422516002",
+    "email": "dean@mitindia.edu",
+    "website": "www .annauniv .edu/www .mitindia.edu",
+    "hostel": "Yes",
+    "nearest_railway": "CHROMEPET",
+    "transport": ""
+  },
+  "5": {
+    "name": "Annamalai University Faculty of Engineering and T echnology ,Annamalai",
+    "principal": "Dr C KAR THIKEY AN",
+    "phone": "9171474175",
+    "email": "aufeatdean@gmail.com",
+    "website": "www .annamalaiuniversity .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHIDAMBARAM",
+    "transport": ""
+  },
+  "1013": {
+    "name": "University College of Engineering, V illupuram, Kakuppam, V illupuram District",
+    "principal": "DR R SENTHIL",
+    "phone": "9489615653",
+    "email": "ucev_auc@yahoo.com",
+    "website": "http://www .aucev .edu.in/index.html",
+    "hostel": "Yes",
+    "nearest_railway": "VILLUPURAM JUNCTION",
+    "transport": ""
+  },
+  "1014": {
+    "name": "University College of Engineering, T indivanam, Melpakkam, T indivanam,",
+    "principal": "DR P  THAMIZHAZHAGAN",
+    "phone": "4147224477",
+    "email": "deantindivanam@annauniv .edu",
+    "website": "www .aucet.in",
+    "hostel": "Yes",
+    "nearest_railway": "TINDIV ANAM",
+    "transport": ""
+  },
+  "1015": {
+    "name": "University College of Engineering, Arni, Arni to Devikapuram Road, Thatchur ,",
+    "principal": "Dr G SENTHIL  KUMAR",
+    "phone": "4173244400",
+    "email": "uceadean@gmail.com",
+    "website": "https://www .aucearni.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ARNI ROAD JUNCTION",
+    "transport": ""
+  },
+  "1026": {
+    "name": "University College of Engineering, Kancheepuram, Ponnerikarai Campus, NH4,",
+    "principal": "DR V KA VITHA",
+    "phone": "4427277220",
+    "email": "ucekdean@gmail.com",
+    "website": "www .aucek.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHEEPURAM",
+    "transport": ""
+  },
+  "1101": {
+    "name": "Aalim Muhammed Salegh College of Engineering, Muthapudupet, Avadi IAF ,",
+    "principal": "DR P  MARIMUTHU",
+    "phone": "9443593065",
+    "email": "principal@aalimec.ac.in",
+    "website": "www .aalimec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PATTABIRAM MILIT ARY",
+    "transport": ""
+  },
+  "1102": {
+    "name": "Bhajarang Engineering College",
+    "principal": "DR N SHANMUGASUNDARAM",
+    "phone": "9841090336",
+    "email": "bhajarang2000@yahoo.com",
+    "website": "https://bhajarang.com/",
+    "hostel": "Yes",
+    "nearest_railway": "VEPP AMP ATTU",
+    "transport": ""
+  },
+  "1106": {
+    "name": "Jaya Engineering College, Thirunindravur , Chennai 602024",
+    "principal": "Dr SURESH KUMAR V",
+    "phone": "9443582261",
+    "email": "principal@jec.ac.in",
+    "website": "www .jec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NEMILICHERR Y JAYA",
+    "transport": ""
+  },
+  "1107": {
+    "name": "Jaya Institute of T echnology , Kanchipadi Post, Thiruvallur-T iruttani NH Road,",
+    "principal": "DR V S DHARUN",
+    "phone": "9965426274",
+    "email": "info@jitcollege.edu.in",
+    "website": "www .jitcollege.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUV ALLUR",
+    "transport": ""
+  },
+  "1110": {
+    "name": "Prathyusha Engineering college(Autonomous), Aranvoyalkuppam, Thiruvallur",
+    "principal": "DR R S KUMAR",
+    "phone": "8939908019",
+    "email": "principal@prathyusha.edu.in",
+    "website": "www .prathyusha.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ALLUR",
+    "transport": ""
+  },
+  "1112": {
+    "name": "R M D Engineering College (Autonomous), Kavaraipettai, Gummidipoondi,",
+    "principal": "DR N ANBUCHEZHIAN",
+    "phone": "9790670444",
+    "email": "principal@rmd.ac.in",
+    "website": "www .rmd.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KAVARAIPETT AI",
+    "transport": ""
+  },
+  "1113": {
+    "name": "R M K Engineering College (Autonomous), Kavaraipettai, Gummidipoondi,",
+    "principal": "DR K A MOHAMED JUNAID",
+    "phone": "4467906790",
+    "email": "principal@rmkec.ac.in",
+    "website": "www .rmkec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KAVARAIPETT AI",
+    "transport": ""
+  },
+  "1114": {
+    "name": "S A Engineering College (Autonomous), Thiruverkadu, Chennai 600077",
+    "principal": "DR S RAMACHANDRAN",
+    "phone": "9444001904",
+    "email": "principal@saec.ac.in",
+    "website": "www .saec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1115": {
+    "name": "Sri Ram Engineering College, Perumalpattu, V eppampattu (R S), Thiruvallur",
+    "principal": "Dr B R RAMESH BAPU",
+    "phone": "4427689364",
+    "email": "principalsrec1 1@gmail.com",
+    "website": "www .sriramec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "VEPP AMP ATTU",
+    "transport": ""
+  },
+  "1116": {
+    "name": "Sri V enkateswara College of Engineering and T echnology , Thirupachur ,",
+    "principal": "DR S P ALANI ME PHD",
+    "phone": "4427664444",
+    "email": "svcetthirupachur@gmail.com",
+    "website": "www .sriventech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ALLUR",
+    "transport": ""
+  },
+  "1118": {
+    "name": "Vel Tech Multi T ech Dr . Rangarajan Dr . Sakunthala Engineering College",
+    "principal": "Dr.E.N.Ganesh",
+    "phone": "9789037652",
+    "email": "principal@veltechmultitech.org",
+    "website": "www .veltechmultitech.org",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1120": {
+    "name": "Velammal Engineering College (Autonomous), Ambattur-Redhills Road, Chennai",
+    "principal": "DR S SA TISH KUMAR",
+    "phone": "4426591842",
+    "email": "principal@velammal.edu.in",
+    "website": "www .velammal.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "AMBA TTUR",
+    "transport": ""
+  },
+  "1121": {
+    "name": "Sri V enkateswara Institute of Science and T echnology , Kozhundalur , Thiruvallur",
+    "principal": "DR A N ARUN",
+    "phone": "4427660437",
+    "email": "svis_tech@yahoo.com",
+    "website": "www .sverct.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ALLUR",
+    "transport": ""
+  },
+  "1122": {
+    "name": "Vel Tech High T ech Dr . Rangarajan Dr . Sakunthala Engineering College",
+    "principal": "DR E KAMALANABAN",
+    "phone": "9789037651",
+    "email": "principal@velhightech.com",
+    "website": "https://www .velhightech.com",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1123": {
+    "name": "Gojan School of Business and T echnology , Alamathi, Chennai 600062",
+    "principal": "DR C SEL VA KUMAR",
+    "phone": "7010723984",
+    "email": "principal@gsbt.edu.in",
+    "website": "https://gsbt.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "PERAMBUR",
+    "transport": ""
+  },
+  "1124": {
+    "name": "SAMS College of Engineering and T echnology , Panappakkam, Chennai-T irupathi",
+    "principal": "DR A SHANMUGAM",
+    "phone": "7299497970",
+    "email": "principal@samsengineering.org",
+    "website": "www .samsmarine.org",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUV ALLUR RAIL WAY",
+    "transport": ""
+  },
+  "1126": {
+    "name": "J N N Institute of Engineering (Autonomous), Ushaa Garden, Kannigaipair",
+    "principal": "DR K GANESAN",
+    "phone": "9600057121",
+    "email": "principal@jnn.edu.in",
+    "website": "https://www .jnn.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "PONNERI",
+    "transport": ""
+  },
+  "1127": {
+    "name": "St. Peters College of Engineering and T echnology , College Road, Avadi, Chennai",
+    "principal": "DR S POORNACHANDRA",
+    "phone": "73581 10159",
+    "email": "spcet2008@gmail.com",
+    "website": "www .spcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ANNANUR",
+    "transport": ""
+  },
+  "1128": {
+    "name": "R M K College of Engineering and T echnology (Autonomous), Puduvoyal,",
+    "principal": "DR N SURESH KUMAR",
+    "phone": "9443867923",
+    "email": "principal@rmkcet.ac.in",
+    "website": "www .rmkcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KAVARAIPETT AI",
+    "transport": ""
+  },
+  "1133": {
+    "name": "Annai V eilankannis College of Engineering, Gandhi Road, Nedungundram,",
+    "principal": "Dr R Ravikumar",
+    "phone": "9791 118640",
+    "email": "mail4engcoll@gmail.com",
+    "website": "www .annaiveilankannisengg.com",
+    "hostel": "Yes",
+    "nearest_railway": "PERUNGALA THUR",
+    "transport": ""
+  },
+  "1137": {
+    "name": "Annai Mira College of Engineering and T echnology , Arcot Road, Arappakkam",
+    "principal": "DR T K GOPINA THAN",
+    "phone": "4172292925",
+    "email": "amcet.rtet@gmail.com",
+    "website": "www .amcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI",
+    "transport": ""
+  },
+  "1140": {
+    "name": "Jeppiaar Institute of T echnology ,kunnam V illage,Sriperumpudur",
+    "principal": "DR J VENU GOP ALA KRISHNAN",
+    "phone": "7401222002",
+    "email": "office@jeppiaarinstitute.org",
+    "website": "www .jeppiaarinstitute.org",
+    "hostel": "Yes",
+    "nearest_railway": "WALAJABAD",
+    "transport": ""
+  },
+  "1149": {
+    "name": "St. Josephs Institute of T echnology (Autonomous), Jeppiaar Nagar , Old",
+    "principal": "Dr S ARIV AZHAGAN",
+    "phone": "4424503132",
+    "email": "stjosephstechnology@stjosephstechnology .a",
+    "website": "www .stjosephstechnology .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1150": {
+    "name": "Sri Jayaram Institute of Engineering and T echnology , 51 N, Elavur , 58N, Natham,",
+    "principal": "Dr ELANGO A",
+    "phone": "9442271941",
+    "email": "sjiet.tn@gmail.com",
+    "website": "www .sjiet.org",
+    "hostel": "Yes",
+    "nearest_railway": "ELAVUR",
+    "transport": ""
+  },
+  "1202": {
+    "name": "D M I College of Engineering, Palanchoor , Nazrethpet, Chennai 602103",
+    "principal": "DR SUJA THA JAMUNA  ANAND",
+    "phone": "9444405820",
+    "email": "principal@dmice.ac.in",
+    "website": "www .dmice.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1207": {
+    "name": "Kings Engineering College, Sriperumpudur T aluk, Kancheepuram District",
+    "principal": "DR C RAMESH BABU DURAI",
+    "phone": "9444047238",
+    "email": "principal@kingsedu.ac.in",
+    "website": "www .kingsedu.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1209": {
+    "name": "Pallavan College of Engineering, Thimmasamudram, Kancheepuram District",
+    "principal": "DR V P ALVANNAN",
+    "phone": "8148580058",
+    "email": "pce_kanchi@redif fmail.com",
+    "website": "https://pallavanedu.com",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHIPURAM RAIL WAY",
+    "transport": ""
+  },
+  "1210": {
+    "name": "Panimalar Engineering College (Autonomous), Nazarethpet, Poonamallee,",
+    "principal": "DR K MANI",
+    "phone": "4426490404",
+    "email": "info@panimalar .ac.in",
+    "website": "www .panimalar .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENNAI CENTRAL",
+    "transport": ""
+  },
+  "1211": {
+    "name": "Rajalakshmi Engineering College (Autonomous), Thandalam, Sriperumpudur",
+    "principal": "DR S N MURUGESAN",
+    "phone": "4467181 111",
+    "email": "admin@rajalakshmi.edu.in",
+    "website": "www .rajalakshmi.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1212": {
+    "name": "Rajiv Gandhi College of Engineering, Nemili, Sriperumpudur T aluk,",
+    "principal": "DR K SAMIDURAI",
+    "phone": "9444207399",
+    "email": "principal@rgce.edu.in",
+    "website": "www .rgce.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ALLUR",
+    "transport": ""
+  },
+  "1216": {
+    "name": "Saveetha Engineering College (Autonomous), Thandalam, Sriperumpudur T aluk,",
+    "principal": "DR V VIJA YA CHAMUNDEESW ARI",
+    "phone": "4466726690",
+    "email": "principal@saveetha.ac.in",
+    "website": "www .saveetha.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1217": {
+    "name": "Sree Sastha Institute of Engineering and T echnology , Chembarambakkam,",
+    "principal": "DR A SHANMUGASUNDARAM",
+    "phone": "7358039155",
+    "email": "principal@ssiet.in",
+    "website": "https://sasthainstitutions.in/",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1218": {
+    "name": "Sri Muthukumaran Institute of T echnology , Near Mangadu, Chennai 600069",
+    "principal": "DR K SOMASUNDARAM",
+    "phone": "44661 10200",
+    "email": "smitcollege1996@smit.edu.in",
+    "website": "www .smit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM GUINDY",
+    "transport": ""
+  },
+  "1219": {
+    "name": "Sri V enkateswara College of Engineering (Autonomous), Post Bag No.1,",
+    "principal": "DR S GANESH V AIDY ANATHAN",
+    "phone": "9445694664",
+    "email": "principal@svce.ac.in",
+    "website": "www .svce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENNAI",
+    "transport": ""
+  },
+  "1221": {
+    "name": "Jaya College of Engineering and T echnology , Parivakkam, Poonamallee,",
+    "principal": "DR S SA THISH",
+    "phone": "9894260193",
+    "email": "principal@jcetech.ac.in",
+    "website": "www .jcetech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1222": {
+    "name": "P B College of Engineering, Irungkattukottai, Sriperumpudur T aluk,",
+    "principal": "DR P  SENTHIL  KUMAR",
+    "phone": "9940026861",
+    "email": "principal@pbce.co.in",
+    "website": "www .pbce.co.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENNAI CENTRAL  RAIL WAY",
+    "transport": ""
+  },
+  "1225": {
+    "name": "Loyola Institute of T echnology , Mevaloorkuppam, B V illage, Palanchoor ,",
+    "principal": "Dr P SEENI KANAN",
+    "phone": "442681 1541",
+    "email": "principal@lit.edu.in",
+    "website": "www .lit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "AAVADI",
+    "transport": ""
+  },
+  "1226": {
+    "name": "P T Lee Chengalvaraya Naicker College of Engineering and T echnology , Oovery ,",
+    "principal": "DR P  PALANISAMY  ME PHD PRINCIP AL",
+    "phone": "4429817222",
+    "email": "ptleecncetof fice@gmail.com",
+    "website": "www .ptleecncet.com",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUMALPUR",
+    "transport": ""
+  },
+  "1228": {
+    "name": "Alpha College of Engineering, No.34, Udayavar Koil Street, Poonamallee,",
+    "principal": "DR B SOWMY A",
+    "phone": "9884487551",
+    "email": "engineering@alphagroup.edu",
+    "website": "https://alphagroup.edu/engineering/",
+    "hostel": "Yes",
+    "nearest_railway": "AVADI",
+    "transport": ""
+  },
+  "1229": {
+    "name": "Indira Institute of Engineering and T echnology , VGR Gardens, Pandur ,",
+    "principal": "DR N VEL VIZHI",
+    "phone": "9841039479",
+    "email": "engg.principal@indiraeducational.org",
+    "website": "www .indiraeducational.org",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ALLUR",
+    "transport": ""
+  },
+  "1230": {
+    "name": "Apollo Engineering College, Mevaloorkuppam, V alarpuram Post,",
+    "principal": "DR R MANOHARAN B E M TECH PH D",
+    "phone": "9444035060",
+    "email": "aec1230@gmail.com",
+    "website": "www .apolloengg.in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1232": {
+    "name": "A R M College of Engineering and T echnology , Sattamangalam,",
+    "principal": "Dr N Mathiazhagan",
+    "phone": "9710400333",
+    "email": "principalarmenggcollege@gmail.com",
+    "website": "armcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENGALP ATTU",
+    "transport": ""
+  },
+  "1233": {
+    "name": "Adhi College of Engineering and T echnology , Pazhayaseevaram, Madura",
+    "principal": "DR A DEV ARAJU",
+    "phone": "9003625277",
+    "email": "office@adhi.edu.in",
+    "website": "www .adhi.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "WAALAJABAD",
+    "transport": ""
+  },
+  "1235": {
+    "name": "Jei Mathaajee College of Engineering, V ishaandikuppam,Karappettai (via),",
+    "principal": "DR R MURALIKRISHNAN",
+    "phone": "96552231 13",
+    "email": "jmceprincipal1@gmail.com",
+    "website": "www .jmce.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHIPURAM",
+    "transport": ""
+  },
+  "1237": {
+    "name": "Velammal Institute of T echnology , Chennai-Kolkatta Highway , Panchetti V illage,",
+    "principal": "DR N BALAJI",
+    "phone": "4422446300",
+    "email": "principal@velammalitech.edu.in",
+    "website": "WWW .VELAMMALITECH.EDU.IN",
+    "hostel": "Yes",
+    "nearest_railway": "PONNERI",
+    "transport": ""
+  },
+  "1238": {
+    "name": "G R T Institute of Engineering and T echnology , GRT Mahalakshmi Nagar ,",
+    "principal": "DR S ARUMUGAM",
+    "phone": "4427887044",
+    "email": "grtedu@gmail.com",
+    "website": "www .grt.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUTT ANI",
+    "transport": ""
+  },
+  "1241": {
+    "name": "T J S Engineering College, Peruvoyal, Near Kavaraipettai, Gummidipoondi",
+    "principal": "DR J PRAKASH",
+    "phone": "4427967602",
+    "email": "tjsivanandam@gmail.com",
+    "website": "www .tjsec.in",
+    "hostel": "Yes",
+    "nearest_railway": "KAVARAIPETT AI",
+    "transport": ""
+  },
+  "1243": {
+    "name": "St. Lourdes Engineering College",
+    "principal": "Dr P SURESH MOHAN KUMAR",
+    "phone": "8181816735",
+    "email": "principal448@gmail.com",
+    "website": "www .slec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PALLA VARAM",
+    "transport": ""
+  },
+  "1301": {
+    "name": "Mohammed Sathak A J College of Engineering, Old Mahabalipuram Road (OMR),",
+    "principal": "DR K S SRINIV ASAN",
+    "phone": "4427470025",
+    "email": "msajce.of fice@gmail.com",
+    "website": "www .msajce-edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1303": {
+    "name": "Anand Institute of Higher T echnology , Old Mahabalipuram Road (OMR),",
+    "principal": "DR K KARNA VEL",
+    "phone": "7010562719",
+    "email": "principal@aiht.ac.in",
+    "website": "www .aiht.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1304": {
+    "name": "Easwari Engineering College (Autonomous), Ramapuram, Chennai 600089",
+    "principal": "DR P  DEIV A SUNDARI ME PHD",
+    "phone": "8939628204",
+    "email": "principal@eec.srmrmp.edu.in",
+    "website": "www .srmeaswari.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1306": {
+    "name": "Jeppiaar Engineering College, Old Mahabalipuram Road (OMR), Chennai 6001 19",
+    "principal": "DR SENTHIL  KUMAR",
+    "phone": "9944922670",
+    "email": "principal@jeppiaarcollege.org",
+    "website": "www .jeppiaarcollege.org",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1307": {
+    "name": "Jerusalem College of Engineering (Autonomous), Narayanapuram, Pallikaranai,",
+    "principal": "DR RAMESH S",
+    "phone": "7540036999",
+    "email": "principal@jerusalemengg.ac.in",
+    "website": "https://www .jerusalemengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VELACHER Y",
+    "transport": ""
+  },
+  "1309": {
+    "name": "Meenakshi Sundararajan Engineering College(Autonomous), Kodambakkam,",
+    "principal": "DR S V SARA VANAN",
+    "phone": "6383132472",
+    "email": "principal@msec.edu.in",
+    "website": "www .msec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KODAMBAKKAM",
+    "transport": ""
+  },
+  "1310": {
+    "name": "Misrimal Navajee Munoth Jain Engineering College, Rajiv Gandhi Salai (OMR),",
+    "principal": "DR C CHANDRASEKAR CHRIST OPHER M",
+    "phone": "4424960101",
+    "email": "info@mnmjec.ac.in",
+    "website": "www .mnmjec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ANMYUR",
+    "transport": ""
+  },
+  "1311": {
+    "name": "K C G College of T echnology(Autonomous), Karappakkam, Chennai 600096",
+    "principal": "DR M MUTHUKANNAN",
+    "phone": "4428389001",
+    "email": "principal@kcgcollege.com",
+    "website": "www .kcgcollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1315": {
+    "name": "Sri Sivasubramaniya Nadar College of Engineering (Autonomous), Kalavakkam,",
+    "principal": "Dr S Radha",
+    "phone": "4427469700",
+    "email": "info@ssn.edu.in",
+    "website": "www .ssn.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1316": {
+    "name": "Agni College of T echnology (Autonomous), Old Mahabalipuram Road (OMR),",
+    "principal": "DR SRINIV ASAN A",
+    "phone": "4449972900",
+    "email": "mail@act.edu.in",
+    "website": "www .act.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1317": {
+    "name": "St. Josephs College of Engineering (Autonomous), Old Mahabalipuram Road",
+    "principal": "DR V ADDI SESHAGIRI RAO ME MBA  PHD",
+    "phone": "4424501060",
+    "email": "jprstjosephs@stjosephs.ac.in",
+    "website": "www .stjosephs.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1318": {
+    "name": "T.J Institute of T echnology , Karapakkam, Chennai - 600097",
+    "principal": "DR S SUBBARAJ",
+    "phone": "8939875566",
+    "email": "admin@tjit.edu.in",
+    "website": "www .tjit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PERUNGUDI",
+    "transport": ""
+  },
+  "1319": {
+    "name": "Thangavelu Engineering College, Karappakkam, Chennai 600097",
+    "principal": "DR M VENKA TESAN",
+    "phone": "9841 114834",
+    "email": "admin@thangavelu.edu.in",
+    "website": "www .thangavelu.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PERUNGUDI",
+    "transport": ""
+  },
+  "1321": {
+    "name": "Central Institute of Petrochemicals Engineering and T echnology (Formerly",
+    "principal": "DR SYED AMANULLA",
+    "phone": "9937872419",
+    "email": "chennai@cipet.gov .in",
+    "website": "www .cipet.gov .in",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1322": {
+    "name": "Dhanalakshmi Srinivasan College of Engineering and T echnology , East Coast",
+    "principal": "DR G R SURESH",
+    "phone": "4427442844",
+    "email": "dscet@yahoo.co.in",
+    "website": "www .dscet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENGALP ATTU",
+    "transport": ""
+  },
+  "1325": {
+    "name": "St. Joseph College of Engineering, T rinity Campus, Nemili, Sriperumpudur",
+    "principal": "DR T MANVEL  RAJ",
+    "phone": "9444405813",
+    "email": "principal@stjoseph.ac.in",
+    "website": "www .stjoseph.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1335": {
+    "name": "Sri Krishna Institute of T echnology , Panapakkam, Padappai, Chennai 601301",
+    "principal": "PROF DR N P ARTHIBAN",
+    "phone": "9840630259",
+    "email": "principal.skit@gmail.com",
+    "website": "www .srikrishnait.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1399": {
+    "name": "Chennai Institute of T echnology , Puduper V illage, Nandambakkam Post,",
+    "principal": "DR A RAMESH",
+    "phone": "4471 119111",
+    "email": "principal@citchennai.net",
+    "website": "www .citchennai.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PALLA VARAM",
+    "transport": ""
+  },
+  "1401": {
+    "name": "Adhiparasakthi Engineering College, Melmaruvathur , Chengalpattu District",
+    "principal": "DR J RAJA",
+    "phone": "4427529585",
+    "email": "principal@apec.edu.in",
+    "website": "www .apec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "MELMARUV ATHUR",
+    "transport": ""
+  },
+  "1402": {
+    "name": "Annai T eresa College of Engineering, Thirunavalur , Kallakkurichi District 607204",
+    "principal": "DR J KRISHNAKUMAR",
+    "phone": "9842372393",
+    "email": "info.atce@gmail.com",
+    "website": "www .atce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ULUNDURPET",
+    "transport": ""
+  },
+  "1405": {
+    "name": "Dhanalakshmi College of Engineering, Manimangalam, Chennai 601301",
+    "principal": "Dr A R Pradeep Kumar",
+    "phone": "7299016647",
+    "email": "principal@dce.edu.in",
+    "website": "www .dce.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1407": {
+    "name": "G K M College of Engineering and T echnology , Alappakkam-Mappedu Road,",
+    "principal": "DR N S BHUV ANESW ARI",
+    "phone": "9444256780",
+    "email": "principal@gkmcet.net.in",
+    "website": "www .gkmgroup.in",
+    "hostel": "Yes",
+    "nearest_railway": "PERUNGALA THUR",
+    "transport": ""
+  },
+  "1408": {
+    "name": "I F E T College of Engineering (Autonomous), Gangarampalayam, V illupuram",
+    "principal": "DR G MAHENDRAN M TECH PH D",
+    "phone": "4146231456",
+    "email": "college@ifet.ac.in",
+    "website": "www .ifet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VALAVANUR",
+    "transport": ""
+  },
+  "1409": {
+    "name": "Karpaga V inayaga College of Engineering and T echnology , Palayanoor Post,",
+    "principal": "DR P  KASINA THA PANDIAN",
+    "phone": "9842069933",
+    "email": "kvcet@live.com",
+    "website": "https:/www .kveg.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENGALP ATTU",
+    "transport": ""
+  },
+  "1411": {
+    "name": "Madha Engineering College, Kundrathur , Chennai 600069",
+    "principal": "Dr PONNUSAMY  R P",
+    "phone": "9176831915",
+    "email": "principal@madhaengineeringcollege.com",
+    "website": "www .madhaengineeringcollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "PALLA VARM",
+    "transport": ""
+  },
+  "1412": {
+    "name": "Mailam Engineering College, Mailam, V illupuram District 604304",
+    "principal": "DR R RAJAPP AN",
+    "phone": "8056524147",
+    "email": "mec@mailamengg.com",
+    "website": "www .mailamengg.com",
+    "hostel": "Yes",
+    "nearest_railway": "TINDIV ANAM",
+    "transport": ""
+  },
+  "1413": {
+    "name": "Sri V enkateswaraa College of T echnology (Autonomous), BHB Nagar , Vadakal",
+    "principal": "DR S LAKSHMI",
+    "phone": "9150080081",
+    "email": "principal@svct.edu.in",
+    "website": "www .svct.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1414": {
+    "name": "Prince Shri V enkateshwara Padmavathy Engineering College, Ponmar , Chennai",
+    "principal": "DR G INDIRA",
+    "phone": "9840100040",
+    "email": "prince@psvpec.in",
+    "website": "www .psvpec.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1415": {
+    "name": "T S M Jain College of T echnology , Melur V illage, Kallakurichi District 606201",
+    "principal": "DR ESW ARAN T",
+    "phone": "94441 1491 1",
+    "email": "tsmjaincot@gmail.com",
+    "website": "www .tsmjain.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHINNASALEM",
+    "transport": ""
+  },
+  "1416": {
+    "name": "Jaya Sakthi Engineering College, Thirunindravur , Chennai 602024",
+    "principal": "Dr P THIRUMURUGAN",
+    "phone": "4426340250",
+    "email": "info@sakthiec.edu.in",
+    "website": "www .sakthiec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "NEMILICHER Y JAYA",
+    "transport": ""
+  },
+  "1419": {
+    "name": "Sri Sai Ram Enginering College (Autonomous), W est T ambaram, Chennai",
+    "principal": "DR J RAJA",
+    "phone": "9677065557",
+    "email": "sairam@sairam.edu.in",
+    "website": "www .sairam.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1420": {
+    "name": "Tagore Engineering College, Rathnamangalam, V andalur Post, Chennai 600048",
+    "principal": "DR R RAMESH",
+    "phone": "4422299400",
+    "email": "principal@tagore-engg.ac.in",
+    "website": "www .tagore-engg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VANDALUR",
+    "transport": ""
+  },
+  "1421": {
+    "name": "V R S College of Engineering and T echnology , Arasur , Villupuram District",
+    "principal": "DR N ANBAZHAGHAN PHD",
+    "phone": "4149298053",
+    "email": "vrscet@yahoo.com",
+    "website": "www .vrscet.in",
+    "hostel": "Yes",
+    "nearest_railway": "VILLUPURAM",
+    "transport": ""
+  },
+  "1422": {
+    "name": "SRM V alliammai Engineering College (Autonomous), Kattankulathur , Chennai",
+    "principal": "DR M MURUGAN",
+    "phone": "9094537070",
+    "email": "principal@srmvalliammai.ac.in",
+    "website": "www .srmvalliammai.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "POTHERI",
+    "transport": ""
+  },
+  "1423": {
+    "name": "Asan Memorial College of Engineering and T echnology ,Chengalpattu-603 001.",
+    "principal": "DR V K GNANA VEL",
+    "phone": "7010004781",
+    "email": "amcet2002@gmail.com",
+    "website": "amcet.co.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHENGALP ATTU",
+    "transport": ""
+  },
+  "1424": {
+    "name": "Dhaanish Ahmed College of Engineering, Padappai, Chennai 601301",
+    "principal": "DR K SENTHAMILSEL VAN",
+    "phone": "8939100041",
+    "email": "principal@dhaanishcollege.co.in",
+    "website": "www .dhaanishchennai.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1426": {
+    "name": "Sri Ramanujar Engineering College, V andalur , Kolappakkam, Chennai 600127",
+    "principal": "DR A DHANAP AL",
+    "phone": "9444859455",
+    "email": "1426srec@gmail.com",
+    "website": "www .sriramanujar .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VANDALUR",
+    "transport": ""
+  },
+  "1427": {
+    "name": "Sri Krishna Engineering College, Panappakkam, Padappai, Chennai 601301",
+    "principal": "PROF DR N SIV ANESAN",
+    "phone": "97101 19126",
+    "email": "principal.skec@gmail.com",
+    "website": "www .skec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1428": {
+    "name": "E. S. College of Engineering and T echnology , Chennai T runk Road,",
+    "principal": "DR K INDIRA",
+    "phone": "9585287662",
+    "email": "admin@escet.in",
+    "website": "https://escet.in/",
+    "hostel": "Yes",
+    "nearest_railway": "VILLUPURAM",
+    "transport": ""
+  },
+  "1430": {
+    "name": "Maha Bharathi Engineering College, A Vasudevanur , Chinnasalem, Kallakurichi",
+    "principal": "DR K BALAKANNAN",
+    "phone": "4151256333",
+    "email": "mbec123@gmail.com",
+    "website": "www .mbec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHINNASALEM",
+    "transport": ""
+  },
+  "1431": {
+    "name": "New Prince Shri Bhavani College of Engineering and T echnology , Vengaivasal",
+    "principal": "DR T SARA VANAN",
+    "phone": "4422780303",
+    "email": "npsbprincipal@gmail.com",
+    "website": "www .npsbcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1432": {
+    "name": "Rajalakshmi Institute of T echnology , Irulapalayam, Kuthampakkam Post,",
+    "principal": "DR P  K NAGARAJAN",
+    "phone": "8925977449",
+    "email": "mail@ritchennai.edu.in",
+    "website": "www .ritchennai.org",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUV ALLUR",
+    "transport": ""
+  },
+  "1434": {
+    "name": "Surya Group of Institutions, GST Road, V ikravandi V illage, V illupuram District",
+    "principal": "DR M SANKAR ME Phd",
+    "phone": "4146263221",
+    "email": "principalset@suryagroup.edu.in",
+    "website": "www .suryagroup.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "VILLUPURAM JUNCTION",
+    "transport": ""
+  },
+  "1436": {
+    "name": "A R Engineering College, V adakuchipalayam, Kappiyampuliyur Post, V illupuram",
+    "principal": "DR P ANNEERDHASS R",
+    "phone": "9487447625",
+    "email": "arec.svet@gmail.com",
+    "website": "www .arenggc.com",
+    "hostel": "Yes",
+    "nearest_railway": "VILLUPURAM",
+    "transport": ""
+  },
+  "1437": {
+    "name": "Rrase College of Engineering, Padappai, Kancheepuram 601301",
+    "principal": "Dr Lakshmi K",
+    "phone": "4427174753",
+    "email": "rrasecoe@gmail.com",
+    "website": "www .rrase.com",
+    "hostel": "Yes",
+    "nearest_railway": "VANDALUR",
+    "transport": ""
+  },
+  "1438": {
+    "name": "Sree Krishna College of Engineering, Anaicut Post, Unnai V illage, V ellore",
+    "principal": "DR SRINIV ASA RAO MADANE S",
+    "phone": "9894216849",
+    "email": "principalskce5126@gmail.com",
+    "website": "www .skcevellore.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI AND GUDIY ATTAM",
+    "transport": ""
+  },
+  "1441": {
+    "name": "A K T Memorial College of Engineering and T echnology , Neelamangalam V illage,",
+    "principal": "DR SIV AKUMARAN T S",
+    "phone": "4151223577",
+    "email": "aktengg@yahoo.in",
+    "website": "www .aktmcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHINNASALEM",
+    "transport": ""
+  },
+  "1442": {
+    "name": "Prince Dr . K V asudevan College of Engineering and T echnology , Medavakkam-",
+    "principal": "DR T SUNDERSEL WYN",
+    "phone": "9840100040",
+    "email": "prince@princedr .k.vasudevan.com",
+    "website": "www .princedrkvasudevan.com",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1444": {
+    "name": "R.M. Engineering College Zamin Endathur , Madurantakam (TK), Chengalpattu",
+    "principal": "DR X CHARLES",
+    "phone": "9445823060",
+    "email": "rmengineeringdm@gmail.com",
+    "website": "www .rmengineeringcollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "MADURANT AKAM",
+    "transport": ""
+  },
+  "1445": {
+    "name": "Sri Rangapoopathi College of Engineering, Alampoondi V illage, Gingee,",
+    "principal": "Dr R P AVENDHAN",
+    "phone": "9791263493",
+    "email": "srceprince2009@gmail.com",
+    "website": "www .srpce.in",
+    "hostel": "Yes",
+    "nearest_railway": "TINDIV ANAM",
+    "transport": ""
+  },
+  "1449": {
+    "name": "Saraswathy College of Engineering and T echnology , NH-45, Main Road, Olakkur ,",
+    "principal": "DR R RAJU",
+    "phone": "4147290370",
+    "email": "scet4218@gmail.com",
+    "website": "https://vetscet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "OLAKKUR",
+    "transport": ""
+  },
+  "1450": {
+    "name": "Loyola ICAM College of Engineering and T echnology , Loyola College Campus,",
+    "principal": "DR L  ANTONY  MICHAEL  RAJ",
+    "phone": "9003900183",
+    "email": "licet@licet.ac.in",
+    "website": "www .licet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NUNGAMBAKKAM",
+    "transport": ""
+  },
+  "1452": {
+    "name": "PERI Institute of T echnology , Mannivakkam, W est T ambaram, Chennai 600048",
+    "principal": "DR R P ALSON KENNEDY  ME MS IT  MBA  P",
+    "phone": "9444044720",
+    "email": "principal@periit.com",
+    "website": "www .peri.education",
+    "hostel": "Yes",
+    "nearest_railway": "VANDALUR",
+    "transport": ""
+  },
+  "1501": {
+    "name": "Adhiparasakthi College of Engineering, Kalavai, Ranipet District 632506",
+    "principal": "DR S MOHANAMURUGAN",
+    "phone": "9380590534",
+    "email": "apce501@gmail.com",
+    "website": "www .apce.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI JUNCTION",
+    "transport": ""
+  },
+  "1503": {
+    "name": "Arulmigu Meenakshi Amman College of Engineering,",
+    "principal": "Dr R Ganesan",
+    "phone": "9791529229",
+    "email": "amacengg@yahoo.com",
+    "website": "www .amace.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHIPURAM",
+    "transport": ""
+  },
+  "1504": {
+    "name": "Arunai Engineering College, Mathur , Thiruvannamalai District 606603",
+    "principal": "DR ELANCHEZIAN C",
+    "phone": "98417151 19",
+    "email": "aectvm1993@gmail.com",
+    "website": "www .arunai.org",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUV ANNAMALAI",
+    "transport": ""
+  },
+  "1505": {
+    "name": "C Abdul Hakeem College of Engineering and T echnology , Melvisharam, Ranipet",
+    "principal": "DR M SASIKUMAR",
+    "phone": "4172267387",
+    "email": "info.cahcet@gmail.com",
+    "website": "www .cahcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "WALAJA  ROAD",
+    "transport": ""
+  },
+  "1507": {
+    "name": "Ganadipathy T ulsis Jain Engineering College, Kaniyambadi, V ellore District",
+    "principal": "DR M BARA THI",
+    "phone": "8012570109",
+    "email": "principal@gtec.ac.in",
+    "website": "www .gtec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI",
+    "transport": ""
+  },
+  "1509": {
+    "name": "Meenakshi College of Engineering, V embuliamman Koil Street, K K Nagar",
+    "principal": "Dr S ANANDA  KUMAR",
+    "phone": "4423640773",
+    "email": "principal@mce.edu.in",
+    "website": "www .mce.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "MAMBALAM",
+    "transport": ""
+  },
+  "1510": {
+    "name": "Priyadarshini Engineering College, V aniyambadi Post, Thiruppattur District",
+    "principal": "DR K VIJA YARAJ",
+    "phone": "9443491455",
+    "email": "priyaecvnb@yahoo.com",
+    "website": "www .priyadarshini.net.in",
+    "hostel": "Yes",
+    "nearest_railway": "VANIY AMBADI",
+    "transport": ""
+  },
+  "1511": {
+    "name": "Ranipettai Engineering College, Thenkadappanthangal, Ranipet District 632513",
+    "principal": "DR N SENTHIL  VELAN",
+    "phone": "4172299501",
+    "email": "recchairman@gmail.com",
+    "website": "http://ranipettaiengcollege.com/",
+    "hostel": "Yes",
+    "nearest_railway": "WALAJA  ROAD RAIL WAY",
+    "transport": ""
+  },
+  "1512": {
+    "name": "S K P  Engineering College, Thiruvannamalai District 60661 1",
+    "principal": "Dr S BASKARAN ME PhD",
+    "phone": "9489061001",
+    "email": "principal@skpec.in",
+    "website": "www .skpec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUV ANNAMALAI",
+    "transport": ""
+  },
+  "1513": {
+    "name": "Sri Balaji Chockalingam Engineering College, Arni, Thiruvannamalai District",
+    "principal": "DR V THIRUNA VUKKARASU",
+    "phone": "9843099201",
+    "email": "sbcecarni1513@gmail.com",
+    "website": "www .sbcecarni.org",
+    "hostel": "Yes",
+    "nearest_railway": "ARANI ROAD",
+    "transport": ""
+  },
+  "1516": {
+    "name": "Thanthai Periyar Government Institute of T echnology , Bagayam, V ellore District",
+    "principal": "DR P  K PALANI",
+    "phone": "4162907762",
+    "email": "tpgitpa@gmail.com",
+    "website": "www .tpgit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI JUNCTION",
+    "transport": ""
+  },
+  "1517": {
+    "name": "Thirumalai Engineering College, Kilambi, Kancheepuram District 631551",
+    "principal": "DR S PRABAKARAN",
+    "phone": "8754681968",
+    "email": "tecau1517@gmail.com",
+    "website": "www .thirumalaiengg.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHIPURAM",
+    "transport": ""
+  },
+  "1518": {
+    "name": "Thiruvalluvar College of Engineering and T echnology , Vandavasi,",
+    "principal": "DR K P AZHANIVEL",
+    "phone": "9842313222",
+    "email": "tcet1998@gmail.com",
+    "website": "www .tcet.co.in",
+    "hostel": "Yes",
+    "nearest_railway": "MELMARUV ATHUR",
+    "transport": ""
+  },
+  "1519": {
+    "name": "Bharathidasan Engineering College, Nattrampalli Post, Thiruppathur District",
+    "principal": "Dr G BASKAR ME Ph D FIE",
+    "phone": "8939690965",
+    "email": "principal@bec.ac.in",
+    "website": "www .bec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "JOLARPET",
+    "transport": ""
+  },
+  "1520": {
+    "name": "Kingston Engineering College, Chithoor Main Road, Christianpet V illage,",
+    "principal": "DR U V ARIV AZHAGU",
+    "phone": "4162298300",
+    "email": "principal@kingston.ac.in",
+    "website": "www .kingston.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KATPADI",
+    "transport": ""
+  },
+  "1523": {
+    "name": "Global Institute of Engineering and T echnology , Bangalore-Chennai Highway ,",
+    "principal": "Dr V NA TARAJAN",
+    "phone": "9443132622",
+    "email": "global_iet@yahoo.co.in",
+    "website": "www .getedu.in",
+    "hostel": "Yes",
+    "nearest_railway": "WALAJAH ROAD",
+    "transport": ""
+  },
+  "1524": {
+    "name": "Annamalaiar College of Engineering, Modaiyur V illage, Polur T aluk,",
+    "principal": "DR R KANNAN",
+    "phone": "9962513652",
+    "email": "annamalaiarcoe@gmail.com",
+    "website": "www .annamalaiarengg.com",
+    "hostel": "Yes",
+    "nearest_railway": "POLUR",
+    "transport": ""
+  },
+  "1525": {
+    "name": "Podhigai College of Engineering and T echnology , Vinayakapuram, Adiyur Post,",
+    "principal": "DR M PRABHAKARAN",
+    "phone": "4179225900",
+    "email": "podhigaitech@gmail.com",
+    "website": "www .podhigaitech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUP ATHUR JN",
+    "transport": ""
+  },
+  "1526": {
+    "name": "Sri Krishna College of Engineering, T iruttani High Road, Arakkonam, Ranipet",
+    "principal": "DR ARUNPRASA TH R ME PHD MBA",
+    "phone": "9944336600",
+    "email": "principal1526@gmail.com",
+    "website": "www .srikrishnacollege.co.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARAKKONAM",
+    "transport": ""
+  },
+  "1529": {
+    "name": "Oxford College of Engineering, V enmani V illage, Karaipoondi Post, Polur T aluk,",
+    "principal": "DR N KARUNAGARAN",
+    "phone": "4181223688",
+    "email": "oceprincipal@gmail.com",
+    "website": "WWW .OXFORDCOLLEGEOFENGINEERIN",
+    "hostel": "Yes",
+    "nearest_railway": "POLUR",
+    "transport": ""
+  },
+  "1605": {
+    "name": "Idhaya Engineering College for W omen, Chinnasalem, Kallakkurichi District",
+    "principal": "DR SR A JENITT A",
+    "phone": "4151258325",
+    "email": "idhaya@iecw .edu.in",
+    "website": "WWW .IECW .EDU.IN",
+    "hostel": "Yes",
+    "nearest_railway": "CHINNASALEM",
+    "transport": ""
+  },
+  "2005": {
+    "name": "Government College of T echnology (Autonomous), Thadagam Road,",
+    "principal": "DR K MANONMANI",
+    "phone": "4222432221",
+    "email": "gctcbe@gct.ac.in",
+    "website": "www .gct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JN",
+    "transport": ""
+  },
+  "2006": {
+    "name": "PSG College of T echnology (Autonomous), Peelamedu, Coimbatore District",
+    "principal": "DR K PRAKASAN",
+    "phone": "4224344777",
+    "email": "principal@psgtech.edu",
+    "website": "www .psgtech.edu",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2007": {
+    "name": "Coimbatore Institute of T echnology (Autonomous), Civil Aerodrome Post,",
+    "principal": "DR A RAJESW ARI",
+    "phone": "4222573187",
+    "email": "principal@cit.edu.in",
+    "website": "www .cit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2025": {
+    "name": "Anna University Regional Campus - Coimbatore, Maruthamalai Main Road,",
+    "principal": "DR SARA VANAKUMAR M",
+    "phone": "9894165888",
+    "email": "deancoimbatore@annauniv .edu",
+    "website": "www .aurcc.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2302": {
+    "name": "Sri Shanmugha College of Engineering and T echnology , Morur Bit II V illage,",
+    "principal": "DR R P ALANICHAMY",
+    "phone": "7373696999",
+    "email": "principal@shanmugha.edu.in",
+    "website": "https://shanmugha.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "SANKARI DURG",
+    "transport": ""
+  },
+  "2327": {
+    "name": "N S N College of Engineering and T echnology , Karur-Madurai NH7, Manalmedu,",
+    "principal": "DR J SHANMUGAPRIY AN ME PHD",
+    "phone": "8220447799",
+    "email": "principal2327@gmail.com",
+    "website": "www .nsn.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARUR",
+    "transport": ""
+  },
+  "2329": {
+    "name": "Rathinam T echnical Campus, Pollachi Road, Eachanari, Coimbatore District",
+    "principal": "DR B NAGARAJ",
+    "phone": "8072364509",
+    "email": "principal.academics@rathinam.in",
+    "website": "https://www .rathinamtechnicalcampus.com/",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2332": {
+    "name": "Aishwarya College of Engineering and T echnology , Errattaikaradu Paruvachi",
+    "principal": "DR T GOVINDASW AMY",
+    "phone": "9384281500",
+    "email": "acetdr@gmail.com",
+    "website": "www .aishwaryaenggcollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JN",
+    "transport": ""
+  },
+  "2338": {
+    "name": "Asian College of Engineering and T echnology , Asian College Road,",
+    "principal": "DR P  ESW ARAMOOR THY",
+    "phone": "7708069402",
+    "email": "asiantccbe@gmail.com",
+    "website": "www .acetcbe.in",
+    "hostel": "Yes",
+    "nearest_railway": "THUDIY ALUR RAIL WAY",
+    "transport": ""
+  },
+  "2341": {
+    "name": "Ganesh College of Engineering, Attur Main Road, Mettupatti, Salem District",
+    "principal": "Dr M SUBAS CHANDRABOSE M Tech Ph D",
+    "phone": "427221 1212",
+    "email": "principal@ganeshenggcollege.org",
+    "website": "http://ganeshenggcollege.org/",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2342": {
+    "name": "Sri Ranganathar Institute of Engineering and T echnology(Autonomous),",
+    "principal": "DR H GANESAN",
+    "phone": "7502664999",
+    "email": "principalsriet1@gmail.com",
+    "website": "www .sriet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JN",
+    "transport": ""
+  },
+  "2343": {
+    "name": "Indian Institute of Handloom T echnology , Foulke s Compound, Thillai Nagar ,",
+    "principal": "DR AMIN HIRENBHAI NA VINBHAI",
+    "phone": "4272296943",
+    "email": "iiht.tnslm@nic.in",
+    "website": "www .iihtsalem.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM TOWN",
+    "transport": ""
+  },
+  "2345": {
+    "name": "Dhirajlal Gandhi College of T echnology , Sikkanampatty , (Opp. to Airport),",
+    "principal": "DR A SEL VARAJ ME PHD MISTE",
+    "phone": "4290233333",
+    "email": "principal@dgct.ac.in",
+    "website": "www .dgct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "OMALUR",
+    "transport": ""
+  },
+  "2346": {
+    "name": "Shree Sathyam College of Engineering and T echnology , NH-47, Manjakkalpatti,",
+    "principal": "DR V SUJA THA",
+    "phone": "4283244080",
+    "email": "principal@shreesathyam.edu.in",
+    "website": "www .shreesathyam.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SANKARI DURG",
+    "transport": ""
+  },
+  "2347": {
+    "name": "AVS College of T echnology , Attur Main Road, Near AVS College of Arts &",
+    "principal": "DR A SRINIV ASAN",
+    "phone": "9894852123",
+    "email": "principal@avstech.ac.in",
+    "website": "www .avstech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AYOTHIY APATTANAM",
+    "transport": ""
+  },
+  "2349": {
+    "name": "Dhaanish Ahmed Institute of T echnology , Pichanur Post, (Near K G Chavadi),",
+    "principal": "DR K G P ARTHIBAN",
+    "phone": "4227172064",
+    "email": "principal@dhaanishcollege.in",
+    "website": "www .dhaanish.com",
+    "hostel": "Yes",
+    "nearest_railway": "ETTIMADAI",
+    "transport": ""
+  },
+  "2350": {
+    "name": "Jairupaa College of Engineering, Thottiapalayam, Kathankanni Post, Kangayam,",
+    "principal": "DR T P JAYAKUMAR",
+    "phone": "9944001608",
+    "email": "jairupa2007@gmail.com",
+    "website": "www .jairupa.org",
+    "hostel": "Yes",
+    "nearest_railway": "UTHUKULI",
+    "transport": ""
+  },
+  "2354": {
+    "name": "Pollachi Institute of Engineering and T echnology , Main Road, Poosaripatti,",
+    "principal": "DR A DHANAMURUGAN",
+    "phone": "9524160950",
+    "email": "principal@pietech.edu.in",
+    "website": "www .pietech.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "POLLACHI",
+    "transport": ""
+  },
+  "2356": {
+    "name": "Arulmurugan College of Engineering, Karvazhi Road, Thennilai Post, Karur",
+    "principal": "Dr P SHANMUGAM M E Ph D",
+    "phone": "9750976789",
+    "email": "engg@arulmurugan.edu.in",
+    "website": "www .arulmurugan.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARUR",
+    "transport": ""
+  },
+  "2357": {
+    "name": "V S B College of Engineering T echnical Campus (Autonomous), Ealur Pirivu,",
+    "principal": "DR V VELMURUGAN",
+    "phone": "8220048212",
+    "email": "principal@vsbcetc.com",
+    "website": "www .vsbcetc.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KINA THUKADA VU",
+    "transport": ""
+  },
+  "2360": {
+    "name": "Suguna College of Engineering, Kalappatti Road, Civil Aerodrome Post,",
+    "principal": "DR R MAGUTEESW ARAN",
+    "phone": "4222590092",
+    "email": "sugucoe@gmail.com",
+    "website": "www .sugunace.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2367": {
+    "name": "Arjun College of T echnology , Chettiyakkapalayam, Kinathukadavu, Coimbatore",
+    "principal": "DR JANAKIMANOHAR N",
+    "phone": "4259200201",
+    "email": "principal@actechnology .in",
+    "website": "www .actechnology .in",
+    "hostel": "Yes",
+    "nearest_railway": "KINA THUKADA VU JN",
+    "transport": ""
+  },
+  "2368": {
+    "name": "Vishnu Lakshmi College of Engineering and T echnology , Vellalore Post,",
+    "principal": "Dr M THIY AGARAJAN",
+    "phone": "9364444740",
+    "email": "principalvilcet@gmail.com",
+    "website": "WWW .Vishnulakshmiinstitutions.com",
+    "hostel": "Yes",
+    "nearest_railway": "podanur",
+    "transport": ""
+  },
+  "2369": {
+    "name": "Government College of Engineering, Chettikkarai Post, Dharmapuri District",
+    "principal": "DR V SUMA THY",
+    "phone": "9444565950",
+    "email": "principalgcedpi@gmail.com",
+    "website": "www .gcedpi.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "DHARMAPURI",
+    "transport": ""
+  },
+  "2377": {
+    "name": "PSG Institute of T echnology and Applied Research(Autonomous), Avinashi",
+    "principal": "DR N SARA VANAKUMAR",
+    "phone": "9500814830",
+    "email": "principal@psgitech.ac.in",
+    "website": "www .psgitech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE RAIL WAY",
+    "transport": ""
+  },
+  "2378": {
+    "name": "Cheran college of T echnology . Kangeyam.",
+    "principal": "Dr V Gopi",
+    "phone": "7708444716",
+    "email": "cherantech@cherancolleges.org",
+    "website": "cct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "Coimbatore",
+    "transport": ""
+  },
+  "2601": {
+    "name": "Adhiyamaan College of Engineering (Autonomous), Hosur , Krishnagiri District",
+    "principal": "DR R RADHAKRISHNAN",
+    "phone": "4344261001",
+    "email": "principal@adhiyamaan.ac.in",
+    "website": "www .adhiyamaan.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "HOSUR",
+    "transport": ""
+  },
+  "2602": {
+    "name": "Annai Mathammal Sheela Engineering College, Erumapatty Post, Namakkal",
+    "principal": "DR T PARITHIMAR KALAIGNAN",
+    "phone": "944371 1881",
+    "email": "principalamsec@gmail.com",
+    "website": "www .amsheela.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAMAKKAL  JN",
+    "transport": ""
+  },
+  "2603": {
+    "name": "Government College of Engineering (Autonomous), Bargur , Krishnagiri District",
+    "principal": "DR V THIRUNA VUKKARASU",
+    "phone": "9442566101",
+    "email": "principal503@gmail.com",
+    "website": "www .gcebargur .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "JOLARPETT AI",
+    "transport": ""
+  },
+  "2607": {
+    "name": "K S Rangasamy College of T echnology (Autonomous), T iruchengode, Namakkal",
+    "principal": "DR A KUMARA VEL",
+    "phone": "4288274741",
+    "email": "office@ksrct.ac.in",
+    "website": "https://ksrct.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2608": {
+    "name": "M Kumarasamy College of Engineering (Autonomous), Thalavapalayam, Karur",
+    "principal": "DR B S MURUGAN",
+    "phone": "4324272155",
+    "email": "principal@mkce.ac.in",
+    "website": "www .mkce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARUR",
+    "transport": ""
+  },
+  "2609": {
+    "name": "Mahendra Engineering College (Autonomous), Mahendhirapuri, Mallasamudram,",
+    "principal": "DR V SHANMUGAM",
+    "phone": "7373961999",
+    "email": "info@mahendrainstitutions.com",
+    "website": "www .mahendra.info",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM",
+    "transport": ""
+  },
+  "2610": {
+    "name": "Muthayammal Engineering College (Autonomous), Rasipuram, Namakkal",
+    "principal": "DR M MADHESW ARAN",
+    "phone": "4287220837",
+    "email": "info@mec.edu.in",
+    "website": "www .mec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "RASIPURAM",
+    "transport": ""
+  },
+  "2611": {
+    "name": "Paavai Engineering College (Autonomous) , NH-7, Pachal Post, Namakkal",
+    "principal": "DR M PREMKUMAR",
+    "phone": "9965466888",
+    "email": "pecprincipal@paavai.edu.in",
+    "website": "http://pec.paavai.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "RASIPURAM",
+    "transport": ""
+  },
+  "2612": {
+    "name": "P G P College of Engineering and T echnology , Paramathi Post, Namakkal",
+    "principal": "DR V KA VITHA",
+    "phone": "8939808574",
+    "email": "engineering@pgpews.in",
+    "website": "ww.pgpcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAMAKKAL",
+    "transport": ""
+  },
+  "2613": {
+    "name": "K S R College of Engineering (Autonomous), T iruchengode, Namakkal District",
+    "principal": "DR P  MEENAKSHI DEVI",
+    "phone": "4288274741",
+    "email": "principal@ksrce.ac.in",
+    "website": "www .ksrce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2614": {
+    "name": "S S M College of Engineering, Komarapalayam, Namakkal District 638183",
+    "principal": "DR R SUBASH CHANDRA  BOSE",
+    "phone": "9894026708",
+    "email": "principal@ssmce.ac.in",
+    "website": "www .ssmce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2615": {
+    "name": "Government College of Engineering (Autonomous), Karuppur , Salem District",
+    "principal": "DR R VIJA YAN",
+    "phone": "4272346157",
+    "email": "principal@gcesalem.edu.in",
+    "website": "www .gcesalem.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2616": {
+    "name": "Sapthagiri College of Engineering, Periyanahalli Post, Dharmapuri District",
+    "principal": "PROF DR JBV SUBRAHMANY AM",
+    "phone": "4348247500",
+    "email": "sapthagiriengg1993@gmail.com",
+    "website": "https://sapthagiricollegeofengineering.in",
+    "hostel": "Yes",
+    "nearest_railway": "DHARMAPURI",
+    "transport": ""
+  },
+  "2617": {
+    "name": "Sengunthar Engineering College (Autonomous), T iruchengode, Namakkal",
+    "principal": "DR R SA TISH KUMAR",
+    "phone": "9842755552",
+    "email": "principal@scteng.co.in",
+    "website": "www .scteng.co.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2618": {
+    "name": "Sona College of T echnology (Autonomous), Suramangalam Post, Salem District",
+    "principal": "DR S R R SENTHILKUMAR",
+    "phone": "4274099999",
+    "email": "principal@sonatech.ac.in",
+    "website": "www .sonatech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM",
+    "transport": ""
+  },
+  "2620": {
+    "name": "Vivekanandha College of Engineering for W omen (Autonomous),",
+    "principal": "DR KCK VIJA YAKUMAR ME PHD",
+    "phone": "9443734562",
+    "email": "principal@vcew .ac.in",
+    "website": "www .vcenggw .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2621": {
+    "name": "Er. Perumal Manimekalai College of Engineering, Near Koneripalli, Hosur ,",
+    "principal": "DR A SENTHIL  KUMAR",
+    "phone": "9442236573",
+    "email": "pmc_enginering@yahoo.com",
+    "website": "www .pmctech.org",
+    "hostel": "Yes",
+    "nearest_railway": "HOSUR",
+    "transport": ""
+  },
+  "2622": {
+    "name": "V S B Engineering College (Autonomous), Kovai Road, Karur District 6391 11",
+    "principal": "Dr C VENNILA",
+    "phone": "9994496212",
+    "email": "admission@vsbec.com",
+    "website": "www .vsbec.com",
+    "hostel": "Yes",
+    "nearest_railway": "KARUR",
+    "transport": ""
+  },
+  "2623": {
+    "name": "Mahendra College of Engineering, Attur Road, Minnampalli, V alapady , Salem",
+    "principal": "DR N MOHANASUNDARARAJU",
+    "phone": "9443695412",
+    "email": "info@mahendracollege.com",
+    "website": "www .mahendracollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2624": {
+    "name": "Gnanamani College of T echnology (Autonomous), Pachal Post, Namakkal",
+    "principal": "DR T K KANNAN",
+    "phone": "7598293888",
+    "email": "INFO@GCT .ORG.IN",
+    "website": "WWW .GCT .ORG.IN",
+    "hostel": "Yes",
+    "nearest_railway": "RASIPURAM JUNCTION",
+    "transport": ""
+  },
+  "2625": {
+    "name": "The Kavery Engineering College, M Kalipatti Post, Mecheri, Salem District",
+    "principal": "DR V DURAISAMY  ME PHD FIE",
+    "phone": "9842350156",
+    "email": "principal804@hotmail.com",
+    "website": "www .kavery .org.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JN",
+    "transport": ""
+  },
+  "2627": {
+    "name": "Selvam College of T echnology , Pappanaickenpatti Post, Namakkal District",
+    "principal": "Dr S RAMABALAN",
+    "phone": "9942099122",
+    "email": "principal@selvamtech.edu.in",
+    "website": "www .selvamtech.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAMAKKAL",
+    "transport": ""
+  },
+  "2628": {
+    "name": "Paavai College of Engineering, NH-7, Pachal Post, Namakkal District 637018",
+    "principal": "DR V HARIHARAN",
+    "phone": "9715366888",
+    "email": "pceprincipal@paavai.edu.in",
+    "website": "http://pce.paavai.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "RASIPURAM",
+    "transport": ""
+  },
+  "2630": {
+    "name": "Chettinad College of Engineering and T echnology , NH-67, T richy Main Road,",
+    "principal": "DR A PUNITHA",
+    "phone": "9360702630",
+    "email": "principalccet@chettinadtech.ac.in",
+    "website": "www .chettinadtech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARUR JUNCTION",
+    "transport": ""
+  },
+  "2632": {
+    "name": "Mahendra Institute of T echnology (Autonomous), Mahendhirapuri,",
+    "principal": "DR T ELANGO",
+    "phone": "4288288527",
+    "email": "principal@mahendratech.org",
+    "website": "www .mahendratech.org",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM",
+    "transport": ""
+  },
+  "2633": {
+    "name": "Vidyaa V ikas College of Engineering and T echnology , Varahoorampatti,",
+    "principal": "DR K POORANA  PRIY A",
+    "phone": "9442141 122",
+    "email": "principal@vvcet.ac.in",
+    "website": "https://vvcet.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE AND SANKARIDURG",
+    "transport": ""
+  },
+  "2634": {
+    "name": "Excel Engineering College (Autonomous), NH-544, Salem Main Road,",
+    "principal": "DR K BOMMANA  RAJA  BE MTECH PHD",
+    "phone": "9965641888",
+    "email": "principaleec@excelcolleges.com",
+    "website": "https://excelinstitutions.com/excel_engg/",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE SANKARI",
+    "transport": ""
+  },
+  "2635": {
+    "name": "CMS College of Engineering, Emapuram Post, Namakkal District 637003",
+    "principal": "DR K MAHADEV AN",
+    "phone": "9843346065",
+    "email": "principal602@gmail.com",
+    "website": "www .cmscollegeofengg.org",
+    "hostel": "Yes",
+    "nearest_railway": "NAMAKKAL",
+    "transport": ""
+  },
+  "2636": {
+    "name": "A V S Engineering College, Military Road, Ammapet, Salem District 636003",
+    "principal": "DR J SUNDARARAJAN",
+    "phone": "9442700200",
+    "email": "principal@avsecmail.in",
+    "website": "www .avsenggcollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM TOWN",
+    "transport": ""
+  },
+  "2638": {
+    "name": "Mahendra Engineering College for W omen, Kumaramangalam, Namakkal",
+    "principal": "DR M SENTHIL  KUMAR",
+    "phone": "9385239001",
+    "email": "principal@mecw .org",
+    "website": "www .mecw .org",
+    "hostel": "Yes",
+    "nearest_railway": "SANKARI DURG",
+    "transport": ""
+  },
+  "2639": {
+    "name": "R P Sarathy Institute of T echnology , Poosaripatty V illage, Omalur T aluk, Salem",
+    "principal": "Dr V MUNUSAMI",
+    "phone": "4290249661",
+    "email": "principal@rpsit.ac.in",
+    "website": "www .rpsit.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "OMALUR JN",
+    "transport": ""
+  },
+  "2640": {
+    "name": "Jayalakshmi Institute of T echnology , Thoppur , Dharmapuri District 635352",
+    "principal": "DR K TAMIZHARASU",
+    "phone": "9087666100",
+    "email": "jit.thoppur@gmail.com",
+    "website": "www .jit.net.in",
+    "hostel": "Yes",
+    "nearest_railway": "THOPPUR",
+    "transport": ""
+  },
+  "2641": {
+    "name": "Varuvan V adivelan Institute of T echnology , Nallanahalli, Dharmapuri District",
+    "principal": "DR A SIVAKUMAR",
+    "phone": "99421 13333",
+    "email": "vvitprincipal@yahoo.in",
+    "website": "https://www .vvitengineeringcollege.org/",
+    "hostel": "Yes",
+    "nearest_railway": "DHARMAPURI",
+    "transport": ""
+  },
+  "2642": {
+    "name": "P S V College of Engineeering and T echnology , Mittapalli, Balinayanapalli Post,",
+    "principal": "DR P  LAWRENCE",
+    "phone": "9444494360",
+    "email": "selvam.psv@gmail.com",
+    "website": "www .psvcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "JOLARPET",
+    "transport": ""
+  },
+  "2643": {
+    "name": "Bharathiyar Institute of Engineering for W omen, Deviayakurichi, Attur T aluk,",
+    "principal": "DR R PUNIDHA  ME PHD",
+    "phone": "9655144999",
+    "email": "bharathiyar@biew .ac.in",
+    "website": "www .biew .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THALAIV ASAL",
+    "transport": ""
+  },
+  "2646": {
+    "name": "Tagore Institute of Engineering and T echnology , Deviyakurichi, Attur T aluk,",
+    "principal": "Dr V JAIGANESH",
+    "phone": "4282231374",
+    "email": "principaltiet@tagoreiet.ac.in",
+    "website": "www .tagoreiet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THALAIV ASAL",
+    "transport": ""
+  },
+  "2647": {
+    "name": "J K K Nataraja College of Engineering and T echnology , Komarapalayam Amani,",
+    "principal": "DR R SIV AKUMAR",
+    "phone": "9842710606",
+    "email": "engg@jkkn.ac.in",
+    "website": "https://engg.jkkn.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2648": {
+    "name": "Annapoorana Engineering College (Autonomous), Sankari Main Road, NH-47,",
+    "principal": "DR A ANBUCHEZIAN",
+    "phone": "9442000648",
+    "email": "principalaecsalem@gmail.com",
+    "website": "www .aecsalem.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2650": {
+    "name": "Christ The King Engineering College, Cecilia Gardens, Chikkarampalayam",
+    "principal": "DR JEY AKUMAR M",
+    "phone": "9150076729",
+    "email": "principal@ckec.ac.in",
+    "website": "www .ckec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "METTUP ALAYAM",
+    "transport": ""
+  },
+  "2651": {
+    "name": "Jai Shriram Engineering College, Dharapuram Road, Avinashi Palayam,",
+    "principal": "DR S NITHIY ANANDAM",
+    "phone": "4212313335",
+    "email": "principal@jayshriram.edu.in",
+    "website": "www .jayshriram.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUPPUR",
+    "transport": ""
+  },
+  "2652": {
+    "name": "AL-Ameen Engineering College (Autonomous), Karundevan Palayam, Nanjai",
+    "principal": "Dr A M J MD ZUBAIR RAHMAN",
+    "phone": "9677794947",
+    "email": "alameenengg@yahoo.com",
+    "website": "www .alameen.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JUNCTION",
+    "transport": ""
+  },
+  "2653": {
+    "name": "Knowledge Institute of T echnology , KIOT Campus, Kakapalayam Post, Salem",
+    "principal": "Dr K VISAGA VEL",
+    "phone": "4272433999",
+    "email": "principal@kiot.ac.in",
+    "website": "www .kiot.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2656": {
+    "name": "Builders Engineering college, Nathakadaiyur , Erode Road, Palayakottai V illage,",
+    "principal": "DR S RAMKUMAR",
+    "phone": "4257241885",
+    "email": "info@builderscollege.edu.in",
+    "website": "www .kitech.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JUNCTION",
+    "transport": ""
+  },
+  "2658": {
+    "name": "V S A Group of Institutions, NH-47, Uthamasola Puram Post, Salem District",
+    "principal": "DR R PRABHU",
+    "phone": "9443143131",
+    "email": "vsacollege@gmail.com",
+    "website": "www .vsagroup.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM",
+    "transport": ""
+  },
+  "2659": {
+    "name": "Salem College of Engineering and T echnology , Salem-Attur Main Road, NH-68,",
+    "principal": "DR R A SANKARAN",
+    "phone": "9715252012",
+    "email": "salemcollege09@gmail.com",
+    "website": "salemcollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SALEM JUNCTION",
+    "transport": ""
+  },
+  "2673": {
+    "name": "Sree Sakthi Engineering College, Bettathapuram, Bilichi V illage, Karamadai,",
+    "principal": "DR G JA YAPRAKASH",
+    "phone": "9244502277",
+    "email": "principal@sreesakthi.edu.in",
+    "website": "www .sreesakthi.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARAMADAI",
+    "transport": ""
+  },
+  "2683": {
+    "name": "Shreenivasa Engineering College, B Pallipatti, Bommidi, Pappireddipatti T aluk,",
+    "principal": "DR R THANIGAIVELAN",
+    "phone": "4346291056",
+    "email": "principal205@gmail.com",
+    "website": "www .shreenivasa.info",
+    "hostel": "Yes",
+    "nearest_railway": "BOMMIDI",
+    "transport": ""
+  },
+  "2702": {
+    "name": "Bannari Amman Institute of T echnology (Autonomous), Sathyamanagalam,",
+    "principal": "DR C P ALANISAMY",
+    "phone": "9942921289",
+    "email": "stayahead@bitsathy .ac.in",
+    "website": "bitsathy .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2704": {
+    "name": "Coimbatore Institute of Engineering and T echnolgoy (Autonomous),",
+    "principal": "DR K MANIKANDA  SUBRAMANIAN",
+    "phone": "9790038605",
+    "email": "info@cietcbe.edu.in",
+    "website": "www .cietcbe.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2705": {
+    "name": "CSI College of Engineering, Ketti, The Nilgiris 643215",
+    "principal": "DR R MERCY  SHANTHI",
+    "phone": "4232517474",
+    "email": "principal@csice.edu.in",
+    "website": "www .csice.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "Ketti Railway Station",
+    "transport": ""
+  },
+  "2706": {
+    "name": "Dr. Mahalingam College of Engineering and T echnology (Autonomous),",
+    "principal": "DR P  GOVINDASAMY",
+    "phone": "4259236030",
+    "email": "principal@drmcet.ac.in",
+    "website": "www .drmcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "POLLACHI",
+    "transport": ""
+  },
+  "2707": {
+    "name": "Erode Sengunthar Engineering College (Autonomous), Thudupathi Post, Erode",
+    "principal": "DR V VENKA TACHALAM",
+    "phone": "9442132706",
+    "email": "esecprincipal@gmail.com",
+    "website": "www .erode-sengunthar .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2708": {
+    "name": "Hindusthan College of Engineering and T echnology (Autonomous),",
+    "principal": "DR J JA YA M TECH PH D",
+    "phone": "8098333333",
+    "email": "principal@hicet.ac.in",
+    "website": "www .hicet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2709": {
+    "name": "Government College of Engineering (Formerly Institute of Road and T ransport",
+    "principal": "DR A SARADHA",
+    "phone": "4242533579",
+    "email": "gceeprincipal@gmail.com",
+    "website": "www .gcee.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2710": {
+    "name": "Karpagam College of Engineering (Autonomous), Othakkalmandapam,",
+    "principal": "DR V KUMAR CHINNAIY AN",
+    "phone": "4222619007",
+    "email": "office@kce.ac.in",
+    "website": "http://www .kce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2711": {
+    "name": "Kongu Engineering College (Autonomous), Perundurai, Erode District 638052",
+    "principal": "DR V BALUSAMY  BE HONS MTECH PHD",
+    "phone": "4294226555",
+    "email": "principal@kongu.edu",
+    "website": "www .kongu.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2712": {
+    "name": "Kumaraguru College of T echnology (Autonomous), Chinnavedampatti Post,",
+    "principal": "DR EZHILARASI M",
+    "phone": "4222661 100",
+    "email": "principal@kct.ac.in",
+    "website": "www .kct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE CENTRAL",
+    "transport": ""
+  },
+  "2713": {
+    "name": "M P Nachimuthu M Jaganathan Engineering College, Chennimalai, Erode",
+    "principal": "Dr M RAMESH",
+    "phone": "4294251616",
+    "email": "mpnmjec@mpnmjec.ac.in",
+    "website": "www .mpnmjec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2715": {
+    "name": "Nandha Engineering College (Autonomous), Pitchandampalayam Post, Erode",
+    "principal": "DR U S RAGUP ATHY",
+    "phone": "7373714477",
+    "email": "principal@nandhaengg.org",
+    "website": "www .nandhaengg.org",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JUNCTION",
+    "transport": ""
+  },
+  "2716": {
+    "name": "Park College of Engineering and T echnology , Kaniyur , Coimbatore District",
+    "principal": "DR D LAKSHMANAN",
+    "phone": "9942477773",
+    "email": "info@park.ac.in",
+    "website": "www .pcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2717": {
+    "name": "Sasurie College of Engineering, V ijayamangalam, T iruppur District 638056",
+    "principal": "DR M VIJA YAKUMAR",
+    "phone": "9442593839",
+    "email": "sceprincipal@sasurie.com",
+    "website": "www .sasurie.com",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUPPUR",
+    "transport": ""
+  },
+  "2718": {
+    "name": "Sri Krishna College of Enginering and T echnology (Autonomous) , Kuniamuthur ,",
+    "principal": "DR K PORKUMARAN",
+    "phone": "4222678001",
+    "email": "principal@skcet.ac.in",
+    "website": "www .skcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2719": {
+    "name": "Sri Ramakrishna Engineering College (Autonomous), V attamalaipalayam,",
+    "principal": "DR A SOUNDARRAJAN",
+    "phone": "7530089996",
+    "email": "office@srec.ac.in",
+    "website": "www .srec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2721": {
+    "name": "Tamilnadu College of Engineering, Karumathampatti Post, Coimbatore District",
+    "principal": "DR M PRINCE",
+    "phone": "9894612700",
+    "email": "tce@tnce.in",
+    "website": "www .tnce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2723": {
+    "name": "Velalar College of Engineering and T echnology (Autonomous), Thindal Post,",
+    "principal": "DR M JA YARAMAN",
+    "phone": "4242244201",
+    "email": "principal@velalarengg.ac.in",
+    "website": "www .velalarengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2725": {
+    "name": "Sri Ramakrishna Institute of T echnology (Autonomous), Pachapalayam,",
+    "principal": "DR J DA VID RA THNARAJ",
+    "phone": "4222605577",
+    "email": "principal@sritcbe.ac.in",
+    "website": "www .sritcbe.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2726": {
+    "name": "SNS College of T echnology (Autonomous), Kalappatti Post, Coimbatore District",
+    "principal": "DR S CHENTHUR P ANDIAN",
+    "phone": "7550316701",
+    "email": "snsct@snsgroups.com",
+    "website": "www .snsct.org",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE CENTRAL",
+    "transport": ""
+  },
+  "2727": {
+    "name": "Sri Shakthi Institute of Engineering and T echnology (Autonomous), L&T Bye-",
+    "principal": "DR N K SAKTHIVEL",
+    "phone": "4222369900",
+    "email": "principal@siet.ac.in",
+    "website": "www .siet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "IRUGUR",
+    "transport": ""
+  },
+  "2729": {
+    "name": "Nehru Institute of Engineering and T echnology , Thirumalayampalayam Post,",
+    "principal": "DR P  MANIIARASAN",
+    "phone": "9003936804",
+    "email": "nietprincipal@nehrucolleges.com",
+    "website": "www .nehrucolleges.org",
+    "hostel": "Yes",
+    "nearest_railway": "MADUKKARAI",
+    "transport": ""
+  },
+  "2731": {
+    "name": "R V S College of Engineering and T echnology , Kannampalayam, Sulur ,",
+    "principal": "DR G MOHAN KUMAR",
+    "phone": "9750910333",
+    "email": "principalcet@rvsgroup.com",
+    "website": "www .rvscet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2732": {
+    "name": "Info Institute of Engineering, Sarkar Samakulam, Coimbatore District 641 107",
+    "principal": "DR N KOTTISW ARAN",
+    "phone": "8489412277",
+    "email": "info@infoengg.com",
+    "website": "www .infoengg.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2733": {
+    "name": "Angel College of Engineering and T echnology , P.K.Palayam, Ugayanur V illage,",
+    "principal": "Dr P KANNAN",
+    "phone": "9443888225",
+    "email": "principal@angelcollege.edu.in",
+    "website": "https://angelcollege.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUPUR",
+    "transport": ""
+  },
+  "2735": {
+    "name": "Karpagam Institute of T echnology , Seerapalayam V illage, L&T By pass Road,",
+    "principal": "DR P  MANIMARAN",
+    "phone": "7397013334",
+    "email": "principalkit@gmail.com",
+    "website": "www .karpagamtech.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2736": {
+    "name": "Dr. N G P  Institute of T echnology (Autonomous), Kalapatti Road, Coimbatore",
+    "principal": "DR S U PRABHA",
+    "phone": "7708666767",
+    "email": "principal@drngpit.ac.in",
+    "website": "www .drngpit.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2737": {
+    "name": "Sri Sai Ranganathan Engineering College, Zahirnaickenpalayam V illage,",
+    "principal": "DR R K GNANAMUR THY",
+    "phone": "7373548413",
+    "email": "rec.cbe@gmail.com",
+    "website": "www .reccbe.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2739": {
+    "name": "Sri Eshwar College of Engineering (Autonomous), Kondampatti Post, V adasithur",
+    "principal": "DR SUDHA  MOHANRAM",
+    "phone": "7373617171",
+    "email": "sece@sece.ac.in",
+    "website": "www .sece.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KINA THUKADA VU JN",
+    "transport": ""
+  },
+  "2740": {
+    "name": "Hindusthan Institute of T echnology (Autonomous), Othakkalmandapam,",
+    "principal": "DR C NA TARAJAN",
+    "phone": "9047010006",
+    "email": "hitprincipal@hindusthan.net",
+    "website": "www .hit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2741": {
+    "name": "P A College of Engineering and T echnology (Autonomous), Palladam Road,",
+    "principal": "DR T MANIGANDAN",
+    "phone": "4259221386",
+    "email": "pacollege@yahoo.com",
+    "website": "www .pacolleges.org",
+    "hostel": "Yes",
+    "nearest_railway": "POLLACHI",
+    "transport": ""
+  },
+  "2743": {
+    "name": "Dhanalakshmi Srinivasan College of Engineering (CBE), NH47, Palakkad Main",
+    "principal": "DR C JEGADHEESAN",
+    "phone": "4222935353",
+    "email": "dscollegecbe@gmail.com",
+    "website": "www .dsce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE CENTRAL",
+    "transport": ""
+  },
+  "2744": {
+    "name": "Adithya Institute of T echnology , Kurumbapalayam V illage, Coimbatore District",
+    "principal": "DR D SOMASUNDARESW ARI",
+    "phone": "9842215906",
+    "email": "principal@adithyatech.com",
+    "website": "www .adithyatech.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE CENTRAL",
+    "transport": ""
+  },
+  "2745": {
+    "name": "Kathir College of Engineering, Neelambur , Avinashi Road, Coimbatore District",
+    "principal": "DR R UDAIY AKUMAR",
+    "phone": "9626273374",
+    "email": "kathirce@gmail.com",
+    "website": "www .kathir .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2747": {
+    "name": "Shree V enkateshwara Hi-T ech Engineering College, Othakuthirai, K",
+    "principal": "P THANGA VEL",
+    "phone": "9942945555",
+    "email": "svhecgobi@gmail.com",
+    "website": "www .svhec.com",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2748": {
+    "name": "Surya Engineering College, Mettukadai, Kathirampatti Post, Erode District",
+    "principal": "DR S MANOHARAN",
+    "phone": "4242555018",
+    "email": "secerode@gmail.com",
+    "website": "www .surya.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE RAIL WAY JUNCTION",
+    "transport": ""
+  },
+  "2749": {
+    "name": "Easa College of Engineering and T echnology(Autonomous), NH-47, Coimbatore-",
+    "principal": "DR Z ROBER T KENNEDY",
+    "phone": "9364445555",
+    "email": "easaprincipal@gmail.com",
+    "website": "www .easacollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2750": {
+    "name": "KIT - Kalaignar Karunanidhi Institute of T echnology (Autonomous),",
+    "principal": "DR M RAMESH",
+    "phone": "9965590058",
+    "email": "principal@kitcbe.com",
+    "website": "www .kitcbe.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2751": {
+    "name": "KGISL  Institute of T echnology , KGISL  Campus, Thudiyalur Road,",
+    "principal": "DR S SURESH KUMAR",
+    "phone": "9865052298",
+    "email": "principal@kgkite.ac.in",
+    "website": "www .kgkite.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2752": {
+    "name": "Nandha College of T echnology , Pitchandampalayam Post, Erode District 638052",
+    "principal": "DR S NANDAGOP AL",
+    "phone": "7373714477",
+    "email": "principal@nandhatech.org",
+    "website": "www .nandhatech.org",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JUNCTION",
+    "transport": ""
+  },
+  "2753": {
+    "name": "PPG Institute of T echnology , Vilankurichi V illage, Coimbatore District 641035",
+    "principal": "DR S NANDHAKUMAR",
+    "phone": "9047777277",
+    "email": "ppgit@ppg.edu.in",
+    "website": "www .ppgit.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2755": {
+    "name": "Nehru Institute of T echnology , Thirumalayampalayam Post, Coimbatore District",
+    "principal": "DR M SIV ARAJA",
+    "phone": "9003936801",
+    "email": "nitprincipal@nehrucolleges.com",
+    "website": "www .nehruinstitute.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2758": {
+    "name": "J K K Munirajah College of T echnology , T N Palayam, Gobi T aluk, Erode District",
+    "principal": "DR K SRIDHARAN",
+    "phone": "9789339900",
+    "email": "principal309@gmail.com",
+    "website": "www .jkkmct.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE JUNCTION",
+    "transport": ""
+  },
+  "2761": {
+    "name": "United Institute of T echnology , Periyanaickenpalayam, Coimbatore District",
+    "principal": "DR ABDUL  RAUF H",
+    "phone": "9688655599",
+    "email": "principal@uit.ac.in",
+    "website": "www .uit.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2762": {
+    "name": "Jansons Institute of T echnology , Karumathampatty , Somaur , Coimbatore District",
+    "principal": "DR V NAGARAJAN",
+    "phone": "4212264900",
+    "email": "info@jit.ac.in",
+    "website": "www .jit.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2763": {
+    "name": "Akshaya College of Engineering and T echnology , Kinathukadavu, Coimbatore",
+    "principal": "DR R RA VINDRAN",
+    "phone": "4259242570",
+    "email": "info@acetcbe.edu.in",
+    "website": "www .acetcbe.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2764": {
+    "name": "K P R Institute of Engineering and T echnology (Autonomous), Kollupalayam",
+    "principal": "Dr D SARA VANAN",
+    "phone": "9750944277",
+    "email": "principal@kpriet.ac.in",
+    "website": "kpriet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JN",
+    "transport": ""
+  },
+  "2767": {
+    "name": "SRG Engineering College, Aniyapuram Post, Namakkal District 637017",
+    "principal": "DR S MANIKANDAN",
+    "phone": "9442134279",
+    "email": "srgengg@gmail.com",
+    "website": "WWW .SRGEC.ORG",
+    "hostel": "Yes",
+    "nearest_railway": "NAMAKKAL",
+    "transport": ""
+  },
+  "2768": {
+    "name": "Park College of T echnology , Prema Ravi Nagar , Karumathampatti, Coimbatore -",
+    "principal": "DR K KUMARESAN",
+    "phone": "9524976778",
+    "email": "principal@pct.ac.in",
+    "website": "www .pct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2769": {
+    "name": "JCT College of Engineering and T echnology ( Autonomous ), Pichanur ,",
+    "principal": "DR S MANOHARAN",
+    "phone": "9361488801",
+    "email": "info@jct.ac.in",
+    "website": "www .jct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ETTIMADAI",
+    "transport": ""
+  },
+  "2770": {
+    "name": "Studyworld College of Engineering, Madukarai Post, Coimbatore - 641 105.",
+    "principal": "DR P  GOMA THI",
+    "phone": "9965596707",
+    "email": "principal-swce@swehg.com",
+    "website": "https://studyworldindia.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2772": {
+    "name": "C M S College of Engineering and T echnology , Appachigoundenpathy ,",
+    "principal": "DR N SUDHA",
+    "phone": "9688194333",
+    "email": "cmscet@gmail.com",
+    "website": "https://cmscollege.edu.in/cet/",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2776": {
+    "name": "R V S T echnical Campus-Coimbatore, Kumaran Kottam Campus,",
+    "principal": "DR S VIJA YAN",
+    "phone": "4222687200",
+    "email": "rvsetgi@rvsgroup.com",
+    "website": "rvstcc.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "3011": {
+    "name": "University College of Engineering, T iruchirappalli, (Bharathidasan Institute of",
+    "principal": "DR T SENTHILKUMAR ME PHD",
+    "phone": "4312407946",
+    "email": "deanbit@annauniv .edu",
+    "website": "www .aubit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3016": {
+    "name": "University College of Engineering, Ariyalur , Kathankudikadu V illage, Thelur",
+    "principal": "DR V VENKA TESAN",
+    "phone": "4329291727",
+    "email": "deanucea@gmail.com",
+    "website": "https://www .auucea.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR",
+    "transport": ""
+  },
+  "3018": {
+    "name": "University College of Engineering, Thirukkuvalai, Nagappattinam District 610204",
+    "principal": "Dr A Kalaiselvan",
+    "phone": "4366245234",
+    "email": "deantkly@gmail.com",
+    "website": "https://www .aucetk.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ARUR",
+    "transport": ""
+  },
+  "3019": {
+    "name": "University College of Engineering, Panruti, Chennai-Kumbakonam Highway ,",
+    "principal": "DR S MUTHUKUMARAN",
+    "phone": "4142241000",
+    "email": "deanpanruti@annauniv .edu",
+    "website": "www .ucep.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PANRUTI",
+    "transport": ""
+  },
+  "3021": {
+    "name": "University College of Engineering, Pattukkottai, ECR Road, Rajamadam,",
+    "principal": "DR M KAR THIKEY AN",
+    "phone": "4373293301",
+    "email": "deanpktau@gmail.com",
+    "website": "http://aucepkt.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ADIRAMP ATTINAM",
+    "transport": ""
+  },
+  "3410": {
+    "name": "Krishnasamy College of Engineering and T echnology , S Kumarapuram,",
+    "principal": "DR G ELANGO",
+    "phone": "4142285601",
+    "email": "kcet.skret@gmail.com",
+    "website": "www .kcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "VARAKKALP ATTU",
+    "transport": ""
+  },
+  "3425": {
+    "name": "C K College of Engineering and T echnology , Chellangkuppam, Cuddalore",
+    "principal": "DR SARA VANAN S",
+    "phone": "9344934806",
+    "email": "principal@ckcet.com",
+    "website": "www .ckcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "CUDDALORE POR T",
+    "transport": ""
+  },
+  "3454": {
+    "name": "Sri Ramakrishna College of Engineering, Sri Saradha Nagar , NH-45, Perambalur",
+    "principal": "DR G RANGANA THAN",
+    "phone": "9585544688",
+    "email": "sriramakrishnaengg@gmail.com",
+    "website": "www .sriramakrishna.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR",
+    "transport": ""
+  },
+  "3456": {
+    "name": "K S K College of Engineering and T echnology , Thanjavur Main Road,",
+    "principal": "Dr R RAJA VIGNESH",
+    "phone": "4352417588",
+    "email": "ksk1957@yahoo.com",
+    "website": "www .kskcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "DARASURAM",
+    "transport": ""
+  },
+  "3461": {
+    "name": "Arifa Institute of T echnology(Formly Haji sheik Ismail Engineering College),",
+    "principal": "DR G GIFTSON SAMUEL",
+    "phone": "7010040968",
+    "email": "principal@aitech.org.in",
+    "website": "www .aitech.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "VELANKANNI",
+    "transport": ""
+  },
+  "3464": {
+    "name": "Government College of Engineering, Gandarvakottai Road, Sengipatti,",
+    "principal": "DR S JA YABAL",
+    "phone": "9842909713",
+    "email": "gcesengipatti@gmail.com",
+    "website": "www .gcetj.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "BUDALUR",
+    "transport": ""
+  },
+  "3465": {
+    "name": "Government College of Engineering, Srirangam, Sethurappatti, T iruchirappalli",
+    "principal": "R MALA YALAMUR THI",
+    "phone": "9488008656",
+    "email": "gcesrirangam@gmail.com",
+    "website": "www .gces.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3466": {
+    "name": "Nelliandavar Institute of T echnology , Nerunjikorai V illage, Pudhupalayam,",
+    "principal": "DR R KANNAN",
+    "phone": "9443955435",
+    "email": "nelliandavar@gmail.com",
+    "website": "www .nelliandavar .com",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR JN",
+    "transport": ""
+  },
+  "3701": {
+    "name": "K Ramakrishnan College of T echnology (Autonomous), Kariyamanickam Road,",
+    "principal": "DR N V ASUDEV AN",
+    "phone": "7540010377",
+    "email": "principal@krct.ac.in",
+    "website": "www .krct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3760": {
+    "name": "Sir Issac Newton College of Engineering and T echnology , Anthanapeetai Post,",
+    "principal": "DR A KUMARA VADIVEL",
+    "phone": "4365299763",
+    "email": "principalsincet@gmail.com",
+    "website": "www .sincet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ANDHANAPETT AI",
+    "transport": ""
+  },
+  "3766": {
+    "name": "Star Lion College of Engineering and T echnology , Manankorai Main Road,",
+    "principal": "Dr A MANIMARAN",
+    "phone": "9443442928",
+    "email": "starlionengineering@gmail.com",
+    "website": "www .starlionengineering.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THANJA VUR",
+    "transport": ""
+  },
+  "3782": {
+    "name": "OASYS Institute of T echnology , Pulivalam V illage, Musiri T aluk, T iruchirappalli",
+    "principal": "DR A ANTO SPIRITUS KINGSL Y",
+    "phone": "7401298259",
+    "email": "principal@oasys.edu.in",
+    "website": "www .oasys.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3786": {
+    "name": "M.A.M. School of Engineering, Siruganur , Tiruchirappalli District 621 105",
+    "principal": "DR P  RANJITH KUMAR",
+    "phone": "7708000972",
+    "email": "principal@mamse.in",
+    "website": "https://mamse.in/",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM RAIL WAY",
+    "transport": ""
+  },
+  "3795": {
+    "name": "SRM TRP  Engineering College, Irungalur , Manachanallur T aluk, T iruchirappalli",
+    "principal": "DR M SIV AKUMAR",
+    "phone": "4312258940",
+    "email": "principal@trp.srmtrichy .edu.in",
+    "website": "https://trp.srmtrichy .edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3801": {
+    "name": "A V C College of Engineering, Mannampandal Post, MayiladuthuraiDistrict",
+    "principal": "Dr P BALASUBRAMANIAN",
+    "phone": "4364227202",
+    "email": "avcce@avccengg.net",
+    "website": "www .avccengg.net",
+    "hostel": "Yes",
+    "nearest_railway": "MAYILADUTHURAI",
+    "transport": ""
+  },
+  "3803": {
+    "name": "Anjalai Ammal Mahalingam Engineering College, Kovilvenni, Thiruvarur District",
+    "principal": "DR S N RAMASW AMY",
+    "phone": "4374232516",
+    "email": "principal@aamec.edu.in",
+    "website": "www .aamec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KOYIL VENNI RAIL WAY",
+    "transport": ""
+  },
+  "3804": {
+    "name": "Arasu Engineering College, Chennai Main Road, Kumbakonam, Thanjavur",
+    "principal": "DR T BALAMURUGAN",
+    "phone": "7667443333",
+    "email": "arasuengg@gmail.com",
+    "website": "www .aec.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "KUMBAKONAM",
+    "transport": ""
+  },
+  "3805": {
+    "name": "Dhanalakshmi Srinivasan Engineering College (Autonomous), Thuraiyur Road,",
+    "principal": "DR D SHANMUGASUNDARAM",
+    "phone": "9514000227",
+    "email": "principal@dsengg.ac.in",
+    "website": "www .dsengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR",
+    "transport": ""
+  },
+  "3806": {
+    "name": "E G S Pillay Engineering College (Autonomous), Nagapattinam District 61 1002",
+    "principal": "Dr M Chinnadurai",
+    "phone": "7373067032",
+    "email": "principal@egspec.org",
+    "website": "www .egspec.org",
+    "hostel": "Yes",
+    "nearest_railway": "NAGORE",
+    "transport": ""
+  },
+  "3807": {
+    "name": "J J College of Engineering and T echnology , Poolankulathupatti Post,",
+    "principal": "MATHIY ALAGAN P",
+    "phone": "986521 1776",
+    "email": "principal@jjcet.ac.in",
+    "website": "www .jjcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TRICHIRAPP ALLI JUNCTION",
+    "transport": ""
+  },
+  "3808": {
+    "name": "Jayaram College of Engineering and T echnology , Karattampatti, Pagalavadi",
+    "principal": "Dr P KUMAR",
+    "phone": "4327230270",
+    "email": "principal@jayaramcet.edu.in",
+    "website": "www .jayaramcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3810": {
+    "name": "MAM College of Engineering, Siruganur , Tiruchirappalli District 621 105",
+    "principal": "DR M SHANMUGAPRIY A",
+    "phone": "8220026054",
+    "email": "principalmamce@mamce.org",
+    "website": "www .mamce.org",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3811": {
+    "name": "M I E T Engineering College, T richy-Pudukkottai Road, T iruchirappalli District",
+    "principal": "DR A NAVEEN SAIT  M E PH D",
+    "phone": "9787393272",
+    "email": "principalengg@miet.edu",
+    "website": "www .miet.edu",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3812": {
+    "name": "Mookambigai College of Engineering, Keeranur , Pudukkottai District 622502",
+    "principal": "DR R ELANGOV AN",
+    "phone": "9443708560",
+    "email": "pdkmce@gmail.com",
+    "website": "www .mookambigai.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KEERANUR JN",
+    "transport": ""
+  },
+  "3813": {
+    "name": "Oxford Engineering College,Karumandapam,Pirattiyur ,Trichy-620 009",
+    "principal": "DR M KOILRAJ",
+    "phone": "8072471490",
+    "email": "principal@oxfordec.edu.in",
+    "website": "www .oxfordec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TPJ JUNCTION",
+    "transport": ""
+  },
+  "3815": {
+    "name": "Pavendar Bharathidasan College of Engineering and T echnology , Pudukkottai",
+    "principal": "DR D SARA VANAN",
+    "phone": "9865181743",
+    "email": "pabprincipal@gmail.com",
+    "website": "www .pabcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3817": {
+    "name": "Roever Engineering College, Elambalur , Perambalur District 621212",
+    "principal": "DR J WILLIAM",
+    "phone": "9750970161",
+    "email": "office@roeverengg.edu.in",
+    "website": "www .roeverengg.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR",
+    "transport": ""
+  },
+  "3819": {
+    "name": "Saranathan College of Engineering, Panjappur , Tiruchirappalli District 620012",
+    "principal": "DR D V ALAVAN",
+    "phone": "8489915204",
+    "email": "principal@saranathan.ac.in",
+    "website": "https://www .saranathan.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3820": {
+    "name": "Trichy Engineering College, Konalai, T iruchirappalli District 621 132",
+    "principal": "DR D LOGANA THAN",
+    "phone": "9944889749",
+    "email": "principal@trichyengg.ac.in",
+    "website": "www .trichyengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3821": {
+    "name": "A R J College of Engineering and T echnology , Mannargudi T aluk, Thiruvarur",
+    "principal": "DR T VENKADESAN",
+    "phone": "8608782222",
+    "email": "principalcet@arj.edu.in",
+    "website": "www .arjcet.com",
+    "hostel": "Yes",
+    "nearest_railway": "MANNARGUDI",
+    "transport": ""
+  },
+  "3822": {
+    "name": "Tittagudi Sengunthar Engineering College",
+    "principal": "DR R LA THA",
+    "phone": "7867086702",
+    "email": "mail.nnce@gmail.com",
+    "website": "www .drnnce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PENNADAM",
+    "transport": ""
+  },
+  "3825": {
+    "name": "St. Joseph s College of Engineering and T echnology , Elupatti V illage,",
+    "principal": "DR I NEETHI MANICKAM",
+    "phone": "9150076739",
+    "email": "principal.sjcet.tnj@gmail.com",
+    "website": "https://sjcettnj.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "THANJA VUR",
+    "transport": ""
+  },
+  "3826": {
+    "name": "Kongunadu College of Engineering and T echnology (Autonomous), Tholurpatti,",
+    "principal": "DR R ASOKAN",
+    "phone": "801250501 1",
+    "email": "principalkncet@gmail.com",
+    "website": "www .kongunadu.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KULITHALAI",
+    "transport": ""
+  },
+  "3829": {
+    "name": "M.A.M. College of Engineering and T echnology , Trichy-Chennai T runk Road,",
+    "principal": "DR SUSAN CHRISTINA  X",
+    "phone": "9965055162",
+    "email": "principal@mamcet.com",
+    "website": "www .mamcet.com",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3830": {
+    "name": "K Ramakrishnan College of Engineering (Autonomous), Kariyamanickam Road,",
+    "principal": "DR D SRINIV ASAN",
+    "phone": "9842991377",
+    "email": "principal@krce.ac.in",
+    "website": "www .krce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIRANGAM",
+    "transport": ""
+  },
+  "3831": {
+    "name": "Indra Ganesan College of Engineering, Madurai Main Road, Manikandam,",
+    "principal": "DR G BALAKRISHNAN",
+    "phone": "8508688845",
+    "email": "principal@igceng.com",
+    "website": "www .igceng.com",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAP ALLI JUNCTION",
+    "transport": ""
+  },
+  "3833": {
+    "name": "Parisutham Institute of T echnology and Science, Ring Road, Nanjikottai,",
+    "principal": "DR J NIRMALA",
+    "phone": "9659073327",
+    "email": "pitsprincipal@gmail.com",
+    "website": "www .parisuthamtech.com",
+    "hostel": "Yes",
+    "nearest_railway": "THANJA VUR",
+    "transport": ""
+  },
+  "3841": {
+    "name": "CARE College of Engineering (Formerly C.A.R.E Group of Institutions),",
+    "principal": "DR S SHANTHI",
+    "phone": "9962733133",
+    "email": "principal.coe@care.ac.in",
+    "website": "www .care.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TRICHY  JUNCTION",
+    "transport": ""
+  },
+  "3843": {
+    "name": "M R K Institute of T echnology , Nattarmangalam V illage, Kattumannarkoil,",
+    "principal": "DR K ANANDA VELU",
+    "phone": "4144262728",
+    "email": "aucoe8224@gmail.com",
+    "website": "www .mrkit.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHIDAMBARAM",
+    "transport": ""
+  },
+  "3844": {
+    "name": "Shivani Engineering College, T richy-Dindigul NH Road, Poolangulathupatti,",
+    "principal": "V Balasubramaniam",
+    "phone": "9750965056",
+    "email": "shivani844@gmail.com",
+    "website": "www .shivani.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CENTRAL  RAIL WAY",
+    "transport": ""
+  },
+  "3845": {
+    "name": "Imayam College of Engineering, Kannanur , Thuraiyur , Tiruchirappalli District",
+    "principal": "DR JOSEPH M",
+    "phone": "9566359960",
+    "email": "imayamengg2009@gmail.con",
+    "website": "www .imayaminstitutions.org",
+    "hostel": "Yes",
+    "nearest_railway": "KULITHALAI",
+    "transport": ""
+  },
+  "3846": {
+    "name": "Mother T erasa College of Engineering and T echnology , Mettusalai Post and",
+    "principal": "DR S MURUGANANDAM",
+    "phone": "9942904535",
+    "email": "mtcetilluppur@gmail.com",
+    "website": "www .mtcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "PUDUKKOTT AI",
+    "transport": ""
+  },
+  "3848": {
+    "name": "Vandayar Engineering College, Pulavarnatham Post, Mariamman Koil (V ia),",
+    "principal": "Dr K AMBUJAM",
+    "phone": "4362267055",
+    "email": "vandayarengcollege@gmail.com",
+    "website": "www .vandayar .in",
+    "hostel": "Yes",
+    "nearest_railway": "KUDIKADU",
+    "transport": ""
+  },
+  "3849": {
+    "name": "Annai College of Engineering and T echnology , Anakudi Road, Kovilacheri,",
+    "principal": "RAVICHANDRAN C",
+    "phone": "9488488241",
+    "email": "acet3849@annaiengg.org",
+    "website": "www .annaiengg.org",
+    "hostel": "Yes",
+    "nearest_railway": "KUMBAKONAM",
+    "transport": ""
+  },
+  "3852": {
+    "name": "Sri Bharathi Engineering College for W omen, Kaikkuruchi V illage, Alangudi",
+    "principal": "DR S THILAGA VATHI ME PHD",
+    "phone": "9750928029",
+    "email": "sribharathienggcollege@gmail.com",
+    "website": "www .sbec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "PUDUKKOTT AI",
+    "transport": ""
+  },
+  "3854": {
+    "name": "Mahath Amma Institute of Engineering and T echnology (MIET), Ariyur ,",
+    "principal": "DR P  BABU AUR THERSON",
+    "phone": "9003536835",
+    "email": "maietpdkt@gmail.com",
+    "website": "www .maietpdkt.in",
+    "hostel": "Yes",
+    "nearest_railway": "PUDUKKOTT AI",
+    "transport": ""
+  },
+  "3855": {
+    "name": "As-Salam College of Engineering and T echnology , Thirumangalakudi, Aduthurai,",
+    "principal": "DR RAMKUMAR D",
+    "phone": "9894245281",
+    "email": "ascetao2017@gmail.com",
+    "website": "www .assalamcollege.in",
+    "hostel": "Yes",
+    "nearest_railway": "ADUTHURAI",
+    "transport": ""
+  },
+  "3857": {
+    "name": "Meenakshi Ramaswamy Engineering College, T richy Main Road, Thathanur ,",
+    "principal": "Dr G Senthil Kumaran",
+    "phone": "9894732128",
+    "email": "mrengg2@yahoo.co.in",
+    "website": "https://www .mrengineeringcollege.org/",
+    "hostel": "Yes",
+    "nearest_railway": "ARIY ALUR JN",
+    "transport": ""
+  },
+  "3860": {
+    "name": "St. Anne s College of Engineering and T echnology , Anguchettypalayam,",
+    "principal": "DR R AROKIADASS",
+    "phone": "9384428889",
+    "email": "stannescet@gmail.com",
+    "website": "www .stannescet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PANRUTI",
+    "transport": ""
+  },
+  "3905": {
+    "name": "Kings College of Engineering, Punalkulam, Pudukkottai District 613303",
+    "principal": "DR J ARPUTHA  VIJA YA SEL VI",
+    "phone": "6380989024",
+    "email": "principal@kingsengg.edu.in",
+    "website": "www .kingsengg.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THANJA VUR",
+    "transport": ""
+  },
+  "3908": {
+    "name": "Mount Zion College of Engineering and T echnology , Pilivalam Post, Pudukkottai",
+    "principal": "Dr P Balamurugan",
+    "phone": "8973510000",
+    "email": "info@mzcet.in",
+    "website": "www .mzcet.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAMUNASAMUTHIRAM",
+    "transport": ""
+  },
+  "3918": {
+    "name": "Shanmuganathan Engineering College, Pillivalam Post, Pudukkottai District",
+    "principal": "DR KL  MUTHURAMU",
+    "phone": "7373731541",
+    "email": "shanmuganathanengg@gmail.com",
+    "website": "www .shanmuganathanengg.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUMA YAM",
+    "transport": ""
+  },
+  "3920": {
+    "name": "Sudharsan Engineering College, Sathiyamangalam Post, Pudukkottai District",
+    "principal": "DR M ARULKUMARAN",
+    "phone": "9843490901",
+    "email": "principal@sec.ac.in",
+    "website": "www .sec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PUDUKKOTT AI",
+    "transport": ""
+  },
+  "3923": {
+    "name": "M N S K College of Engineering, V allathirakkottai Post, Pudukkottai District",
+    "principal": "DR A Thillaivanan",
+    "phone": "9994592645",
+    "email": "principalmnsk2012@gmail.com",
+    "website": "www .mnsk.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PUDUKKOTT AI",
+    "transport": ""
+  },
+  "3926": {
+    "name": "Chendhuran College of Engineering and T echnology , Madurai Road,",
+    "principal": "DR K GANESH BABU",
+    "phone": "7373755574",
+    "email": "admin@chendhuran.in",
+    "website": "www .chendhuran.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAMANASAMUDRAM",
+    "transport": ""
+  },
+  "4020": {
+    "name": "Anna University Regional Campus - T irunelveli, T rivandrum Road,",
+    "principal": "SHENBAGA  VINA YAGA MOOR THI N",
+    "phone": "4622551298",
+    "email": "deanof fice@auttvl.ac.in",
+    "website": "www .auttvl.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4023": {
+    "name": "University College of Engineering, Nagercoil, Nagercoil Industrial Estate,",
+    "principal": "DR V A NAGARAJAN",
+    "phone": "94431 10201",
+    "email": "deanucen@gmail.com",
+    "website": "www .ucen.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL  JUNCTION",
+    "transport": ""
+  },
+  "4024": {
+    "name": "University V .O.C. College of Engineering, Thoothukudi, Near V .O.C. College,",
+    "principal": "DEAN",
+    "phone": "9486124735",
+    "email": "deanautut@annauniv .edu",
+    "website": "www .annaunivtut.in",
+    "hostel": "Yes",
+    "nearest_railway": "MELUR ST ATION",
+    "transport": ""
+  },
+  "4669": {
+    "name": "Thamirabharani Engineering College, Chathirampudukulam V illage,",
+    "principal": "DR K ASAN MOHIDEEN",
+    "phone": "9360904669",
+    "email": "principal@tec-edu.in",
+    "website": "https://tec-edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4670": {
+    "name": "Rohini College of Engineering & T echnology , Anjugramam-Kanyakumari Main",
+    "principal": "DR R RAJESH",
+    "phone": "9894218888",
+    "email": "principal@rcet.org.in",
+    "website": "www .rcet.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANNIY AKUMARI",
+    "transport": ""
+  },
+  "4672": {
+    "name": "Stella Mary s College of Engineering, Arunthengan V ilai, Azhikal Post,",
+    "principal": "DR R SURESH PREMIL  KUMAR",
+    "phone": "7402707773",
+    "email": "info@stellamaryscoe.edu.in",
+    "website": "www .stellamaryscoe.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL",
+    "transport": ""
+  },
+  "4675": {
+    "name": "Universal College of Engineering and T echnology , Anbagam Campus,",
+    "principal": "Dr T ASEER BRABIN",
+    "phone": "9003409585",
+    "email": "unienggtech@gmail.com",
+    "website": "www .unienggtech.com",
+    "hostel": "Yes",
+    "nearest_railway": "VALLIOOR",
+    "transport": ""
+  },
+  "4676": {
+    "name": "Renganayagi V aratharaj College of Engineering, Salvarpatti, Sivakasi,",
+    "principal": "DR D KUMAR",
+    "phone": "9443182869",
+    "email": "rvceof fice@gmail.com",
+    "website": "www .rvce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "SATTUR",
+    "transport": ""
+  },
+  "4677": {
+    "name": "ARUNACHALA  HITECH ENGINEERING COLLEGE",
+    "principal": "PARTHASARA THI",
+    "phone": "9952952368",
+    "email": "arunachalahitechcollege@gmail.com",
+    "website": "https://arunachalahitechcollege.com/",
+    "hostel": "Yes",
+    "nearest_railway": "KULITTHURAI",
+    "transport": ""
+  },
+  "4678": {
+    "name": "Ramco Institute of T echnology , North venganallur V illage, Krishnapuram",
+    "principal": "DR L  GANESAN",
+    "phone": "9788212234",
+    "email": "rit@ritrjpm.ac.in",
+    "website": "https://www .ritrjpm.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "RAJAP ALAYAM",
+    "transport": ""
+  },
+  "4680": {
+    "name": "AAA  College of Engineering and T echnology , Kamarajar Educational Road,",
+    "principal": "DR M SEKAR",
+    "phone": "4562251 111",
+    "email": "aaaengineeringcollege@gmail.com",
+    "website": "aaaenggcoll.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VIRUDHUNAGAR",
+    "transport": ""
+  },
+  "4686": {
+    "name": "Good Shepherd College of Engineering and T echnology , Maruthamparai,",
+    "principal": "DR ROBIN KUMAR SAMUEL",
+    "phone": "7373002888",
+    "email": "gscet2018@gmail.com",
+    "website": "www .gscet.org",
+    "hostel": "Yes",
+    "nearest_railway": "KUZHITHURAI JUNCTION",
+    "transport": ""
+  },
+  "4864": {
+    "name": "V V College of Engineering, Arasoor V illage, Idaichivilai Post, Santhakulam",
+    "principal": "DR P  VANITHA",
+    "phone": "7010987744",
+    "email": "info@vvcoe.org",
+    "website": "www .vvcoe.org",
+    "hostel": "Yes",
+    "nearest_railway": "VALLIOOR JN",
+    "transport": ""
+  },
+  "4917": {
+    "name": "Sethu Institute of T echnology (Autonomous), Kariapatti Post, V irudhunagar",
+    "principal": "DR G D SIV AKUMAR",
+    "phone": "9952262957",
+    "email": "principal@sethu.ac.in",
+    "website": "www .sethu.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "4925": {
+    "name": "Sun College of Engineering and T echnology , Ammandivilai & Post, Kanyakumari",
+    "principal": "Dr Sunitha T",
+    "phone": "92810901 10",
+    "email": "sunengg1999@gmail.com",
+    "website": "www .sunengineeringcollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "Nagercoil",
+    "transport": ""
+  },
+  "4927": {
+    "name": "Maria College of Engineering and T echnology , Attoor Puliyamoodu Junction,",
+    "principal": "DR Y SUJAR",
+    "phone": "7373057776",
+    "email": "pplmaria@yahoo.com",
+    "website": "www .mariacollegeofengineering.org",
+    "hostel": "Yes",
+    "nearest_railway": "KUZITHURAI",
+    "transport": ""
+  },
+  "4928": {
+    "name": "MAR Ephraem College of Engineering & T echnology , Malankara Hills,",
+    "principal": "PROF DR A LENIN FRED",
+    "phone": "94424481 11",
+    "email": "marephraem@gmail.com",
+    "website": "www .marephraem.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KUZHITHURAI",
+    "transport": ""
+  },
+  "4929": {
+    "name": "M E T Engineering College, Mogals Garden, Thovalai V illage, Aralvaimozhi T own",
+    "principal": "DR G MAHADEV AN",
+    "phone": "7339477554",
+    "email": "metec09@gmail.com",
+    "website": "https://metcolleges.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ARAL VOIMOZHI",
+    "transport": ""
+  },
+  "4931": {
+    "name": "Grace College of Engineering, Chandy Nagar , Mullakkadu, Thoothukudi District",
+    "principal": "DR S RICHARD",
+    "phone": "94431 13113",
+    "email": "info@grace.edu.in",
+    "website": "www .grace.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THOOTHUKUDI JUNCTION",
+    "transport": ""
+  },
+  "4932": {
+    "name": "Immanuel Arasar J.J. College of Engineering, Edavilagam, Nattalam,",
+    "principal": "DR J V MURUGA  LAL JEYAN",
+    "phone": "4651292368",
+    "email": "iajj.principal201 1@gmail.com",
+    "website": "https://immanuelarasarinstitutions.com/",
+    "hostel": "Yes",
+    "nearest_railway": "KULITTURAI",
+    "transport": ""
+  },
+  "4933": {
+    "name": "St. Mother Theresa Engineering College, V agaikulam, Thoothukudi District",
+    "principal": "DR J JASPER GNANA  CHANDRAN",
+    "phone": "4612269301",
+    "email": "principal@mtec.ac.in",
+    "website": "www .mtecac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THOOTHUKUDI",
+    "transport": ""
+  },
+  "4934": {
+    "name": "Holy Cross Engineering College, V agaikulam, Sri Mulakarai, Srivaikuntam,",
+    "principal": "Dr M V ARATHA VIJA YAN",
+    "phone": "9994226362",
+    "email": "principal@holycrossengineeringcollege.com",
+    "website": "www .holycrossengineeringcollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "THOOTHUKUDI",
+    "transport": ""
+  },
+  "4938": {
+    "name": "Sivaji College of Engineering and T echnology , Manivilla Palulai Panchayat,",
+    "principal": "DR T R SETHURAMAN",
+    "phone": "9443595639",
+    "email": "sivajicollege@gmail.com",
+    "website": "https://sivajicollegeofengineering.com",
+    "hostel": "Yes",
+    "nearest_railway": "PARASSALA",
+    "transport": ""
+  },
+  "4941": {
+    "name": "Unnamalai Institute of T echnology , Ayyaneri, Kovilpatti, Thoothukudi District",
+    "principal": "Dr D RA VINDRAN",
+    "phone": "4632221232",
+    "email": "principal@uitkovilpatti.ac.in",
+    "website": "www .uitkovilpatti.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KOVILP ATTI",
+    "transport": ""
+  },
+  "4943": {
+    "name": "Satyam College of Engineering and T echnology ,Satyam",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "4944": {
+    "name": "Arunachala College of Engineering for W omen, Thanka Gardens, Manavilai,",
+    "principal": "DR JOSEPH JA WHAR",
+    "phone": "9443418553",
+    "email": "acewomenscollege@gmail.com",
+    "website": "www .arunachalacollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "ERANIEL  STATION",
+    "transport": ""
+  },
+  "4946": {
+    "name": "D M I Engineering College, Aralvaimozhi V illage, Thovalai, Kanyakumari District",
+    "principal": "DR A ALBER T RAJ",
+    "phone": "9443450712",
+    "email": "dmieckk@gmail.com",
+    "website": "www .dmiengg.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARAL VAIMOZHI",
+    "transport": ""
+  },
+  "4949": {
+    "name": "PSN Institute of T echnology and Science,Melathediyoor , Tirunelveli-627 152",
+    "principal": "DR M KA THIR VEL",
+    "phone": "9486507441",
+    "email": "psnits.principal@gmail.com",
+    "website": "www .psnits.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4952": {
+    "name": "C S I Institute of T echnology , Thovalai, Kanyakumari District 629302",
+    "principal": "DR N M SPENCER PRA THAP  SINGH",
+    "phone": "9489463270",
+    "email": "csiit_thovalai@yahoo.com",
+    "website": "www .csiit.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THOV ALAI",
+    "transport": ""
+  },
+  "4953": {
+    "name": "CAPE Institute of T echnology , Levingipuram, T irunelveli District 6271 14",
+    "principal": "Dr H Kanagasabapathy",
+    "phone": "7373073580",
+    "email": "capeitech@yahoo.com",
+    "website": "www .capeitech.org",
+    "hostel": "Yes",
+    "nearest_railway": "KANY AKUMARI",
+    "transport": ""
+  },
+  "4954": {
+    "name": "Dr. Sivanthi Aditanar College of Engineering, T iruchendur , Thoothukudi District",
+    "principal": "DR G WISELIN JIJI",
+    "phone": "9443087064",
+    "email": "princyengg@aei.edu.in",
+    "website": "www .drsacoe.org",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHENDUR",
+    "transport": ""
+  },
+  "4955": {
+    "name": "Francis Xavier Engineering College (Autonomous), V annarpettai, T irunelveli",
+    "principal": "DR V VELMURUGAN",
+    "phone": "4622502283",
+    "email": "principal@francisxavier .ac.in",
+    "website": "www .francisxavier .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4956": {
+    "name": "Jayamatha Engineering College, Aralvaimozhi, Kanyakumari District - 629301",
+    "principal": "DR R UMA",
+    "phone": "9943025312",
+    "email": "jayamathacollege@yahoo.com",
+    "website": "www .jayamatha.org",
+    "hostel": "Yes",
+    "nearest_railway": "ARAL VAIMOZHI",
+    "transport": ""
+  },
+  "4957": {
+    "name": "Jayaraj Annapackiam CSI College of Engineering, Nazareth, Thoothukudi",
+    "principal": "DR S JEY AKUMAR",
+    "phone": "9442242889",
+    "email": "jacsiprincipalce@gmail.com",
+    "website": "www .jacsicoe.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAZARETH",
+    "transport": ""
+  },
+  "4959": {
+    "name": "Kamaraj College of Engineering and T echnology (Autonomous), V irudhunagar",
+    "principal": "DR S SENTHIL",
+    "phone": "4549278171",
+    "email": "mail@kamarajengg.edu.in",
+    "website": "https://kamarajengg.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KALLIGUDI",
+    "transport": ""
+  },
+  "4960": {
+    "name": "Mepco Schlenk Engineering College (Autonomous), Sivakasi, V irudhunagar",
+    "principal": "DR S ARIV AZHAGAN",
+    "phone": "7845305843",
+    "email": "principal@mepcoeng.ac.in",
+    "website": "www .mepcoeng.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VIRUDHUNAGAR",
+    "transport": ""
+  },
+  "4961": {
+    "name": "Nellai College of Engineering (Formerly National College of Engineering),",
+    "principal": "DR S MALIK RAJ BE ME PHD",
+    "phone": "8300127474",
+    "email": "nceng@mhtrust.com",
+    "website": "www .nce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI SRIPURAM",
+    "transport": ""
+  },
+  "4962": {
+    "name": "National Engineering College (Autonomous), Kovilpatti, Thoothukudi District",
+    "principal": "DR K KALIDASA  MURUGA VEL",
+    "phone": "4632222502",
+    "email": "principal@nec.edu.in",
+    "website": "https://nec.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "KOVILP ATTI",
+    "transport": ""
+  },
+  "4964": {
+    "name": "PSN College of Engineering and T echnology (Autonomous),Melathediyoor ,",
+    "principal": "DR V S P  UMA YAL",
+    "phone": "4634279680",
+    "email": "principal@psncet.ac.in",
+    "website": "www .psncet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4965": {
+    "name": "P S R Engineering College (Autonomous), Appayanaickenpatti, Sevalpatty ,",
+    "principal": "DR J S SENTHILKUMAAR",
+    "phone": "8012531321",
+    "email": "contact@psr .edu.in",
+    "website": "www .psr.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SATTUR",
+    "transport": ""
+  },
+  "4966": {
+    "name": "PET Engineering College, V allioor Post, T irunelveli District 6271 17",
+    "principal": "DR K MADHAN KUMAR",
+    "phone": "4637220999",
+    "email": "pet.engg@gmail.com",
+    "website": "www .petengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VALLIOOR",
+    "transport": ""
+  },
+  "4967": {
+    "name": "S Veerasamy Chettiar College of Engineering and T echnology , Puliangudi Post,",
+    "principal": "DR V R PRAMOD",
+    "phone": "7200031643",
+    "email": "principal@svccollege.ac.in",
+    "website": "www .svccollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PAMBUKOVIL  SHANDY",
+    "transport": ""
+  },
+  "4968": {
+    "name": "Sardar Raja College of Engineering, Alangulam, T enkasi District 627808",
+    "principal": "PROF B KANAGAP ANDIAN",
+    "phone": "4633210475",
+    "email": "srce-principal@src.org.in",
+    "website": "www .src.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "PAVOORCHA TRAM",
+    "transport": ""
+  },
+  "4969": {
+    "name": "SCAD College of Engineering and T echnology , Cheranmahadevi, T irunelveli",
+    "principal": "JUSTIN DIRA VIAM A",
+    "phone": "4634261701",
+    "email": "principal@scadengineering.ac.in",
+    "website": "www .scadengineering.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHERANMAHADEVI",
+    "transport": ""
+  },
+  "4970": {
+    "name": "Sree Sowdambika College of Engineering, Aruppukkottai T aluk, V irudhunagar",
+    "principal": "DR K AURULMOZHI",
+    "phone": "9443167210",
+    "email": "ssceengg@gmail.com",
+    "website": "www .sowdambikaengg.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "ARUPPUKOTT AI",
+    "transport": ""
+  },
+  "4971": {
+    "name": "St. Xavier s Catholic College Of Engineering(Autonomous), Chunkankadai,",
+    "principal": "DR J MAHESW ARAN",
+    "phone": "9842799973",
+    "email": "principal@sxcce.edu.in",
+    "website": "www .sxcce.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL",
+    "transport": ""
+  },
+  "4974": {
+    "name": "Government College of Engineering, T irunelveli District 627007",
+    "principal": "DR P  LATHA",
+    "phone": "4622552450",
+    "email": "principal@gcetly .ac.in",
+    "website": "www .gcetly .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI",
+    "transport": ""
+  },
+  "4975": {
+    "name": "Dr. G U Pope College of Engineering, Sawyerpuram, Thoothukudi District",
+    "principal": "DR J JAPHYNTH",
+    "phone": "9751635543",
+    "email": "drgupopeengineering@yahoo.com",
+    "website": "https://www .drgupopeengg.org/",
+    "hostel": "Yes",
+    "nearest_railway": "THOOTHUKUDI",
+    "transport": ""
+  },
+  "4976": {
+    "name": "Infant Jesus College of Engineering, Thoothukudi Highway (NH7/A),",
+    "principal": "DR S ALLWIN",
+    "phone": "9444446699",
+    "email": "contact@ijce.ac.in",
+    "website": "www .ijce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI",
+    "transport": ""
+  },
+  "4977": {
+    "name": "Narayanaguru College of Engineering, Manjalumoodu, Kanyakumari District",
+    "principal": "DR M SIV APRAGASH",
+    "phone": "9486955017",
+    "email": "info@ngce.ac.in",
+    "website": "www .ngce.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KUZHITHURAI",
+    "transport": ""
+  },
+  "4978": {
+    "name": "Udaya School of Engineering, Ammandivilai Post, Kanyakumari District 629204",
+    "principal": "DR S JOTHIBASU",
+    "phone": "9281090009",
+    "email": "978udayaengineering@gmail.com",
+    "website": "www .udayaschoolofengineering.com",
+    "hostel": "Yes",
+    "nearest_railway": "ERANIEL",
+    "transport": ""
+  },
+  "4979": {
+    "name": "Arul Tharum VPMM College of Engineering and T echnology (Formerly",
+    "principal": "DR S MEENAKSHI SUNDARAM",
+    "phone": "4563289337",
+    "email": "vpmmecw@redif fmail.com",
+    "website": "https://www .vpmm.in",
+    "hostel": "Yes",
+    "nearest_railway": "SRIVILLIPUTTUR",
+    "transport": ""
+  },
+  "4980": {
+    "name": "Einstein College of Engineering, Seethaparpanallur , Tirunelveli District 627012",
+    "principal": "DR R VELA YUTHAM",
+    "phone": "9489903804",
+    "email": "principal@einsteincollege.ac.in",
+    "website": "www .einsteincollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUNEL VELI JUNCTION",
+    "transport": ""
+  },
+  "4981": {
+    "name": "Ponjesly College of Engineering, V ettornimadam Post, Nagercoil, Kanyakumari",
+    "principal": "Dr G Natarajan M E Ph D",
+    "phone": "4652259680",
+    "email": "office@ponjesly .com",
+    "website": "www .ponjesly .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL  TOWN",
+    "transport": ""
+  },
+  "4982": {
+    "name": "Vins Christian College of Engineering, Chunkankadai Post, Nagercoil,",
+    "principal": "DR A J ALEX RAJJU BALAN",
+    "phone": "9787747072",
+    "email": "vinsengg@gmail.com",
+    "website": "https://vinsengineeringcollege.org/",
+    "hostel": "Yes",
+    "nearest_railway": "ALOOR",
+    "transport": ""
+  },
+  "4983": {
+    "name": "Lord Jegannath College of Engineering and T echnology , Kumarapuram,",
+    "principal": "DR G JIJI",
+    "phone": "9442367452",
+    "email": "principalljcet@yahoo.com",
+    "website": "www .ljcet.org",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL",
+    "transport": ""
+  },
+  "4989": {
+    "name": "PSN Engineering College, Melathediyoor , Tirunelveli District 627152",
+    "principal": "DR M S RA VIKUMAR",
+    "phone": "9442591 131",
+    "email": "principalpsnec@gmail.com",
+    "website": "www .psnec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "CHERANMAHADEVI",
+    "transport": ""
+  },
+  "4992": {
+    "name": "Bethlahem Institute of Engineering, Karungal, Kanyakumari District 629157",
+    "principal": "DR EMMY  PREMA  C",
+    "phone": "9489058366",
+    "email": "mail@bethlahem.org",
+    "website": "http://bethlahem.org/engineering/index.php",
+    "hostel": "Yes",
+    "nearest_railway": "KUZHITHURAI",
+    "transport": ""
+  },
+  "4993": {
+    "name": "Loyola Institute of T echnology and Science, Loyola Nagar , P B No.2, Thovalai,",
+    "principal": "DR J D DAR WIN",
+    "phone": "9244775545",
+    "email": "lites2008@hotmail.com",
+    "website": "www .lites.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "NAGERCOIL",
+    "transport": ""
+  },
+  "4994": {
+    "name": "J P College of Engineering, College Road, Ayakudy , Tenkasi T aluk, T enkasi",
+    "principal": "DR M RAJKUMAR",
+    "phone": "8012520430",
+    "email": "principal@jpcoe.ac.in",
+    "website": "www .jpcoe.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "TENKASI JUNCTION",
+    "transport": ""
+  },
+  "4996": {
+    "name": "Sri V idya College of Engineering and T echnology , Sivakasi Main Road, P",
+    "principal": "DR T LOUIE FRANGO",
+    "phone": "9750977100",
+    "email": "srivcetvnr@gmail.com",
+    "website": "www .srividyaengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "VIRUDHUNAGAR",
+    "transport": ""
+  },
+  "4998": {
+    "name": "Mahakavi Bharathiyar College of Engineering and T echnology , Vasudevanallur ,",
+    "principal": "DR S SASIKALA",
+    "phone": "9345530572",
+    "email": "mkbharathi2008@gmail.com",
+    "website": "www .mbceat.in",
+    "hostel": "Yes",
+    "nearest_railway": "SANKARANKOIL",
+    "transport": ""
+  },
+  "4999": {
+    "name": "Annai V ailankanni College of Engineering, Pothaiyadi Salai, Pottalkulam,",
+    "principal": "DR R ANGELINE PRABHA VATHY",
+    "phone": "984101 1760",
+    "email": "admission@avce.edu.in",
+    "website": "www .avce.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANY AKUMARI",
+    "transport": ""
+  },
+  "5008": {
+    "name": "Thiagarajar College of Engineering (Autonomous),T irupparankundram, Madurai",
+    "principal": "Dr L Ashok Kumar",
+    "phone": "7540078734",
+    "email": "principal@tce.edu",
+    "website": "www .tce.edu",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI",
+    "transport": ""
+  },
+  "5009": {
+    "name": "Government College of Engineering, Melachokkanathapuram, Bodinayakkanur ,",
+    "principal": "Dr C V ASANTHANA YAKI",
+    "phone": "4546282555",
+    "email": "gcebodi@gmail.com",
+    "website": "www .gcebodi.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "BODINA YAKANUR",
+    "transport": ""
+  },
+  "5010": {
+    "name": "Anna University Regional Campus - Madurai, Kanyakumari National Highway ,",
+    "principal": "DR K LINGADURAI",
+    "phone": "9443746149",
+    "email": "dean@autmdu.ac.in",
+    "website": "www .autmdu.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5012": {
+    "name": "Central Electrochemical Research Institute CECRI), Karaikudi, Sivagangai",
+    "principal": "DR B RAMESH BABU",
+    "phone": "4565241531",
+    "email": "cfe@cecri.res.in",
+    "website": "https://www .cecri.res.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARAIKUDI JUNCTION",
+    "transport": ""
+  },
+  "5017": {
+    "name": "University College of Engineering, Ramanathapuram, Pullangudi,",
+    "principal": "DR T UDA YAKUMAR",
+    "phone": "4567260260",
+    "email": "ucermd@gmail.com",
+    "website": "www .aucermd.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "RAMANA THAPURAM",
+    "transport": ""
+  },
+  "5022": {
+    "name": "University College of Engineering, Dindigul, Mangarai Pirivu,",
+    "principal": "DR S SUTHA",
+    "phone": "9498004242",
+    "email": "deandglau@gmail.com",
+    "website": "https://auucedgl.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "AKKARAIP ATTI",
+    "transport": ""
+  },
+  "5502": {
+    "name": "Sri Raajaraajan College of Engineering & T echnology , Amaravathi V illage,",
+    "principal": "DR A ELANGO",
+    "phone": "737371 1333",
+    "email": "srrcet2010@gmail.com",
+    "website": "www .sriraajaraajan.in",
+    "hostel": "Yes",
+    "nearest_railway": "DEVAKOTT AI RASTHA",
+    "transport": ""
+  },
+  "5530": {
+    "name": "SSM Institute of Engineering and T echnology , Kuttathupatti V illage,",
+    "principal": "DR D SENTHIL  KUMARAN PHD",
+    "phone": "7373707003",
+    "email": "ssmietdgl@gmail.com",
+    "website": "www .ssmiet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AKKARAIP ATTI",
+    "transport": ""
+  },
+  "5532": {
+    "name": "Vaigai College of Engineering, Therkutheru, Melur T aluk, Madurai District 625122",
+    "principal": "Dr S MOTHILAL",
+    "phone": "7010007801",
+    "email": "vaigaiprincipal@gmail.com",
+    "website": "www .vaigai.org",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5533": {
+    "name": "Karaikudi Institute of T echnology and Karaikudi Institute of Management, KIT &",
+    "principal": "DR A PARTHASARA THY",
+    "phone": "8903632366",
+    "email": "kitandkimtechnicalcampus@yahoo.com",
+    "website": "www .kitandkimtechnicalcampus.org",
+    "hostel": "Yes",
+    "nearest_railway": "KARAIKUDI",
+    "transport": ""
+  },
+  "5536": {
+    "name": "Mangayarkarasi College of Engineering, First Street, Mangayarkarasi Nagar ,",
+    "principal": "DR J KAR THIKEY AN",
+    "phone": "9150358900",
+    "email": "mangai.enggcoll@gmail.com",
+    "website": "mce-madurai.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5537": {
+    "name": "Jainee College of Engineering and T echnology , Dindigul-Theni Main Road (Near",
+    "principal": "DR HEMALA THA",
+    "phone": "9442260569",
+    "email": "jaineeedu@yahoo.in",
+    "website": "www .jaineecollegeofengineering.com",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5703": {
+    "name": "Christian College of Engineering and T echnology , Oddanchatram, Dindigul",
+    "principal": "DR K P ARIMALA  GEETHA",
+    "phone": "9524124125",
+    "email": "principal@christianengineering.in",
+    "website": "https://christianengineering.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ODDANCHA TRAM JUNCTION",
+    "transport": ""
+  },
+  "5832": {
+    "name": "N P R College of Engineering and T echnology , Natham, Dindigul District 624401",
+    "principal": "Dr S SEL VAPERUMAL",
+    "phone": "7373444449",
+    "email": "nprcetprincipal@nprcolleges.org",
+    "website": "www .nprcet.org",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5842": {
+    "name": "Madurai Institute of Engineering and T echnology , Pottapalayam V illage,",
+    "principal": "DR S DURAIRAJ",
+    "phone": "7845800144",
+    "email": "principal@srmmcet.edu.in",
+    "website": "www .srmmcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5851": {
+    "name": "Veerammal Engineering College, PVP  Nagar , K.Singrakottai, Dindigul-624708",
+    "principal": "DR K SRIDAR",
+    "phone": "9786179143",
+    "email": "vec.pvp@gmail.com",
+    "website": "www .pvpveerammal.com",
+    "hostel": "Yes",
+    "nearest_railway": "KODAI ROAD",
+    "transport": ""
+  },
+  "5862": {
+    "name": "R V S Educational T rusts Groups of Institutions (Integrated Campus), N",
+    "principal": "DR RAJKUMAR M",
+    "phone": "4551227229",
+    "email": "principalrvsetgi@rvsgroup.com",
+    "website": "https://www .rvsetgidgl.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5865": {
+    "name": "Nadar Saraswathi College of Engineering and T echnology , Vadupudupatti,",
+    "principal": "Dr C MA THALAI SUNDARAM",
+    "phone": "4546263900",
+    "email": "principal@nscet.org",
+    "website": "www .nscet.org",
+    "hostel": "Yes",
+    "nearest_railway": "THENI",
+    "transport": ""
+  },
+  "5901": {
+    "name": "Alagappa Chettiar Government College of Engineering and T echnology",
+    "principal": "DR K BASKARAN",
+    "phone": "4565224528",
+    "email": "accetprincipal@gmail.com",
+    "website": "https://accet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KARAIKUDI JUNCTION",
+    "transport": ""
+  },
+  "5902": {
+    "name": "Bharath Niketan Engineering College, Thimmarasanaickanoor , Aundipatti, Theni",
+    "principal": "DR P  V ARUL  KUMAR",
+    "phone": "9003750504",
+    "email": "bnecadmin@gmail.com",
+    "website": "www .bnec.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "AUNDIP ATTY",
+    "transport": ""
+  },
+  "5904": {
+    "name": "K L N College of Engineering (Autonomous), Pottapalayam, Sivagangai District",
+    "principal": "DR RAMPRASAD A V",
+    "phone": "4522090184",
+    "email": "info@klnce.edu",
+    "website": "www .klnce.edu",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI RAIL WAY",
+    "transport": ""
+  },
+  "5907": {
+    "name": "Mohamed Sathak Engineering College, Kilakarai, Ramanathapuram District",
+    "principal": "DR V NIRMAL  KANNAN",
+    "phone": "9940004506",
+    "email": "admission@msec.org.in",
+    "website": "www .msec.org.in",
+    "hostel": "Yes",
+    "nearest_railway": "RAMANA THAPURAM",
+    "transport": ""
+  },
+  "5910": {
+    "name": "P S N A Colllege of Engineering and T echnology , Dindigul District 624622",
+    "principal": "DR D V ASUDEV AN",
+    "phone": "451255441 1",
+    "email": "principal@psnacet.edu.in",
+    "website": "https://www .psnacet.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5911": {
+    "name": "P T R College of Engineering and T echnology , Thanapandiyan Nagar ,",
+    "principal": "DR D THRESHKUMAR",
+    "phone": "9360033000",
+    "email": "officeptrcet@gmail.com",
+    "website": "www .ptrcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUP ARANKUNRAM",
+    "transport": ""
+  },
+  "5912": {
+    "name": "Pandian Saraswathi Yadav Engineering College, Thirumansolai Post, Sivagangai",
+    "principal": "DR P  RAVEENDRAN",
+    "phone": "9842102628",
+    "email": "info@psyec.edu.in",
+    "website": "www .psyec.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SIVAGANGAI",
+    "transport": ""
+  },
+  "5913": {
+    "name": "R V S College of Engineering, N Paraipatti Post, Dindigul District 624005",
+    "principal": "DR C RAMESHKUMAR",
+    "phone": "9842449284",
+    "email": "rvscet.dgl@rvsgroup.com",
+    "website": "www .rvseng.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5914": {
+    "name": "Solamalai College of Engineering, V eerapanjan, Madurai District 625020",
+    "principal": "DR SANTHI M",
+    "phone": "8012506082",
+    "email": "SOLAMALAI.SCEMDU@GMAIL.COM",
+    "website": "WWW .SOLAMALAICE.AC.IN",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5915": {
+    "name": "SACS-M A V M M Engineering College, Kidaripatty Post, Madurai District 625301",
+    "principal": "DR S NA VANEETHA  KRISHNAN",
+    "phone": "8300076901",
+    "email": "principal@sacsmec.in",
+    "website": "www .sacsmec.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI",
+    "transport": ""
+  },
+  "5919": {
+    "name": "St. Michael College of Engineering and T echnology , Kalayarkoil, Sivagangai",
+    "principal": "DR S KARP AGAM ME MBA  PHD",
+    "phone": "9942796723",
+    "email": "info@smcet.edu.in",
+    "website": "www .smcet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "SIVAGANGAI",
+    "transport": ""
+  },
+  "5921": {
+    "name": "Syed Ammal Engineering College, Achuthan V ayal Post, Ramanathapuram",
+    "principal": "DR M PERIY ASAMY",
+    "phone": "8489304000",
+    "email": "office@syedengg.ac.in",
+    "website": "www .syedengg.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "RAMANA THAPURAM",
+    "transport": ""
+  },
+  "5924": {
+    "name": "Ganapathy Chettiar College of Engineering and T echnology , Melakavanur Post,",
+    "principal": "DR R P ARTHASARA THI",
+    "phone": "9080082641",
+    "email": "ganapathyec@gmail.com",
+    "website": "WWW .GANAP ATHYCHETTIARENGINEERI",
+    "hostel": "Yes",
+    "nearest_railway": "PARAMAKUDI",
+    "transport": ""
+  },
+  "5930": {
+    "name": "SBM College of Engineering and T echnology , Thamaraipady , T N Paraipatti",
+    "principal": "DR G VIJA Y CHAKARA VARTHY",
+    "phone": "9842190901",
+    "email": "sbmecollege@gmail.com",
+    "website": "www .sbmengineeringcollege.com",
+    "hostel": "Yes",
+    "nearest_railway": "DINDIGUL",
+    "transport": ""
+  },
+  "5935": {
+    "name": "Fatima Michael College of Engineering and T echnology , Sengottai V illage,",
+    "principal": "DR P  NELSON RAJA",
+    "phone": "9942982321",
+    "email": "fmcetof fice@gmail.com",
+    "website": "www .fmcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI",
+    "transport": ""
+  },
+  "5942": {
+    "name": "Ultra College of Engineering and T echnology , Kodikulam, 1 Bit V illage, Madurai-",
+    "principal": "DR V SRINIV ASA RAMAN",
+    "phone": "9443799922",
+    "email": "principal@ucetw .ac.in",
+    "website": "www .ucetw .ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI",
+    "transport": ""
+  },
+  "5986": {
+    "name": "Velammal College of Engineering and T echnology , Madurai District 625009",
+    "principal": "DR P  ALLI",
+    "phone": "9994994991",
+    "email": "principal@vcet.ac.in",
+    "website": "www .vcet.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JUNCTION",
+    "transport": ""
+  },
+  "5988": {
+    "name": "Theni Kammavar Sangam College of T echnology , Theni Main Road,",
+    "principal": "DR V SRINIV ASA RAGHA VAN",
+    "phone": "4546250496",
+    "email": "principaltksct@gmail.com",
+    "website": "www .tksct.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THENI",
+    "transport": ""
+  },
+  "5990": {
+    "name": "Latha Mathavan Engineering College, Kidaripatti Post, Alagarkoil (V ia), Melur",
+    "principal": "DR M SARA VANAN",
+    "phone": "9965503926",
+    "email": "lmecmdu@yahoo.co.in",
+    "website": "www .lathamathavan.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "MADURAI JN",
+    "transport": ""
+  },
+  "1129": {
+    "name": "Jaya School of Architecture, Poonamallee By-Pass Road, Poonamallee, Chennai",
+    "principal": "JUNAID AHMED K",
+    "phone": "7418356555",
+    "email": "jayaarchitecture@gmail.com",
+    "website": "www .jayaarchitecture.com",
+    "hostel": "Yes",
+    "nearest_railway": "CHENNAI EGMORE",
+    "transport": ""
+  },
+  "1130": {
+    "name": "MARG Instiute of Design & Architecture Swarnabhoomi (MIDAS), Marg",
+    "principal": "PROF MANJU A",
+    "phone": "8754412325",
+    "email": "admin@midas.ac.in",
+    "website": "www .midas.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "Melmaruvathur",
+    "transport": ""
+  },
+  "1132": {
+    "name": "Rajalakshmi School of Architecture, Thandalam, Sriperumpudur T aluk,",
+    "principal": "PROF S MADHAN RAJA",
+    "phone": "4467181 112",
+    "email": "admin@rajalakshmi.edu.in",
+    "website": "www .rajalakshmi.org/architecture",
+    "hostel": "Yes",
+    "nearest_railway": "GUINDY",
+    "transport": ""
+  },
+  "1135": {
+    "name": "Aalim Muhammed Salegh Academy of Architecture, Muthapudupet, Avadi IAF ,",
+    "principal": "PROF P AUL A J",
+    "phone": "9444744149",
+    "email": "principal@amsarch.ac.in",
+    "website": "www .amsarch.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "PATTABIRAM MILIT ARY",
+    "transport": ""
+  },
+  "1138": {
+    "name": "Da V inci School of Design and Architecture, Rajiv Gandhi Salai, Karapakkam,",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "1144": {
+    "name": "R V S Padmavathy School of Architecture, Senthil Pakkam V illage,",
+    "principal": "M RAAJKUMAR",
+    "phone": "86674221 14",
+    "email": "rvspsoa@gmail.com",
+    "website": "https://rvschennai.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "KAVARAPET AI",
+    "transport": ""
+  },
+  "1146": {
+    "name": "Misrimal Navajee Munoth Jain School of Architecture, Rajiv Gandhi Salai (OMR),",
+    "principal": "AR N BHARA TH",
+    "phone": "4424960292",
+    "email": "mnmjsa@gmail.com",
+    "website": "www .mnmjsa.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "THIRUV ANMIYUR MR TS",
+    "transport": ""
+  },
+  "1147": {
+    "name": "MMES Academy of Architecture, C.Abdul Hakeem College Campus, Hakeem",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "1152": {
+    "name": "CAAD-Chennai Academy of Architecture and Design, No.516-2, Kannigaiper ,",
+    "principal": "VINODH VIJA YAKUMAR",
+    "phone": "9710930025",
+    "email": "director@caad.ac.in",
+    "website": "www .caad.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "Poonamallee Metro",
+    "transport": ""
+  },
+  "1308": {
+    "name": "Measi Academy of Architecture, \"Association Gardens\" 87, Peters Road,",
+    "principal": "M R MOHAMED KHALID",
+    "phone": "4428351 126",
+    "email": "archeasi@gmail.com",
+    "website": "www .measiarch.in",
+    "hostel": "Yes",
+    "nearest_railway": "MGR CENTRAL  RAIL WAY",
+    "transport": ""
+  },
+  "1400": {
+    "name": "Mohamed Sathak A.J. Academy of Architecture, No.34, Old Mahabalipuram Road",
+    "principal": "DR RANEE VEDAMUTHU Principal cum",
+    "phone": "4427470391",
+    "email": "admin@msajaarch-edu.in",
+    "website": "www .msajaarch-edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "TAMBARAM",
+    "transport": ""
+  },
+  "1530": {
+    "name": "Papni School of Architecture, 302/1, Keeranallur V illage, Sriperumbudhur T aluk,",
+    "principal": "VINOD RAJAPP A",
+    "phone": "9176630072",
+    "email": "vinodrajappa.pisa@gmail.com",
+    "website": "https://papniarch.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "KANCHIPURAM",
+    "transport": ""
+  },
+  "2344": {
+    "name": "Kongu School of Architecture, Kongu Engineering College Campus,Perundurai",
+    "principal": "AR G BHUV ANESW ARI M ARCH",
+    "phone": "9952412609",
+    "email": "ksa@kongu.ac.in",
+    "website": "http://www .ksakongu.edu.in/",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2348": {
+    "name": "San Academy of Architecture, ACC Pirivu,Navakarai Post,W alayar , Coimbatore",
+    "principal": "AR T GIRI",
+    "phone": "9943060388",
+    "email": "sanarchitecture7245@gmail.com",
+    "website": "www .sanarch.in",
+    "hostel": "Yes",
+    "nearest_railway": "WALAYAR",
+    "transport": ""
+  },
+  "2364": {
+    "name": "School of Architecture Coimbatore Institute of Engineering and T echnology ,",
+    "principal": "AR S MAHALAKSHMI",
+    "phone": "9790038605",
+    "email": "soaciet@gmail.com",
+    "website": "www .soaciet.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2365": {
+    "name": "Nehru School of Architecture, No.451-D,Palakkad Main",
+    "principal": "DR AMRUTHA",
+    "phone": "78990221 17",
+    "email": "director .nsa@nehrucolleges.com",
+    "website": "nehruarchitectureschool.com",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TOE JUNCTION",
+    "transport": ""
+  },
+  "2372": {
+    "name": "Park Institute of Architecture",
+    "principal": "KASIRAJAN K",
+    "phone": "9994486381",
+    "email": "pia@park.ac.in",
+    "website": "http://www .park.ac.in/",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2373": {
+    "name": "Hindusthan School of Architecture, Othakkalmandabam Post, Coimbatore",
+    "principal": "AR SURESH BHASKAR",
+    "phone": "8098786151",
+    "email": "barch@hindusthan.net",
+    "website": "www .hsoa.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2376": {
+    "name": "Rathinam School of Architecture and Design at T ips Global, Rathinam T echzone",
+    "principal": "AR SHIY AM NMS",
+    "phone": "9940814141",
+    "email": "principal.rsa@rathinam.in",
+    "website": "https://www .rathinamcollege.edu.in/architectu",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2379": {
+    "name": "PSG Institute Of Architecture And Planning",
+    "principal": "PROF AR G TAMIL VANAN",
+    "phone": "8870274316",
+    "email": "PRINCIP AL@PSGIAP .AC.IN",
+    "website": "WWW .PSGIAP .AC.IN",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2667": {
+    "name": "Excel College of Architecture and Planning, NH-544, Salem Main Road,",
+    "principal": "BALAJI V",
+    "phone": "9842716900",
+    "email": "principalarch@excelcolleges.com",
+    "website": "www .excelinstitutions.com/excel_arch/",
+    "hostel": "Yes",
+    "nearest_railway": "ERODE",
+    "transport": ""
+  },
+  "2684": {
+    "name": "TIPS School of Architecture, SF 361/1A, Karuvalur Road, MGC Palayam, S.S.",
+    "principal": "AR PRA VEEN CHANDRA",
+    "phone": "9994328569",
+    "email": "principal.rsoad.t@rathinam.in",
+    "website": "https://rathinamarchitecture.com/",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "2728": {
+    "name": "Tamilnadu School of Architecture, T amilnadu College of Engineering Campus,",
+    "principal": "PROF SURESH KUMAR D",
+    "phone": "9944608932",
+    "email": "director@tnsa.ac.in",
+    "website": "www .tnsa.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE",
+    "transport": ""
+  },
+  "2759": {
+    "name": "McGan s Ooty School of Architecture, 5/635, Perar , Kothagiri Road, Mynala Post,",
+    "principal": "DR SA THEESH KUMAR P",
+    "phone": "4232225970",
+    "email": "ootyarchitecture@gmail.com",
+    "website": "www .mcgansarch.com",
+    "hostel": "Yes",
+    "nearest_railway": "UDHAGAMANDALAM",
+    "transport": ""
+  },
+  "2778": {
+    "name": "R.V.S. School of Architecture (CBE), Kumaran Kottam Campus, T richy Road,",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "2779": {
+    "name": "Ranganathan Architecture College, REC Kalvi Nagar , Viraliyur Post,",
+    "principal": "AR MA YA MOHAN",
+    "phone": "9500981246",
+    "email": "raccbe2010@gmail.com",
+    "website": "www .raccbe.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "COIMBA TORE JUNCTION",
+    "transport": ""
+  },
+  "3446": {
+    "name": "Prime College of Architecture and Planning, Main Road, Kilvelur , Nagapattinam",
+    "principal": "PROF AR SNEHALA TA DASH",
+    "phone": "9437020695",
+    "email": "primearch2010@gmail.com",
+    "website": "primearch.ac.in and primearchitecture.in",
+    "hostel": "Yes",
+    "nearest_railway": "KILVELUR",
+    "transport": ""
+  },
+  "3467": {
+    "name": "Prime Nest College of Architecture and Planning,V .J.P.Campus,T richy-Chennai",
+    "principal": "DR S RADHAKRISHNAN",
+    "phone": "9444144314",
+    "email": "primenestindia@gmail.com",
+    "website": "www .primenest.org",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "3783": {
+    "name": "M.A.M. School of Architecture, T richy-Chennai T runk Road, Siruganur ,",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "3784": {
+    "name": "C.A.R.E School of Architecture, No.27, Thayanur V illage, Kuttapatti, Srirangam",
+    "principal": "DR SHABITHA  S",
+    "phone": "9994165035",
+    "email": "pshabitha@care.ac.in",
+    "website": "www .care.ac.in/architecture",
+    "hostel": "Yes",
+    "nearest_railway": "TIRUCHIRAPP ALLI",
+    "transport": ""
+  },
+  "4671": {
+    "name": "Sigma College of Architecture, Moododu, Anucode Post, Marthandam,",
+    "principal": "DR ARIVUMANI V",
+    "phone": "4651209028",
+    "email": "sigmagroup155@gmail.com",
+    "website": "www .sigmacollege.edu.in",
+    "hostel": "Yes",
+    "nearest_railway": "KUZHITHURAI WEST",
+    "transport": ""
+  },
+  "4679": {
+    "name": "Arul Tharum VPMM College of Architecture",
+    "principal": "DR S MEENAKSHI SUNDARAM",
+    "phone": "4563289337",
+    "email": "vpmmarchitecture@gmail.com",
+    "website": "https://www .vpmm.in/",
+    "hostel": "Yes",
+    "nearest_railway": "SRIVILLIPUTTUR",
+    "transport": ""
+  },
+  "5544": {
+    "name": "Agni School of Architecture and Design Excellence (ASADE),NH45,T richy",
+    "principal": "-",
+    "phone": "-",
+    "email": "-",
+    "website": "-",
+    "hostel": "Yes",
+    "nearest_railway": "-",
+    "transport": ""
+  },
+  "1203": {
+    "name": "MADRAS ENGINEERING COLLEGE",
+    "principal": "Dr K Srinivasan",
+    "phone": "7002080020",
+    "email": "principal@madrascollege.ac.in",
+    "website": "madrascollege.ac.in",
+    "hostel": "Yes",
+    "nearest_railway": "Tambaram",
+    "transport": ""
+  },
+  "1339": {
+    "name": "Mahalakshmi T ech Campus No.1, Bharathiar Street Prashanthi Nagar ,",
+    "principal": "R RA VI",
+    "phone": "9940901224",
+    "email": "chairman@mahalakshmitechcampus.com",
+    "website": "https://mahalakshmitechcampus.com",
+    "hostel": "Yes",
+    "nearest_railway": "CHROMPET",
+    "transport": ""
+  },
+  "2777": {
+    "name": "HINDUSTHAN COLLEGE OF ENGINEERING",
+    "principal": "DR N P  ANANTHAMOOR THY",
+    "phone": "9003753332",
+    "email": "hice@hindusthan.net",
+    "website": "hindusthan.net/hice",
+    "hostel": "Yes",
+    "nearest_railway": "PERUNDUA TAI",
+    "transport": ""
+  },
+  "3477": {
+    "name": "Sri V ignesh college of Engineering and T echnology -T richy - Chennai T runk",
+    "principal": "Ganesh Babu B",
+    "phone": "9443676464",
+    "email": "svcet2k25@gmail.com",
+    "website": "www .srivigneshcet.com",
+    "hostel": "Yes",
+    "nearest_railway": "Sri Rangam",
+    "transport": ""
+  },
+  "5545": {
+    "name": "G.T.N. COLLEGE OF TECHNOLOGY",
+    "principal": "Dr C G RA VICHANDRAN",
+    "phone": "7871233313",
+    "email": "gtncollegeoftech@gmail.com",
+    "website": "www .gtncollegeoftechnology .in",
+    "hostel": "Yes",
+    "nearest_railway": "Dindigul",
+    "transport": ""
+  }
+}
