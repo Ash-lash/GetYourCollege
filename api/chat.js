@@ -1,6 +1,6 @@
 const Anthropic = require('@anthropic-ai/sdk');
 
-// Vercel Serverless Function for Claude AI Proxy
+// Vercel Serverless Function for Mentora AI Proxy
 module.exports = async (req, res) => {
   // 1. Setup CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -42,11 +42,11 @@ module.exports = async (req, res) => {
 
   } catch (error) {
     const status = error.status || 500;
-    console.error(`❌ Vercel API Error [${status}]:`, error.message);
+    console.error(`❌ Mentora API Error [${status}]:`, error.message);
 
     if (status === 529) {
       return res.status(529).json({ 
-        error: "Claude is currently busy (Overloaded). Trying again in 5-10 seconds usually works." 
+        error: "Mentora is currently busy (Overloaded). Trying again in 5-10 seconds usually works." 
       });
     }
 

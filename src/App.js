@@ -119,11 +119,11 @@ const PlacementRing = ({ pct }) => {
     <div className="placement-ring-wrap" title="Placement %">
       <svg width="54" height="54" viewBox="0 0 54 54">
         <circle className="pr-bg" cx="27" cy="27" r={rad} />
-        <motion.circle 
-          className="pr-val" 
-          cx="27" cy="27" r={rad} 
+        <motion.circle
+          className="pr-val"
+          cx="27" cy="27" r={rad}
           style={{ '--c': color }}
-          strokeDasharray={c} 
+          strokeDasharray={c}
           initial={{ strokeDashoffset: c }}
           animate={{ strokeDashoffset: off }}
         />
@@ -170,7 +170,7 @@ const CounselingMatrix = ({ code }) => {
           </thead>
           <tbody>
             {matrix.map((row, i) => {
-              const total = row.seats.reduce((a,b)=>a+b, 0);
+              const total = row.seats.reduce((a, b) => a + b, 0);
               return (
                 <tr key={i} className={total === 0 ? 'row-empty' : ''}>
                   <td className="td-branch">
@@ -197,7 +197,7 @@ const CounselingMatrix = ({ code }) => {
 
 /* ── QUERY MODAL (Fees / Admission Flow) ───────────── */
 const QueryModal = ({ isOpen, onClose, collegeName }) => {
-  const [step, setStep] = useState(1); 
+  const [step, setStep] = useState(1);
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
@@ -222,7 +222,7 @@ const QueryModal = ({ isOpen, onClose, collegeName }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <motion.div 
+      <motion.div
         initial={{ y: 30, opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 30, opacity: 0, scale: 0.95 }}
@@ -263,12 +263,12 @@ const QueryModal = ({ isOpen, onClose, collegeName }) => {
               <p className="modal-p">Enter your number to receive information via WhatsApp.</p>
               <div className="form-group">
                 <label>PHONE NUMBER</label>
-                <input type="tel" placeholder="10 Digit Number" autoFocus value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g,''))} />
+                <input type="tel" placeholder="10 Digit Number" autoFocus value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} />
               </div>
               {phone.length === 10 && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="form-group">
                   <label>OTP SENT (DUMMY: 1234)</label>
-                  <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value.replace(/\D/g,''))} />
+                  <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))} />
                 </motion.div>
               )}
               <button disabled={otp !== '1234' || loading} className={`send-query-btn ${otp === '1234' ? 'active' : ''}`} onClick={handleSend}>
@@ -320,7 +320,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
     if (college.placement) return college.placement;
     const cut = college.cutoff || 120;
     const fill = college.fillpct || 50;
-    return Math.min(99, Math.max(45, Math.floor((cut/200)*60 + (fill/100)*40)));
+    return Math.min(99, Math.max(45, Math.floor((cut / 200) * 60 + (fill / 100) * 40)));
   }, [college]);
 
   return (
@@ -334,7 +334,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
         <div className="cc-badges">
           {isAnna ? (
             <>
-              {college.type && <span className={`badge ${({'university_dept':'badge-purple','government':'badge-blue','govt_aided':'badge-emerald','cecri_cipet':'badge-amber','constituent':'badge-cyan','autonomous':'badge-teal'})[college.type] || 'badge-gray'}`}>{({'university_dept':'University Dept','government':'Government','govt_aided':'Govt Aided','cecri_cipet':'CECRI/CIPET','constituent':'Constituent','autonomous':'Autonomous','non_autonomous':'Self-Finance'})[college.type] || college.type}</span>}
+              {college.type && <span className={`badge ${({ 'university_dept': 'badge-purple', 'government': 'badge-blue', 'govt_aided': 'badge-emerald', 'cecri_cipet': 'badge-amber', 'constituent': 'badge-cyan', 'autonomous': 'badge-teal' })[college.type] || 'badge-gray'}`}>{({ 'university_dept': 'University Dept', 'government': 'Government', 'govt_aided': 'Govt Aided', 'cecri_cipet': 'CECRI/CIPET', 'constituent': 'Constituent', 'autonomous': 'Autonomous', 'non_autonomous': 'Self-Finance' })[college.type] || college.type}</span>}
               <span className="badge badge-indigo">#{college.rank}</span>
             </>
           ) : <span className="badge badge-gray">{college.Type || 'University'}</span>}
@@ -373,7 +373,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
                   <div className="stat-chip"><span className="sc-num">{college.cutoff || '—'}</span><span className="sc-label">Min Cutoff</span></div>
                 </div>
               )}
-              
+
               {isAnna && seats > 0 && (
                 <div style={{ marginBottom: 16 }}>
                   <div className="section-divider">ROUND-WISE DISTRIBUTION</div>
@@ -384,7 +384,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
               <div className="dept-section">
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {isAnna && <button className="dept-toggle" onClick={toggleMore}><Info size={15} /> {showMore ? 'Hide Campus Info' : 'Campus Info'} <motion.span animate={{ rotate: showMore ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? {borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)'} : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
+                  {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? { borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)' } : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   {courses.length > 0 && <button className="dept-toggle" onClick={toggleDepts}><Eye size={15} /> {showDepts ? 'Hide Branches' : `All Branches (${courses.reduce((acc, cat) => acc + (cat.branches ? cat.branches.length : 0), 0)})`} <motion.span animate={{ rotate: showDepts ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   <button className="dept-toggle fees-btn-special" onClick={(e) => { e.stopPropagation(); onOpenQuery(college.name); }}><IndianRupee size={15} /> Fees / Query <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowRight size={14} /></motion.span></button>
                 </div>
@@ -394,15 +394,15 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
                   {showMore && TNEA_PDF_INFO[college.code] && (
                     <motion.div className="more-info-grid" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden', paddingBottom: 16 }}>
                       <div className="pdf-info-card">
-                        <div className="pi-row"><User size={14}/><span><strong>Principal:</strong> {TNEA_PDF_INFO[college.code].principal || 'N/A'}</span></div>
-                        <div className="pi-row"><Phone size={14}/><span><strong>Phone:</strong> {TNEA_PDF_INFO[college.code].phone || 'N/A'}</span></div>
-                        <div className="pi-row"><Mail size={14}/><span><strong>Email:</strong> {TNEA_PDF_INFO[college.code].email || 'N/A'}</span></div>
-                        <div className="pi-row"><ExternalLink size={14}/><span><strong>Website:</strong> {TNEA_PDF_INFO[college.code].website || 'N/A'}</span></div>
+                        <div className="pi-row"><User size={14} /><span><strong>Principal:</strong> {TNEA_PDF_INFO[college.code].principal || 'N/A'}</span></div>
+                        <div className="pi-row"><Phone size={14} /><span><strong>Phone:</strong> {TNEA_PDF_INFO[college.code].phone || 'N/A'}</span></div>
+                        <div className="pi-row"><Mail size={14} /><span><strong>Email:</strong> {TNEA_PDF_INFO[college.code].email || 'N/A'}</span></div>
+                        <div className="pi-row"><ExternalLink size={14} /><span><strong>Website:</strong> {TNEA_PDF_INFO[college.code].website || 'N/A'}</span></div>
                       </div>
                       <div className="pdf-info-card">
-                        <div className="pi-row"><Train size={14}/><span><strong>Railway:</strong> {TNEA_PDF_INFO[college.code].nearest_railway || 'N/A'}</span></div>
-                        <div className="pi-row"><Bus size={14}/><span><strong>Transport:</strong> {TNEA_PDF_INFO[college.code].transport || 'Yes'}</span></div>
-                        <div className="pi-row"><Building2 size={14}/><span><strong>Hostel:</strong> Boys & Girls Available</span></div>
+                        <div className="pi-row"><Train size={14} /><span><strong>Railway:</strong> {TNEA_PDF_INFO[college.code].nearest_railway || 'N/A'}</span></div>
+                        <div className="pi-row"><Bus size={14} /><span><strong>Transport:</strong> {TNEA_PDF_INFO[college.code].transport || 'Yes'}</span></div>
+                        <div className="pi-row"><Building2 size={14} /><span><strong>Hostel:</strong> Boys & Girls Available</span></div>
                       </div>
                     </motion.div>
                   )}
@@ -429,11 +429,11 @@ const CourseLevels = ({ courses }) => {
   };
 
   // eslint-disable-next-line no-unused-vars
-  const DEG_COLORS = { 
-    'B.E': { bg: 'rgba(99,102,241,0.08)', txt: '#6366f1' }, 
-    'B.Tech': { bg: 'rgba(20,184,166,0.08)', txt: '#14b8a6' }, 
-    'M.E': { bg: 'rgba(236,72,153,0.08)', txt: '#ec4899' }, 
-    'M.Tech': { bg: 'rgba(245,158,11,0.08)', txt: '#f59e0b' } 
+  const DEG_COLORS = {
+    'B.E': { bg: 'rgba(99,102,241,0.08)', txt: '#6366f1' },
+    'B.Tech': { bg: 'rgba(20,184,166,0.08)', txt: '#14b8a6' },
+    'M.E': { bg: 'rgba(236,72,153,0.08)', txt: '#ec4899' },
+    'M.Tech': { bg: 'rgba(245,158,11,0.08)', txt: '#f59e0b' }
   };
 
   return (
@@ -446,7 +446,7 @@ const CourseLevels = ({ courses }) => {
               const deg = normalizeDeg(br[0]);
               const dc = DEG_COLORS[deg] || { bg: '#f8fafc', txt: '#64748b' };
               return (
-                <div key={`${ci}-${bi}`} className="branch-card-modern" style={{'--accent': dc.txt, '--bg': dc.bg}}>
+                <div key={`${ci}-${bi}`} className="branch-card-modern" style={{ '--accent': dc.txt, '--bg': dc.bg }}>
                   <div className="bc-deg">{deg}</div>
                   <div className="bc-name" style={{ textTransform: 'uppercase' }}>{br[1]}</div>
                 </div>
@@ -472,6 +472,24 @@ const App = () => {
   const [fillFilter, setFillFilter] = useState('');
   const [cutoffFilter, setCutoffFilter] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [isSearchFocused, setIsSearchFocused] = useState(false);
+  const [placeholderIndex, setPlaceholderIndex] = useState(0);
+
+  const placeholders = useMemo(() => [
+    "Search college (e.g. CEG, MIT, PSG...)",
+    "Search city (e.g. Chennai, Madurai, Trichy...)",
+    "Search college code (e.g. 1, 2, 2006...)",
+    "Search department (e.g. CSE, AI & DS, EEE...)",
+    "Search for Government Colleges...",
+    "Search for Autonomous institutions..."
+  ], []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [placeholders.length]);
 
   // Get unique cities for the dropdown
   const cityOptions = useMemo(() => {
@@ -557,7 +575,7 @@ const App = () => {
 
   const goHome = () => { setView('home'); window.scrollTo(0, 0); };
   const openExplorer = (cat) => { setCategory(cat); setView('explorer'); window.scrollTo(0, 0); };
-  const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0,0); };
+  const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0, 0); };
 
   return (
     <div className="root">
@@ -572,6 +590,23 @@ const App = () => {
               <h1 className="hero-h1">Find Your <span className="h1-accent">Perfect College</span></h1>
               <p className="hero-p">Explore cutoff data, seats, and verified institution details for 2025.</p>
             </div>
+            {/* Mentora AI Guidance Section */}
+            <div className="home-bottom-actions">
+              <div className="ba-group">
+                <span className="ba-label">Mentora · AI Career Counselor</span>
+                <div className="ba-btns">
+                  <motion.button className="ba-btn" onClick={() => openAI('opportunities')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Zap size={16} />
+                    <span>Department Opportunities</span>
+                  </motion.button>
+                  <motion.button className="ba-btn" onClick={() => openAI('streams')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Sparkles size={16} />
+                    <span>Which stream to choose?</span>
+                  </motion.button>
+                </div>
+              </div>
+            </div>
+
             <div className="cards-row" id="explore">
               <motion.div className="hero-card hc-anna" onClick={() => openExplorer('anna')} whileHover={{ y: -10, scale: 1.02 }}>
                 <div className="hc-top"><div className="hc-icon"><BookOpen size={26} /></div><span className="hc-count">{TNEA_DATA.length}+</span></div>
@@ -592,23 +627,6 @@ const App = () => {
                 <div className="hc-cta">Explore Universities <ArrowRight size={16} /></div>
               </motion.div>
             </div>
-
-            {/* Premium AI Guidance Bottom Bar */}
-            <div className="home-bottom-actions">
-              <div className="ba-group">
-                <span className="ba-label">AI Career Counselor · Powered by Claude 4.6</span>
-                <div className="ba-btns">
-                  <motion.button className="ba-btn" onClick={() => openAI('opportunities')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Zap size={16} />
-                    <span>Department Opportunities</span>
-                  </motion.button>
-                  <motion.button className="ba-btn" onClick={() => openAI('streams')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Sparkles size={16} />
-                    <span>Which stream to choose?</span>
-                  </motion.button>
-                </div>
-              </div>
-            </div>
           </motion.main>
         )}
         {view === 'explorer' && (
@@ -620,21 +638,46 @@ const App = () => {
                 <span className="live-badge"><Zap size={13} /> Live 2025</span>
               </div>
               <div className="filter-bar">
-                <div className="search-wrap"><Search size={16} className="si" /><input className="search-inp" placeholder="Search college, city, code or department..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} /></div>
+                <div className="search-wrap">
+                  <Search size={16} className="si" />
+                  <input
+                    className="search-inp"
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    onFocus={() => setIsSearchFocused(true)}
+                    onBlur={() => setIsSearchFocused(false)}
+                  />
+                  {!searchTerm && !isSearchFocused && (
+                    <div className="placeholder-container">
+                      <AnimatePresence mode="wait">
+                        <motion.span
+                          key={placeholderIndex}
+                          initial={{ y: 15, opacity: 0 }}
+                          animate={{ y: 0, opacity: 1 }}
+                          exit={{ y: -15, opacity: 0 }}
+                          transition={{ duration: 0.3, ease: "easeOut" }}
+                          className="placeholder-text"
+                        >
+                          {placeholders[placeholderIndex]}
+                        </motion.span>
+                      </AnimatePresence>
+                    </div>
+                  )}
+                </div>
                 <div className="filter-tabs-row">
                   <div className="filter-tabs">
-                    <button className={`ftab ${subType===''?'ftab-on':''}`} onClick={()=>setSubType('')}>All ({category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})</button>
-                    {category === 'anna' 
+                    <button className={`ftab ${subType === '' ? 'ftab-on' : ''}`} onClick={() => setSubType('')}>All ({category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})</button>
+                    {category === 'anna'
                       ? [
-                          ['university_dept','🏛️ University Department'],
-                          ['government','🏢 Government Colleges'],
-                          ['govt_aided','🤝 Government Aided'],
-                          ['cecri_cipet','🔬 CECRI & CIPET'],
-                          ['constituent','🎓 Constituent Colleges'],
-                          ['autonomous','⭐ Autonomous Colleges'],
-                          ['non_autonomous','📋 Non-Autonomous']
-                        ].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
-                      : [['deemed','Deemed University'],['private','Private University']].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
+                        ['university_dept', '🏛️ University Department'],
+                        ['government', '🏢 Government Colleges'],
+                        ['govt_aided', '🤝 Government Aided'],
+                        ['cecri_cipet', '🔬 CECRI & CIPET'],
+                        ['constituent', '🎓 Constituent Colleges'],
+                        ['autonomous', '⭐ Autonomous Colleges'],
+                        ['non_autonomous', '📋 Non-Autonomous']
+                      ].map(([v, l]) => <button key={v} className={`ftab ${subType === v ? 'ftab-on' : ''}`} onClick={() => setSubType(v)}>{l}</button>)
+                      : [['deemed', 'Deemed University'], ['private', 'Private University']].map(([v, l]) => <button key={v} className={`ftab ${subType === v ? 'ftab-on' : ''}`} onClick={() => setSubType(v)}>{l}</button>)
                     }
                   </div>
                   {category === 'anna' && (
@@ -682,19 +725,19 @@ const App = () => {
               </div>
               <div className="results-info">
                 <span className="results-count">{filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found</span>
-                {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({'university_dept':'University Department','government':'Government Colleges','govt_aided':'Government Aided','cecri_cipet':'CECRI & CIPET','constituent':'Constituent Colleges','autonomous':'Autonomous Colleges','non_autonomous':'Non-Autonomous'})[subType]}<X size={12} onClick={()=>setSubType('')}/></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={()=>setCityFilter('')}/></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={()=>setFillFilter('')}/></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={()=>setCutoffFilter('')}/></span>}</span>}
+                {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({ 'university_dept': 'University Department', 'government': 'Government Colleges', 'govt_aided': 'Government Aided', 'cecri_cipet': 'CECRI & CIPET', 'constituent': 'Constituent Colleges', 'autonomous': 'Autonomous Colleges', 'non_autonomous': 'Non-Autonomous' })[subType]}<X size={12} onClick={() => setSubType('')} /></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={() => setCityFilter('')} /></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={() => setFillFilter('')} /></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={() => setCutoffFilter('')} /></span>}</span>}
               </div>
               <div className="card-list">
                 {filteredColleges.map(c => {
                   const uid = c.code || c.name;
                   return (
-                    <CollegeCard 
-                      key={uid} 
-                      college={c} 
-                      category={category} 
-                      isExpanded={expandedCollege === uid} 
-                      onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)} 
-                      onOpenQuery={(name) => setQueryModal({ open: true, college: name })} 
+                    <CollegeCard
+                      key={uid}
+                      college={c}
+                      category={category}
+                      isExpanded={expandedCollege === uid}
+                      onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
+                      onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
                     />
                   );
                 })}
@@ -708,7 +751,7 @@ const App = () => {
           </motion.main>
         )}
       </AnimatePresence>
-      <QueryModal isOpen={queryModal.open} onClose={()=>setQueryModal({open:false, college:''})} collegeName={queryModal.college} />
+      <QueryModal isOpen={queryModal.open} onClose={() => setQueryModal({ open: false, college: '' })} collegeName={queryModal.college} />
     </div>
   );
 };
@@ -875,7 +918,7 @@ Keep it snappy and very easy to scan.`;
       };
 
       const apiBase = process.env.REACT_APP_API_URL || "";
-      
+
       try {
         const res = await fetch(`${apiBase}/api/chat`, {
           method: "POST",
@@ -901,7 +944,7 @@ Keep it snappy and very easy to scan.`;
     setMessages(newMessages);
     setIsTyping(true);
 
-    // Map internal {role, text} to Claude's {role, content}
+    // Map internal {role, text} to Mentora's {role, content}
     const apiMessages = newMessages.map(m => ({
       role: m.role === 'ai' ? 'assistant' : 'user',
       content: m.text
@@ -915,7 +958,7 @@ Keep it snappy and very easy to scan.`;
 
     try {
       const res = await fetch(`${apiBase}/api/chat`, {
-        method: "POST", 
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ system_prompt: systemPrompt, messages: apiMessages }),
       });
@@ -951,7 +994,7 @@ Keep it snappy and very easy to scan.`;
         {/* Only show step tracker AFTER login */}
         {phase !== 'otp' && (
           <div className="cp-steps">
-            {['Verify', ...questions.map((_, i) => `Q${i+1}`), 'Analysis'].map((s, i) => {
+            {['Verify', ...questions.map((_, i) => `Q${i + 1}`), 'Analysis'].map((s, i) => {
               const done = (phase === 'quiz' && i < qIndex + 1) || (phase === 'analyzing' || phase === 'chat');
               const active = (phase === 'quiz' && i === qIndex + 1);
               return (
@@ -973,7 +1016,7 @@ Keep it snappy and very easy to scan.`;
         )}
 
         <div className="cp-sidebar-footer">
-          <div className="cp-ai-brand"><span className="ai-live-dot" style={{ background: cfg.color }} /> Claude 4.6 · Anthropic</div>
+          <div className="cp-ai-brand"><span className="ai-live-dot" style={{ background: cfg.color }} /> Mentora Engine · 2025 Prediction</div>
         </div>
       </div>
 
@@ -1048,9 +1091,9 @@ Keep it snappy and very easy to scan.`;
               {/* Chat Header */}
               <div className="cp-chat-top">
                 <div className="cp-chat-top-left">
-                  <div className="claude-badge">
-                    <span className="claude-dot" />
-                    <span>Claude AI</span>
+                  <div className="mentora-badge">
+                    <span className="mentora-dot" />
+                    <span>Mentora AI</span>
                   </div>
                   <h2 className="cp-chat-title">Your Personalized Analysis</h2>
                 </div>
@@ -1063,11 +1106,11 @@ Keep it snappy and very easy to scan.`;
               <div className="cp-messages" ref={chatRef}>
                 {isTyping && messages.length === 0 && (
                   <div className="cp-analyzing-state">
-                    <div className="claude-thinking">
-                      <div className="claude-think-ring" style={{ borderTopColor: cfg.color }} />
-                      <div className="claude-think-ring inner" style={{ borderTopColor: cfg.color, opacity: 0.4 }} />
+                    <div className="mentora-thinking">
+                      <div className="mentora-think-ring" style={{ borderTopColor: cfg.color }} />
+                      <div className="mentora-think-ring inner" style={{ borderTopColor: cfg.color, opacity: 0.4 }} />
                     </div>
-                    <p className="cp-analyzing-text">Claude is analyzing your profile...</p>
+                    <p className="cp-analyzing-text">Mentora is analyzing your profile...</p>
                     <span className="cp-analyzing-sub">Generating personalized recommendations</span>
                   </div>
                 )}
@@ -1080,7 +1123,7 @@ Keep it snappy and very easy to scan.`;
                     className={`cp-msg-row ${m.role}`}
                   >
                     {m.role === 'ai' && (
-                      <div className="cp-avatar claude-avatar">
+                      <div className="cp-avatar mentora-avatar">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
                         </svg>
@@ -1088,13 +1131,13 @@ Keep it snappy and very easy to scan.`;
                     )}
                     <div className={`cp-bubble ${m.role === 'ai' ? 'ai-bubble' : 'user-bubble'}`}
                       style={m.role === 'user' ? { background: `linear-gradient(135deg, ${cfg.color}, #8b5cf6)` } : {}}>
-                      {m.role === 'ai' ? <ClaudeMessage text={m.text} color={cfg.color} /> : m.text}
+                      {m.role === 'ai' ? <MentoraMessage text={m.text} color={cfg.color} /> : m.text}
                     </div>
                   </motion.div>
                 ))}
                 {isTyping && messages.length > 0 && (
                   <div className="cp-msg-row ai">
-                    <div className="cp-avatar claude-avatar">
+                    <div className="cp-avatar mentora-avatar">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
                       </svg>
@@ -1108,7 +1151,7 @@ Keep it snappy and very easy to scan.`;
               <div className="cp-input-bar">
                 <div className="cp-input-wrap">
                   <input
-                    placeholder="Ask Claude anything about your analysis..."
+                    placeholder="Ask Mentora anything about your analysis..."
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleSend()}
@@ -1133,8 +1176,8 @@ Keep it snappy and very easy to scan.`;
   );
 };
 
-/* ── CLAUDE MESSAGE FORMATTER ─────────────────────────── */
-const ClaudeMessage = ({ text, color }) => {
+/* ── MENTORA MESSAGE FORMATTER ─────────────────────────── */
+const MentoraMessage = ({ text, color }) => {
   if (!text) return null;
 
   // Parse the text into blocks
@@ -1176,7 +1219,7 @@ const ClaudeMessage = ({ text, color }) => {
   while (blocks.length && blocks[blocks.length - 1].type === 'spacer') blocks.pop();
 
   return (
-    <div className="claude-msg-body">
+    <div className="mentora-msg-body">
       {blocks.map((block, idx) => {
         if (block.type === 'heading') {
           return (
