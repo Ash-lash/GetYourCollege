@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
     }
 
     return res.status(status).json({ 
-      error: "AI is briefly unavailable. Please try again in 5 seconds." 
+      error: `API Error (${status}): ${error.message}` 
     });
   }
 };

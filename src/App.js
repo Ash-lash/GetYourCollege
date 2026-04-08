@@ -901,8 +901,13 @@ Keep it snappy and very easy to scan.`;
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
+        if (!res.ok) {
+          const text = await res.text();
+          let errData = {};
+          try { errData = JSON.parse(text); } catch(e) {}
+          throw new Error(errData.error || (res.status === 504 ? "AI analysis is taking too long to respond. Please try again." : `Server Error (${res.status})`));
+        }
         const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Connection failed");
         setMessages([{ role: 'ai', text: data.reply }]);
       } catch (err) {
         setMessages([{ role: 'ai', text: `⚠️ ${err.message}` }]);
@@ -938,8 +943,13 @@ Keep it snappy and very easy to scan.`;
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ system_prompt: systemPrompt, messages: apiMessages }),
       });
+      if (!res.ok) {
+        const text = await res.text();
+        let errData = {};
+        try { errData = JSON.parse(text); } catch(e) {}
+        throw new Error(errData.error || (res.status === 504 ? "AI analysis is taking too long to respond. Please try again." : `Server Error (${res.status})`));
+      }
       const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Service busy");
       setMessages(prev => [...prev, { role: 'ai', text: data.reply }]);
     } catch (err) {
       setMessages(prev => [...prev, { role: 'ai', text: `❌ ${err.message}` }]);
@@ -1331,7 +1341,7 @@ const DepartmentDetailsPage = ({ onBack }) => {
         try {
           const apiBase = process.env.REACT_APP_API_URL || "";
           const payload = {
-            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response without word limits. Address: 1) What this department is about, 2) Unique Features & Scope, 3) Average & Expected Salary, 4) Generalized Year-wise Syllabus overview. Use markdown for headings, bolding, and bullets.",
+            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response. Address: 1) What this department is, 2) Unique Features & Scope, 3) Average Salary, 4) Generalized Year-wise Syllabus overview. Use markdown. Keep your response around 400-450 words to ensure fast loading.",
             messages: [{ role: 'user', content: `Please provide full comprehensive details about the ${selectedDept.degree} ${selectedDept.name} department.` }]
           };
           const res = await fetch(`${apiBase}/api/chat`, {
@@ -1339,8 +1349,13 @@ const DepartmentDetailsPage = ({ onBack }) => {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
           });
+          if (!res.ok) {
+            const text = await res.text();
+            let errData = {};
+            try { errData = JSON.parse(text); } catch(e) {}
+            throw new Error(errData.error || (res.status === 504 ? "AI analysis is taking too long to respond. Please try again." : `Server Error (${res.status})`));
+          }
           const data = await res.json();
-          if (!res.ok) throw new Error(data.error || "Connection failed");
           setAiProgress(100);
           clearInterval(interval);
           setAiAnalysis(data.reply);
