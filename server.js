@@ -25,7 +25,7 @@ app.post('/api/chat', async (req, res) => {
 
     const message = await client.messages.create({
       model: 'claude-sonnet-4-6',
-      max_tokens: 1500,
+      max_tokens: 4096,
       system: system_prompt,
       messages: messages, // Now sending full chat history
     });

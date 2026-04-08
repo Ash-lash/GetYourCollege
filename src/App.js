@@ -119,11 +119,11 @@ const PlacementRing = ({ pct }) => {
     <div className="placement-ring-wrap" title="Placement %">
       <svg width="54" height="54" viewBox="0 0 54 54">
         <circle className="pr-bg" cx="27" cy="27" r={rad} />
-        <motion.circle
-          className="pr-val"
-          cx="27" cy="27" r={rad}
+        <motion.circle 
+          className="pr-val" 
+          cx="27" cy="27" r={rad} 
           style={{ '--c': color }}
-          strokeDasharray={c}
+          strokeDasharray={c} 
           initial={{ strokeDashoffset: c }}
           animate={{ strokeDashoffset: off }}
         />
@@ -170,7 +170,7 @@ const CounselingMatrix = ({ code }) => {
           </thead>
           <tbody>
             {matrix.map((row, i) => {
-              const total = row.seats.reduce((a, b) => a + b, 0);
+              const total = row.seats.reduce((a,b)=>a+b, 0);
               return (
                 <tr key={i} className={total === 0 ? 'row-empty' : ''}>
                   <td className="td-branch">
@@ -197,7 +197,7 @@ const CounselingMatrix = ({ code }) => {
 
 /* ── QUERY MODAL (Fees / Admission Flow) ───────────── */
 const QueryModal = ({ isOpen, onClose, collegeName }) => {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1); 
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
   const [loading, setLoading] = useState(false);
@@ -222,7 +222,7 @@ const QueryModal = ({ isOpen, onClose, collegeName }) => {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <motion.div
+      <motion.div 
         initial={{ y: 30, opacity: 0, scale: 0.95 }}
         animate={{ y: 0, opacity: 1, scale: 1 }}
         exit={{ y: 30, opacity: 0, scale: 0.95 }}
@@ -263,12 +263,12 @@ const QueryModal = ({ isOpen, onClose, collegeName }) => {
               <p className="modal-p">Enter your number to receive information via WhatsApp.</p>
               <div className="form-group">
                 <label>PHONE NUMBER</label>
-                <input type="tel" placeholder="10 Digit Number" autoFocus value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))} />
+                <input type="tel" placeholder="10 Digit Number" autoFocus value={phone} onChange={(e) => setPhone(e.target.value.replace(/\D/g,''))} />
               </div>
               {phone.length === 10 && (
                 <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} className="form-group">
                   <label>OTP SENT (DUMMY: 1234)</label>
-                  <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value.replace(/\D/g, ''))} />
+                  <input type="text" placeholder="Enter OTP" value={otp} onChange={(e) => setOtp(e.target.value.replace(/\D/g,''))} />
                 </motion.div>
               )}
               <button disabled={otp !== '1234' || loading} className={`send-query-btn ${otp === '1234' ? 'active' : ''}`} onClick={handleSend}>
@@ -320,7 +320,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
     if (college.placement) return college.placement;
     const cut = college.cutoff || 120;
     const fill = college.fillpct || 50;
-    return Math.min(99, Math.max(45, Math.floor((cut / 200) * 60 + (fill / 100) * 40)));
+    return Math.min(99, Math.max(45, Math.floor((cut/200)*60 + (fill/100)*40)));
   }, [college]);
 
   return (
@@ -334,7 +334,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
         <div className="cc-badges">
           {isAnna ? (
             <>
-              {college.type && <span className={`badge ${({ 'university_dept': 'badge-purple', 'government': 'badge-blue', 'govt_aided': 'badge-emerald', 'cecri_cipet': 'badge-amber', 'constituent': 'badge-cyan', 'autonomous': 'badge-teal' })[college.type] || 'badge-gray'}`}>{({ 'university_dept': 'University Dept', 'government': 'Government', 'govt_aided': 'Govt Aided', 'cecri_cipet': 'CECRI/CIPET', 'constituent': 'Constituent', 'autonomous': 'Autonomous', 'non_autonomous': 'Self-Finance' })[college.type] || college.type}</span>}
+              {college.type && <span className={`badge ${({'university_dept':'badge-purple','government':'badge-blue','govt_aided':'badge-emerald','cecri_cipet':'badge-amber','constituent':'badge-cyan','autonomous':'badge-teal'})[college.type] || 'badge-gray'}`}>{({'university_dept':'University Dept','government':'Government','govt_aided':'Govt Aided','cecri_cipet':'CECRI/CIPET','constituent':'Constituent','autonomous':'Autonomous','non_autonomous':'Self-Finance'})[college.type] || college.type}</span>}
               <span className="badge badge-indigo">#{college.rank}</span>
             </>
           ) : <span className="badge badge-gray">{college.Type || 'University'}</span>}
@@ -373,7 +373,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
                   <div className="stat-chip"><span className="sc-num">{college.cutoff || '—'}</span><span className="sc-label">Min Cutoff</span></div>
                 </div>
               )}
-
+              
               {isAnna && seats > 0 && (
                 <div style={{ marginBottom: 16 }}>
                   <div className="section-divider">ROUND-WISE DISTRIBUTION</div>
@@ -384,7 +384,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
               <div className="dept-section">
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {isAnna && <button className="dept-toggle" onClick={toggleMore}><Info size={15} /> {showMore ? 'Hide Campus Info' : 'Campus Info'} <motion.span animate={{ rotate: showMore ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? { borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)' } : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
+                  {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? {borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)'} : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   {courses.length > 0 && <button className="dept-toggle" onClick={toggleDepts}><Eye size={15} /> {showDepts ? 'Hide Branches' : `All Branches (${courses.reduce((acc, cat) => acc + (cat.branches ? cat.branches.length : 0), 0)})`} <motion.span animate={{ rotate: showDepts ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   <button className="dept-toggle fees-btn-special" onClick={(e) => { e.stopPropagation(); onOpenQuery(college.name); }}><IndianRupee size={15} /> Fees / Query <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowRight size={14} /></motion.span></button>
                 </div>
@@ -394,15 +394,15 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
                   {showMore && TNEA_PDF_INFO[college.code] && (
                     <motion.div className="more-info-grid" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden', paddingBottom: 16 }}>
                       <div className="pdf-info-card">
-                        <div className="pi-row"><User size={14} /><span><strong>Principal:</strong> {TNEA_PDF_INFO[college.code].principal || 'N/A'}</span></div>
-                        <div className="pi-row"><Phone size={14} /><span><strong>Phone:</strong> {TNEA_PDF_INFO[college.code].phone || 'N/A'}</span></div>
-                        <div className="pi-row"><Mail size={14} /><span><strong>Email:</strong> {TNEA_PDF_INFO[college.code].email || 'N/A'}</span></div>
-                        <div className="pi-row"><ExternalLink size={14} /><span><strong>Website:</strong> {TNEA_PDF_INFO[college.code].website || 'N/A'}</span></div>
+                        <div className="pi-row"><User size={14}/><span><strong>Principal:</strong> {TNEA_PDF_INFO[college.code].principal || 'N/A'}</span></div>
+                        <div className="pi-row"><Phone size={14}/><span><strong>Phone:</strong> {TNEA_PDF_INFO[college.code].phone || 'N/A'}</span></div>
+                        <div className="pi-row"><Mail size={14}/><span><strong>Email:</strong> {TNEA_PDF_INFO[college.code].email || 'N/A'}</span></div>
+                        <div className="pi-row"><ExternalLink size={14}/><span><strong>Website:</strong> {TNEA_PDF_INFO[college.code].website || 'N/A'}</span></div>
                       </div>
                       <div className="pdf-info-card">
-                        <div className="pi-row"><Train size={14} /><span><strong>Railway:</strong> {TNEA_PDF_INFO[college.code].nearest_railway || 'N/A'}</span></div>
-                        <div className="pi-row"><Bus size={14} /><span><strong>Transport:</strong> {TNEA_PDF_INFO[college.code].transport || 'Yes'}</span></div>
-                        <div className="pi-row"><Building2 size={14} /><span><strong>Hostel:</strong> Boys & Girls Available</span></div>
+                        <div className="pi-row"><Train size={14}/><span><strong>Railway:</strong> {TNEA_PDF_INFO[college.code].nearest_railway || 'N/A'}</span></div>
+                        <div className="pi-row"><Bus size={14}/><span><strong>Transport:</strong> {TNEA_PDF_INFO[college.code].transport || 'Yes'}</span></div>
+                        <div className="pi-row"><Building2 size={14}/><span><strong>Hostel:</strong> Boys & Girls Available</span></div>
                       </div>
                     </motion.div>
                   )}
@@ -429,11 +429,11 @@ const CourseLevels = ({ courses }) => {
   };
 
   // eslint-disable-next-line no-unused-vars
-  const DEG_COLORS = {
-    'B.E': { bg: 'rgba(99,102,241,0.08)', txt: '#6366f1' },
-    'B.Tech': { bg: 'rgba(20,184,166,0.08)', txt: '#14b8a6' },
-    'M.E': { bg: 'rgba(236,72,153,0.08)', txt: '#ec4899' },
-    'M.Tech': { bg: 'rgba(245,158,11,0.08)', txt: '#f59e0b' }
+  const DEG_COLORS = { 
+    'B.E': { bg: 'rgba(99,102,241,0.08)', txt: '#6366f1' }, 
+    'B.Tech': { bg: 'rgba(20,184,166,0.08)', txt: '#14b8a6' }, 
+    'M.E': { bg: 'rgba(236,72,153,0.08)', txt: '#ec4899' }, 
+    'M.Tech': { bg: 'rgba(245,158,11,0.08)', txt: '#f59e0b' } 
   };
 
   return (
@@ -446,7 +446,7 @@ const CourseLevels = ({ courses }) => {
               const deg = normalizeDeg(br[0]);
               const dc = DEG_COLORS[deg] || { bg: '#f8fafc', txt: '#64748b' };
               return (
-                <div key={`${ci}-${bi}`} className="branch-card-modern" style={{ '--accent': dc.txt, '--bg': dc.bg }}>
+                <div key={`${ci}-${bi}`} className="branch-card-modern" style={{'--accent': dc.txt, '--bg': dc.bg}}>
                   <div className="bc-deg">{deg}</div>
                   <div className="bc-name" style={{ textTransform: 'uppercase' }}>{br[1]}</div>
                 </div>
@@ -472,24 +472,6 @@ const App = () => {
   const [fillFilter, setFillFilter] = useState('');
   const [cutoffFilter, setCutoffFilter] = useState('');
   const [showFilters, setShowFilters] = useState(false);
-  const [isSearchFocused, setIsSearchFocused] = useState(false);
-  const [placeholderIndex, setPlaceholderIndex] = useState(0);
-
-  const placeholders = useMemo(() => [
-    "Search college (e.g. CEG, MIT, PSG...)",
-    "Search city (e.g. Chennai, Madurai, Trichy...)",
-    "Search college code (e.g. 1, 2, 2006...)",
-    "Search department (e.g. CSE, AI & DS, EEE...)",
-    "Search for Government Colleges...",
-    "Search for Autonomous institutions..."
-  ], []);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setPlaceholderIndex((prev) => (prev + 1) % placeholders.length);
-    }, 2500);
-    return () => clearInterval(interval);
-  }, [placeholders.length]);
 
   // Get unique cities for the dropdown
   const cityOptions = useMemo(() => {
@@ -573,9 +555,13 @@ const App = () => {
     return base;
   }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, deptLookup]);
 
+  const [deptDetailsCollege, setDeptDetailsCollege] = useState(TNEA_DATA[0]?.code || '');
+  const [deptSearchTerm, setDeptSearchTerm] = useState('');
+
   const goHome = () => { setView('home'); window.scrollTo(0, 0); };
   const openExplorer = (cat) => { setCategory(cat); setView('explorer'); window.scrollTo(0, 0); };
-  const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0, 0); };
+  const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0,0); };
+  const openDeptDetails = (code = TNEA_DATA[0]?.code) => { setDeptDetailsCollege(code); setDeptSearchTerm(''); setView('dept-details'); window.scrollTo(0, 0); };
 
   return (
     <div className="root">
@@ -590,10 +576,10 @@ const App = () => {
               <h1 className="hero-h1">Find Your <span className="h1-accent">Perfect College</span></h1>
               <p className="hero-p">Explore cutoff data, seats, and verified institution details for 2025.</p>
             </div>
-            {/* Mentora AI Guidance Section */}
+            {/* Premium AI Guidance Bottom Bar */}
             <div className="home-bottom-actions">
               <div className="ba-group">
-                <span className="ba-label">Mentora · AI Career Counselor</span>
+                <span className="ba-label">Mentora AI · Powered by Claude 4.6</span>
                 <div className="ba-btns">
                   <motion.button className="ba-btn" onClick={() => openAI('opportunities')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Zap size={16} />
@@ -634,50 +620,35 @@ const App = () => {
             <div className="explorer-inner">
               <button className="back-pill" onClick={goHome}><ChevronLeft size={16} /> Back</button>
               <div className="exp-header">
-                <h1 className="exp-title">{category === 'anna' ? 'Anna University (TNEA)' : 'Universities'}</h1>
-                <span className="live-badge"><Zap size={13} /> Live 2025</span>
-              </div>
-              <div className="filter-bar">
-                <div className="search-wrap">
-                  <Search size={16} className="si" />
-                  <input
-                    className="search-inp"
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                    onFocus={() => setIsSearchFocused(true)}
-                    onBlur={() => setIsSearchFocused(false)}
-                  />
-                  {!searchTerm && !isSearchFocused && (
-                    <div className="placeholder-container">
-                      <AnimatePresence mode="wait">
-                        <motion.span
-                          key={placeholderIndex}
-                          initial={{ y: 15, opacity: 0 }}
-                          animate={{ y: 0, opacity: 1 }}
-                          exit={{ y: -15, opacity: 0 }}
-                          transition={{ duration: 0.3, ease: "easeOut" }}
-                          className="placeholder-text"
-                        >
-                          {placeholders[placeholderIndex]}
-                        </motion.span>
-                      </AnimatePresence>
-                    </div>
+                <div>
+                  <h1 className="exp-title">{category === 'anna' ? 'Anna University (TNEA)' : 'Universities'}</h1>
+                </div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                  <span className="live-badge"><Zap size={13} /> Live 2025</span>
+                  {category === 'anna' && (
+                    <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
+                      <BookOpen size={16} />
+                      <span>EXPLORE DEPARTMENTS</span>
+                    </button>
                   )}
                 </div>
+              </div>
+              <div className="filter-bar">
+                <div className="search-wrap"><Search size={16} className="si" /><input className="search-inp" placeholder="Search college, city, code or department..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} /></div>
                 <div className="filter-tabs-row">
                   <div className="filter-tabs">
-                    <button className={`ftab ${subType === '' ? 'ftab-on' : ''}`} onClick={() => setSubType('')}>All ({category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})</button>
-                    {category === 'anna'
+                    <button className={`ftab ${subType===''?'ftab-on':''}`} onClick={()=>setSubType('')}>All ({category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})</button>
+                    {category === 'anna' 
                       ? [
-                        ['university_dept', '🏛️ University Department'],
-                        ['government', '🏢 Government Colleges'],
-                        ['govt_aided', '🤝 Government Aided'],
-                        ['cecri_cipet', '🔬 CECRI & CIPET'],
-                        ['constituent', '🎓 Constituent Colleges'],
-                        ['autonomous', '⭐ Autonomous Colleges'],
-                        ['non_autonomous', '📋 Non-Autonomous']
-                      ].map(([v, l]) => <button key={v} className={`ftab ${subType === v ? 'ftab-on' : ''}`} onClick={() => setSubType(v)}>{l}</button>)
-                      : [['deemed', 'Deemed University'], ['private', 'Private University']].map(([v, l]) => <button key={v} className={`ftab ${subType === v ? 'ftab-on' : ''}`} onClick={() => setSubType(v)}>{l}</button>)
+                          ['university_dept','🏛️ University Department'],
+                          ['government','🏢 Government Colleges'],
+                          ['govt_aided','🤝 Government Aided'],
+                          ['cecri_cipet','🔬 CECRI & CIPET'],
+                          ['constituent','🎓 Constituent Colleges'],
+                          ['autonomous','⭐ Autonomous Colleges'],
+                          ['non_autonomous','📋 Non-Autonomous']
+                        ].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
+                      : [['deemed','Deemed University'],['private','Private University']].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
                     }
                   </div>
                   {category === 'anna' && (
@@ -725,24 +696,29 @@ const App = () => {
               </div>
               <div className="results-info">
                 <span className="results-count">{filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found</span>
-                {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({ 'university_dept': 'University Department', 'government': 'Government Colleges', 'govt_aided': 'Government Aided', 'cecri_cipet': 'CECRI & CIPET', 'constituent': 'Constituent Colleges', 'autonomous': 'Autonomous Colleges', 'non_autonomous': 'Non-Autonomous' })[subType]}<X size={12} onClick={() => setSubType('')} /></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={() => setCityFilter('')} /></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={() => setFillFilter('')} /></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={() => setCutoffFilter('')} /></span>}</span>}
+                {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({'university_dept':'University Department','government':'Government Colleges','govt_aided':'Government Aided','cecri_cipet':'CECRI & CIPET','constituent':'Constituent Colleges','autonomous':'Autonomous Colleges','non_autonomous':'Non-Autonomous'})[subType]}<X size={12} onClick={()=>setSubType('')}/></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={()=>setCityFilter('')}/></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={()=>setFillFilter('')}/></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={()=>setCutoffFilter('')}/></span>}</span>}
               </div>
               <div className="card-list">
                 {filteredColleges.map(c => {
                   const uid = c.code || c.name;
                   return (
-                    <CollegeCard
-                      key={uid}
-                      college={c}
-                      category={category}
-                      isExpanded={expandedCollege === uid}
-                      onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
-                      onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
+                    <CollegeCard 
+                      key={uid} 
+                      college={c} 
+                      category={category} 
+                      isExpanded={expandedCollege === uid} 
+                      onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)} 
+                      onOpenQuery={(name) => setQueryModal({ open: true, college: name })} 
                     />
                   );
                 })}
               </div>
             </div>
+          </motion.main>
+        )}
+        {view === 'dept-details' && (
+          <motion.main key="dept-details" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <DepartmentDetailsPage onBack={() => setView('explorer')} />
           </motion.main>
         )}
         {view === 'ai-counselor' && (
@@ -751,7 +727,7 @@ const App = () => {
           </motion.main>
         )}
       </AnimatePresence>
-      <QueryModal isOpen={queryModal.open} onClose={() => setQueryModal({ open: false, college: '' })} collegeName={queryModal.college} />
+      <QueryModal isOpen={queryModal.open} onClose={()=>setQueryModal({open:false, college:''})} collegeName={queryModal.college} />
     </div>
   );
 };
@@ -918,7 +894,7 @@ Keep it snappy and very easy to scan.`;
       };
 
       const apiBase = process.env.REACT_APP_API_URL || "";
-
+      
       try {
         const res = await fetch(`${apiBase}/api/chat`, {
           method: "POST",
@@ -944,7 +920,7 @@ Keep it snappy and very easy to scan.`;
     setMessages(newMessages);
     setIsTyping(true);
 
-    // Map internal {role, text} to Mentora's {role, content}
+    // Map internal {role, text} to Claude's {role, content}
     const apiMessages = newMessages.map(m => ({
       role: m.role === 'ai' ? 'assistant' : 'user',
       content: m.text
@@ -958,7 +934,7 @@ Keep it snappy and very easy to scan.`;
 
     try {
       const res = await fetch(`${apiBase}/api/chat`, {
-        method: "POST",
+        method: "POST", 
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ system_prompt: systemPrompt, messages: apiMessages }),
       });
@@ -994,7 +970,7 @@ Keep it snappy and very easy to scan.`;
         {/* Only show step tracker AFTER login */}
         {phase !== 'otp' && (
           <div className="cp-steps">
-            {['Verify', ...questions.map((_, i) => `Q${i + 1}`), 'Analysis'].map((s, i) => {
+            {['Verify', ...questions.map((_, i) => `Q${i+1}`), 'Analysis'].map((s, i) => {
               const done = (phase === 'quiz' && i < qIndex + 1) || (phase === 'analyzing' || phase === 'chat');
               const active = (phase === 'quiz' && i === qIndex + 1);
               return (
@@ -1016,7 +992,7 @@ Keep it snappy and very easy to scan.`;
         )}
 
         <div className="cp-sidebar-footer">
-          <div className="cp-ai-brand"><span className="ai-live-dot" style={{ background: cfg.color }} /> Mentora Engine · 2025 Prediction</div>
+          <div className="cp-ai-brand"><span className="ai-live-dot" style={{ background: cfg.color }} /> Claude 4.6 · Anthropic</div>
         </div>
       </div>
 
@@ -1091,9 +1067,9 @@ Keep it snappy and very easy to scan.`;
               {/* Chat Header */}
               <div className="cp-chat-top">
                 <div className="cp-chat-top-left">
-                  <div className="mentora-badge">
-                    <span className="mentora-dot" />
-                    <span>Mentora AI</span>
+                  <div className="claude-badge">
+                    <span className="claude-dot" />
+                    <span>Claude AI</span>
                   </div>
                   <h2 className="cp-chat-title">Your Personalized Analysis</h2>
                 </div>
@@ -1106,11 +1082,11 @@ Keep it snappy and very easy to scan.`;
               <div className="cp-messages" ref={chatRef}>
                 {isTyping && messages.length === 0 && (
                   <div className="cp-analyzing-state">
-                    <div className="mentora-thinking">
-                      <div className="mentora-think-ring" style={{ borderTopColor: cfg.color }} />
-                      <div className="mentora-think-ring inner" style={{ borderTopColor: cfg.color, opacity: 0.4 }} />
+                    <div className="claude-thinking">
+                      <div className="claude-think-ring" style={{ borderTopColor: cfg.color }} />
+                      <div className="claude-think-ring inner" style={{ borderTopColor: cfg.color, opacity: 0.4 }} />
                     </div>
-                    <p className="cp-analyzing-text">Mentora is analyzing your profile...</p>
+                    <p className="cp-analyzing-text">Claude is analyzing your profile...</p>
                     <span className="cp-analyzing-sub">Generating personalized recommendations</span>
                   </div>
                 )}
@@ -1123,7 +1099,7 @@ Keep it snappy and very easy to scan.`;
                     className={`cp-msg-row ${m.role}`}
                   >
                     {m.role === 'ai' && (
-                      <div className="cp-avatar mentora-avatar">
+                      <div className="cp-avatar claude-avatar">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                           <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
                         </svg>
@@ -1131,13 +1107,13 @@ Keep it snappy and very easy to scan.`;
                     )}
                     <div className={`cp-bubble ${m.role === 'ai' ? 'ai-bubble' : 'user-bubble'}`}
                       style={m.role === 'user' ? { background: `linear-gradient(135deg, ${cfg.color}, #8b5cf6)` } : {}}>
-                      {m.role === 'ai' ? <MentoraMessage text={m.text} color={cfg.color} /> : m.text}
+                      {m.role === 'ai' ? <ClaudeMessage text={m.text} color={cfg.color} /> : m.text}
                     </div>
                   </motion.div>
                 ))}
                 {isTyping && messages.length > 0 && (
                   <div className="cp-msg-row ai">
-                    <div className="cp-avatar mentora-avatar">
+                    <div className="cp-avatar claude-avatar">
                       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white" />
                       </svg>
@@ -1151,7 +1127,7 @@ Keep it snappy and very easy to scan.`;
               <div className="cp-input-bar">
                 <div className="cp-input-wrap">
                   <input
-                    placeholder="Ask Mentora anything about your analysis..."
+                    placeholder="Ask Claude anything about your analysis..."
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleSend()}
@@ -1176,8 +1152,8 @@ Keep it snappy and very easy to scan.`;
   );
 };
 
-/* ── MENTORA MESSAGE FORMATTER ─────────────────────────── */
-const MentoraMessage = ({ text, color }) => {
+/* ── CLAUDE MESSAGE FORMATTER ─────────────────────────── */
+const ClaudeMessage = ({ text, color }) => {
   if (!text) return null;
 
   // Parse the text into blocks
@@ -1186,11 +1162,22 @@ const MentoraMessage = ({ text, color }) => {
   let i = 0;
 
   while (i < lines.length) {
-    const line = lines[i];
+    let line = lines[i];
 
-    // Bold heading like **Department Name** or ## Heading
-    if (/^\*\*(.+)\*\*\s*$/.test(line) || /^#{1,3}\s+(.+)/.test(line)) {
-      const content = line.replace(/^\*\*|\*\*$/g, '').replace(/^#{1,3}\s+/, '');
+    // Table parsing
+    if (line.trim().startsWith('|')) {
+      const tableRows = [];
+      while (i < lines.length && lines[i].trim().startsWith('|')) {
+        tableRows.push(lines[i]);
+        i++;
+      }
+      blocks.push({ type: 'table', content: tableRows });
+      continue;
+    }
+
+    // Bold heading or # Heading (up to H6)
+    if (/^\*\*(.+)\*\*\s*$/.test(line) || /^#{1,6}\s+(.+)/.test(line)) {
+      const content = line.replace(/^\*\*|\*\*$/g, '').replace(/^#{1,6}\s+/, '');
       blocks.push({ type: 'heading', content });
     }
     // Numbered list item
@@ -1202,6 +1189,10 @@ const MentoraMessage = ({ text, color }) => {
     else if (/^[-•*]\s+/.test(line)) {
       const content = line.replace(/^[-•*]\s+/, '');
       blocks.push({ type: 'bullet', content: renderInline(content) });
+    }
+    // Horizontal Rule
+    else if (/^---+$/.test(line.trim())) {
+      blocks.push({ type: 'hr' });
     }
     // Empty line
     else if (line.trim() === '') {
@@ -1219,12 +1210,37 @@ const MentoraMessage = ({ text, color }) => {
   while (blocks.length && blocks[blocks.length - 1].type === 'spacer') blocks.pop();
 
   return (
-    <div className="mentora-msg-body">
+    <div className="claude-msg-body">
       {blocks.map((block, idx) => {
         if (block.type === 'heading') {
           return (
             <div key={idx} className="cm-heading" style={{ borderLeftColor: color }}>
-              {block.content}
+              <span dangerouslySetInnerHTML={{ __html: renderInline(block.content) }} />
+            </div>
+          );
+        }
+        if (block.type === 'table') {
+          return (
+            <div key={idx} style={{ overflowX: 'auto', marginBottom: '16px', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', textAlign: 'left' }}>
+                <tbody>
+                  {block.content.map((row, rIdx) => {
+                    if (/^[\s|:-]+$/.test(row)) return null; 
+                    let cells = row.split('|').map(c => c.trim());
+                    if (cells.length > 0 && cells[0] === '') cells.shift();
+                    if (cells.length > 0 && cells[cells.length - 1] === '') cells.pop();
+                    
+                    return (
+                      <tr key={rIdx} style={{ borderBottom: '1px solid #e2e8f0', background: rIdx === 0 ? '#f8fafc' : 'white' }}>
+                        {cells.map((cell, cIdx) => {
+                          const Tag = rIdx === 0 ? 'th' : 'td';
+                          return <Tag key={cIdx} style={{ padding: '12px 16px', fontWeight: rIdx === 0 ? 600 : 400, color: rIdx === 0 ? '#0f172a' : '#1e293b' }} dangerouslySetInnerHTML={{ __html: renderInline(cell) }} />
+                        })}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
             </div>
           );
         }
@@ -1243,6 +1259,9 @@ const MentoraMessage = ({ text, color }) => {
             </div>
           );
         }
+        if (block.type === 'hr') {
+          return <hr key={idx} style={{ border: 'none', borderTop: '2px dashed #cbd5e1', margin: '20px 0' }} />;
+        }
         if (block.type === 'spacer') {
           return <div key={idx} className="cm-spacer" />;
         }
@@ -1250,6 +1269,246 @@ const MentoraMessage = ({ text, color }) => {
           <p key={idx} className="cm-para" dangerouslySetInnerHTML={{ __html: block.content }} />
         );
       })}
+    </div>
+  );
+};
+
+const DepartmentDetailsPage = ({ onBack }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDept, setSelectedDept] = useState(null);
+
+  const [aiProgress, setAiProgress] = useState(0);
+  const [aiAnalysis, setAiAnalysis] = useState(null);
+  const [aiError, setAiError] = useState(null);
+
+  const normalizeDeg = (raw) => {
+    const d = String(raw).trim().toUpperCase().replace(/[.\s]/g, '');
+    if (d === 'BE') return 'B.E';
+    if (d === 'BTECH') return 'B.Tech';
+    if (d === 'ME') return 'M.E';
+    if (d === 'MTECH') return 'M.Tech';
+    return raw;
+  };
+
+  const allUniqueDepartments = useMemo(() => {
+    const map = {};
+    Object.entries(TNEA_COURSES_INFO).forEach(([code, cats]) => {
+      (cats || []).forEach(cat => {
+        (cat.branches || []).forEach(b => {
+          const deg = normalizeDeg(b[0]);
+          const key = `${deg} - ${b[1]}`;
+          if (!map[key]) {
+            map[key] = { id: key, degree: deg, name: b[1], colleges: new Set() };
+          }
+          map[key].colleges.add(String(code));
+        });
+      });
+    });
+    return Object.values(map).map(d => ({ ...d, colleges: Array.from(d.colleges) })).sort((a, b) => a.name.localeCompare(b.name));
+  }, []);
+
+  const filteredDepts = useMemo(() => {
+    const term = searchTerm.trim().toLowerCase();
+    if (!term) return allUniqueDepartments;
+    return allUniqueDepartments.filter(d => d.name.toLowerCase().includes(term) || d.degree.toLowerCase().includes(term));
+  }, [allUniqueDepartments, searchTerm]);
+
+  useEffect(() => {
+    if (selectedDept) {
+      setAiProgress(0);
+      setAiAnalysis(null);
+      setAiError(null);
+      let progress = 0;
+      const interval = setInterval(() => {
+        setAiProgress(prev => {
+          if (prev >= 98) return 98;
+          const increment = prev < 50 ? 5 : prev < 80 ? 3 : 1;
+          return prev + increment;
+        });
+      }, 400);
+      
+      const fetchAi = async () => {
+        try {
+          const apiBase = process.env.REACT_APP_API_URL || "";
+          const payload = {
+            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response without word limits. Address: 1) What this department is about, 2) Unique Features & Scope, 3) Average & Expected Salary, 4) Generalized Year-wise Syllabus overview. Use markdown for headings, bolding, and bullets.",
+            messages: [{ role: 'user', content: `Please provide full comprehensive details about the ${selectedDept.degree} ${selectedDept.name} department.` }]
+          };
+          const res = await fetch(`${apiBase}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json();
+          if (!res.ok) throw new Error(data.error || "Connection failed");
+          setAiProgress(100);
+          clearInterval(interval);
+          setAiAnalysis(data.reply);
+        } catch (err) {
+          clearInterval(interval);
+          setAiError(err.message);
+        }
+      };
+      fetchAi();
+      return () => clearInterval(interval);
+    }
+  }, [selectedDept]);
+
+  const sortedColleges = useMemo(() => {
+    if (!selectedDept) return [];
+    const cObjects = selectedDept.colleges.map(c => TNEA_DATA.find(t => String(t.code) === c)).filter(Boolean);
+    return cObjects.sort((a, b) => {
+      const r1a = ['university_dept', 'government', 'govt_aided'].includes(a.type) ? 1 : 0;
+      const r1b = ['university_dept', 'government', 'govt_aided'].includes(b.type) ? 1 : 0;
+      if (r1a !== r1b) return r1b - r1a;
+      
+      const isSpecial = (name) => {
+        const n = String(name).split(',')[0].toLowerCase().replace(/\s+/g, '');
+        return n.includes('saveetha') || n.includes('sairam') || n.includes('rajalashkmi') || n.includes('rajalakshmi') || n.includes('jeppiar') || n.includes('jeppiaar') || n.includes('kumaraguru');
+      };
+      const r2a = isSpecial(a.name) ? 1 : 0;
+      const r2b = isSpecial(b.name) ? 1 : 0;
+      if (r2a !== r2b) return r2b - r2a;
+      
+      const cfa = a.cutoff && a.cutoff >= 170 ? 1 : 0;
+      const cfb = b.cutoff && b.cutoff >= 170 ? 1 : 0;
+      if (cfa !== cfb) return cfb - cfa;
+      
+      return (b.cutoff || 0) - (a.cutoff || 0);
+    });
+  }, [selectedDept]);
+
+  if (selectedDept) {
+    return (
+      <div className="root" style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', gap: '24px', flex: 1 }}>
+          <button className="back-pill" onClick={() => setSelectedDept(null)} style={{ alignSelf: 'flex-start' }}>
+            <ChevronLeft size={16} /> Back to Search
+          </button>
+          
+          <div style={{ background: '#fff', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#6366f1', marginBottom: 8 }}>{selectedDept.degree}</div>
+            <h1 style={{ fontSize: '2rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>{selectedDept.name}</h1>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
+            {/* Colleges Part */}
+            <div style={{ flex: '1 1 450px', background: '#f8fafc', borderRadius: '16px', padding: '24px', maxHeight: '700px', overflowY: 'auto', border: '1px solid #e2e8f0' }}>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+                <Building2 size={20} color="#64748b" /> Colleges Offering This
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+                {sortedColleges.map((c, idx) => (
+                  <div key={idx} style={{ background: '#fff', borderRadius: '8px', padding: '16px', border: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                      <div style={{ fontWeight: 600, color: '#1e293b' }}>{c.name}</div>
+                      <div style={{ fontSize: '0.85rem', color: '#64748b', marginTop: 4 }}>Code: {c.code} • {c.type ? c.type.replace('_',' ').toUpperCase() : 'UNKNOWN'}</div>
+                    </div>
+                    {c.cutoff && <div style={{ background: '#f1f5f9', padding: '4px 8px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 600, color: '#0f172a' }}>{c.cutoff} Avg</div>}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mentora AI Details Part */}
+            <div style={{ flex: '1 1 500px', background: '#fff', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, color: '#1e293b' }}>
+                <Sparkles size={20} color="#8b5cf6" /> Mentora AI Analysis
+              </h2>
+              
+              {!aiAnalysis && !aiError && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, padding: '40px 0' }}>
+                  <div className="claude-thinking">
+                    <div className="claude-think-ring" style={{ borderTopColor: '#8b5cf6' }} />
+                    <div className="claude-think-ring inner" style={{ borderTopColor: '#8b5cf6', opacity: 0.4 }} />
+                  </div>
+                  <div style={{ fontWeight: 600, color: '#475569' }}>MENTORA AI THINKING...</div>
+                  <div style={{ width: '100%', maxWidth: '300px', height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
+                    <motion.div initial={{ width: 0 }} animate={{ width: `${aiProgress}%` }} style={{ height: '100%', background: 'linear-gradient(90deg, #6366f1, #8b5cf6)', borderRadius: '3px' }} transition={{ ease: "easeInOut" }} />
+                  </div>
+                  <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{Math.round(aiProgress)}% complete</div>
+                </div>
+              )}
+
+              {aiError && (
+                <div style={{ color: '#ef4444', padding: '16px', background: '#fef2f2', borderRadius: '8px' }}>
+                  Failed to load insights: {aiError}
+                </div>
+              )}
+
+              {aiAnalysis && (
+                <div className="ai-insight-content" style={{ maxHeight: '800px', overflowY: 'auto' }}>
+                  <ClaudeMessage text={aiAnalysis} color="#8b5cf6" />
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="root" style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+      <button className="back-pill" onClick={onBack} style={{ marginBottom: 24 }}><ChevronLeft size={16} /> Back</button>
+      
+      <div style={{ marginBottom: 24 }}>
+        <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Explore Departments</h1>
+        <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
+      </div>
+
+      <div className="search-wrap" style={{ marginBottom: 24, padding: '8px', background: '#fff', borderRadius: '12px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
+        <Search size={20} className="si" style={{ marginLeft: 8 }} />
+        <input
+          autoFocus
+          className="search-inp"
+          style={{ fontSize: '1.1rem', padding: '12px' }}
+          placeholder="Search by degree (e.g. B.Tech) or branch name (e.g. Artificial Intelligence)..."
+          value={searchTerm}
+          onChange={e => setSearchTerm(e.target.value)}
+        />
+      </div>
+
+      {filteredDepts.length === 0 ? (
+        <div className="dd-empty-state" style={{ background: '#fff', borderRadius: '16px' }}>
+          <div className="dd-empty-icon">🔍</div>
+          <h3>No matching branches found</h3>
+          <p>Try refining your search term.</p>
+        </div>
+      ) : (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '16px' }}>
+          {filteredDepts.map(branch => (
+            <motion.button
+              key={branch.id}
+              onClick={() => setSelectedDept(branch)}
+              whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }}
+              whileTap={{ scale: 0.98 }}
+              style={{
+                background: '#fff',
+                border: '1px solid #e2e8f0',
+                borderRadius: '12px',
+                padding: '20px',
+                textAlign: 'left',
+                display: 'flex',
+                cursor: 'pointer',
+                flexDirection: 'column',
+                gap: 8,
+                transition: 'border-color 0.2s',
+              }}
+            >
+              <div style={{ fontSize: '0.9rem', fontWeight: 700, color: '#6366f1', background: 'rgba(99,102,241,0.1)', padding: '4px 10px', borderRadius: '6px', alignSelf: 'flex-start' }}>
+                {branch.degree}
+              </div>
+              <div style={{ fontSize: '1.1rem', fontWeight: 700, color: '#1e293b', lineHeight: 1.3 }}>
+                {branch.name}
+              </div>
+              <div style={{ fontSize: '0.85rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: 6, marginTop: 'auto', paddingTop: 8 }}>
+                <Building2 size={14} /> Available in {branch.colleges.length} colleges
+              </div>
+            </motion.button>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
