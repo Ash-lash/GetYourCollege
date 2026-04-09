@@ -565,7 +565,6 @@ const App = () => {
 
   return (
     <div className="root">
-      <Antigravity />
       <div className="noise-overlay" />
       <Navbar onHome={goHome} />
       <AnimatePresence mode="wait">
@@ -579,7 +578,7 @@ const App = () => {
             {/* Premium AI Guidance Bottom Bar */}
             <div className="home-bottom-actions">
               <div className="ba-group">
-                <span className="ba-label">Mentora AI · Powered by Claude 4.6</span>
+                <span className="ba-label">Mentora AI · Intelligent Guidance</span>
                 <div className="ba-btns">
                   <motion.button className="ba-btn" onClick={() => openAI('opportunities')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                     <Zap size={16} />
@@ -1079,7 +1078,7 @@ Keep it snappy and very easy to scan.`;
                 <div className="cp-chat-top-left">
                   <div className="claude-badge">
                     <span className="claude-dot" />
-                    <span>Claude AI</span>
+                    <span>Mentora AI</span>
                   </div>
                   <h2 className="cp-chat-title">Your Personalized Analysis</h2>
                 </div>
@@ -1137,7 +1136,7 @@ Keep it snappy and very easy to scan.`;
               <div className="cp-input-bar">
                 <div className="cp-input-wrap">
                   <input
-                    placeholder="Ask Claude anything about your analysis..."
+                    placeholder="Ask Mentora AI anything about your analysis..."
                     value={input}
                     onChange={e => setInput(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleSend()}
@@ -1290,6 +1289,7 @@ const DepartmentDetailsPage = ({ onBack }) => {
   const [aiProgress, setAiProgress] = useState(0);
   const [aiAnalysis, setAiAnalysis] = useState(null);
   const [aiError, setAiError] = useState(null);
+  const [showAllColleges, setShowAllColleges] = useState(false);
 
   const normalizeDeg = (raw) => {
     const d = String(raw).trim().toUpperCase().replace(/[.\s]/g, '');
@@ -1306,9 +1306,11 @@ const DepartmentDetailsPage = ({ onBack }) => {
       (cats || []).forEach(cat => {
         (cat.branches || []).forEach(b => {
           const deg = normalizeDeg(b[0]);
-          const key = `${deg} - ${b[1]}`;
+          // Normalise name to UPPER CASE so case-variants merge into one entry
+          const nameUpper = String(b[1]).trim().toUpperCase();
+          const key = `${deg} - ${nameUpper}`;
           if (!map[key]) {
-            map[key] = { id: key, degree: deg, name: b[1], colleges: new Set() };
+            map[key] = { id: key, degree: deg, name: nameUpper, colleges: new Set() };
           }
           map[key].colleges.add(String(code));
         });
@@ -1341,7 +1343,7 @@ const DepartmentDetailsPage = ({ onBack }) => {
         try {
           const apiBase = process.env.REACT_APP_API_URL || "";
           const payload = {
-            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response. Address: 1) What this department is, 2) Unique Features & Scope, 3) Average Salary, 4) Generalized Year-wise Syllabus overview. Use markdown. Keep your response around 400-450 words to ensure fast loading.",
+            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response. Address: 1) What this department is, 2) Unique Features & Scope, 3) Average Salary, 4) Generalized Year-wise Syllabus overview, 5) Essential skillsets to be learned to get placed, and 6) Who should join this department and who should not. Use markdown. Keep your response around 450-500 words to ensure fast loading.",
             messages: [{ role: 'user', content: `Please provide full comprehensive details about the ${selectedDept.degree} ${selectedDept.name} department.` }]
           };
           const res = await fetch(`${apiBase}/api/chat`, {
@@ -1394,65 +1396,200 @@ const DepartmentDetailsPage = ({ onBack }) => {
   }, [selectedDept]);
 
   if (selectedDept) {
-    return (
-      <div className="root" style={{ width: '100%', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <div style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', gap: '24px', flex: 1 }}>
-          <button className="back-pill" onClick={() => setSelectedDept(null)} style={{ alignSelf: 'flex-start' }}>
-            <ChevronLeft size={16} /> Back to Search
-          </button>
-          
-          <div style={{ background: '#fff', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-            <div style={{ fontSize: '1.25rem', fontWeight: 700, color: '#6366f1', marginBottom: 8 }}>{selectedDept.degree}</div>
-            <h1 style={{ fontSize: '2rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>{selectedDept.name}</h1>
-          </div>
+    // ── College tier helpers ───────────────────────────
+    const TIER1_TYPES = ['university_dept', 'government', 'govt_aided'];
+    const isSpecialCollege = (name) => {
+      const n = String(name).toLowerCase().replace(/\s+/g,'');
+      return ['saveetha','sairam','rajalakshmi','rajalashkmi','jeppiar','jeppiaar','kumaraguru'].some(k => n.includes(k));
+    };
+    const tier1 = sortedColleges.filter(c => TIER1_TYPES.includes(c.type));
+    const tier2 = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && isSpecialCollege(c.name));
+    const tier3_preview = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170).slice(0, 4);
+    const remaining = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !(isSpecialCollege(c.name)) && !(sortedColleges.filter(x => !TIER1_TYPES.includes(x.type) && !isSpecialCollege(x.name) && x.cutoff >= 170).slice(0,4).includes(c)));
+    const initialColleges = [...tier1, ...tier2, ...tier3_preview];
+    const displayedColleges = showAllColleges ? sortedColleges : initialColleges;
 
-          <div style={{ display: 'flex', flexDirection: 'row', gap: '24px', alignItems: 'flex-start', flexWrap: 'wrap' }}>
-            {/* Colleges Part */}
-            <div style={{ flex: '1 1 450px', background: '#f8fafc', borderRadius: '16px', padding: '24px', maxHeight: '700px', overflowY: 'auto', border: '1px solid #e2e8f0' }}>
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-                <Building2 size={20} color="#64748b" /> Colleges Offering This
-              </h2>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                {sortedColleges.map((c, idx) => (
-                  <div key={idx} style={{ background: '#fff', borderRadius: '8px', padding: '16px', border: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <div>
-                      <div style={{ fontWeight: 600, color: '#1e293b' }}>{c.name}</div>
-                      <div style={{ fontSize: '0.85rem', color: '#64748b', marginTop: 4 }}>Code: {c.code} • {c.type ? c.type.replace('_',' ').toUpperCase() : 'UNKNOWN'}</div>
-                    </div>
-                    {c.cutoff && <div style={{ background: '#f1f5f9', padding: '4px 8px', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 600, color: '#0f172a' }}>{c.cutoff} Avg</div>}
-                  </div>
-                ))}
-              </div>
+    // ── Type badge config ──────────────────────────────
+    const TYPE_CFG = {
+      university_dept: { label: 'UNIVERSITY DEPT', color: '#f59e0b', bg: 'rgba(245,158,11,0.1)', border: 'rgba(245,158,11,0.25)' },
+      government:      { label: 'GOVERNMENT',      color: '#3b82f6', bg: 'rgba(59,130,246,0.1)', border: 'rgba(59,130,246,0.25)' },
+      govt_aided:      { label: 'GOVT AIDED',       color: '#10b981', bg: 'rgba(16,185,129,0.1)', border: 'rgba(16,185,129,0.25)' },
+      autonomous:      { label: 'AUTONOMOUS',       color: '#14b8a6', bg: 'rgba(20,184,166,0.1)', border: 'rgba(20,184,166,0.25)' },
+      constituent:     { label: 'CONSTITUENT',      color: '#8b5cf6', bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)' },
+      non_autonomous:  { label: 'SELF-FINANCE',     color: '#64748b', bg: 'rgba(100,116,139,0.1)', border: 'rgba(100,116,139,0.2)' },
+    };
+    const getCfg = (type) => TYPE_CFG[type] || { label: (type||'').replace('_',' ').toUpperCase(), color: '#64748b', bg: 'rgba(100,116,139,0.08)', border: 'rgba(100,116,139,0.18)' };
+
+    return (
+      <div style={{ width: '100%', minHeight: '100vh', background: '#f8fafc' }}>
+
+        {/* ── HERO BANNER ── */}
+        <div style={{
+          background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4c1d95 100%)',
+          padding: '48px 32px 56px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          {/* decorative circles */}
+          <div style={{ position:'absolute', top:-60, right:-60, width:260, height:260, borderRadius:'50%', background:'rgba(139,92,246,0.15)', pointerEvents:'none' }} />
+          <div style={{ position:'absolute', bottom:-40, left:'30%', width:180, height:180, borderRadius:'50%', background:'rgba(99,102,241,0.12)', pointerEvents:'none' }} />
+          
+          <div style={{ maxWidth:1200, margin:'0 auto', position:'relative' }}>
+            <button className="back-pill" onClick={() => { setSelectedDept(null); setShowAllColleges(false); }} style={{ marginBottom:24, background:'rgba(255,255,255,0.12)', color:'#e0e7ff', border:'1px solid rgba(255,255,255,0.2)' }}>
+              <ChevronLeft size={16} /> Back to Departments
+            </button>
+
+            {/* Degree badge */}
+            <div style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(255,255,255,0.12)', backdropFilter:'blur(10px)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:30, padding:'6px 16px', marginBottom:16 }}>
+              <GraduationCap size={15} color="#c4b5fd" />
+              <span style={{ color:'#c4b5fd', fontWeight:700, fontSize:'0.85rem', letterSpacing:'0.08em' }}>{selectedDept.degree}</span>
             </div>
 
-            {/* Mentora AI Details Part */}
-            <div style={{ flex: '1 1 500px', background: '#fff', borderRadius: '16px', padding: '24px', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-              <h2 style={{ fontSize: '1.2rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16, color: '#1e293b' }}>
-                <Sparkles size={20} color="#8b5cf6" /> Mentora AI Analysis
+            <h1 style={{ fontSize:'clamp(1.8rem,4vw,2.8rem)', fontWeight:900, color:'#fff', margin:'0 0 20px', letterSpacing:'0.02em', lineHeight:1.1 }}>
+              {selectedDept.name}
+            </h1>
+
+            {/* Stat chips */}
+            <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
+              <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
+                <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#fff' }}>{sortedColleges.length}</span>
+                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>COLLEGES</span>
+              </div>
+              <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
+                <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#fff' }}>{tier1.length}</span>
+                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>GOVT / UNI</span>
+              </div>
+              <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
+                <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#a5f3fc' }}>170+</span>
+                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>CUTOFF TIER</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ── MAIN CONTENT ── */}
+        <div style={{ maxWidth:1100, margin:'0 auto', padding:'32px 24px', display:'flex', flexDirection:'column-reverse', gap:28 }}>
+
+          {/* ── MENTORA AI ANALYSIS (first) ── */}
+          <div>
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:16, flexWrap:'wrap', gap:8 }}>
+              <h2 style={{ fontSize:'1.1rem', fontWeight:700, color:'#0f172a', display:'flex', alignItems:'center', gap:8, margin:0 }}>
+                <Building2 size={18} color="#6366f1" /> Colleges Offering This Department
               </h2>
-              
+              <span style={{ fontSize:'0.8rem', color:'#94a3b8', fontWeight:500 }}>showing {displayedColleges.length} of {sortedColleges.length}</span>
+            </div>
+
+            <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
+              {displayedColleges.map((c, idx) => {
+                const cfg = getCfg(c.type);
+                return (
+                  <motion.div
+                    key={c.code || idx}
+                    initial={{ opacity:0, y:10 }}
+                    animate={{ opacity:1, y:0 }}
+                    transition={{ delay: idx < 10 ? idx * 0.04 : 0 }}
+                    style={{
+                      background:'#fff',
+                      border:'1px solid #e2e8f0',
+                      borderLeft: `4px solid ${cfg.color}`,
+                      borderRadius:'12px',
+                      padding:'14px 18px',
+                      display:'flex',
+                      alignItems:'center',
+                      gap:12,
+                      boxShadow:'0 1px 4px rgba(0,0,0,0.04)',
+                      overflow:'hidden',
+                    }}
+                  >
+                    {/* Rank bubble */}
+                    <div style={{ width:30, height:30, borderRadius:8, background:'#f1f5f9', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, fontWeight:700, fontSize:'0.78rem', color:'#64748b' }}>
+                      {idx+1}
+                    </div>
+
+                    <div style={{ flex:1, minWidth:0, overflow:'hidden' }}>
+                      <div style={{ fontWeight:600, color:'#1e293b', fontSize:'0.92rem', lineHeight:1.3 }}>{c.name}</div>
+                      <div style={{ fontSize:'0.76rem', color:'#94a3b8', marginTop:2 }}>Code {c.code} · {c.city || 'Tamil Nadu'}</div>
+                    </div>
+
+                    <div style={{ display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
+                      <span style={{ fontSize:'0.68rem', fontWeight:700, color: cfg.color, background: cfg.bg, border:`1px solid ${cfg.border}`, borderRadius:20, padding:'3px 10px', letterSpacing:'0.04em', whiteSpace:'nowrap' }}>
+                        {cfg.label}
+                      </span>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            {/* Load More */}
+            {!showAllColleges && remaining.length > 0 && (
+              <motion.button
+                onClick={() => setShowAllColleges(true)}
+                whileHover={{ scale:1.02, boxShadow:'0 8px 28px rgba(99,102,241,0.25)' }}
+                whileTap={{ scale:0.97 }}
+                style={{
+                  width:'100%', marginTop:16,
+                  background:'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color:'#fff', border:'none', borderRadius:12,
+                  padding:'14px', fontWeight:700, fontSize:'0.95rem',
+                  cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', gap:8,
+                }}
+              >
+                <ChevronDown size={18} /> Load {remaining.length} More Colleges
+              </motion.button>
+            )}
+            {showAllColleges && (
+              <motion.button
+                onClick={() => setShowAllColleges(false)}
+                whileHover={{ scale:1.02 }}
+                whileTap={{ scale:0.97 }}
+                style={{
+                  width:'100%', marginTop:16,
+                  background:'#f1f5f9', color:'#475569',
+                  border:'1px solid #e2e8f0', borderRadius:12,
+                  padding:'12px', fontWeight:600, fontSize:'0.9rem',
+                  cursor:'pointer',
+                }}
+              >
+                Show Less
+              </motion.button>
+            )}
+          </div>
+
+          {/* ── COLLEGE LIST (below AI) ── */}
+          <div style={{
+            background:'#fff', borderRadius:20,
+            boxShadow:'0 4px 24px rgba(0,0,0,0.07)',
+            border:'1px solid #e2e8f0', overflow:'hidden',
+          }}>
+            <div style={{ background:'linear-gradient(135deg,#6366f1,#8b5cf6)', padding:'18px 24px', display:'flex', alignItems:'center', gap:10 }}>
+              <Sparkles size={20} color="#fff" />
+              <div style={{ flex:1 }}>
+                <div style={{ color:'#fff', fontWeight:700, fontSize:'1rem' }}>Mentora AI Analysis</div>
+                <div style={{ color:'rgba(255,255,255,0.7)', fontSize:'0.75rem' }}>Intelligent AI Guidance</div>
+              </div>
+            </div>
+            <div style={{ padding:'24px' }}>
               {!aiAnalysis && !aiError && (
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16, padding: '40px 0' }}>
+                <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16, padding:'32px 0' }}>
                   <div className="claude-thinking">
-                    <div className="claude-think-ring" style={{ borderTopColor: '#8b5cf6' }} />
-                    <div className="claude-think-ring inner" style={{ borderTopColor: '#8b5cf6', opacity: 0.4 }} />
+                    <div className="claude-think-ring" style={{ borderTopColor:'#8b5cf6' }} />
+                    <div className="claude-think-ring inner" style={{ borderTopColor:'#8b5cf6', opacity:0.4 }} />
                   </div>
-                  <div style={{ fontWeight: 600, color: '#475569' }}>MENTORA AI THINKING...</div>
-                  <div style={{ width: '100%', maxWidth: '300px', height: '6px', background: '#e2e8f0', borderRadius: '3px', overflow: 'hidden' }}>
-                    <motion.div initial={{ width: 0 }} animate={{ width: `${aiProgress}%` }} style={{ height: '100%', background: 'linear-gradient(90deg, #6366f1, #8b5cf6)', borderRadius: '3px' }} transition={{ ease: "easeInOut" }} />
+                  <div style={{ fontWeight:600, color:'#475569', fontSize:'0.9rem' }}>MENTORA AI THINKING...</div>
+                  <div style={{ width:'100%', maxWidth:360, height:'6px', background:'#e2e8f0', borderRadius:'3px', overflow:'hidden' }}>
+                    <motion.div initial={{ width:0 }} animate={{ width:`${aiProgress}%` }} style={{ height:'100%', background:'linear-gradient(90deg,#6366f1,#8b5cf6)', borderRadius:'3px' }} transition={{ ease:'easeInOut' }} />
                   </div>
-                  <div style={{ fontSize: '0.8rem', color: '#64748b' }}>{Math.round(aiProgress)}% complete</div>
+                  <div style={{ fontSize:'0.78rem', color:'#94a3b8' }}>{Math.round(aiProgress)}% complete</div>
                 </div>
               )}
-
               {aiError && (
-                <div style={{ color: '#ef4444', padding: '16px', background: '#fef2f2', borderRadius: '8px' }}>
-                  Failed to load insights: {aiError}
+                <div style={{ color:'#ef4444', padding:'16px', background:'#fef2f2', borderRadius:'10px', fontSize:'0.88rem' }}>
+                  ⚠️ {aiError}
                 </div>
               )}
-
               {aiAnalysis && (
-                <div className="ai-insight-content" style={{ maxHeight: '800px', overflowY: 'auto' }}>
+                <div className="ai-insight-content">
                   <ClaudeMessage text={aiAnalysis} color="#8b5cf6" />
                 </div>
               )}
@@ -1472,16 +1609,108 @@ const DepartmentDetailsPage = ({ onBack }) => {
         <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
       </div>
 
-      <div className="search-wrap" style={{ marginBottom: 24, padding: '8px', background: '#fff', borderRadius: '12px', boxShadow: '0 2px 10px rgba(0,0,0,0.05)' }}>
-        <Search size={20} className="si" style={{ marginLeft: 8 }} />
-        <input
-          autoFocus
-          className="search-inp"
-          style={{ fontSize: '1.1rem', padding: '12px' }}
-          placeholder="Search by degree (e.g. B.Tech) or branch name (e.g. Artificial Intelligence)..."
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
-        />
+      <div style={{ marginBottom: 32, position: 'relative' }}>
+        <div style={{
+          position: 'relative',
+          borderRadius: '20px',
+          background: 'linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.08) 100%)',
+          padding: '2px',
+          boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+          transition: 'box-shadow 0.3s ease',
+        }}>
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            background: 'rgba(255,255,255,0.96)',
+            borderRadius: '18px',
+            backdropFilter: 'blur(12px)',
+            padding: '6px 16px 6px 20px',
+            gap: '14px',
+            border: '1px solid rgba(99,102,241,0.15)',
+          }}>
+            {/* Animated icon */}
+            <div style={{
+              width: 40, height: 40,
+              borderRadius: '12px',
+              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0,
+              boxShadow: '0 4px 12px rgba(99,102,241,0.35)',
+            }}>
+              <Search size={18} color="#fff" />
+            </div>
+
+            <input
+              autoFocus
+              style={{
+                flex: 1,
+                border: 'none',
+                outline: 'none',
+                background: 'transparent',
+                fontSize: '1.05rem',
+                fontWeight: 500,
+                color: '#1e293b',
+                padding: '10px 0',
+                letterSpacing: '0.01em',
+              }}
+              placeholder="Search degree (e.g. B.Tech) or branch (e.g. Artificial Intelligence)..."
+              value={searchTerm}
+              onChange={e => setSearchTerm(e.target.value)}
+            />
+
+            {/* Clear button */}
+            {searchTerm && (
+              <motion.button
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0, opacity: 0 }}
+                onClick={() => setSearchTerm('')}
+                style={{
+                  width: 28, height: 28,
+                  borderRadius: '50%',
+                  border: 'none',
+                  background: 'rgba(100,116,139,0.12)',
+                  color: '#64748b',
+                  cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                }}
+                whileHover={{ background: 'rgba(239,68,68,0.12)', color: '#ef4444', scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+              >
+                <X size={14} />
+              </motion.button>
+            )}
+
+            {/* Results pill */}
+            {searchTerm && (
+              <motion.div
+                initial={{ opacity: 0, x: 8 }}
+                animate={{ opacity: 1, x: 0 }}
+                style={{
+                  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color: '#fff',
+                  fontSize: '0.75rem',
+                  fontWeight: 700,
+                  padding: '4px 12px',
+                  borderRadius: '20px',
+                  flexShrink: 0,
+                  letterSpacing: '0.03em',
+                }}
+              >
+                {filteredDepts.length} results
+              </motion.div>
+            )}
+          </div>
+        </div>
+
+        {/* Hint text */}
+        {!searchTerm && (
+          <div style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 10, paddingLeft: 4, display: 'flex', gap: 16 }}>
+            <span>🎓 B.Tech · B.E · M.Tech · M.E</span>
+            <span>🔬 AI · Robotics · Civil · Biotech…</span>
+          </div>
+        )}
       </div>
 
       {filteredDepts.length === 0 ? (
@@ -1495,7 +1724,7 @@ const DepartmentDetailsPage = ({ onBack }) => {
           {filteredDepts.map(branch => (
             <motion.button
               key={branch.id}
-              onClick={() => setSelectedDept(branch)}
+              onClick={() => { setSelectedDept(branch); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               whileHover={{ y: -4, boxShadow: '0 8px 24px rgba(0,0,0,0.08)' }}
               whileTap={{ scale: 0.98 }}
               style={{
