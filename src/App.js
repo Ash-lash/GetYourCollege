@@ -11,9 +11,10 @@ import TNEA_PDF_INFO from './tnea_pdf_data.json';
 import TNEA_COURSES_INFO from './tnea_courses_data.json';
 import TNEA_MATRIX_DATA from './branch_matrix_data.json';
 import Antigravity from './components/Antigravity';
+import StudentRegistration from './components/StudentRegistration';
 
 /* ─────────────────── NAVBAR ─────────────────── */
-const Navbar = ({ onHome }) => (
+const Navbar = ({ onHome, onRegistration }) => (
   <nav className="navbar">
     <div className="nav-inner">
       <div className="brand" onClick={onHome} style={{ cursor: 'pointer' }}>
@@ -26,6 +27,8 @@ const Navbar = ({ onHome }) => (
         <button className="nav-link" onClick={onHome}>Home</button>
         <span className="nav-sep" />
         <a className="nav-cta" href="#explore">Explore</a>
+        <span className="nav-sep" />
+        <button className="nav-cta nav-register" onClick={onRegistration}>Register</button>
       </div>
     </div>
   </nav>
@@ -562,11 +565,12 @@ const App = () => {
   const openExplorer = (cat) => { setCategory(cat); setView('explorer'); window.scrollTo(0, 0); };
   const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0,0); };
   const openDeptDetails = (code = TNEA_DATA[0]?.code) => { setDeptDetailsCollege(code); setDeptSearchTerm(''); setView('dept-details'); window.scrollTo(0, 0); };
+  const openRegistration = () => { setView('registration'); window.scrollTo(0, 0); };
 
   return (
     <div className="root">
       <div className="noise-overlay" />
-      <Navbar onHome={goHome} />
+      <Navbar onHome={goHome} onRegistration={openRegistration} />
       <AnimatePresence mode="wait">
         {view === 'home' && (
           <motion.main key="home" className="home-main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -723,6 +727,11 @@ const App = () => {
         {view === 'ai-counselor' && (
           <motion.main key="ai-counselor" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
             <AICounselorPage mode={aiMode} onBack={goHome} />
+          </motion.main>
+        )}
+        {view === 'registration' && (
+          <motion.main key="registration" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <StudentRegistration onBack={goHome} />
           </motion.main>
         )}
       </AnimatePresence>
