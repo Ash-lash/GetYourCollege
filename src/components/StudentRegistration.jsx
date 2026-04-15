@@ -1,41 +1,64 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ChevronLeft, CheckCircle2, Phone, User, BookOpen, Building2, MessageSquare } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, CheckCircle2, Phone, User, BookOpen, Building2, MessageSquare, Zap, Shield } from 'lucide-react';
 
 const StudentRegistration = ({ onBack }) => {
+  const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState({
     name: '',
+    email: '',
     mobile: '',
     cutoff: '',
     college: '',
     counselling: '',
     remarks: ''
   });
-
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const validateForm = () => {
+  const steps = [
+    { title: 'Personal Details', icon: User },
+    { title: 'Academic Info', icon: BookOpen },
+    { title: 'Counselling', icon: MessageSquare },
+    { title: 'Additional Info', icon: Zap }
+  ];
+
+  const validateStep = (step) => {
     const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Please enter your name';
-    if (!formData.mobile.trim() || formData.mobile.length !== 10) newErrors.mobile = 'Enter valid 10-digit number';
-    if (!formData.counselling) newErrors.counselling = 'Please select Yes or No';
+    if (step === 0) {
+      if (!formData.name.trim()) newErrors.name = 'Name required';
+      if (!formData.email.trim()) newErrors.email = 'Email required';
+      if (!formData.mobile.trim() || formData.mobile.length !== 10) newErrors.mobile = 'Valid 10-digit number required';
+    } else if (step === 1) {
+      if (formData.cutoff && isNaN(parseFloat(formData.cutoff))) newErrors.cutoff = 'Enter valid score';
+    } else if (step === 2) {
+      if (!formData.counselling) newErrors.counselling = 'Select Yes or No';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
+  const handleNext = () => {
+    if (validateStep(currentStep)) {
+      if (currentStep < steps.length - 1) {
+        setCurrentStep(currentStep + 1);
+      }
+    }
+  };
+
+  const handlePrev = () => {
+    setCurrentStep(Math.max(0, currentStep - 1));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!validateForm()) return;
+    if (!validateStep(currentStep)) return;
 
     setLoading(true);
     try {
-      // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 1500));
       setSubmitted(true);
-      setTimeout(() => setSubmitted(false), 3000);
-      setFormData({ name: '', mobile: '', cutoff: '', college: '', counselling: '', remarks: '' });
     } catch (error) {
       console.error('Error:', error);
     } finally {
@@ -49,78 +72,76 @@ const StudentRegistration = ({ onBack }) => {
     if (errors[name]) setErrors(prev => ({ ...prev, [name]: '' }));
   };
 
-  const handleCounsellingChange = (value) => {
-    setFormData(prev => ({ ...prev, counselling: value }));
-    if (errors.counselling) setErrors(prev => ({ ...prev, counselling: '' }));
-  };
-
+  // Success State
   if (submitted) {
     return (
-      <motion.div
+      <motion.main
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        className="sr-container"
+        exit={{ opacity: 0 }}
+        style={{
+          minHeight: '100vh',
+          background: '#ffffff',
+          paddingTop: '100px',
+          paddingBottom: '40px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '20px'
+        }}
       >
         <motion.div
-          initial={{ scale: 0, rotateZ: -10 }}
+          initial={{ scale: 0, rotateZ: -20 }}
           animate={{ scale: 1, rotateZ: 0 }}
           transition={{ type: 'spring', stiffness: 100 }}
-          className="sr-success-card"
+          style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(20px)',
+            borderRadius: '24px',
+            padding: '60px 40px',
+            textAlign: 'center',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            maxWidth: '500px',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)'
+          }}
         >
-          <CheckCircle2 size={64} className="sr-check-icon" />
-          <h2 className="sr-success-title">Thank You!</h2>
-          <p className="sr-success-text">Your registration has been submitted successfully. Our team will contact you soon.</p>
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+            style={{ marginBottom: '20px', color: '#10b981' }}
+          >
+            <CheckCircle2 size={80} />
+          </motion.div>
+          <h2 style={{ color: '#fff', fontSize: '28px', fontWeight: '700', marginBottom: '10px' }}>Thank You!</h2>
+          <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '16px', marginBottom: '30px' }}>
+            Your registration has been submitted successfully. Our team will contact you soon.
+          </p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.05, y: -4 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => {
               setSubmitted(false);
-              setFormData({ name: '', mobile: '', cutoff: '', college: '', counselling: '', remarks: '' });
+              setCurrentStep(0);
+              setFormData({ name: '', email: '', mobile: '', cutoff: '', college: '', counselling: '', remarks: '' });
             }}
-            className="sr-success-btn"
+            style={{
+              background: 'linear-gradient(135deg, #667eea 0%, #f093fb 100%)',
+              color: '#fff',
+              border: 'none',
+              padding: '12px 24px',
+              borderRadius: '50px',
+              fontSize: '14px',
+              fontWeight: '600',
+              cursor: 'pointer'
+            }}
           >
             Register Another Student
           </motion.button>
         </motion.div>
-      </motion.div>
+      </motion.main>
     );
   }
 
-  const formFields = [
-    {
-      name: 'name',
-      label: 'Student Name',
-      type: 'text',
-      placeholder: 'Enter your full name',
-      icon: User,
-      required: true
-    },
-    {
-      name: 'mobile',
-      label: 'Mobile Number',
-      type: 'tel',
-      placeholder: '10-digit mobile number',
-      icon: Phone,
-      required: true,
-      maxLength: 10
-    },
-    {
-      name: 'cutoff',
-      label: '12th Expected Cutoff',
-      type: 'text',
-      placeholder: 'e.g. 180 / 195 / 198.5',
-      icon: BookOpen,
-      required: false
-    },
-    {
-      name: 'college',
-      label: 'Preferred College',
-      type: 'text',
-      placeholder: 'e.g. Anna University, MMC Chennai',
-      icon: Building2,
-      required: false
-    }
-  ];
 
   return (
     <motion.main
@@ -128,185 +149,502 @@ const StudentRegistration = ({ onBack }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
-      className="sr-main"
+      style={{
+        minHeight: '100vh',
+        background: '#ffffff',
+        paddingTop: '100px',
+        paddingBottom: '40px',
+        paddingLeft: '20px',
+        paddingRight: '20px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '30px'
+      }}
     >
-      <div className="sr-header">
+      {/* Header */}
+      <div style={{ width: '100%', maxWidth: '600px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <motion.button
           whileHover={{ x: -4 }}
           whileTap={{ scale: 0.95 }}
           onClick={onBack}
-          className="sr-back-btn"
+          style={{
+            background: 'rgba(255, 255, 255, 0.15)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255, 255, 255, 0.2)',
+            color: '#fff',
+            padding: '10px 16px',
+            borderRadius: '50px',
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            fontSize: '14px',
+            fontWeight: '600'
+          }}
         >
-          <ChevronLeft size={18} /> Back
+          <ChevronLeft size={16} /> Back
         </motion.button>
-        <div className="sr-header-content">
-          <h1 className="sr-page-title">Student <span className="sr-accent">Registration</span></h1>
-          <p className="sr-page-subtitle">Join millions of students finding their perfect college</p>
+        <div style={{ textAlign: 'center', flex: 1 }}>
+          <h1 style={{ color: '#fff', fontSize: '28px', fontWeight: '700', margin: '0 0 4px 0' }}>
+            Student <span style={{ color: '#fbbf24' }}>Registration</span>
+          </h1>
+          <p style={{ color: 'rgba(255, 255, 255, 0.85)', fontSize: '13px', margin: '0' }}>
+            Find your perfect college
+          </p>
         </div>
       </div>
 
-      <div className="sr-container">
-        <motion.div
-          className="sr-card sr-form-card"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >
-          <div className="sr-form-header">
-            <span className="sr-section-label">📋 Your Details</span>
-          </div>
-
-          <form onSubmit={handleSubmit} className="sr-form">
-            {/* Grid of form fields with 3D cards */}
-            <div className="sr-fields-grid">
-              {formFields.map((field, idx) => {
-                const IconComp = field.icon;
-                return (
-                  <motion.div
-                    key={field.name}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: idx * 0.05 }}
-                    className="sr-field-wrapper"
-                  >
-                    <div className={`sr-field ${errors[field.name] ? 'sr-error' : ''}`}>
-                      <label className="sr-label">
-                        {field.label}
-                        {field.required && <span className="sr-required">*</span>}
-                      </label>
-                      <div className="sr-input-wrapper">
-                        <IconComp size={18} className="sr-field-icon" />
-                        <input
-                          type={field.type}
-                          name={field.name}
-                          value={formData[field.name]}
-                          onChange={handleInputChange}
-                          placeholder={field.placeholder}
-                          maxLength={field.maxLength}
-                          inputMode={field.type === 'tel' ? 'numeric' : 'text'}
-                          className="sr-input"
-                        />
-                      </div>
-                      {errors[field.name] && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="sr-error-msg"
-                        >
-                          {errors[field.name]}
-                        </motion.div>
-                      )}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-
-            {/* Counselling Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="sr-field"
-            >
-              <label className="sr-label">
-                Need Counselling?
-                <span className="sr-required">*</span>
-              </label>
-              <div className="sr-toggle-group">
-                {[
-                  { value: 'Yes', label: '✅ Yes', color: 'green' },
-                  { value: 'No', label: '❌ No', color: 'red' }
-                ].map((option) => (
-                  <motion.button
-                    key={option.value}
-                    type="button"
-                    onClick={() => handleCounsellingChange(option.value)}
-                    whileHover={{ y: -4, scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    className={`sr-toggle-btn sr-toggle-${option.color} ${
-                      formData.counselling === option.value ? 'sr-toggle-active' : ''
-                    }`}
-                  >
-                    {option.label}
-                  </motion.button>
-                ))}
-              </div>
-              {errors.counselling && (
+      {/* Stepper */}
+      <div style={{ width: '100%', maxWidth: '600px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+          {steps.map((step, idx) => {
+            const IconComp = step.icon;
+            return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: idx * 0.05 }}
+                style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}
+              >
                 <motion.div
-                  initial={{ opacity: 0, y: -5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="sr-error-msg"
+                  animate={{
+                    background: currentStep >= idx
+                      ? 'linear-gradient(135deg, #667eea, #f093fb)'
+                      : 'rgba(255, 255, 255, 0.1)',
+                    scale: currentStep === idx ? 1.1 : 1
+                  }}
+                  style={{
+                    width: '48px',
+                    height: '48px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#fff',
+                    border: '2px solid rgba(255, 255, 255, 0.3)',
+                    backdropFilter: 'blur(10px)'
+                  }}
                 >
-                  {errors.counselling}
+                  {currentStep > idx ? (
+                    <CheckCircle2 size={24} />
+                  ) : (
+                    <IconComp size={20} />
+                  )}
                 </motion.div>
-              )}
-            </motion.div>
+                <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '11px', textAlign: 'center', maxWidth: '70px' }}>
+                  {step.title}
+                </span>
+              </motion.div>
+            );
+          })}
+        </div>
 
-            {/* Remarks Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25 }}
-              className="sr-field"
-            >
-              <label className="sr-label">
-                <MessageSquare size={16} style={{ marginRight: '6px', display: 'inline' }} />
-                Remarks
-              </label>
-              <textarea
-                name="remarks"
-                value={formData.remarks}
-                onChange={handleInputChange}
-                placeholder="Any specific course interest, doubts, or notes..."
-                className="sr-textarea"
-              />
-            </motion.div>
+        {/* Progress Bar */}
+        <div style={{ height: '4px', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '2px', overflow: 'hidden' }}>
+          <motion.div
+            animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
+            style={{
+              height: '100%',
+              background: 'linear-gradient(90deg, #10b981, #34d399)',
+              borderRadius: '2px'
+            }}
+          />
+        </div>
+      </div>
 
-            {/* Submit Button */}
+      {/* Form Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        style={{
+          width: '100%',
+          maxWidth: '600px',
+          background: 'rgba(255, 255, 255, 0.1)',
+          backdropFilter: 'blur(20px)',
+          borderRadius: '24px',
+          padding: '40px 30px',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.2)'
+        }}
+      >
+        <form onSubmit={handleSubmit}>
+          <AnimatePresence mode="wait">
+            {/* Step 0: Personal Details */}
+            {currentStep === 0 && (
+              <motion.div
+                key="step-0"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+              >
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: '600', marginBottom: '24px' }}>
+                  📋 Your Personal Details
+                </h3>
+
+                {/* Name Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  style={{ marginBottom: '16px' }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    Full Name <span style={{ color: '#f87171' }}>*</span>
+                  </label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255, 255, 255, 0.08)', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                    <User size={18} color="rgba(255, 255, 255, 0.6)" />
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Enter your full name"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#fff',
+                        width: '100%',
+                        outline: 'none',
+                        fontSize: '14px',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  {errors.name && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px' }}>{errors.name}</p>}
+                </motion.div>
+
+                {/* Email Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                  style={{ marginBottom: '16px' }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    Email Address <span style={{ color: '#f87171' }}>*</span>
+                  </label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255, 255, 255, 0.08)', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                    <MessageSquare size={18} color="rgba(255, 255, 255, 0.6)" />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Enter your email"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#fff',
+                        width: '100%',
+                        outline: 'none',
+                        fontSize: '14px',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  {errors.email && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px' }}>{errors.email}</p>}
+                </motion.div>
+
+                {/* Mobile Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    Mobile Number <span style={{ color: '#f87171' }}>*</span>
+                  </label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255, 255, 255, 0.08)', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                    <Phone size={18} color="rgba(255, 255, 255, 0.6)" />
+                    <input
+                      type="tel"
+                      name="mobile"
+                      value={formData.mobile}
+                      onChange={handleInputChange}
+                      placeholder="10-digit mobile number"
+                      maxLength="10"
+                      inputMode="numeric"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#fff',
+                        width: '100%',
+                        outline: 'none',
+                        fontSize: '14px',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  {errors.mobile && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px' }}>{errors.mobile}</p>}
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Step 1: Academic Info */}
+            {currentStep === 1 && (
+              <motion.div
+                key="step-1"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+              >
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: '600', marginBottom: '24px' }}>
+                  📚 Academic Information
+                </h3>
+
+                {/* Cutoff Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  style={{ marginBottom: '16px' }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    12th Expected Cutoff
+                  </label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255, 255, 255, 0.08)', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                    <BookOpen size={18} color="rgba(255, 255, 255, 0.6)" />
+                    <input
+                      type="text"
+                      name="cutoff"
+                      value={formData.cutoff}
+                      onChange={handleInputChange}
+                      placeholder="e.g. 180 / 195 / 198.5"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#fff',
+                        width: '100%',
+                        outline: 'none',
+                        fontSize: '14px',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                  {errors.cutoff && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '4px' }}>{errors.cutoff}</p>}
+                </motion.div>
+
+                {/* College Field */}
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.15 }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    Preferred College
+                  </label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', background: 'rgba(255, 255, 255, 0.08)', padding: '12px 14px', borderRadius: '12px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+                    <Building2 size={18} color="rgba(255, 255, 255, 0.6)" />
+                    <input
+                      type="text"
+                      name="college"
+                      value={formData.college}
+                      onChange={handleInputChange}
+                      placeholder="e.g. Anna University, MMC Chennai"
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        color: '#fff',
+                        width: '100%',
+                        outline: 'none',
+                        fontSize: '14px',
+                        fontFamily: 'inherit'
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              </motion.div>
+            )}
+
+            {/* Step 2: Counselling */}
+            {currentStep === 2 && (
+              <motion.div
+                key="step-2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+              >
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: '600', marginBottom: '24px' }}>
+                  🎯 Do you need counselling?
+                </h3>
+
+                <div style={{ display: 'flex', gap: '16px' }}>
+                  {[
+                    { value: 'Yes', label: '✅ Yes', color: '#10b981' },
+                    { value: 'No', label: '❌ No', color: '#ef4444' }
+                  ].map((option) => (
+                    <motion.button
+                      key={option.value}
+                      type="button"
+                      onClick={() => setFormData(prev => ({ ...prev, counselling: option.value }))}
+                      whileHover={{ y: -4, scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      animate={{
+                        background: formData.counselling === option.value
+                          ? `rgba(${option.color === '#10b981' ? '16, 185, 129' : '239, 68, 68'}, 0.3)`
+                          : 'rgba(255, 255, 255, 0.08)',
+                        borderColor: formData.counselling === option.value
+                          ? option.color
+                          : 'rgba(255, 255, 255, 0.15)'
+                      }}
+                      style={{
+                        flex: 1,
+                        padding: '20px',
+                        borderRadius: '16px',
+                        border: '2px solid',
+                        color: '#fff',
+                        fontSize: '16px',
+                        fontWeight: '600',
+                        cursor: 'pointer',
+                        backdropFilter: 'blur(10px)',
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      {option.label}
+                    </motion.button>
+                  ))}
+                </div>
+
+                {errors.counselling && <p style={{ color: '#fca5a5', fontSize: '12px', marginTop: '16px', textAlign: 'center' }}>{errors.counselling}</p>}
+              </motion.div>
+            )}
+
+            {/* Step 3: Additional Info */}
+            {currentStep === 3 && (
+              <motion.div
+                key="step-3"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+              >
+                <h3 style={{ color: '#fff', fontSize: '18px', fontWeight: '600', marginBottom: '24px' }}>
+                  ✨ Additional Information
+                </h3>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                >
+                  <label style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '13px', fontWeight: '600', display: 'block', marginBottom: '8px' }}>
+                    Remarks
+                  </label>
+                  <textarea
+                    name="remarks"
+                    value={formData.remarks}
+                    onChange={handleInputChange}
+                    placeholder="Any specific course interest, doubts, or notes..."
+                    style={{
+                      width: '100%',
+                      padding: '12px 14px',
+                      borderRadius: '12px',
+                      background: 'rgba(255, 255, 255, 0.08)',
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      color: '#fff',
+                      fontSize: '14px',
+                      fontFamily: 'inherit',
+                      minHeight: '120px',
+                      resize: 'none',
+                      outline: 'none'
+                    }}
+                  />
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  style={{ marginTop: '24px', padding: '16px', borderRadius: '12px', background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.3)', display: 'flex', gap: '12px' }}
+                >
+                  <Shield size={20} color="#10b981" style={{ flexShrink: 0 }} />
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '13px', margin: 0 }}>
+                    Your data is completely safe and will only be used for counselling purposes.
+                  </p>
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* Navigation Buttons */}
+          <div style={{ display: 'flex', gap: '12px', marginTop: '32px' }}>
             <motion.button
-              type="submit"
-              disabled={loading}
-              whileHover={{ y: -4, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.3)' }}
+              type="button"
+              onClick={handlePrev}
+              whileHover={{ y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="sr-submit-btn"
+              disabled={currentStep === 0}
+              style={{
+                flex: 1,
+                padding: '12px 16px',
+                borderRadius: '12px',
+                border: '1px solid rgba(255, 255, 255, 0.3)',
+                background: 'rgba(255, 255, 255, 0.08)',
+                color: currentStep === 0 ? 'rgba(255, 255, 255, 0.3)' : '#fff',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: currentStep === 0 ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px'
+              }}
+            >
+              <ChevronLeft size={16} /> Previous
+            </motion.button>
+
+            <motion.button
+              type={currentStep === steps.length - 1 ? 'submit' : 'button'}
+              onClick={currentStep === steps.length - 1 ? undefined : handleNext}
+              disabled={loading}
+              whileHover={{ y: -2, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.3)' }}
+              whileTap={{ scale: 0.96 }}
+              style={{
+                flex: 1,
+                padding: '12px 16px',
+                borderRadius: '12px',
+                border: 'none',
+                background: 'linear-gradient(135deg, #667eea 0%, #f093fb 100%)',
+                color: '#fff',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: loading ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                opacity: loading ? 0.8 : 1
+              }}
             >
               {loading ? (
                 <>
-                  <span className="sr-spinner"></span>
+                  <span style={{
+                    display: 'inline-block',
+                    width: '14px',
+                    height: '14px',
+                    border: '2px solid rgba(255, 255, 255, 0.3)',
+                    borderTopColor: '#fff',
+                    borderRadius: '50%',
+                    animation: 'spin 0.6s linear infinite'
+                  }} />
                   Submitting...
                 </>
+              ) : currentStep === steps.length - 1 ? (
+                <>Submit <ChevronRight size={16} /></>
               ) : (
-                <>Submit Registration →</>
+                <>Next <ChevronRight size={16} /></>
               )}
             </motion.button>
-          </form>
-        </motion.div>
+          </div>
+        </form>
+      </motion.div>
 
-        {/* Info Cards */}
-        <motion.div
-          className="sr-info-grid"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-        >
-          {[
-            { icon: '🎯', title: 'Expert Guidance', desc: 'Get personalized counselling' },
-            { icon: '⚡', title: 'Fast Process', desc: 'Registration in under 2 minutes' },
-            { icon: '🔒', title: 'Secure & Private', desc: 'Your data is completely safe' }
-          ].map((card, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ y: -8, rotateZ: 2 }}
-              className="sr-info-card"
-            >
-              <div className="sr-info-icon">{card.icon}</div>
-              <h3 className="sr-info-title">{card.title}</h3>
-              <p className="sr-info-desc">{card.desc}</p>
-            </motion.div>
-          ))}
-        </motion.div>
-      </div>
+      <style>{`
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      `}</style>
     </motion.main>
   );
 };
