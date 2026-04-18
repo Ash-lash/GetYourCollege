@@ -4,13 +4,14 @@ import {
   Search, MapPin, ChevronDown, ArrowRight,
   ChevronLeft, BookOpen, Stethoscope, Building2,
   Sparkles, Zap, Globe, Eye, GraduationCap, ShieldCheck, PieChart, Info, Mail, Phone, ExternalLink, User, Train, Bus,
-  IndianRupee, X, MessageSquare, CheckCircle2, SlidersHorizontal
+  IndianRupee, X, MessageSquare, CheckCircle2, SlidersHorizontal, BarChart3
 } from 'lucide-react';
 import { TNEA_DATA, DEEMED_DATA, PRIVATE_DATA } from './data';
 import TNEA_PDF_INFO from './tnea_pdf_data.json';
 import TNEA_COURSES_INFO from './tnea_courses_data.json';
 import TNEA_MATRIX_DATA from './branch_matrix_data.json';
-import Antigravity from './components/Antigravity';
+import DEPT_ANALYSIS_DATA from './dept_analysis_data.json';
+import COMPARISON_DATA from './comparison_data.json';
 import StudentRegistration from './components/StudentRegistration';
 
 /* ─────────────────── NAVBAR ─────────────────── */
@@ -558,13 +559,10 @@ const App = () => {
     return base;
   }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, deptLookup]);
 
-  const [deptDetailsCollege, setDeptDetailsCollege] = useState(TNEA_DATA[0]?.code || '');
-  const [deptSearchTerm, setDeptSearchTerm] = useState('');
-
   const goHome = () => { setView('home'); window.scrollTo(0, 0); };
   const openExplorer = (cat) => { setCategory(cat); setView('explorer'); window.scrollTo(0, 0); };
   const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0,0); };
-  const openDeptDetails = (code = TNEA_DATA[0]?.code) => { setDeptDetailsCollege(code); setDeptSearchTerm(''); setView('dept-details'); window.scrollTo(0, 0); };
+  const openDeptDetails = (code = TNEA_DATA[0]?.code) => { setView('dept-details'); window.scrollTo(0, 0); };
   const openRegistration = () => { setView('registration'); window.scrollTo(0, 0); };
 
   return (
@@ -721,7 +719,12 @@ const App = () => {
         )}
         {view === 'dept-details' && (
           <motion.main key="dept-details" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-            <DepartmentDetailsPage onBack={() => setView('explorer')} />
+            <DepartmentDetailsPage onBack={() => setView('explorer')} onCompare={() => setView('comparison')} />
+          </motion.main>
+        )}
+        {view === 'comparison' && (
+          <motion.main key="comparison" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <ComparisonPage onBack={() => setView('dept-details')} />
           </motion.main>
         )}
         {view === 'ai-counselor' && (
@@ -1291,7 +1294,486 @@ const ClaudeMessage = ({ text, color }) => {
   );
 };
 
-const DepartmentDetailsPage = ({ onBack }) => {
+const ComparisonPage = ({ onBack }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedDepts, setSelectedDepts] = useState([]);
+  const [showComparison, setShowComparison] = useState(false);
+  const [comparisonAnalyses, setComparisonAnalyses] = useState({});
+  const [comparing, setComparing] = useState(false);
+
+  const normalizeDeg = (raw) => {
+    const d = String(raw).trim().toUpperCase().replace(/[.\s]/g, '');
+    if (d === 'BE') return 'B.E';
+    if (d === 'BTECH') return 'B.Tech';
+    if (d === 'ME') return 'M.E';
+    if (d === 'MTECH') return 'M.Tech';
+    return raw;
+  };
+
+  const allUniqueDepartments = useMemo(() => {
+    const map = {};
+    Object.entries(TNEA_COURSES_INFO).forEach(([code, cats]) => {
+      (cats || []).forEach(cat => {
+        (cat.branches || []).forEach(b => {
+          const deg = normalizeDeg(b[0]);
+          const nameUpper = String(b[1]).trim().toUpperCase();
+          const key = `${deg}___${nameUpper}`;
+          if (!map[key]) {
+            map[key] = { id: key, degree: deg, name: nameUpper };
+          }
+        });
+      });
+    });
+    return Object.values(map).sort((a, b) => (a.degree + a.name).localeCompare(b.degree + b.name));
+  }, []);
+
+  const filteredDepts = useMemo(() => {
+    const q = searchTerm.toLowerCase();
+    if (!q) return allUniqueDepartments;
+    return allUniqueDepartments.filter(d =>
+      d.degree.toLowerCase().includes(q) || d.name.toLowerCase().includes(q)
+    );
+  }, [searchTerm, allUniqueDepartments]);
+
+  const toggleDept = (dept) => {
+    const isSelected = selectedDepts.some(d => d.id === dept.id);
+    if (isSelected) {
+      setSelectedDepts(selectedDepts.filter(d => d.id !== dept.id));
+    } else if (selectedDepts.length < 3) {
+      setSelectedDepts([...selectedDepts, dept]);
+      setSearchTerm(''); // Clear search after selection
+    }
+  };
+
+  const generateComparisonAnalyses = async () => {
+    setComparing(true);
+    const analyses = {};
+    
+    for (const dept of selectedDepts) {
+      const key = `${dept.degree}___${dept.name}`;
+      const comparisonKey = key;
+      
+      // Load pre-generated comparison analysis
+      const preGeneratedAnalysis = COMPARISON_DATA[comparisonKey];
+      
+      if (preGeneratedAnalysis && preGeneratedAnalysis.analysis) {
+        analyses[key] = preGeneratedAnalysis.analysis;
+      } else {
+        // Fallback to department analysis if comparison data not available
+        const deptAnalysis = DEPT_ANALYSIS_DATA[key];
+        analyses[key] = deptAnalysis?.analysis || '';
+      }
+    }
+    
+    setComparisonAnalyses(analyses);
+    setShowComparison(true);
+    setComparing(false);
+  };
+
+  return (
+    <div className="root" style={{ padding: '24px', maxWidth: '1600px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <button className="back-pill" onClick={onBack} style={{ marginBottom: 24 }}><ChevronLeft size={16} /> Back</button>
+      
+      {!showComparison ? (
+        <>
+          <div style={{ marginBottom: 32 }}>
+            <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Compare Departments</h1>
+            <p style={{ color: '#64748b' }}>Select up to 3 departments and compare their characteristics, career paths, and opportunities.</p>
+          </div>
+
+          {/* Search Bar */}
+          <div style={{ marginBottom: 24, position: 'relative' }}>
+            <div style={{
+              position: 'relative',
+              borderRadius: '16px',
+              background: 'linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.08) 100%)',
+              padding: '2px',
+              boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+              transition: 'box-shadow 0.3s ease',
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'rgba(255,255,255,0.96)',
+                borderRadius: '14px',
+                backdropFilter: 'blur(12px)',
+                padding: '12px 20px',
+                gap: '12px',
+                border: '1px solid rgba(99,102,241,0.15)',
+              }}>
+                <Search size={18} color="#6366f1" />
+                <input
+                  autoFocus
+                  style={{
+                    flex: 1,
+                    border: 'none',
+                    outline: 'none',
+                    background: 'transparent',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                    color: '#1e293b',
+                    padding: '8px 0',
+                    letterSpacing: '0.01em',
+                  }}
+                  placeholder="Search departments (Computer Science, AI, Mechanical...)..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                />
+                {searchTerm && (
+                  <motion.button
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    onClick={() => setSearchTerm('')}
+                    style={{
+                      width: 28, height: 28,
+                      borderRadius: '50%',
+                      border: 'none',
+                      background: 'rgba(100,116,139,0.12)',
+                      color: '#64748b',
+                      cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                    whileHover={{ background: 'rgba(239,68,68,0.12)', color: '#ef4444' }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <X size={14} />
+                  </motion.button>
+                )}
+              </div>
+
+              {/* Search Results Dropdown */}
+              {searchTerm && filteredDepts.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    marginTop: 8,
+                    background: '#fff',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    overflow: 'hidden',
+                    maxHeight: '400px',
+                    overflowY: 'auto',
+                    zIndex: 10,
+                  }}
+                >
+                  {filteredDepts.slice(0, 20).map((dept, idx) => {
+                    const isSelected = selectedDepts.some(d => d.id === dept.id);
+                    return (
+                      <motion.button
+                        key={dept.id}
+                        onClick={() => toggleDept(dept)}
+                        whileHover={{ background: 'rgba(99,102,241,0.08)' }}
+                        style={{
+                          width: '100%',
+                          padding: '14px 16px',
+                          border: 'none',
+                          background: isSelected ? 'rgba(99,102,241,0.1)' : 'transparent',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          borderBottom: idx < Math.min(20, filteredDepts.length) - 1 ? '1px solid #f1f5f9' : 'none',
+                          transition: 'background 0.2s',
+                        }}
+                      >
+                        <div>
+                          <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#6366f1' }}>{dept.degree}</div>
+                          <div style={{ fontSize: '0.95rem', fontWeight: 600, color: '#1e293b', marginTop: 2 }}>{dept.name}</div>
+                        </div>
+                        {isSelected && (
+                          <motion.div
+                            initial={{ scale: 0, rotate: -180 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            style={{
+                              width: 24,
+                              height: 24,
+                              borderRadius: '50%',
+                              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#fff',
+                              fontWeight: 'bold',
+                              flexShrink: 0,
+                            }}
+                          >
+                            ✓
+                          </motion.div>
+                        )}
+                      </motion.button>
+                    );
+                  })}
+                  {filteredDepts.length > 20 && (
+                    <div style={{
+                      padding: '12px 16px',
+                      textAlign: 'center',
+                      fontSize: '0.85rem',
+                      color: '#94a3b8',
+                      background: '#f8fafc',
+                    }}>
+                      Showing 20 of {filteredDepts.length} results
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* No results */}
+              {searchTerm && filteredDepts.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    marginTop: 8,
+                    background: '#fff',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    padding: '24px',
+                    textAlign: 'center',
+                    zIndex: 10,
+                  }}
+                >
+                  <Search size={24} color="#94a3b8" style={{ marginBottom: 12, marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />
+                  <p style={{ color: '#94a3b8', margin: 0 }}>No departments found</p>
+                </motion.div>
+              )}
+            </div>
+          </div>
+
+          {/* Selected Departments Pills & Compare Button */}
+          {selectedDepts.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              style={{
+                marginBottom: 24,
+                padding: '16px',
+                background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.08))',
+                borderRadius: '12px',
+                border: '1px solid rgba(99,102,241,0.2)',
+              }}
+            >
+              <div style={{
+                display: 'flex',
+                gap: 12,
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginBottom: 16,
+              }}>
+                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#6366f1', width: '100%' }}>📌 Selected ({selectedDepts.length}/3):</span>
+                {selectedDepts.map((dept, idx) => (
+                  <motion.div
+                    key={dept.id}
+                    initial={{ scale: 0, rotate: -10 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    exit={{ scale: 0, rotate: 10 }}
+                    whileHover={{ scale: 1.05 }}
+                    style={{
+                      padding: '10px 14px',
+                      background: `linear-gradient(135deg, ${['#6366f1', '#8b5cf6', '#ec4899'][idx % 3]}, ${['#8b5cf6', '#ec4899', '#f59e0b'][idx % 3]})`,
+                      color: '#fff',
+                      borderRadius: '20px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                    }}
+                  >
+                    {dept.degree} - {dept.name.substring(0, 20)}
+                    <motion.button
+                      onClick={() => toggleDept(dept)}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      style={{
+                        background: 'rgba(255,255,255,0.3)',
+                        border: 'none',
+                        borderRadius: '50%',
+                        width: 20,
+                        height: 20,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        color: '#fff',
+                        padding: 0,
+                      }}
+                    >
+                      <X size={12} />
+                    </motion.button>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Compare Button at Top */}
+              <motion.button
+                onClick={generateComparisonAnalyses}
+                disabled={comparing}
+                whileHover={{ scale: comparing ? 1 : 1.02 }}
+                whileTap={{ scale: comparing ? 1 : 0.98 }}
+                style={{
+                  width: '100%',
+                  padding: '14px 20px',
+                  background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '10px',
+                  fontSize: '0.95rem',
+                  fontWeight: 700,
+                  cursor: comparing ? 'not-allowed' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 10,
+                  opacity: comparing ? 0.7 : 1,
+                  boxShadow: '0 8px 24px rgba(99,102,241,0.3)',
+                  transition: 'all 0.3s',
+                }}
+              >
+                {comparing ? (
+                  <>
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 1 }}
+                      style={{ display: 'flex' }}
+                    >
+                      <Zap size={16} />
+                    </motion.div>
+                    Generating Analyses...
+                  </>
+                ) : (
+                  <>
+                    <BarChart3 size={16} />
+                    Compare {selectedDepts.length} Department{selectedDepts.length !== 1 ? 's' : ''} →
+                  </>
+                )}
+              </motion.button>
+            </motion.div>
+          )}
+
+          {/* Empty State */}
+          {selectedDepts.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              style={{
+                marginTop: 48,
+                padding: '60px 32px',
+                textAlign: 'center',
+                background: 'rgba(99,102,241,0.08)',
+                borderRadius: '20px',
+                border: '2px dashed rgba(99,102,241,0.3)',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div style={{ fontSize: '3rem', marginBottom: 16 }}>🔍</div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>Search for Departments</h3>
+              <p style={{ color: '#64748b' }}>Type a department name above to search. Select up to 3 departments, then click Compare to see detailed analysis.</p>
+            </motion.div>
+          )}
+
+        </>
+      ) : (
+        // Comparison Results View
+        <>
+          <motion.button
+            onClick={() => { setShowComparison(false); setComparisonAnalyses({}); }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            style={{
+              marginBottom: 24,
+              padding: '10px 16px',
+              background: 'transparent',
+              border: '1px solid #e2e8f0',
+              borderRadius: '20px',
+              color: '#6366f1',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              width: 'fit-content',
+            }}
+            whileHover={{ background: 'rgba(99,102,241,0.1)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ChevronLeft size={16} />
+            Edit Selection
+          </motion.button>
+
+          <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a', marginBottom: 8 }}>Comparison Results</h2>
+          <p style={{ color: '#64748b', marginBottom: 32 }}>Detailed analysis highlighting the unique characteristics and opportunities of each department.</p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${selectedDepts.length}, 1fr)`,
+            gap: 24,
+            flex: 1,
+          }}>
+            {selectedDepts.map((dept, idx) => {
+              const analysisKey = `${dept.degree}___${dept.name}`;
+              const analysis = comparisonAnalyses[analysisKey] || DEPT_ANALYSIS_DATA[analysisKey]?.analysis;
+              
+              return (
+                <motion.div
+                  key={dept.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  style={{
+                    background: '#fff',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <div style={{
+                    padding: '24px',
+                    background: `linear-gradient(135deg, ${['#6366f1', '#8b5cf6', '#ec4899'][idx % 3]}, ${['#8b5cf6', '#ec4899', '#f59e0b'][idx % 3]})`,
+                    color: '#fff',
+                  }}>
+                    <div style={{ fontSize: '0.85rem', fontWeight: 700, opacity: 0.9, marginBottom: 8 }}>{dept.degree}</div>
+                    <h3 style={{ fontSize: '1.2rem', fontWeight: 800, margin: 0, lineHeight: 1.3 }}>{dept.name}</h3>
+                  </div>
+
+                  <div style={{ padding: '24px', flex: 1, overflowY: 'auto', maxHeight: '600px' }}>
+                    {analysis ? (
+                      <ClaudeMessage text={analysis} color={['#8b5cf6', '#ec4899', '#f59e0b'][idx % 3]} />
+                    ) : (
+                      <div style={{ color: '#94a3b8', fontSize: '0.9rem', textAlign: 'center', padding: '20px' }}>
+                        <p>Analysis not available for this department.</p>
+                      </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+const DepartmentDetailsPage = ({ onBack, onCompare }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDept, setSelectedDept] = useState(null);
 
@@ -1339,44 +1821,58 @@ const DepartmentDetailsPage = ({ onBack }) => {
       setAiProgress(0);
       setAiAnalysis(null);
       setAiError(null);
-      let progress = 0;
-      const interval = setInterval(() => {
-        setAiProgress(prev => {
-          if (prev >= 98) return 98;
-          const increment = prev < 50 ? 5 : prev < 80 ? 3 : 1;
-          return prev + increment;
-        });
-      }, 400);
       
-      const fetchAi = async () => {
-        try {
-          const apiBase = process.env.REACT_APP_API_URL || "";
-          const payload = {
-            system_prompt: "You are an expert academic counselor analyzing an engineering department. Provide a highly detailed, neatly formatted response. Address: 1) What this department is, 2) Unique Features & Scope, 3) Average Salary, 4) Generalized Year-wise Syllabus overview, 5) Essential skillsets to be learned to get placed, and 6) Who should join this department and who should not. Use markdown. Keep your response around 450-500 words to ensure fast loading.",
-            messages: [{ role: 'user', content: `Please provide full comprehensive details about the ${selectedDept.degree} ${selectedDept.name} department.` }]
-          };
-          const res = await fetch(`${apiBase}/api/chat`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(payload),
-          });
-          if (!res.ok) {
-            const text = await res.text();
-            let errData = {};
-            try { errData = JSON.parse(text); } catch(e) {}
-            throw new Error(errData.error || (res.status === 504 ? "AI analysis is taking too long to respond. Please try again." : `Server Error (${res.status})`));
-          }
-          const data = await res.json();
+      // Very slow progress simulation - extremely slow increments
+      let currentProgress = 0;
+      const progressInterval = setInterval(() => {
+        currentProgress += Math.random() * 1.5 + 0.5; // Very tiny increments: 0.5-2% per step
+        if (currentProgress >= 90) currentProgress = 90;
+        setAiProgress(currentProgress);
+      }, 2500); // Update every 2.5 seconds (very slow)
+      
+      try {
+        // Load from static data instead of API call
+        const key = `${selectedDept.degree}___${selectedDept.name}`;
+        const deptData = DEPT_ANALYSIS_DATA[key];
+        
+        if (deptData && deptData.analysis) {
+          // Push to 95% immediately when data is found
+          setAiProgress(95);
+          
+          // Then complete the progress bar to 100%
+          const completeProgressTimeout = setTimeout(() => {
+            setAiProgress(100);
+            clearInterval(progressInterval);
+            
+            // After 100% is reached, show the content
+            const showContentTimeout = setTimeout(() => {
+              setAiAnalysis(deptData.analysis);
+            }, 1000);
+            
+            return () => clearTimeout(showContentTimeout);
+          }, 1000);
+          
+          return () => clearTimeout(completeProgressTimeout);
+        } else {
+          // Data not generated yet - complete to 100% then show error
           setAiProgress(100);
-          clearInterval(interval);
-          setAiAnalysis(data.reply);
-        } catch (err) {
-          clearInterval(interval);
-          setAiError(err.message);
+          clearInterval(progressInterval);
+          
+          setTimeout(() => {
+            setAiError(`📊 Department analysis for "${selectedDept.degree} ${selectedDept.name}" is not yet generated. Please run: \n\n\`node generate_dept_analysis.js\`\n\nThis will pre-generate all department analyses at once.`);
+          }, 1000);
         }
-      };
-      fetchAi();
-      return () => clearInterval(interval);
+      } catch (err) {
+        // Complete to 100% then show error
+        setAiProgress(100);
+        clearInterval(progressInterval);
+        
+        setTimeout(() => {
+          setAiError(`Error loading department data: ${err.message}`);
+        }, 1000);
+      }
+      
+      return () => clearInterval(progressInterval);
     }
   }, [selectedDept]);
 
@@ -1409,14 +1905,26 @@ const DepartmentDetailsPage = ({ onBack }) => {
     const TIER1_TYPES = ['university_dept', 'government', 'govt_aided'];
     const isSpecialCollege = (name) => {
       const n = String(name).toLowerCase().replace(/\s+/g,'');
-      return ['saveetha','sairam','rajalakshmi','rajalashkmi','jeppiar','jeppiaar','kumaraguru'].some(k => n.includes(k));
+      return ['saveetha','sairam','rajalakshmi','rajalashkmi','jeppiar','jeppiaar','kumaraguru','kcg'].some(k => n.includes(k));
     };
     const tier1 = sortedColleges.filter(c => TIER1_TYPES.includes(c.type));
     const tier2 = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && isSpecialCollege(c.name));
-    const tier3_preview = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170).slice(0, 4);
-    const remaining = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !(isSpecialCollege(c.name)) && !(sortedColleges.filter(x => !TIER1_TYPES.includes(x.type) && !isSpecialCollege(x.name) && x.cutoff >= 170).slice(0,4).includes(c)));
+    const tier3_preview = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170).slice(0, 2);
+    const tier3_all = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170);
+    const remaining = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff < 170);
     const initialColleges = [...tier1, ...tier2, ...tier3_preview];
-    const displayedColleges = showAllColleges ? sortedColleges : initialColleges;
+    const displayedColleges = showAllColleges ? [...tier1, ...tier2, ...tier3_all, ...remaining] : initialColleges;
+
+    // ── Type badge config ──────────────────────────────
+    // ── College type breakdown ───────────────────────────
+    const collegesByType = {
+      university_dept: sortedColleges.filter(c => c.type === 'university_dept').length,
+      government: sortedColleges.filter(c => c.type === 'government').length,
+      govt_aided: sortedColleges.filter(c => c.type === 'govt_aided').length,
+      autonomous: sortedColleges.filter(c => c.type === 'autonomous').length,
+      constituent: sortedColleges.filter(c => c.type === 'constituent').length,
+      non_autonomous: sortedColleges.filter(c => c.type === 'non_autonomous').length,
+    };
 
     // ── Type badge config ──────────────────────────────
     const TYPE_CFG = {
@@ -1462,15 +1970,50 @@ const DepartmentDetailsPage = ({ onBack }) => {
             <div style={{ display:'flex', gap:12, flexWrap:'wrap' }}>
               <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
                 <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#fff' }}>{sortedColleges.length}</span>
-                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>COLLEGES</span>
+                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>TOTAL COLLEGES</span>
               </div>
-              <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
-                <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#fff' }}>{tier1.length}</span>
-                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>GOVT / UNI</span>
-              </div>
-              <div style={{ background:'rgba(255,255,255,0.12)', backdropFilter:'blur(8px)', border:'1px solid rgba(255,255,255,0.18)', borderRadius:12, padding:'10px 20px', display:'flex', flexDirection:'column', alignItems:'center' }}>
-                <span style={{ fontSize:'1.5rem', fontWeight:800, color:'#a5f3fc' }}>170+</span>
-                <span style={{ fontSize:'0.72rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em' }}>CUTOFF TIER</span>
+            </div>
+
+            {/* College Type Breakdown */}
+            <div style={{ marginTop:32, padding:'20px', background:'rgba(255,255,255,0.08)', borderRadius:16, border:'1px solid rgba(255,255,255,0.12)' }}>
+              <div style={{ fontSize:'0.85rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em', marginBottom:12 }}>COLLEGES BY TYPE</div>
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(150px, 1fr))', gap:12 }}>
+                {collegesByType.university_dept > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(245,158,11,0.15)', borderRadius:8, border:'1px solid rgba(245,158,11,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#fbbf24' }}>{collegesByType.university_dept}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#fcd34d', fontWeight:600 }}>University Dept</div>
+                  </div>
+                )}
+                {collegesByType.government > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(59,130,246,0.15)', borderRadius:8, border:'1px solid rgba(59,130,246,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#60a5fa' }}>{collegesByType.government}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#93c5fd', fontWeight:600 }}>Government</div>
+                  </div>
+                )}
+                {collegesByType.govt_aided > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(16,185,129,0.15)', borderRadius:8, border:'1px solid rgba(16,185,129,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#4ade80' }}>{collegesByType.govt_aided}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#86efac', fontWeight:600 }}>Govt Aided</div>
+                  </div>
+                )}
+                {collegesByType.autonomous > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(20,184,166,0.15)', borderRadius:8, border:'1px solid rgba(20,184,166,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#2dd4bf' }}>{collegesByType.autonomous}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#67e8f9', fontWeight:600 }}>Autonomous</div>
+                  </div>
+                )}
+                {collegesByType.constituent > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(139,92,246,0.15)', borderRadius:8, border:'1px solid rgba(139,92,246,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#a78bfa' }}>{collegesByType.constituent}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#c4b5fd', fontWeight:600 }}>Constituent</div>
+                  </div>
+                )}
+                {collegesByType.non_autonomous > 0 && (
+                  <div style={{ padding:'10px 14px', background:'rgba(100,116,139,0.15)', borderRadius:8, border:'1px solid rgba(100,116,139,0.3)' }}>
+                    <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#cbd5e1' }}>{collegesByType.non_autonomous}</div>
+                    <div style={{ fontSize:'0.7rem', color:'#e2e8f0', fontWeight:600 }}>Private</div>
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -1579,25 +2122,26 @@ const DepartmentDetailsPage = ({ onBack }) => {
               </div>
             </div>
             <div style={{ padding:'24px' }}>
-              {!aiAnalysis && !aiError && (
+              {aiProgress < 100 && (
                 <div style={{ display:'flex', flexDirection:'column', alignItems:'center', gap:16, padding:'32px 0' }}>
                   <div className="claude-thinking">
                     <div className="claude-think-ring" style={{ borderTopColor:'#8b5cf6' }} />
                     <div className="claude-think-ring inner" style={{ borderTopColor:'#8b5cf6', opacity:0.4 }} />
                   </div>
-                  <div style={{ fontWeight:600, color:'#475569', fontSize:'0.9rem' }}>MENTORA AI THINKING...</div>
-                  <div style={{ width:'100%', maxWidth:360, height:'6px', background:'#e2e8f0', borderRadius:'3px', overflow:'hidden' }}>
-                    <motion.div initial={{ width:0 }} animate={{ width:`${aiProgress}%` }} style={{ height:'100%', background:'linear-gradient(90deg,#6366f1,#8b5cf6)', borderRadius:'3px' }} transition={{ ease:'easeInOut' }} />
+                  <div style={{ fontWeight:600, color:'#475569', fontSize:'0.9rem' }}>LOADING DEPARTMENT ANALYSIS...</div>
+                  <div style={{ width:'100%', maxWidth:360, height:'8px', background:'#e2e8f0', borderRadius:'4px', overflow:'hidden' }}>
+                    <motion.div initial={{ width:0 }} animate={{ width:`${aiProgress}%` }} style={{ height:'100%', background:'linear-gradient(90deg,#6366f1,#8b5cf6)', borderRadius:'4px' }} transition={{ ease:'easeOut', duration:1.5 }} />
                   </div>
-                  <div style={{ fontSize:'0.78rem', color:'#94a3b8' }}>{Math.round(aiProgress)}% complete</div>
+                  <div style={{ fontSize:'0.85rem', fontWeight:600, color:'#6366f1' }}>{Math.round(aiProgress)}%</div>
                 </div>
               )}
-              {aiError && (
-                <div style={{ color:'#ef4444', padding:'16px', background:'#fef2f2', borderRadius:'10px', fontSize:'0.88rem' }}>
-                  ⚠️ {aiError}
+              {aiProgress === 100 && aiError && (
+                <div style={{ color:'#dc2626', padding:'20px', background:'#fef2f2', borderRadius:'10px', fontSize:'0.9rem', border:'1px solid #fecaca', whiteSpace:'pre-wrap', fontFamily:'monospace' }}>
+                  <div style={{fontWeight:600, marginBottom:8}}>⚠️ Data Not Generated</div>
+                  {aiError}
                 </div>
               )}
-              {aiAnalysis && (
+              {aiProgress === 100 && aiAnalysis && (
                 <div className="ai-insight-content">
                   <ClaudeMessage text={aiAnalysis} color="#8b5cf6" />
                 </div>
@@ -1613,9 +2157,30 @@ const DepartmentDetailsPage = ({ onBack }) => {
     <div className="root" style={{ padding: '24px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
       <button className="back-pill" onClick={onBack} style={{ marginBottom: 24 }}><ChevronLeft size={16} /> Back</button>
       
-      <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Explore Departments</h1>
-        <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
+      <div style={{ marginBottom: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 16 }}>
+        <div>
+          <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Explore Departments</h1>
+          <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
+        </div>
+        <motion.button
+          onClick={onCompare}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          style={{
+            background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '10px',
+            padding: '10px 18px',
+            fontWeight: 700,
+            fontSize: '0.9rem',
+            cursor: 'pointer',
+            whiteSpace: 'nowrap',
+            boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+          }}
+        >
+          ⚖️ Compare Departments
+        </motion.button>
       </div>
 
       <div style={{ marginBottom: 32, position: 'relative' }}>
