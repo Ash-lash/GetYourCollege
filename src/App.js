@@ -296,6 +296,224 @@ const QueryModal = ({ isOpen, onClose, collegeName }) => {
   );
 };
 
+/* ── Registration Modal (timed popup) ── */
+const TN_DISTRICTS = [
+  'Ariyalur','Chengalpattu','Chennai','Coimbatore','Cuddalore','Dharmapuri','Dindigul','Erode',
+  'Kallakurichi','Kancheepuram','Kanyakumari','Karur','Krishnagiri','Madurai','Mayiladuthurai',
+  'Nagapattinam','Namakkal','Nilgiris','Perambalur','Pudukkottai','Ramanathapuram','Ranipet',
+  'Salem','Sivaganga','Tenkasi','Thanjavur','Theni','Thoothukudi','Tiruchirappalli','Tirunelveli',
+  'Tirupathur','Tiruppur','Tiruvallur','Tiruvannamalai','Tiruvarur','Vellore','Viluppuram',
+  'Virudhunagar'
+];
+
+const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
+  const [mode, setMode] = useState('register');
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [regNum, setRegNum] = useState('');
+  const [district, setDistrict] = useState('');
+  const [districtQuery, setDistrictQuery] = useState('');
+  const [showDistricts, setShowDistricts] = useState(false);
+  const [phone, setPhone] = useState('');
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+      setMode('register'); setFirstName(''); setLastName(''); setRegNum('');
+      setDistrict(''); setDistrictQuery(''); setShowDistricts(false);
+      setPhone(''); setOtpSent(false); setOtp('');
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const filteredDistricts = TN_DISTRICTS.filter(d =>
+    d.toLowerCase().includes(districtQuery.toLowerCase())
+  );
+
+  const canSendOtp = mode === 'login'
+    ? phone.length === 10
+    : firstName.trim() && regNum.trim() && district && phone.length === 10;
+
+  const handleSendOtp = () => { if (canSendOtp) setOtpSent(true); };
+  const handleVerify = () => { if (otp === '1234') onComplete(); };
+
+  const inputStyle = {
+    width:'100%', padding:'12px 14px', border:'1px solid #e2e8f0',
+    borderRadius:10, fontSize:'0.9rem', background:'#f8fafc', outline:'none',
+    boxSizing:'border-box'
+  };
+  const labelStyle = { display:'block', fontSize:'0.82rem', fontWeight:600, color:'#334155', marginBottom:6 };
+
+  return (
+    <div
+      style={{
+        position:'fixed', inset:0, background:'rgba(15,23,42,0.55)',
+        display:'flex', alignItems:'center', justifyContent:'center',
+        zIndex:9999, padding:16,
+      }}
+      onClick={dismissable ? onClose : undefined}
+    >
+      <motion.div
+        initial={{ y: 30, opacity: 0, scale: 0.96 }}
+        animate={{ y: 0, opacity: 1, scale: 1 }}
+        onClick={e => e.stopPropagation()}
+        style={{
+          width:'100%', maxWidth:440, background:'#fff', borderRadius:18,
+          padding:'28px 26px', position:'relative', boxShadow:'0 20px 60px rgba(0,0,0,0.2)',
+          maxHeight:'92vh', overflowY:'auto'
+        }}
+      >
+        {dismissable && (
+          <button
+            onClick={onClose}
+            style={{
+              position:'absolute', top:12, right:12, background:'transparent',
+              border:'none', cursor:'pointer', color:'#64748b', padding:6
+            }}
+            aria-label="Close"
+          >
+            <X size={20} />
+          </button>
+        )}
+
+        <div style={{ textAlign:'center', marginBottom:18 }}>
+          <div style={{ fontSize:'1.5rem', fontWeight:800, color:'#0f172a', letterSpacing:'0.02em' }}>
+            GET YOUR <span style={{ color:'#10b981' }}>COLLEGE</span>
+          </div>
+          <div style={{ fontSize:'0.7rem', fontWeight:700, letterSpacing:'0.2em', color:'#64748b', marginTop:4 }}>
+            QUANTUM SHIFT TO YOUR CAREER
+          </div>
+        </div>
+
+        <h2 style={{ fontSize:'1.1rem', fontWeight:700, color:'#0f172a', marginBottom:16 }}>
+          Let's get you started...
+        </h2>
+
+        <div style={{ display:'flex', background:'#f1f5f9', borderRadius:10, padding:4, marginBottom:18 }}>
+          <button
+            onClick={() => setMode('login')}
+            style={{
+              flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
+              background: mode==='login' ? '#2563eb' : 'transparent',
+              color: mode==='login' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
+              transition:'all 0.2s'
+            }}
+          >Login</button>
+          <button
+            onClick={() => setMode('register')}
+            style={{
+              flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
+              background: mode==='register' ? '#2563eb' : 'transparent',
+              color: mode==='register' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
+              transition:'all 0.2s'
+            }}
+          >Register</button>
+        </div>
+
+        {mode === 'register' && (
+          <>
+            <div style={{ marginBottom:12 }}>
+              <label style={labelStyle}>First Name <span style={{ color:'#ef4444' }}>*</span></label>
+              <input style={inputStyle} placeholder="Enter first name" value={firstName} onChange={e => setFirstName(e.target.value)} />
+            </div>
+            <div style={{ marginBottom:12 }}>
+              <label style={labelStyle}>Last Name</label>
+              <input style={inputStyle} placeholder="Enter last name" value={lastName} onChange={e => setLastName(e.target.value)} />
+            </div>
+            <div style={{ marginBottom:12 }}>
+              <label style={labelStyle}>12th Register Number <span style={{ color:'#ef4444' }}>*</span></label>
+              <input style={inputStyle} placeholder="XXXXXXXXX" value={regNum} onChange={e => setRegNum(e.target.value)} />
+            </div>
+            <div style={{ marginBottom:12, position:'relative' }}>
+              <label style={labelStyle}>District <span style={{ color:'#ef4444' }}>*</span></label>
+              <input
+                style={inputStyle}
+                placeholder="Search by district"
+                value={district || districtQuery}
+                onChange={e => { setDistrictQuery(e.target.value); setDistrict(''); setShowDistricts(true); }}
+                onFocus={() => setShowDistricts(true)}
+              />
+              {showDistricts && !district && districtQuery && filteredDistricts.length > 0 && (
+                <div style={{
+                  position:'absolute', top:'100%', left:0, right:0, background:'#fff',
+                  border:'1px solid #e2e8f0', borderRadius:10, marginTop:4, maxHeight:160,
+                  overflowY:'auto', zIndex:10, boxShadow:'0 8px 20px rgba(0,0,0,0.08)'
+                }}>
+                  {filteredDistricts.map(d => (
+                    <div key={d}
+                      onClick={() => { setDistrict(d); setDistrictQuery(''); setShowDistricts(false); }}
+                      style={{ padding:'10px 14px', cursor:'pointer', fontSize:'0.88rem', color:'#334155' }}
+                      onMouseEnter={e => e.currentTarget.style.background='#f1f5f9'}
+                      onMouseLeave={e => e.currentTarget.style.background='#fff'}
+                    >{d}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
+        )}
+
+        <div style={{ marginBottom:16 }}>
+          <label style={labelStyle}>
+            {mode === 'login' ? 'Mobile Number' : 'Provide your mobile number to send OTP'}
+          </label>
+          <input
+            style={inputStyle}
+            placeholder="+91"
+            value={phone}
+            onChange={e => setPhone(e.target.value.replace(/\D/g,'').slice(0,10))}
+          />
+        </div>
+
+        {!otpSent && (
+          <button
+            disabled={!canSendOtp}
+            onClick={handleSendOtp}
+            style={{
+              width:'100%', padding:'13px', border:'none', borderRadius:10,
+              background: canSendOtp ? '#2563eb' : '#93c5fd',
+              color:'#fff', fontWeight:700, fontSize:'0.95rem',
+              cursor: canSendOtp ? 'pointer' : 'not-allowed', transition:'all 0.2s'
+            }}
+          >Get OTP</button>
+        )}
+
+        {otpSent && (
+          <>
+            <div style={{ marginBottom:12 }}>
+              <label style={labelStyle}>OTP Sent (demo: 1234)</label>
+              <input
+                style={inputStyle}
+                placeholder="Enter OTP"
+                value={otp}
+                onChange={e => setOtp(e.target.value.replace(/\D/g,'').slice(0,4))}
+              />
+            </div>
+            <button
+              disabled={otp !== '1234'}
+              onClick={handleVerify}
+              style={{
+                width:'100%', padding:'13px', border:'none', borderRadius:10,
+                background: otp === '1234' ? '#10b981' : '#a7f3d0',
+                color:'#fff', fontWeight:700, fontSize:'0.95rem',
+                cursor: otp === '1234' ? 'pointer' : 'not-allowed', transition:'all 0.2s'
+              }}
+            >Verify & Continue</button>
+          </>
+        )}
+
+        {!dismissable && (
+          <div style={{ marginTop:14, fontSize:'0.75rem', color:'#94a3b8', textAlign:'center' }}>
+            Please complete registration to continue using the site.
+          </div>
+        )}
+      </motion.div>
+    </div>
+  );
+};
+
 const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) => {
   const isAnna = category === 'anna';
   const codeKey = String(college.code || '').trim();
@@ -476,6 +694,17 @@ const App = () => {
   const [fillFilter, setFillFilter] = useState('');
   const [cutoffFilter, setCutoffFilter] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [regModal, setRegModal] = useState({ open: false, dismissable: true });
+  const [registered, setRegistered] = useState(false);
+
+  // Registration popup timers — 60s closeable, then 15s mandatory
+  useEffect(() => {
+    if (registered) return;
+    const firstTimer = setTimeout(() => {
+      setRegModal({ open: true, dismissable: true });
+    }, 60 * 1000);
+    return () => clearTimeout(firstTimer);
+  }, [registered]);
 
   // Get unique cities for the dropdown
   const cityOptions = useMemo(() => {
@@ -719,7 +948,7 @@ const App = () => {
         )}
         {view === 'dept-details' && (
           <motion.main key="dept-details" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-            <DepartmentDetailsPage onBack={() => setView('explorer')} onCompare={() => setView('comparison')} />
+            <DepartmentDetailsPage onBack={() => setView('explorer')} onCompare={() => setView('comparison')} onOpenQuery={(name) => setQueryModal({ open: true, college: name })} />
           </motion.main>
         )}
         {view === 'comparison' && (
@@ -739,6 +968,22 @@ const App = () => {
         )}
       </AnimatePresence>
       <QueryModal isOpen={queryModal.open} onClose={()=>setQueryModal({open:false, college:''})} collegeName={queryModal.college} />
+      <RegistrationModal
+        isOpen={regModal.open}
+        dismissable={regModal.dismissable}
+        onClose={() => {
+          setRegModal({ open: false, dismissable: true });
+          if (!registered) {
+            setTimeout(() => {
+              setRegModal({ open: true, dismissable: false });
+            }, 15 * 1000);
+          }
+        }}
+        onComplete={() => {
+          setRegistered(true);
+          setRegModal({ open: false, dismissable: true });
+        }}
+      />
     </div>
   );
 };
@@ -1773,9 +2018,10 @@ const ComparisonPage = ({ onBack }) => {
   );
 };
 
-const DepartmentDetailsPage = ({ onBack, onCompare }) => {
+const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDept, setSelectedDept] = useState(null);
+  const [expandedCollegeCode, setExpandedCollegeCode] = useState(null);
 
   const [aiProgress, setAiProgress] = useState(0);
   const [aiAnalysis, setAiAnalysis] = useState(null);
@@ -1817,63 +2063,36 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
   }, [allUniqueDepartments, searchTerm]);
 
   useEffect(() => {
-    if (selectedDept) {
-      setAiProgress(0);
-      setAiAnalysis(null);
-      setAiError(null);
-      
-      // Very slow progress simulation - extremely slow increments
-      let currentProgress = 0;
-      const progressInterval = setInterval(() => {
-        currentProgress += Math.random() * 1.5 + 0.5; // Very tiny increments: 0.5-2% per step
-        if (currentProgress >= 90) currentProgress = 90;
-        setAiProgress(currentProgress);
-      }, 2500); // Update every 2.5 seconds (very slow)
-      
-      try {
-        // Load from static data instead of API call
-        const key = `${selectedDept.degree}___${selectedDept.name}`;
-        const deptData = DEPT_ANALYSIS_DATA[key];
-        
-        if (deptData && deptData.analysis) {
-          // Push to 95% immediately when data is found
-          setAiProgress(95);
-          
-          // Then complete the progress bar to 100%
-          const completeProgressTimeout = setTimeout(() => {
-            setAiProgress(100);
-            clearInterval(progressInterval);
-            
-            // After 100% is reached, show the content
-            const showContentTimeout = setTimeout(() => {
-              setAiAnalysis(deptData.analysis);
-            }, 1000);
-            
-            return () => clearTimeout(showContentTimeout);
-          }, 1000);
-          
-          return () => clearTimeout(completeProgressTimeout);
-        } else {
-          // Data not generated yet - complete to 100% then show error
-          setAiProgress(100);
-          clearInterval(progressInterval);
-          
-          setTimeout(() => {
-            setAiError(`📊 Department analysis for "${selectedDept.degree} ${selectedDept.name}" is not yet generated. Please run: \n\n\`node generate_dept_analysis.js\`\n\nThis will pre-generate all department analyses at once.`);
-          }, 1000);
-        }
-      } catch (err) {
-        // Complete to 100% then show error
-        setAiProgress(100);
-        clearInterval(progressInterval);
-        
+    if (!selectedDept) return;
+    setAiProgress(0);
+    setAiAnalysis(null);
+    setAiError(null);
+    setShowAllColleges(false);
+    setExpandedCollegeCode(null);
+
+    const key = `${selectedDept.degree}___${selectedDept.name}`;
+    const deptData = DEPT_ANALYSIS_DATA[key];
+
+    // Smooth 0 → 100 counter so every integer is visible.
+    // Step ~80ms × 100 steps ≈ 8s total.
+    const STEP_MS = 80;
+    let current = 0;
+    const interval = setInterval(() => {
+      current += 1;
+      setAiProgress(current);
+      if (current >= 100) {
+        clearInterval(interval);
         setTimeout(() => {
-          setAiError(`Error loading department data: ${err.message}`);
-        }, 1000);
+          if (deptData && deptData.analysis) {
+            setAiAnalysis(deptData.analysis);
+          } else {
+            setAiError(`📊 Department analysis for "${selectedDept.degree} ${selectedDept.name}" is not yet generated. Please run: \n\n\`node generate_dept_analysis.js\`\n\nThis will pre-generate all department analyses at once.`);
+          }
+        }, 400);
       }
-      
-      return () => clearInterval(progressInterval);
-    }
+    }, STEP_MS);
+
+    return () => clearInterval(interval);
   }, [selectedDept]);
 
   const sortedColleges = useMemo(() => {
@@ -1886,7 +2105,7 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
       
       const isSpecial = (name) => {
         const n = String(name).split(',')[0].toLowerCase().replace(/\s+/g, '');
-        return n.includes('saveetha') || n.includes('sairam') || n.includes('rajalashkmi') || n.includes('rajalakshmi') || n.includes('jeppiar') || n.includes('jeppiaar') || n.includes('kumaraguru');
+        return n.includes('saveetha') || n.includes('sairam') || n.includes('rajalashkmi') || n.includes('rajalakshmi') || n.includes('jeppiar') || n.includes('jeppiaar');
       };
       const r2a = isSpecial(a.name) ? 1 : 0;
       const r2b = isSpecial(b.name) ? 1 : 0;
@@ -1902,18 +2121,40 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
 
   if (selectedDept) {
     // ── College tier helpers ───────────────────────────
-    const TIER1_TYPES = ['university_dept', 'government', 'govt_aided'];
-    const isSpecialCollege = (name) => {
-      const n = String(name).toLowerCase().replace(/\s+/g,'');
-      return ['saveetha','sairam','rajalakshmi','rajalashkmi','jeppiar','jeppiaar','kumaraguru','kcg'].some(k => n.includes(k));
+    // Ordered specials — keywords must not overlap with each other.
+    const SPECIAL_ORDER = [
+      ['kcg'],
+      ['sairam'],
+      ['saveetha'],
+      ['rajalakshmi', 'rajalashkmi'],
+      ['jeppiar', 'jeppiaar'],
+    ];
+    const specialRank = (name) => {
+      const n = String(name).toLowerCase().replace(/\s+/g, '');
+      for (let i = 0; i < SPECIAL_ORDER.length; i++) {
+        if (SPECIAL_ORDER[i].some(k => n.includes(k))) return i;
+      }
+      return -1;
     };
-    const tier1 = sortedColleges.filter(c => TIER1_TYPES.includes(c.type));
-    const tier2 = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && isSpecialCollege(c.name));
-    const tier3_preview = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170).slice(0, 2);
-    const tier3_all = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff >= 170);
-    const remaining = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && !isSpecialCollege(c.name) && c.cutoff < 170);
+    const TIER1_TYPES = ['university_dept', 'govt_aided', 'government'];
+    const tier1TypeRank = (t) => {
+      const i = TIER1_TYPES.indexOf(t);
+      return i === -1 ? 99 : i;
+    };
+
+    const tier1 = sortedColleges
+      .filter(c => TIER1_TYPES.includes(c.type))
+      .sort((a, b) => tier1TypeRank(a.type) - tier1TypeRank(b.type));
+    const tier2 = sortedColleges
+      .filter(c => !TIER1_TYPES.includes(c.type) && specialRank(c.name) !== -1)
+      .sort((a, b) => specialRank(a.name) - specialRank(b.name));
+    const tier3_high = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && specialRank(c.name) === -1 && c.cutoff >= 170);
+    const tier3_low = sortedColleges.filter(c => !TIER1_TYPES.includes(c.type) && specialRank(c.name) === -1 && !(c.cutoff >= 170));
+    const tier3_preview = tier3_high.slice(0, 2);
+    const tier3_all = [...tier3_high, ...tier3_low];
+    const remaining = tier3_all.slice(tier3_preview.length);
     const initialColleges = [...tier1, ...tier2, ...tier3_preview];
-    const displayedColleges = showAllColleges ? [...tier1, ...tier2, ...tier3_all, ...remaining] : initialColleges;
+    const displayedColleges = showAllColleges ? [...tier1, ...tier2, ...tier3_all] : initialColleges;
 
     // ── Type badge config ──────────────────────────────
     // ── College type breakdown ───────────────────────────
@@ -1977,7 +2218,7 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
             {/* College Type Breakdown */}
             <div style={{ marginTop:32, padding:'20px', background:'rgba(255,255,255,0.08)', borderRadius:16, border:'1px solid rgba(255,255,255,0.12)' }}>
               <div style={{ fontSize:'0.85rem', color:'#c4b5fd', fontWeight:600, letterSpacing:'0.06em', marginBottom:12 }}>COLLEGES BY TYPE</div>
-              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(150px, 1fr))', gap:12 }}>
+              <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(120px, max-content))', gap:12, justifyContent:'start' }}>
                 {collegesByType.university_dept > 0 && (
                   <div style={{ padding:'10px 14px', background:'rgba(245,158,11,0.15)', borderRadius:8, border:'1px solid rgba(245,158,11,0.3)' }}>
                     <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#fbbf24' }}>{collegesByType.university_dept}</div>
@@ -2011,7 +2252,7 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
                 {collegesByType.non_autonomous > 0 && (
                   <div style={{ padding:'10px 14px', background:'rgba(100,116,139,0.15)', borderRadius:8, border:'1px solid rgba(100,116,139,0.3)' }}>
                     <div style={{ fontSize:'1.1rem', fontWeight:800, color:'#cbd5e1' }}>{collegesByType.non_autonomous}</div>
-                    <div style={{ fontSize:'0.7rem', color:'#e2e8f0', fontWeight:600 }}>Private</div>
+                    <div style={{ fontSize:'0.7rem', color:'#e2e8f0', fontWeight:600 }}>Non-Autonomous</div>
                   </div>
                 )}
               </div>
@@ -2035,44 +2276,65 @@ const DepartmentDetailsPage = ({ onBack, onCompare }) => {
               {displayedColleges.map((c, idx) => {
                 const cfg = getCfg(c.type);
                 return (
-                  <motion.div
-                    key={c.code || idx}
-                    initial={{ opacity:0, y:10 }}
-                    animate={{ opacity:1, y:0 }}
-                    transition={{ delay: idx < 10 ? idx * 0.04 : 0 }}
-                    style={{
-                      background:'#fff',
-                      border:'1px solid #e2e8f0',
-                      borderLeft: `4px solid ${cfg.color}`,
-                      borderRadius:'12px',
-                      padding:'14px 18px',
-                      display:'flex',
-                      alignItems:'center',
-                      gap:12,
-                      boxShadow:'0 1px 4px rgba(0,0,0,0.04)',
-                      overflow:'hidden',
-                    }}
-                  >
-                    {/* Rank bubble */}
-                    <div style={{ width:30, height:30, borderRadius:8, background:'#f1f5f9', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, fontWeight:700, fontSize:'0.78rem', color:'#64748b' }}>
-                      {idx+1}
-                    </div>
+                  <div key={c.code || idx} style={{ marginBottom: 8 }}>
+                    <motion.div
+                      initial={{ opacity:0, y:10 }}
+                      animate={{ opacity:1, y:0 }}
+                      transition={{ delay: idx < 10 ? idx * 0.04 : 0 }}
+                      onClick={() => setExpandedCollegeCode(expandedCollegeCode === c.code ? null : c.code)}
+                      whileHover={{ scale: 1.01, boxShadow: '0 4px 12px rgba(99,102,241,0.2)' }}
+                      style={{
+                        background:'#fff',
+                        border:'1px solid #e2e8f0',
+                        borderLeft: `4px solid ${cfg.color}`,
+                        borderRadius:'12px',
+                        padding:'14px 18px',
+                        display:'flex',
+                        alignItems:'center',
+                        gap:12,
+                        boxShadow:'0 1px 4px rgba(0,0,0,0.04)',
+                        overflow:'hidden',
+                        cursor:'pointer',
+                        transition:'all 0.2s ease'
+                      }}
+                    >
+                      <div style={{ width:30, height:30, borderRadius:8, background:'#f1f5f9', display:'flex', alignItems:'center', justifyContent:'center', flexShrink:0, fontWeight:700, fontSize:'0.78rem', color:'#64748b' }}>
+                        {idx+1}
+                      </div>
+                      <div style={{ flex:1, minWidth:0, overflow:'hidden' }}>
+                        <div style={{ fontWeight:600, color:'#1e293b', fontSize:'0.92rem', lineHeight:1.3 }}>{c.name}</div>
+                        <div style={{ fontSize:'0.76rem', color:'#94a3b8', marginTop:2 }}>Code {c.code} · {c.city || 'Tamil Nadu'}</div>
+                      </div>
+                      <div style={{ display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
+                        <span style={{ fontSize:'0.68rem', fontWeight:700, color: cfg.color, background: cfg.bg, border:`1px solid ${cfg.border}`, borderRadius:20, padding:'3px 10px', letterSpacing:'0.04em', whiteSpace:'nowrap' }}>
+                          {cfg.label}
+                        </span>
+                      </div>
+                    </motion.div>
 
-                    <div style={{ flex:1, minWidth:0, overflow:'hidden' }}>
-                      <div style={{ fontWeight:600, color:'#1e293b', fontSize:'0.92rem', lineHeight:1.3 }}>{c.name}</div>
-                      <div style={{ fontSize:'0.76rem', color:'#94a3b8', marginTop:2 }}>Code {c.code} · {c.city || 'Tamil Nadu'}</div>
-                    </div>
-
-                    <div style={{ display:'flex', alignItems:'center', gap:8, flexShrink:0 }}>
-                      <span style={{ fontSize:'0.68rem', fontWeight:700, color: cfg.color, background: cfg.bg, border:`1px solid ${cfg.border}`, borderRadius:20, padding:'3px 10px', letterSpacing:'0.04em', whiteSpace:'nowrap' }}>
-                        {cfg.label}
-                      </span>
-                    </div>
-                  </motion.div>
+                    <AnimatePresence>
+                      {expandedCollegeCode === c.code && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <CollegeCard
+                            college={{ ...c, rank: idx + 1 }}
+                            category="anna"
+                            isExpanded={true}
+                            onToggle={() => setExpandedCollegeCode(null)}
+                            onOpenQuery={onOpenQuery}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
                 );
               })}
             </div>
-
             {/* Load More */}
             {!showAllColleges && remaining.length > 0 && (
               <motion.button
