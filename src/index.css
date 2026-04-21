@@ -775,6 +775,185 @@ button {
   text-decoration: underline;
 }
 
+/* ─────────── SSN 2026 UNIVERSITY NOTICE ─────────── */
+.ssn-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 50%, #fcd34d 100%);
+  border-bottom: 1px solid rgba(180, 120, 20, 0.25);
+  color: #78350f;
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.ssn-notice-icon {
+  font-size: 1.05rem;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 2px rgba(120, 53, 15, 0.25));
+}
+
+.ssn-notice-text strong {
+  color: #7c2d12;
+  font-weight: 800;
+  margin-right: 4px;
+}
+
+/* ─────────────── SORT BAR ──────────────── */
+.sort-bar {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 22px rgba(15, 23, 42, 0.05);
+}
+
+.sort-bar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.sort-bar-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.sort-clear {
+  border: none;
+  background: transparent;
+  color: var(--indigo);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 10px;
+  border-radius: 8px;
+}
+
+.sort-clear:hover {
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.sort-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--indigo);
+  background: rgba(99, 102, 241, 0.08);
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.sort-spinner {
+  width: 12px;
+  height: 12px;
+  border: 2px solid rgba(99, 102, 241, 0.25);
+  border-top-color: var(--indigo);
+  border-radius: 50%;
+  animation: sort-spin 0.7s linear infinite;
+}
+
+@keyframes sort-spin {
+  to { transform: rotate(360deg); }
+}
+
+.sort-bar-pulsing {
+  animation: sort-pulse 0.55s ease-out;
+}
+
+@keyframes sort-pulse {
+  0%   { box-shadow: 0 6px 22px rgba(15, 23, 42, 0.05); }
+  40%  { box-shadow: 0 10px 32px rgba(99, 102, 241, 0.22); }
+  100% { box-shadow: 0 6px 22px rgba(15, 23, 42, 0.05); }
+}
+
+.sort-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.sort-opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: #f8fafc;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  text-align: left;
+}
+
+.sort-opt:hover {
+  background: #fff;
+  border-color: rgba(99, 102, 241, 0.35);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.08);
+}
+
+.sort-opt.sort-on {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(20, 184, 166, 0.08));
+  border-color: var(--indigo);
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.15);
+}
+
+.sort-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
+
+.sort-opt.sort-on .sort-icon {
+  background: #fff;
+  border-color: rgba(99, 102, 241, 0.25);
+}
+
+.sort-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.sort-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.sort-desc {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .sort-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* ─────────────── RESULTS INFO ──────────────── */
 .results-info {
   display: flex;

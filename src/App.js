@@ -14,6 +14,31 @@ import DEPT_ANALYSIS_DATA from './dept_analysis_data.json';
 import COMPARISON_DATA from './comparison_data.json';
 import StudentRegistration from './components/StudentRegistration';
 
+/* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
+const PRIORITY_COLLEGE_MATCHERS = [
+  (n) => /CEG Campus/i.test(n),
+  (n) => /MIT Campus/i.test(n),
+  (n) => /PSG College of Technology/i.test(n),
+  (n) => /Coimbatore Institute of Technology \(Autonomous\)/i.test(n),
+  (n) => /Thiagarajar College of Engineering/i.test(n),
+  (n) => /Sri Sivasubramaniya Nadar/i.test(n),
+  (n) => /PSG Institute of Technology and Applied Research/i.test(n),
+  (n) => /Government College of Technology/i.test(n),
+  (n) => /Rajalakshmi Institute of Technology/i.test(n),
+  (n) => /Sri Sai Ram Engineering/i.test(n),
+  (n) => /Saveetha Engineering College/i.test(n),
+  (n) => /^Jeppiaar Engineering College/i.test(n),
+  (n) => /KCG college of Technology/i.test(n),
+];
+
+const priorityRank = (name) => {
+  if (!name) return Infinity;
+  for (let i = 0; i < PRIORITY_COLLEGE_MATCHERS.length; i++) {
+    if (PRIORITY_COLLEGE_MATCHERS[i](name)) return i;
+  }
+  return Infinity;
+};
+
 /* ─────────────────── NAVBAR ─────────────────── */
 const Navbar = ({ onHome, onRegistration }) => (
   <nav className="navbar">
@@ -514,7 +539,7 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
   );
 };
 
-const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) => {
+const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, serial }) => {
   const isAnna = category === 'anna';
   const codeKey = String(college.code || '').trim();
   const tneaCourses = (codeKey && TNEA_COURSES_INFO[codeKey]) ? TNEA_COURSES_INFO[codeKey] : null;
@@ -545,10 +570,20 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
     return Math.min(99, Math.max(45, Math.floor((cut/200)*60 + (fill/100)*40)));
   }, [college]);
 
+  const isSSN = /Sri Sivasubramaniya Nadar/i.test(college.name || '');
+
   return (
     <motion.div layout className={`college-card ${isExpanded ? 'cc-open' : ''}`} transition={{ layout: { type: 'spring', stiffness: 300, damping: 30 } }}>
+      {isSSN && (
+        <div className="ssn-notice">
+          <span className="ssn-notice-icon">⚠️</span>
+          <span className="ssn-notice-text">
+            <strong>Note:</strong> From 2026, this college is considered a University and will not take part in TNEA 2026 counselling.
+          </span>
+        </div>
+      )}
       <div className="cc-header" onClick={onToggle}>
-        <div className="cc-rank">{isAnna ? <span className="rank-num">{college.rank}</span> : <Building2 size={20} />}</div>
+        <div className="cc-rank">{isAnna ? <span className="rank-num">{serial}</span> : <Building2 size={20} />}</div>
         <div className="cc-meta">
           <h3 className="cc-name">{college.name}</h3>
           <div className="cc-loc"><MapPin size={12} /> {college.city || college.Address || college.State || 'Tamil Nadu'}</div>
@@ -557,7 +592,6 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery }) =
           {isAnna ? (
             <>
               {college.type && <span className={`badge ${({'university_dept':'badge-purple','government':'badge-blue','govt_aided':'badge-emerald','cecri_cipet':'badge-amber','constituent':'badge-cyan','autonomous':'badge-teal'})[college.type] || 'badge-gray'}`}>{({'university_dept':'University Dept','government':'Government','govt_aided':'Govt Aided','cecri_cipet':'CECRI/CIPET','constituent':'Constituent','autonomous':'Autonomous','non_autonomous':'Self-Finance'})[college.type] || college.type}</span>}
-              <span className="badge badge-indigo">#{college.rank}</span>
             </>
           ) : <span className="badge badge-gray">{college.Type || 'University'}</span>}
         </div>
@@ -694,6 +728,14 @@ const App = () => {
   const [fillFilter, setFillFilter] = useState('');
   const [cutoffFilter, setCutoffFilter] = useState('');
   const [showFilters, setShowFilters] = useState(false);
+  const [sortBy, setSortBy] = useState('');
+  const [reordering, setReordering] = useState(false);
+
+  const handleSortChange = (next) => {
+    setSortBy(prev => (prev === next ? '' : next));
+    setReordering(true);
+    setTimeout(() => setReordering(false), 550);
+  };
   const [regModal, setRegModal] = useState({ open: false, dismissable: true });
   const [registered, setRegistered] = useState(false);
 
@@ -787,6 +829,34 @@ const App = () => {
 
     return base;
   }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, deptLookup]);
+
+  const sortedColleges = useMemo(() => {
+    const computePlacement = (c) => {
+      if (c.placement) return c.placement;
+      const cut = c.cutoff || 120;
+      const fill = c.fillpct || 50;
+      return Math.min(99, Math.max(45, Math.floor((cut / 200) * 60 + (fill / 100) * 40)));
+    };
+
+    const priority = [];
+    const rest = [];
+    filteredColleges.forEach(c => {
+      if (priorityRank(c.name) !== Infinity) priority.push(c);
+      else rest.push(c);
+    });
+    priority.sort((a, b) => priorityRank(a.name) - priorityRank(b.name));
+
+    if (sortBy === 'demand') {
+      const demandScore = (c) => (c.seats || 0) * (c.fillpct || 0) * (c.cutoff || 0);
+      rest.sort((a, b) => demandScore(b) - demandScore(a));
+    } else if (sortBy === 'placement') {
+      rest.sort((a, b) => computePlacement(b) - computePlacement(a));
+    } else if (sortBy === 'fast') {
+      rest.sort((a, b) => ((b.r1 || 0) * (b.filled || 0)) - ((a.r1 || 0) * (a.filled || 0)));
+    }
+
+    return [...priority, ...rest];
+  }, [filteredColleges, sortBy]);
 
   const goHome = () => { setView('home'); window.scrollTo(0, 0); };
   const openExplorer = (cat) => { setCategory(cat); setView('explorer'); window.scrollTo(0, 0); };
@@ -924,25 +994,85 @@ const App = () => {
                   </motion.div>
                 )}
               </div>
+              {category === 'anna' && (
+                <div className={`sort-bar ${reordering ? 'sort-bar-pulsing' : ''}`}>
+                  <div className="sort-bar-head">
+                    <span className="sort-bar-title">Sort results</span>
+                    <AnimatePresence>
+                      {reordering && (
+                        <motion.span
+                          className="sort-status"
+                          initial={{ opacity: 0, x: -6 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: 6 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          <span className="sort-spinner" /> Reordering…
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
+                    {sortBy && !reordering && <button className="sort-clear" onClick={() => handleSortChange(sortBy)}>Clear</button>}
+                  </div>
+                  <div className="sort-options">
+                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'demand' ? 'sort-on' : ''}`} onClick={() => handleSortChange('demand')}>
+                      <span className="sort-icon">🔥</span>
+                      <div className="sort-text">
+                        <span className="sort-title">Most In-Demand</span>
+                        <span className="sort-desc">High total seats, fill % & min cutoff</span>
+                      </div>
+                    </motion.button>
+                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'placement' ? 'sort-on' : ''}`} onClick={() => handleSortChange('placement')}>
+                      <span className="sort-icon">💼</span>
+                      <div className="sort-text">
+                        <span className="sort-title">Top Placements</span>
+                        <span className="sort-desc">Highest placement percentage</span>
+                      </div>
+                    </motion.button>
+                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'fast' ? 'sort-on' : ''}`} onClick={() => handleSortChange('fast')}>
+                      <span className="sort-icon">⚡</span>
+                      <div className="sort-text">
+                        <span className="sort-title">Fast Fillers</span>
+                        <span className="sort-desc">High Round 1 & total filled</span>
+                      </div>
+                    </motion.button>
+                  </div>
+                </div>
+              )}
               <div className="results-info">
                 <span className="results-count">{filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found</span>
                 {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({'university_dept':'University Department','government':'Government Colleges','govt_aided':'Government Aided','cecri_cipet':'CECRI & CIPET','constituent':'Constituent Colleges','autonomous':'Autonomous Colleges','non_autonomous':'Non-Autonomous'})[subType]}<X size={12} onClick={()=>setSubType('')}/></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={()=>setCityFilter('')}/></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={()=>setFillFilter('')}/></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={()=>setCutoffFilter('')}/></span>}</span>}
               </div>
-              <div className="card-list">
-                {filteredColleges.map(c => {
-                  const uid = c.code || c.name;
-                  return (
-                    <CollegeCard 
-                      key={uid} 
-                      college={c} 
-                      category={category} 
-                      isExpanded={expandedCollege === uid} 
-                      onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)} 
-                      onOpenQuery={(name) => setQueryModal({ open: true, college: name })} 
-                    />
-                  );
-                })}
-              </div>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`list-${sortBy || 'default'}`}
+                  className="card-list"
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+                >
+                  {sortedColleges.map((c, idx) => {
+                    const uid = c.code || c.name;
+                    return (
+                      <motion.div
+                        key={uid}
+                        initial={{ opacity: 0, y: 14 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3, delay: Math.min(idx, 10) * 0.025, ease: [0.4, 0, 0.2, 1] }}
+                      >
+                        <CollegeCard
+                          college={c}
+                          category={category}
+                          serial={idx + 1}
+                          isExpanded={expandedCollege === uid}
+                          onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
+                          onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
+                        />
+                      </motion.div>
+                    );
+                  })}
+                </motion.div>
+              </AnimatePresence>
             </div>
           </motion.main>
         )}
