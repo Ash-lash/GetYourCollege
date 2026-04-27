@@ -13,6 +13,16 @@ import TNEA_MATRIX_DATA from './branch_matrix_data.json';
 import DEPT_ANALYSIS_DATA from './dept_analysis_data.json';
 import COMPARISON_DATA from './comparison_data.json';
 import StudentRegistration from './components/StudentRegistration';
+import {
+  BrandLogo,
+  DigitalNoticeBoard,
+  PhotoSlideshow,
+  StatsStrip,
+  NewsGrid,
+  WhyChooseUs,
+  Testimonials,
+  SiteFooter,
+} from './components/HomeSections';
 
 /* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
 const PRIORITY_COLLEGE_MATCHERS = [
@@ -27,7 +37,7 @@ const PRIORITY_COLLEGE_MATCHERS = [
   (n) => /Rajalakshmi Institute of Technology/i.test(n),
   (n) => /Sri Sai Ram Engineering/i.test(n),
   (n) => /Saveetha Engineering College/i.test(n),
-  (n) => /^Jeppiaar Engineering College/i.test(n),
+  (n) => /^Jeppiaar Institute of Technology/i.test(n),
   (n) => /KCG college of Technology/i.test(n),
 ];
 
@@ -41,20 +51,22 @@ const priorityRank = (name) => {
 
 /* ─────────────────── NAVBAR ─────────────────── */
 const Navbar = ({ onHome, onRegistration }) => (
-  <nav className="navbar">
+  <nav className="navbar gyc-navbar">
     <div className="nav-inner">
-      <div className="brand" onClick={onHome} style={{ cursor: 'pointer' }}>
-        <div className="brand-glyph">
-          <GraduationCap size={20} />
+      <div className="brand gyc-brand" onClick={onHome} style={{ cursor: 'pointer' }}>
+        <BrandLogo size={38} />
+        <div className="gyc-brand-text">
+          <strong>GetYourCollege</strong>
+          <span>Quantum shift to your career</span>
         </div>
-        <span>GetYourCollege</span>
       </div>
       <div className="nav-links">
-        <button className="nav-link" onClick={onHome}>Home</button>
+        <a className="nav-link" href="#notices">Notices</a>
+        <a className="nav-link" href="#explore">Explore</a>
+        <a className="nav-link" href="#news">News</a>
         <span className="nav-sep" />
-        <a className="nav-cta" href="#explore">Explore</a>
-        <span className="nav-sep" />
-        <button className="nav-cta nav-register" onClick={onRegistration}>Register</button>
+        <button className="nav-cta nav-book" onClick={onRegistration}><Phone size={14} /> Book Slot</button>
+        <button className="nav-cta nav-register" onClick={onHome}>Home</button>
       </div>
     </div>
   </nav>
@@ -539,6 +551,112 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
   );
 };
 
+/* ──────── SAVEETHA ADMISSION 2026-27 PANEL ──────── */
+const SaveethaAdmissionPanel = () => {
+  const cseRows = [
+    { cutoff: '191 – 200', oc: { fee: '100%', free: 'Hostel & Mess / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
+    { cutoff: '186 – 190', oc: { fee: '100%', free: 'Hostel / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
+    { cutoff: '181 – 185', oc: { fee: '50%', free: '—' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
+  ];
+  const coreRows = [
+    { cutoff: '186 – 200', oc: { fee: '100%', free: 'Hostel & Mess / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
+    { cutoff: '181 – 185', oc: { fee: '100%', free: 'Hostel / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
+  ];
+
+  const renderRow = (r, i) => (
+    <tr key={i}>
+      <td className="adm-cell-cutoff">{r.cutoff}</td>
+      <td className={`adm-cell-pct ${r.oc.fee === '50%' ? 'adm-cell-pct-half' : ''}`}>{r.oc.fee}</td>
+      <td className={`adm-cell-free ${r.oc.free === '—' ? 'adm-cell-free-empty' : ''}`}>{r.oc.free}</td>
+      <td className="adm-cell-pct">{r.sc.fee}</td>
+      <td className="adm-cell-free">{r.sc.free}</td>
+    </tr>
+  );
+
+  return (
+    <div className="adm-panel">
+      <div className="adm-hero">
+        <div className="adm-hero-left">
+          <span className="adm-pill"><Sparkles size={12} /> 25 Years of Excellence</span>
+          <h3 className="adm-title">Admissions Open 2026 – 27</h3>
+          <p className="adm-sub">Saveetha Engineering College <span className="adm-dot">•</span> Autonomous <span className="adm-dot">•</span> Affiliated to Anna University</p>
+          <p className="adm-tag">One of Tamil Nadu's <strong>Top 10</strong> Colleges <span className="adm-pipe">|</span> <strong>100% Scholarship</strong> & Fee Waiver applicable for all 4 years</p>
+        </div>
+        <div className="adm-hero-right">
+          <div className="adm-code-card">
+            <span className="adm-code-lbl">TNEA CODE</span>
+            <span className="adm-code-val">1216</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="adm-section">
+        <div className="adm-section-head">
+          <span className="adm-branch-tag adm-tag-cse">CSE • AI&DS • AI&ML • ECE • IT • CYBERSECURITY</span>
+        </div>
+        <div className="adm-table-wrap">
+          <table className="adm-table">
+            <thead>
+              <tr>
+                <th rowSpan={2} className="adm-th-cutoff">Cutoff</th>
+                <th colSpan={2} className="adm-th-cat adm-th-oc">OC, BC, BCM, MBC</th>
+                <th colSpan={2} className="adm-th-cat adm-th-sc">SC, SCA, ST</th>
+              </tr>
+              <tr>
+                <th className="adm-th-sub">Tuition Fee Waiver</th>
+                <th className="adm-th-sub">Free</th>
+                <th className="adm-th-sub">Tuition Fee Waiver</th>
+                <th className="adm-th-sub">Free</th>
+              </tr>
+            </thead>
+            <tbody>{cseRows.map(renderRow)}</tbody>
+          </table>
+        </div>
+      </div>
+
+      <div className="adm-section">
+        <div className="adm-section-head">
+          <span className="adm-branch-tag adm-tag-core">EEE • CIVIL • MECHANICAL</span>
+        </div>
+        <div className="adm-table-wrap">
+          <table className="adm-table">
+            <thead>
+              <tr>
+                <th rowSpan={2} className="adm-th-cutoff">Cutoff</th>
+                <th colSpan={2} className="adm-th-cat adm-th-oc">OC, BC, BCM, MBC</th>
+                <th colSpan={2} className="adm-th-cat adm-th-sc">SC, SCA, ST</th>
+              </tr>
+              <tr>
+                <th className="adm-th-sub">Tuition Fee Waiver</th>
+                <th className="adm-th-sub">Free</th>
+                <th className="adm-th-sub">Tuition Fee Waiver</th>
+                <th className="adm-th-sub">Free</th>
+              </tr>
+            </thead>
+            <tbody>{coreRows.map(renderRow)}</tbody>
+          </table>
+        </div>
+      </div>
+
+      <p className="adm-footnote">
+        Meritorious students joining SEC through TNEA 2026 counselling can avail the above scholarships <strong>on prior approval</strong>.
+      </p>
+
+      <div className="adm-actions">
+        <a className="adm-btn adm-btn-primary" href="https://forms.gle/8B7bA8DrTNy93zBs7" target="_blank" rel="noopener noreferrer">
+          <Sparkles size={15} /> Apply Now <ExternalLink size={13} />
+        </a>
+        <a className="adm-btn adm-btn-ghost" href="https://www.saveetha.ac.in" target="_blank" rel="noopener noreferrer">
+          <Globe size={15} /> Visit Website
+        </a>
+        <a className="adm-btn adm-btn-ghost" href="tel:+918939902737">
+          <Phone size={15} /> +91 89399 02737
+        </a>
+      </div>
+    </div>
+  );
+};
+
 const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, serial }) => {
   const isAnna = category === 'anna';
   const codeKey = String(college.code || '').trim();
@@ -547,21 +665,29 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
   const [showDepts, setShowDepts] = useState(false);
   const [showMore, setShowMore] = useState(false);
   const [showMatrix, setShowMatrix] = useState(false);
+  const [showPlacement, setShowPlacement] = useState(false);
+  const [showTneaInfo, setShowTneaInfo] = useState(false);
+  const [showAdmission, setShowAdmission] = useState(false);
   const seats = college.seats || 0;
   const filled = college.filled || 0;
   const fillpct = college.fillpct || 0;
 
+  const isAnnaCol = category === 'anna';
+  const bodyOpen = isAnnaCol ? showTneaInfo : isExpanded;
+
   useEffect(() => {
-    if (!isExpanded) {
+    if (!bodyOpen) {
       setShowDepts(false);
       setShowMore(false);
       setShowMatrix(false);
+      setShowAdmission(false);
     }
-  }, [isExpanded]);
+  }, [bodyOpen]);
 
-  const toggleDepts = () => { setShowDepts(!showDepts); setShowMore(false); setShowMatrix(false); };
-  const toggleMore = () => { setShowMore(!showMore); setShowDepts(false); setShowMatrix(false); };
-  const toggleMatrix = () => { setShowMatrix(!showMatrix); setShowDepts(false); setShowMore(false); };
+  const toggleDepts = () => { setShowDepts(!showDepts); setShowMore(false); setShowMatrix(false); setShowAdmission(false); };
+  const toggleMore = () => { setShowMore(!showMore); setShowDepts(false); setShowMatrix(false); setShowAdmission(false); };
+  const toggleMatrix = () => { setShowMatrix(!showMatrix); setShowDepts(false); setShowMore(false); setShowAdmission(false); };
+  const toggleAdmission = () => { setShowAdmission(!showAdmission); setShowDepts(false); setShowMore(false); setShowMatrix(false); };
 
   const placement = useMemo(() => {
     if (college.placement) return college.placement;
@@ -571,9 +697,13 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
   }, [college]);
 
   const isSSN = /Sri Sivasubramaniya Nadar/i.test(college.name || '');
+  const isRIT = /Rajalakshmi Institute of Technology/i.test(college.name || '');
+  const isSaveetha = /Saveetha Engineering College/i.test(college.name || '');
+  const isKCG = /KCG college of Technology/i.test(college.name || '');
+  const isCIT = /Coimbatore Institute of Technology/i.test(college.name || '');
 
   return (
-    <motion.div layout className={`college-card ${isExpanded ? 'cc-open' : ''}`} transition={{ layout: { type: 'spring', stiffness: 300, damping: 30 } }}>
+    <motion.div layout className={`college-card ${bodyOpen ? 'cc-open' : ''} ${(isRIT || isSaveetha || isKCG || isCIT) ? 'cc-rit' : ''}`} transition={{ layout: { type: 'spring', stiffness: 300, damping: 30 } }}>
       {isSSN && (
         <div className="ssn-notice">
           <span className="ssn-notice-icon">⚠️</span>
@@ -582,7 +712,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
           </span>
         </div>
       )}
-      <div className="cc-header" onClick={onToggle}>
+      <div className="cc-header" onClick={isAnna ? undefined : onToggle} style={isAnna ? { cursor: 'default' } : undefined}>
         <div className="cc-rank">{isAnna ? <span className="rank-num">{serial}</span> : <Building2 size={20} />}</div>
         <div className="cc-meta">
           <h3 className="cc-name">{college.name}</h3>
@@ -595,13 +725,33 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
             </>
           ) : <span className="badge badge-gray">{college.Type || 'University'}</span>}
         </div>
-        <motion.div className="cc-chevron" animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-          <ChevronDown size={18} />
-        </motion.div>
+        {isAnna ? (
+          <button
+            type="button"
+            className={`tnea-info-btn ${showTneaInfo ? 'tib-active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              const next = !showTneaInfo;
+              setShowTneaInfo(next);
+              if (next) setShowPlacement(false);
+            }}
+            aria-label="Toggle TNEA info"
+          >
+            <span className="tib-icon"><Sparkles size={15} /></span>
+            <span className="tib-text">{showTneaInfo ? 'Hide' : 'View'} TNEA Info</span>
+            <span className={`tib-chev ${showTneaInfo ? 'tib-chev-open' : ''}`}>
+              <ChevronDown size={14} />
+            </span>
+          </button>
+        ) : (
+          <motion.div className="cc-chevron" animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
+            <ChevronDown size={18} />
+          </motion.div>
+        )}
       </div>
 
       <AnimatePresence>
-        {isExpanded && (
+        {bodyOpen && (
           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }} style={{ overflow: 'hidden' }}>
             <div className="cc-body">
               {isAnna && (
@@ -642,6 +792,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
                   {isAnna && <button className="dept-toggle" onClick={toggleMore}><Info size={15} /> {showMore ? 'Hide Campus Info' : 'Campus Info'} <motion.span animate={{ rotate: showMore ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? {borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)'} : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   {courses.length > 0 && <button className="dept-toggle" onClick={toggleDepts}><Eye size={15} /> {showDepts ? 'Hide Branches' : `All Branches (${courses.reduce((acc, cat) => acc + (cat.branches ? cat.branches.length : 0), 0)})`} <motion.span animate={{ rotate: showDepts ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
+                  {isSaveetha && <button className={`dept-toggle admission-toggle ${showAdmission ? 'active' : ''}`} onClick={toggleAdmission}><GraduationCap size={15} /> {showAdmission ? 'Hide Admissions 2026-27' : 'Admissions 2026-27'} <motion.span animate={{ rotate: showAdmission ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
                   <button className="dept-toggle fees-btn-special" onClick={(e) => { e.stopPropagation(); onOpenQuery(college.name); }}><IndianRupee size={15} /> Fees / Query <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowRight size={14} /></motion.span></button>
                 </div>
 
@@ -663,12 +814,254 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, ser
                     </motion.div>
                   )}
                   {showDepts && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}><CourseLevels courses={courses} /></motion.div>}
+                  {showAdmission && isSaveetha && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}>
+                      <SaveethaAdmissionPanel />
+                    </motion.div>
+                  )}
                 </AnimatePresence>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      {isRIT && (
+        <>
+          <motion.button
+            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              const next = !showPlacement;
+              setShowPlacement(next);
+              if (next) {
+                if (isAnnaCol) setShowTneaInfo(false);
+                else if (isExpanded) onToggle();
+              }
+            }}
+            whileHover={{ scale: 1.04, x: 4 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label="Toggle placement highlights"
+          >
+            <span className="pf-glow" />
+            <span className="pf-icon"><Sparkles size={16} /></span>
+            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
+            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <ChevronDown size={14} />
+            </motion.span>
+          </motion.button>
+          <AnimatePresence>
+            {showPlacement && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="placement-highlight ph-rit">
+                  <h4 className="ph-title">Career Launchpad – Placements That Deliver</h4>
+                  <div className="ph-grid ph-grid-6">
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>98%</span><span className="ph-lbl">Students Placed</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>₹56 LPA</span><span className="ph-lbl">Highest CTC</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>₹19.75 LPA</span><span className="ph-lbl">Avg. CTC (Top Offers)</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#8b5cf6' }}>25%</span><span className="ph-lbl">Multiple Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>1500+</span><span className="ph-lbl">Total Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#06b6d4' }}>450+</span><span className="ph-lbl">Recruiters</span></div>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      )}
+      {isSaveetha && (
+        <>
+          <motion.button
+            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              const next = !showPlacement;
+              setShowPlacement(next);
+              if (next) {
+                if (isAnnaCol) setShowTneaInfo(false);
+                else if (isExpanded) onToggle();
+              }
+            }}
+            whileHover={{ scale: 1.04, x: 4 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label="Toggle placement highlights"
+          >
+            <span className="pf-glow" />
+            <span className="pf-icon"><Sparkles size={16} /></span>
+            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
+            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <ChevronDown size={14} />
+            </motion.span>
+          </motion.button>
+          <AnimatePresence>
+            {showPlacement && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="placement-highlight">
+                  <h4 className="ph-title">Placement Highlights – Where Careers Take Off</h4>
+                  <div className="ph-grid">
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>44</span><span className="ph-lbl">LPA Highest Package</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>97%</span><span className="ph-lbl">Placement Rate</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>5.36</span><span className="ph-lbl">LPA Average Package</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>652+</span><span className="ph-lbl">Recruiting Companies</span></div>
+                  </div>
+                </div>
+                <div className="salary-bracket">
+                  <div className="sb-head">
+                    <h4 className="sb-title">Salary Bracket Breakdown</h4>
+                    <p className="sb-sub">CTC distribution across placed students — 2024-25 batch</p>
+                  </div>
+                  <div className="sb-rows">
+                    {[
+                      { label: 'Above ₹20 LPA', count: 38, pct: 23, color: '#f59e0b' },
+                      { label: '₹10 – ₹20 LPA', count: 86, pct: 28, color: '#ef6b6b' },
+                      { label: '₹5 – ₹10 LPA', count: 342, pct: 52, color: '#6b74e0' },
+                      { label: '₹3 – ₹5 LPA', count: 643, pct: 78, color: '#22c55e' },
+                      { label: 'Total Offers', count: '1300+', pct: 100, color: '#64748b', isTotal: true },
+                    ].map((r, i) => (
+                      <div key={i} className="sb-row">
+                        <span className="sb-row-lbl">{r.label}</span>
+                        <div className="sb-bar-wrap">
+                          <div className="sb-bar" style={{ width: `${r.pct}%`, background: r.color }}>
+                            <span className={`sb-bar-val ${r.isTotal ? 'sb-bar-val-end' : ''}`}>{r.count}</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      )}
+      {isKCG && (
+        <>
+          <motion.button
+            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              const next = !showPlacement;
+              setShowPlacement(next);
+              if (next) {
+                if (isAnnaCol) setShowTneaInfo(false);
+                else if (isExpanded) onToggle();
+              }
+            }}
+            whileHover={{ scale: 1.04, x: 4 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label="Toggle placement highlights"
+          >
+            <span className="pf-glow" />
+            <span className="pf-icon"><Sparkles size={16} /></span>
+            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
+            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <ChevronDown size={14} />
+            </motion.span>
+          </motion.button>
+          <AnimatePresence>
+            {showPlacement && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="placement-highlight ph-kcg">
+                  <h4 className="ph-title">Placement 2025 – Driving Student Success</h4>
+                  <div className="ph-grid ph-grid-7">
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#d4a373' }}>395</span><span className="ph-lbl">Eligible Students</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>350<sup>*</sup></span><span className="ph-lbl">Students Placed</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>10 LPA</span><span className="ph-lbl">Highest Package</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#8b5cf6' }}>91%<sup>*</sup></span><span className="ph-lbl">Placed %</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#06b6d4' }}>4.5 LPA</span><span className="ph-lbl">Median CTC</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>578</span><span className="ph-lbl">Total Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>5 LPA</span><span className="ph-lbl">Average CTC</span></div>
+                  </div>
+                  <p className="ph-footnote">* as reported by college placement cell, 2025 batch</p>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      )}
+      {isCIT && (
+        <>
+          <motion.button
+            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
+            onClick={(e) => {
+              e.stopPropagation();
+              const next = !showPlacement;
+              setShowPlacement(next);
+              if (next) {
+                if (isAnnaCol) setShowTneaInfo(false);
+                else if (isExpanded) onToggle();
+              }
+            }}
+            whileHover={{ scale: 1.04, x: 4 }}
+            whileTap={{ scale: 0.96 }}
+            aria-label="Toggle placement highlights"
+          >
+            <span className="pf-glow" />
+            <span className="pf-icon"><Sparkles size={16} /></span>
+            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
+            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
+              <ChevronDown size={14} />
+            </motion.span>
+          </motion.button>
+          <AnimatePresence>
+            {showPlacement && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: 'auto', opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+                style={{ overflow: 'hidden' }}
+              >
+                <div className="placement-highlight ph-cit">
+                  <h4 className="ph-title">Placements 2025–26 – Offers Still Rolling In</h4>
+                  <div className="ph-grid">
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>712</span><span className="ph-lbl">Total Job Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef4444' }}>593</span><span className="ph-lbl">Single Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>58</span><span className="ph-lbl">Dual Offers</span></div>
+                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>3</span><span className="ph-lbl">Triple Offers</span></div>
+                  </div>
+                  <p className="ph-footnote">Status as on date • details updating</p>
+                </div>
+                <div className="top-recruiters">
+                  <div className="tr-head">
+                    <h4 className="tr-title">Highest Packages 2025–26</h4>
+                    <p className="tr-sub">Top CTC offers this season</p>
+                  </div>
+                  <div className="tr-grid">
+                    {[
+                      { name: 'D.E. Shaw India', ctc: '₹59 LPA', color: '#60a5fa', bg: 'rgba(96,165,250,0.10)' },
+                      { name: 'Amazon', ctc: '₹30.8 LPA', color: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
+                      { name: 'KLA', ctc: '₹28 LPA', color: '#6366f1', bg: 'rgba(99,102,241,0.07)' },
+                    ].map((r, i) => (
+                      <div key={i} className="tr-card" style={{ background: r.bg }}>
+                        <span className="tr-name" style={{ color: r.color }}>{r.name}</span>
+                        <span className="tr-ctc">{r.ctc}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      )}
     </motion.div>
   );
 };
@@ -870,11 +1263,38 @@ const App = () => {
       <Navbar onHome={goHome} onRegistration={openRegistration} />
       <AnimatePresence mode="wait">
         {view === 'home' && (
-          <motion.main key="home" className="home-main" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-            <div className="hero">
-              <div className="hero-eyebrow"><Sparkles size={14} /> Tamil Nadu Institution Explorer</div>
-              <h1 className="hero-h1">Find Your <span className="h1-accent">Perfect College</span></h1>
-              <p className="hero-p">Explore cutoff data, seats, and verified institution details for 2025.</p>
+          <motion.main key="home" className="home-main gyc-home-v2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="gyc-hero-bg" aria-hidden>
+              <span className="gyc-hero-blob gyc-hb-1" />
+              <span className="gyc-hero-blob gyc-hb-2" />
+              <span className="gyc-hero-blob gyc-hb-3" />
+            </div>
+            <div className="hero gyc-hero">
+              <div className="hero-eyebrow gyc-hero-eyebrow"><Sparkles size={14} /> Tamil Nadu's #1 Admission Guidance Platform</div>
+              <h1 className="hero-h1 gyc-hero-h1">
+                Your Complete Guidance for <span className="h1-accent gyc-accent-eng">Engineering</span> &amp; <span className="h1-accent gyc-accent-med">Medical</span> Counselling
+              </h1>
+              <p className="hero-p gyc-hero-p">
+                Cut-off Marks · Colleges list · Course list · Choice List Preparation and much more…<br/>
+                Let's clear all doubts from <strong>College selection</strong> to <strong>Choice Filling</strong> — all in one place
+              </p>
+              <div className="gyc-hero-ctas">
+                <motion.button className="gyc-btn-primary" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={() => openExplorer('anna')}>
+                  <ArrowRight size={16} /> Get Started
+                </motion.button>
+                <motion.button className="gyc-btn-secondary" whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }} onClick={openRegistration}>
+                  <BookOpen size={16} /> Book a Slot
+                </motion.button>
+              </div>
+              <div className="gyc-hero-trust">
+                <div className="gyc-trust-avatars">
+                  <span className="gyc-ta" style={{ background: '#fde68a' }}>A</span>
+                  <span className="gyc-ta" style={{ background: '#bfdbfe' }}>R</span>
+                  <span className="gyc-ta" style={{ background: '#bbf7d0' }}>K</span>
+                  <span className="gyc-ta" style={{ background: '#fecaca' }}>M</span>
+                </div>
+                <span><strong>12,500+</strong> students guided through Tamil Nadu admissions</span>
+              </div>
             </div>
             {/* Premium AI Guidance Bottom Bar */}
             <div className="home-bottom-actions">
@@ -913,6 +1333,46 @@ const App = () => {
                 <div className="hc-cta">Explore Universities <ArrowRight size={16} /></div>
               </motion.div>
             </div>
+
+            {/* NEW: Notice board + slideshow */}
+            <section className="gyc-section gyc-notice-section" id="notices">
+              <div className="gyc-sec-head">
+                <span className="gyc-sec-eyebrow">LATEST UPDATES</span>
+                <h2>Stay ahead of every deadline.</h2>
+                <p>Live notices, featured events and counselling milestones — updated as they happen.</p>
+              </div>
+              <div className="gyc-notice-row">
+                <DigitalNoticeBoard />
+                <PhotoSlideshow />
+              </div>
+            </section>
+
+            {/* NEW: Stats */}
+            <section className="gyc-section gyc-stats-section">
+              <StatsStrip />
+            </section>
+
+            {/* NEW: News/Recruitments/Tenders */}
+            <section className="gyc-section gyc-news-section" id="news">
+              <div className="gyc-sec-head">
+                <span className="gyc-sec-eyebrow">NEWSROOM</span>
+                <h2>What's happening at GetYourCollege.</h2>
+              </div>
+              <NewsGrid />
+            </section>
+
+            {/* NEW: Why choose us */}
+            <section className="gyc-section">
+              <WhyChooseUs />
+            </section>
+
+            {/* NEW: Testimonials */}
+            <section className="gyc-section gyc-testi-section">
+              <Testimonials />
+            </section>
+
+            {/* NEW: Footer */}
+            <SiteFooter />
           </motion.main>
         )}
         {view === 'explorer' && (
