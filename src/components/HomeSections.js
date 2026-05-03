@@ -7,6 +7,14 @@ import {
   Instagram, Twitter, Linkedin, Youtube, Send
 } from 'lucide-react';
 import gycLogoPng from '../getyourcollege-logo.png';
+import photo1 from '../Photos/photo1.jpeg';
+import photo2 from '../Photos/photo2.jpeg';
+import photo3 from '../Photos/photo3.jpeg';
+import photo4 from '../Photos/photo4.jpeg';
+import photo5 from '../Photos/photo5.jpeg';
+import photo6 from '../Photos/photo6.jpeg';
+import photo7 from '../Photos/photo7.jpeg';
+import photo8 from '../Photos/photo8.jpeg';
 
 /* ─────────── COMPANY LOGO (PNG from src) ─────────── */
 export const BrandLogo = ({ size = 36 }) => (
@@ -77,26 +85,14 @@ export const DigitalNoticeBoard = () => {
 
 /* ─────────── PHOTO SLIDESHOW ─────────── */
 const SLIDES = [
-  {
-    img: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80',
-    title: 'Anna University Convocation 2025',
-    sub: 'Celebrating 5000+ graduates across 80 affiliated colleges',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80',
-    title: 'Campus Tour — CEG Guindy',
-    sub: 'Exclusive virtual walkthrough of top Tamil Nadu campuses',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&q=80',
-    title: 'Mentora AI Launch Event',
-    sub: 'AI-powered career guidance now available to every student',
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1627556704302-624286467c65?w=1200&q=80',
-    title: 'Counselling Workshop — Chennai',
-    sub: 'Over 800 students joined our in-person choice filling session',
-  },
+  { img: photo1, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo2, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo3, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo4, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo5, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo6, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo7, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
+  { img: photo8, title: 'GetYourCollege', sub: 'Empowering students to find their perfect college' },
 ];
 
 export const PhotoSlideshow = () => {

@@ -63,8 +63,11 @@ IMPORTANT: Follow this EXACT structure for your response:
 ## 5. Available Roles & Specializations
 (List 5-7 specific job roles/designations available for graduates in this field)
 
-## 6. Year-wise Curriculum Overview
-(Brief overview of what is typically taught in each year)
+## 6. Year-wise Syllabus
+- **Year 1 (Foundation)**: (Core engineering/science subjects, mathematics, physics, chemistry, programming basics)
+- **Year 2 (Core Technical)**: (Fundamental domain subjects, lab work, emerging technical concepts)
+- **Year 3 (Advanced)**: (Specialization subjects, industry-relevant topics, electives, mini-projects)
+- **Year 4 (Industry & Project)**: (Advanced electives, internship, final year project, industrial training)
 
 ## 7. Essential Skillsets for Placement
 (List 6-8 key skills and technical knowledge needed to get placed)

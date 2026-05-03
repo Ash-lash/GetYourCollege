@@ -3,13 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   Search, MapPin, ChevronDown, ArrowRight,
   ChevronLeft, BookOpen, Stethoscope, Building2,
-  Sparkles, Zap, Globe, Eye, GraduationCap, ShieldCheck, PieChart, Info, Mail, Phone, ExternalLink, User, Train, Bus,
-  IndianRupee, X, MessageSquare, CheckCircle2, SlidersHorizontal, BarChart3
+  Sparkles, Zap, Globe, GraduationCap, ShieldCheck, Phone,
+  IndianRupee, X, MessageSquare, CheckCircle2, SlidersHorizontal, BarChart3, Menu
 } from 'lucide-react';
 import { TNEA_DATA, DEEMED_DATA, PRIVATE_DATA } from './data';
-import TNEA_PDF_INFO from './tnea_pdf_data.json';
 import TNEA_COURSES_INFO from './tnea_courses_data.json';
-import TNEA_MATRIX_DATA from './branch_matrix_data.json';
 import DEPT_ANALYSIS_DATA from './dept_analysis_data.json';
 import COMPARISON_DATA from './comparison_data.json';
 import StudentRegistration from './components/StudentRegistration';
@@ -23,6 +21,7 @@ import {
   Testimonials,
   SiteFooter,
 } from './components/HomeSections';
+import CollegeCard from './components/CollegeCard';
 
 /* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
 const PRIORITY_COLLEGE_MATCHERS = [
@@ -49,190 +48,121 @@ const priorityRank = (name) => {
   return Infinity;
 };
 
-/* ─────────────────── NAVBAR ─────────────────── */
-const Navbar = ({ onHome, onRegistration }) => (
-  <nav className="navbar gyc-navbar">
-    <div className="nav-inner">
-      <div className="brand gyc-brand" onClick={onHome} style={{ cursor: 'pointer' }}>
-        <BrandLogo size={38} />
-        <div className="gyc-brand-text">
-          <strong>GetYourCollege</strong>
-          <span>Quantum shift to your career</span>
-        </div>
-      </div>
-      <div className="nav-links">
-        <a className="nav-link" href="#notices">Notices</a>
-        <a className="nav-link" href="#explore">Explore</a>
-        <a className="nav-link" href="#news">News</a>
-        <span className="nav-sep" />
-        <button className="nav-cta nav-book" onClick={onRegistration}><Phone size={14} /> Book Slot</button>
-        <button className="nav-cta nav-register" onClick={onHome}>Home</button>
-      </div>
+/* ─────────── SIDEBAR FILTER PRIMITIVES (careers360-style) ─────────── */
+const FilterGroup = ({ title, children }) => {
+  const [open, setOpen] = useState(true);
+  return (
+    <div style={{ borderTop: '1px solid #f1f5f9', paddingTop: 14, paddingBottom: 14 }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          background: 'transparent', border: 'none', padding: 0, cursor: 'pointer',
+          fontSize: '0.82rem', fontWeight: 800, color: '#0f172a',
+          letterSpacing: '0.04em', textTransform: 'uppercase',
+        }}
+      >
+        {title}
+        <motion.span animate={{ rotate: open ? 0 : -90 }} style={{ display: 'flex', color: '#94a3b8' }}>
+          <ChevronDown size={14} />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            style={{ overflow: 'hidden' }}
+          >
+            <div style={{ marginTop: 10, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
-  </nav>
+  );
+};
+
+const FilterRadioRow = ({ label, checked, onClick }) => (
+  <button
+    onClick={onClick}
+    style={{
+      display: 'flex', alignItems: 'center', gap: 8,
+      width: '100%', padding: '6px 8px',
+      background: checked ? 'rgba(99,102,241,0.08)' : 'transparent',
+      border: 'none', borderRadius: 6, cursor: 'pointer',
+      textAlign: 'left',
+    }}
+  >
+    <span
+      style={{
+        width: 14, height: 14, borderRadius: '50%',
+        border: checked ? '4px solid #6366f1' : '1.5px solid #cbd5e1',
+        background: '#fff', flexShrink: 0, transition: 'all 0.15s',
+      }}
+    />
+    <span style={{ fontSize: '0.83rem', fontWeight: checked ? 700 : 500, color: checked ? '#0f172a' : '#475569' }}>
+      {label}
+    </span>
+  </button>
 );
 
-/* ─────────────── ROUND DISTRIBUTION (Dashboard) ─────────────────── */
-const SeatDistribution = ({ college, seats }) => {
-  const r1 = college.r1 || 0;
-  const r2 = college.r2 || 0;
-  const r3 = college.r3 || 0;
-  const filled = college.filled || r1 + r2 + r3 || 0;
-  const vacancy = Math.max(0, seats - filled);
-  const total = Math.max(seats, filled, 1);
-
-  const rounds = [
-    { label: 'Round 1', val: r1, color: '#6366f1', bg: 'rgba(99,102,241,0.08)', glow: 'rgba(99,102,241,0.25)', border: 'rgba(99,102,241,0.3)' },
-    { label: 'Round 2', val: r2, color: '#ec4899', bg: 'rgba(236,72,153,0.08)', glow: 'rgba(236,72,153,0.25)', border: 'rgba(236,72,153,0.3)' },
-    { label: 'Round 3', val: r3, color: '#14b8a6', bg: 'rgba(20,184,166,0.08)', glow: 'rgba(20,184,166,0.25)', border: 'rgba(20,184,166,0.3)' },
-  ];
-
-  const vacancyColor = vacancy > 100 ? '#10b981' : vacancy > 30 ? '#f59e0b' : '#ef4444';
-  const vacancyBg = vacancy > 100 ? 'rgba(16,185,129,0.08)' : vacancy > 30 ? 'rgba(245,158,11,0.08)' : 'rgba(239,68,68,0.08)';
-  const vacancyGlow = vacancy > 100 ? 'rgba(16,185,129,0.25)' : vacancy > 30 ? 'rgba(245,158,11,0.25)' : 'rgba(239,68,68,0.25)';
-  const vacancyLabel = vacancy > 100 ? 'Seats Available' : vacancy > 30 ? 'Limited Seats' : vacancy > 0 ? 'Almost Full!' : 'Fully Filled';
-
-  const maxRound = Math.max(r1, r2, r3);
-
+/* ─────────────────── NAVBAR ─────────────────── */
+const Navbar = ({ onHome, onRegistration }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
   return (
-    <div className="sd-section" onClick={e => e.stopPropagation()}>
-      <div className="sd-header">
-        <span className="sd-header-label">Round-wise Seat Distribution</span>
-        <span className="sd-live-badge"><span className="sd-live-dot" />Live 2025</span>
-      </div>
-      <div className="sd-grid">
-        {rounds.map(({ label, val, color, bg, glow, border }) => {
-          const pct = Math.round((val / total) * 100);
-          const isBiggest = val === maxRound && val > 0;
-          return (
+    <>
+      <nav className="navbar gyc-navbar">
+        <div className="nav-inner">
+          <div className="brand gyc-brand" onClick={() => { onHome(); setMobileOpen(false); }} style={{ cursor: 'pointer' }}>
+            <BrandLogo size={38} />
+            <div className="gyc-brand-text">
+              <strong>GetYourCollege</strong>
+              <span>Quantum shift to your career</span>
+            </div>
+          </div>
+          <div className="nav-links">
+            <a className="nav-link" href="#notices">Notices</a>
+            <a className="nav-link" href="#explore">Explore</a>
+            <a className="nav-link" href="#news">News</a>
+            <span className="nav-sep" />
+            <button className="nav-cta nav-book" onClick={onRegistration}><Phone size={14} /> Book Slot</button>
+            <button className="nav-cta nav-register" onClick={onHome}>Home</button>
+          </div>
+          <button className="nav-hamburger" onClick={() => setMobileOpen(o => !o)} aria-label="Toggle menu">
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </nav>
+      {/* Mobile drawer */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
             <motion.div
-              key={label}
-              className="sd-card"
-              style={{ '--c': color, '--bg': bg, '--glow': glow, '--border': border }}
-              whileHover={{ y: -4, scale: 1.03 }}
-              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="mobile-nav-overlay"
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+            />
+            <motion.div
+              className="mobile-nav-drawer"
+              initial={{ x: '100%' }} animate={{ x: 0 }} exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.25 }}
             >
-              {isBiggest && (
-                <div className="sd-crown" title="Most seats filled in this round">🏆</div>
-              )}
-              <div className="sd-label">{label}</div>
-              <div className="sd-big-num">{val.toLocaleString()}</div>
-              <div className="sd-bar-wrap">
-                <motion.div
-                  className="sd-bar-fill"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${pct}%` }}
-                  transition={{ duration: 1, delay: 0.2, ease: 'easeOut' }}
-                />
+              <div className="mobile-nav-links">
+                <a className="mobile-nav-link" href="#notices" onClick={() => setMobileOpen(false)}>Notices</a>
+                <a className="mobile-nav-link" href="#explore" onClick={() => setMobileOpen(false)}>Explore</a>
+                <a className="mobile-nav-link" href="#news" onClick={() => setMobileOpen(false)}>News</a>
+                <button className="nav-cta nav-book mobile-nav-btn" onClick={() => { onRegistration(); setMobileOpen(false); }}><Phone size={14} /> Book Slot</button>
+                <button className="nav-cta nav-register mobile-nav-btn" onClick={() => { onHome(); setMobileOpen(false); }}>Home</button>
               </div>
-              <div className="sd-pct">{pct}% of total</div>
             </motion.div>
-          );
-        })}
-
-        {/* Balance / Vacancy Card */}
-        <motion.div
-          className="sd-card sd-vacancy"
-          style={{ '--c': vacancyColor, '--bg': vacancyBg, '--glow': vacancyGlow, '--border': vacancyGlow }}
-          whileHover={{ y: -4, scale: 1.03 }}
-          transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-        >
-          <div className="sd-vacancy-icon">{vacancy > 100 ? '✅' : vacancy > 30 ? '⚠️' : '🔴'}</div>
-          <div className="sd-label">Balance Seats</div>
-          <div className="sd-big-num">{vacancy.toLocaleString()}</div>
-          <div className="sd-vacancy-tag" style={{ background: vacancyBg, color: vacancyColor, border: `1px solid ${vacancyGlow}` }}>
-            {vacancyLabel}
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  );
-};
-
-/* ──────── PLACEMENT PERCENTAGE (Animated Donut) ──────── */
-const PlacementRing = ({ pct }) => {
-  const rad = 22;
-  const c = 2 * Math.PI * rad;
-  const off = c - (pct / 100) * c;
-  const color = pct >= 85 ? '#10b981' : pct >= 70 ? '#f59e0b' : '#ef4444';
-
-  return (
-    <div className="placement-ring-wrap" title="Placement %">
-      <svg width="54" height="54" viewBox="0 0 54 54">
-        <circle className="pr-bg" cx="27" cy="27" r={rad} />
-        <motion.circle 
-          className="pr-val" 
-          cx="27" cy="27" r={rad} 
-          style={{ '--c': color }}
-          strokeDasharray={c} 
-          initial={{ strokeDashoffset: c }}
-          animate={{ strokeDashoffset: off }}
-        />
-      </svg>
-      <div className="pr-inner">{pct}%</div>
-    </div>
-  );
-};
-
-/* ──────── COUNSELING MATRIX (Seat Balance Table) ──────── */
-const CounselingMatrix = ({ code }) => {
-  const matrix = TNEA_MATRIX_DATA[code] || [];
-  if (matrix.length === 0) return <div className="no-matrix">Seat matrix data not available for this institution.</div>;
-
-  return (
-    <div className="counseling-matrix-wrap" onClick={e => e.stopPropagation()}>
-      <div className="cm-header-premium">
-        <div className="cm-h-left">
-          <PieChart size={18} />
-          <div className="cm-h-titles">
-            <span className="cm-h-main">OFFICIAL FULL SEAT MATRIX</span>
-            <span className="cm-h-sub">GENERAL ACADEMIC MATRIX • 2025 SESSION</span>
-          </div>
-        </div>
-        <div className="cm-h-right">
-          <span className="tag-live-pulse" />
-          <span className="cm-h-live">LIVE ANALYTICS</span>
-        </div>
-      </div>
-      <div className="cm-table-scroll">
-        <table className="cm-table-premium">
-          <thead>
-            <tr>
-              <th className="th-branch">BRANCH / COURSE NAME</th>
-              <th>OC</th>
-              <th>BC</th>
-              <th>BCM</th>
-              <th>MBC</th>
-              <th>SC</th>
-              <th>SCA</th>
-              <th>ST</th>
-              <th className="th-total">TOTAL</th>
-            </tr>
-          </thead>
-          <tbody>
-            {matrix.map((row, i) => {
-              const total = row.seats.reduce((a,b)=>a+b, 0);
-              return (
-                <tr key={i} className={total === 0 ? 'row-empty' : ''}>
-                  <td className="td-branch">
-                    <div className="td-b-code">{row.code}</div>
-                    <div className="td-b-name">{row.name}</div>
-                  </td>
-                  {row.seats.map((s, si) => (
-                    <td key={si} className={`td-num ${s === 0 ? 'val-zero' : 'val-high'}`}>{s}</td>
-                  ))}
-                  <td className="td-total-val">{total}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className="cm-footer-premium">
-        <Info size={12} />
-        <span>Data represents the complete seat matrix for the 2025 session.</span>
-      </div>
-    </div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
@@ -551,559 +481,275 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
   );
 };
 
-/* ──────── SAVEETHA ADMISSION 2026-27 PANEL ──────── */
-const SaveethaAdmissionPanel = () => {
-  const cseRows = [
-    { cutoff: '191 – 200', oc: { fee: '100%', free: 'Hostel & Mess / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
-    { cutoff: '186 – 190', oc: { fee: '100%', free: 'Hostel / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
-    { cutoff: '181 – 185', oc: { fee: '50%', free: '—' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
-  ];
-  const coreRows = [
-    { cutoff: '186 – 200', oc: { fee: '100%', free: 'Hostel & Mess / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
-    { cutoff: '181 – 185', oc: { fee: '100%', free: 'Hostel / Transport' }, sc: { fee: '100%', free: 'Hostel & Mess / Transport' } },
-  ];
+/* ─────────────── MENTORA AI · FLOATING CHAT BUBBLE ─────────────── */
+const MentoraFAB = ({ onOpenAI }) => {
+  const [open, setOpen] = useState(false);
+  const [stage, setStage] = useState('welcome'); // 'welcome' | 'options'
 
-  const renderRow = (r, i) => (
-    <tr key={i}>
-      <td className="adm-cell-cutoff">{r.cutoff}</td>
-      <td className={`adm-cell-pct ${r.oc.fee === '50%' ? 'adm-cell-pct-half' : ''}`}>{r.oc.fee}</td>
-      <td className={`adm-cell-free ${r.oc.free === '—' ? 'adm-cell-free-empty' : ''}`}>{r.oc.free}</td>
-      <td className="adm-cell-pct">{r.sc.fee}</td>
-      <td className="adm-cell-free">{r.sc.free}</td>
-    </tr>
-  );
+  // Reset to welcome whenever the panel is closed
+  useEffect(() => { if (!open) setStage('welcome'); }, [open]);
 
   return (
-    <div className="adm-panel">
-      <div className="adm-hero">
-        <div className="adm-hero-left">
-          <span className="adm-pill"><Sparkles size={12} /> 25 Years of Excellence</span>
-          <h3 className="adm-title">Admissions Open 2026 – 27</h3>
-          <p className="adm-sub">Saveetha Engineering College <span className="adm-dot">•</span> Autonomous <span className="adm-dot">•</span> Affiliated to Anna University</p>
-          <p className="adm-tag">One of Tamil Nadu's <strong>Top 10</strong> Colleges <span className="adm-pipe">|</span> <strong>100% Scholarship</strong> & Fee Waiver applicable for all 4 years</p>
-        </div>
-        <div className="adm-hero-right">
-          <div className="adm-code-card">
-            <span className="adm-code-lbl">TNEA CODE</span>
-            <span className="adm-code-val">1216</span>
-          </div>
-        </div>
-      </div>
-
-      <div className="adm-section">
-        <div className="adm-section-head">
-          <span className="adm-branch-tag adm-tag-cse">CSE • AI&DS • AI&ML • ECE • IT • CYBERSECURITY</span>
-        </div>
-        <div className="adm-table-wrap">
-          <table className="adm-table">
-            <thead>
-              <tr>
-                <th rowSpan={2} className="adm-th-cutoff">Cutoff</th>
-                <th colSpan={2} className="adm-th-cat adm-th-oc">OC, BC, BCM, MBC</th>
-                <th colSpan={2} className="adm-th-cat adm-th-sc">SC, SCA, ST</th>
-              </tr>
-              <tr>
-                <th className="adm-th-sub">Tuition Fee Waiver</th>
-                <th className="adm-th-sub">Free</th>
-                <th className="adm-th-sub">Tuition Fee Waiver</th>
-                <th className="adm-th-sub">Free</th>
-              </tr>
-            </thead>
-            <tbody>{cseRows.map(renderRow)}</tbody>
-          </table>
-        </div>
-      </div>
-
-      <div className="adm-section">
-        <div className="adm-section-head">
-          <span className="adm-branch-tag adm-tag-core">EEE • CIVIL • MECHANICAL</span>
-        </div>
-        <div className="adm-table-wrap">
-          <table className="adm-table">
-            <thead>
-              <tr>
-                <th rowSpan={2} className="adm-th-cutoff">Cutoff</th>
-                <th colSpan={2} className="adm-th-cat adm-th-oc">OC, BC, BCM, MBC</th>
-                <th colSpan={2} className="adm-th-cat adm-th-sc">SC, SCA, ST</th>
-              </tr>
-              <tr>
-                <th className="adm-th-sub">Tuition Fee Waiver</th>
-                <th className="adm-th-sub">Free</th>
-                <th className="adm-th-sub">Tuition Fee Waiver</th>
-                <th className="adm-th-sub">Free</th>
-              </tr>
-            </thead>
-            <tbody>{coreRows.map(renderRow)}</tbody>
-          </table>
-        </div>
-      </div>
-
-      <p className="adm-footnote">
-        Meritorious students joining SEC through TNEA 2026 counselling can avail the above scholarships <strong>on prior approval</strong>.
-      </p>
-
-      <div className="adm-actions">
-        <a className="adm-btn adm-btn-primary" href="https://forms.gle/8B7bA8DrTNy93zBs7" target="_blank" rel="noopener noreferrer">
-          <Sparkles size={15} /> Apply Now <ExternalLink size={13} />
-        </a>
-        <a className="adm-btn adm-btn-ghost" href="https://www.saveetha.ac.in" target="_blank" rel="noopener noreferrer">
-          <Globe size={15} /> Visit Website
-        </a>
-        <a className="adm-btn adm-btn-ghost" href="tel:+918939902737">
-          <Phone size={15} /> +91 89399 02737
-        </a>
-      </div>
-    </div>
-  );
-};
-
-const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, serial }) => {
-  const isAnna = category === 'anna';
-  const codeKey = String(college.code || '').trim();
-  const tneaCourses = (codeKey && TNEA_COURSES_INFO[codeKey]) ? TNEA_COURSES_INFO[codeKey] : null;
-  const courses = tneaCourses || (college.courses || []);
-  const [showDepts, setShowDepts] = useState(false);
-  const [showMore, setShowMore] = useState(false);
-  const [showMatrix, setShowMatrix] = useState(false);
-  const [showPlacement, setShowPlacement] = useState(false);
-  const [showTneaInfo, setShowTneaInfo] = useState(false);
-  const [showAdmission, setShowAdmission] = useState(false);
-  const seats = college.seats || 0;
-  const filled = college.filled || 0;
-  const fillpct = college.fillpct || 0;
-
-  const isAnnaCol = category === 'anna';
-  const bodyOpen = isAnnaCol ? showTneaInfo : isExpanded;
-
-  useEffect(() => {
-    if (!bodyOpen) {
-      setShowDepts(false);
-      setShowMore(false);
-      setShowMatrix(false);
-      setShowAdmission(false);
-    }
-  }, [bodyOpen]);
-
-  const toggleDepts = () => { setShowDepts(!showDepts); setShowMore(false); setShowMatrix(false); setShowAdmission(false); };
-  const toggleMore = () => { setShowMore(!showMore); setShowDepts(false); setShowMatrix(false); setShowAdmission(false); };
-  const toggleMatrix = () => { setShowMatrix(!showMatrix); setShowDepts(false); setShowMore(false); setShowAdmission(false); };
-  const toggleAdmission = () => { setShowAdmission(!showAdmission); setShowDepts(false); setShowMore(false); setShowMatrix(false); };
-
-  const placement = useMemo(() => {
-    if (college.placement) return college.placement;
-    const cut = college.cutoff || 120;
-    const fill = college.fillpct || 50;
-    return Math.min(99, Math.max(45, Math.floor((cut/200)*60 + (fill/100)*40)));
-  }, [college]);
-
-  const isSSN = /Sri Sivasubramaniya Nadar/i.test(college.name || '');
-  const isRIT = /Rajalakshmi Institute of Technology/i.test(college.name || '');
-  const isSaveetha = /Saveetha Engineering College/i.test(college.name || '');
-  const isKCG = /KCG college of Technology/i.test(college.name || '');
-  const isCIT = /Coimbatore Institute of Technology/i.test(college.name || '');
-
-  return (
-    <motion.div layout className={`college-card ${bodyOpen ? 'cc-open' : ''} ${(isRIT || isSaveetha || isKCG || isCIT) ? 'cc-rit' : ''}`} transition={{ layout: { type: 'spring', stiffness: 300, damping: 30 } }}>
-      {isSSN && (
-        <div className="ssn-notice">
-          <span className="ssn-notice-icon">⚠️</span>
-          <span className="ssn-notice-text">
-            <strong>Note:</strong> From 2026, this college is considered a University and will not take part in TNEA 2026 counselling.
-          </span>
-        </div>
-      )}
-      <div className="cc-header" onClick={isAnna ? undefined : onToggle} style={isAnna ? { cursor: 'default' } : undefined}>
-        <div className="cc-rank">{isAnna ? <span className="rank-num">{serial}</span> : <Building2 size={20} />}</div>
-        <div className="cc-meta">
-          <h3 className="cc-name">{college.name}</h3>
-          <div className="cc-loc"><MapPin size={12} /> {college.city || college.Address || college.State || 'Tamil Nadu'}</div>
-        </div>
-        <div className="cc-badges">
-          {isAnna ? (
-            <>
-              {college.type && <span className={`badge ${({'university_dept':'badge-purple','government':'badge-blue','govt_aided':'badge-emerald','cecri_cipet':'badge-amber','constituent':'badge-cyan','autonomous':'badge-teal'})[college.type] || 'badge-gray'}`}>{({'university_dept':'University Dept','government':'Government','govt_aided':'Govt Aided','cecri_cipet':'CECRI/CIPET','constituent':'Constituent','autonomous':'Autonomous','non_autonomous':'Self-Finance'})[college.type] || college.type}</span>}
-            </>
-          ) : <span className="badge badge-gray">{college.Type || 'University'}</span>}
-        </div>
-        {isAnna ? (
-          <button
-            type="button"
-            className={`tnea-info-btn ${showTneaInfo ? 'tib-active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              const next = !showTneaInfo;
-              setShowTneaInfo(next);
-              if (next) setShowPlacement(false);
-            }}
-            aria-label="Toggle TNEA info"
-          >
-            <span className="tib-icon"><Sparkles size={15} /></span>
-            <span className="tib-text">{showTneaInfo ? 'Hide' : 'View'} TNEA Info</span>
-            <span className={`tib-chev ${showTneaInfo ? 'tib-chev-open' : ''}`}>
-              <ChevronDown size={14} />
-            </span>
-          </button>
-        ) : (
-          <motion.div className="cc-chevron" animate={{ rotate: isExpanded ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-            <ChevronDown size={18} />
-          </motion.div>
-        )}
-      </div>
-
+    <div style={{ position: 'fixed', bottom: 24, right: 24, zIndex: 1001, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 12 }}>
       <AnimatePresence>
-        {bodyOpen && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }} style={{ overflow: 'hidden' }}>
-            <div className="cc-body">
-              {isAnna && (
-                <div className="cc-featured-stats-wrap">
-                  <div className="cc-code-banner">
-                    <span className="cb-label">TNEA COLLEGE CODE</span>
-                    <span className="cb-val">{college.code}</span>
-                  </div>
-                  <div className="cc-stats-grid">
-                    <div className="cs-box"><div className="cs-val">{seats.toLocaleString()}</div><div className="cs-lbl">TOTAL SEATS</div><div className="cs-sublbl">2025 SESSION</div></div>
-                    <div className="cs-box"><div className="cs-val" style={{ color: 'var(--teal)' }}>{(seats - filled).toLocaleString()}</div><div className="cs-lbl">TOTAL VACANT SEATS</div><div className="cs-sublbl">AFTER ROUND 1-3</div></div>
-                    <div className="cs-box highlighted"><div className="cs-val" style={{ color: 'var(--indigo)' }}>{fillpct}%</div><div className="cs-lbl">% SEATS FILLED</div><div className="cs-sublbl">OVERALL RATE</div></div>
-                  </div>
-                </div>
-              )}
-
-              {isAnna && (
-                <div className="stats-row">
-                  <div className="stat-chip" style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', flex: 1.5 }}>
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                      <span className="sc-num">{placement}%</span><span className="sc-label">Placement %</span>
-                    </div>
-                    <PlacementRing pct={placement} />
-                  </div>
-                  <div className="stat-chip"><span className="sc-num">{college.cutoff || '—'}</span><span className="sc-label">Min Cutoff</span></div>
-                </div>
-              )}
-              
-              {isAnna && seats > 0 && (
-                <div style={{ marginBottom: 16 }}>
-                  <div className="section-divider">ROUND-WISE DISTRIBUTION</div>
-                  <SeatDistribution college={college} seats={seats} />
-                </div>
-              )}
-
-              <div className="dept-section">
-                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-                  {isAnna && <button className="dept-toggle" onClick={toggleMore}><Info size={15} /> {showMore ? 'Hide Campus Info' : 'Campus Info'} <motion.span animate={{ rotate: showMore ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  {isAnna && <button className={`dept-toggle ${showMatrix ? 'active' : ''}`} style={showMatrix ? {borderColor: 'var(--indigo)', background: 'rgba(99,102,241,0.05)', color: 'var(--indigo)'} : {}} onClick={toggleMatrix}><PieChart size={15} /> {showMatrix ? 'Hide Seat Matrix' : 'Seat Matrix 2025'} <motion.span animate={{ rotate: showMatrix ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  {courses.length > 0 && <button className="dept-toggle" onClick={toggleDepts}><Eye size={15} /> {showDepts ? 'Hide Branches' : `All Branches (${courses.reduce((acc, cat) => acc + (cat.branches ? cat.branches.length : 0), 0)})`} <motion.span animate={{ rotate: showDepts ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  {isSaveetha && <button className={`dept-toggle admission-toggle ${showAdmission ? 'active' : ''}`} onClick={toggleAdmission}><GraduationCap size={15} /> {showAdmission ? 'Hide Admissions 2026-27' : 'Admissions 2026-27'} <motion.span animate={{ rotate: showAdmission ? 180 : 0 }}><ChevronDown size={14} /></motion.span></button>}
-                  <button className="dept-toggle fees-btn-special" onClick={(e) => { e.stopPropagation(); onOpenQuery(college.name); }}><IndianRupee size={15} /> Fees / Query <motion.span animate={{ x: [0, 3, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}><ArrowRight size={14} /></motion.span></button>
-                </div>
-
-                <AnimatePresence>
-                  {showMatrix && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}><CounselingMatrix code={college.code} /></motion.div>}
-                  {showMore && TNEA_PDF_INFO[college.code] && (
-                    <motion.div className="more-info-grid" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden', paddingBottom: 16 }}>
-                      <div className="pdf-info-card">
-                        <div className="pi-row"><User size={14}/><span><strong>Principal:</strong> {TNEA_PDF_INFO[college.code].principal || 'N/A'}</span></div>
-                        <div className="pi-row"><Phone size={14}/><span><strong>Phone:</strong> {TNEA_PDF_INFO[college.code].phone || 'N/A'}</span></div>
-                        <div className="pi-row"><Mail size={14}/><span><strong>Email:</strong> {TNEA_PDF_INFO[college.code].email || 'N/A'}</span></div>
-                        <div className="pi-row"><ExternalLink size={14}/><span><strong>Website:</strong> {TNEA_PDF_INFO[college.code].website || 'N/A'}</span></div>
-                      </div>
-                      <div className="pdf-info-card">
-                        <div className="pi-row"><Train size={14}/><span><strong>Railway:</strong> {TNEA_PDF_INFO[college.code].nearest_railway || 'N/A'}</span></div>
-                        <div className="pi-row"><Bus size={14}/><span><strong>Transport:</strong> {TNEA_PDF_INFO[college.code].transport || 'Yes'}</span></div>
-                        <div className="pi-row"><Building2 size={14}/><span><strong>Hostel:</strong> Boys & Girls Available</span></div>
-                      </div>
-                    </motion.div>
-                  )}
-                  {showDepts && <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}><CourseLevels courses={courses} /></motion.div>}
-                  {showAdmission && isSaveetha && (
-                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} style={{ overflow: 'hidden' }}>
-                      <SaveethaAdmissionPanel />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.96 }}
+            transition={{ duration: 0.22, ease: [0.4, 0, 0.2, 1] }}
+            style={{
+              width: 360,
+              maxWidth: 'calc(100vw - 48px)',
+              background: '#fff',
+              borderRadius: 18,
+              border: '1px solid #e2e8f0',
+              boxShadow: '0 20px 50px rgba(15, 23, 42, 0.18)',
+              overflow: 'hidden',
+            }}
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 12,
+              padding: '16px 18px',
+              borderBottom: '1px solid #f1f5f9',
+              background: 'linear-gradient(135deg, #fafbff, #fff)',
+            }}>
+              <div style={{
+                width: 42, height: 42,
+                borderRadius: 12,
+                background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: '#fff', flexShrink: 0,
+                boxShadow: '0 6px 14px rgba(99, 102, 241, 0.35)',
+              }}>
+                <Sparkles size={20} />
               </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a' }}>Mentora AI</div>
+                <div style={{ fontSize: '0.74rem', color: '#64748b', fontWeight: 500 }}>Your 24×7 AI Assistant</div>
+              </div>
+              <button
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                style={{
+                  width: 30, height: 30, borderRadius: 8,
+                  background: '#f1f5f9', border: 'none', cursor: 'pointer',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: '#475569', flexShrink: 0,
+                }}
+              >
+                <X size={15} />
+              </button>
+            </div>
+
+            {/* Body */}
+            <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', gap: 14, background: '#fafbff' }}>
+              <AnimatePresence mode="wait">
+                {stage === 'welcome' && (
+                  <motion.div
+                    key="welcome"
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -8 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 14 }}
+                  >
+                    {/* AI message bubble */}
+                    <div style={{
+                      background: '#fff',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: 14,
+                      padding: '14px 16px',
+                      fontSize: '0.86rem',
+                      lineHeight: 1.55,
+                      color: '#334155',
+                    }}>
+                      <strong style={{ color: '#0f172a' }}>Welcome!</strong> I'm Mentora, an AI-powered counsellor.
+                      Tell me what you're looking for and I'll point you to the right college, branch, or stream.
+                    </div>
+
+                    {/* CTA card */}
+                    <div style={{
+                      background: '#fff',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: 14,
+                      padding: '14px 16px',
+                      display: 'flex', flexDirection: 'column', gap: 12,
+                    }}>
+                      <span style={{ fontSize: '0.82rem', color: '#64748b' }}>This will only take a minute.</span>
+                      <button
+                        onClick={() => setStage('options')}
+                        style={{
+                          padding: '11px 16px',
+                          background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                          color: '#fff',
+                          border: 'none',
+                          borderRadius: 10,
+                          fontSize: '0.85rem',
+                          fontWeight: 800,
+                          letterSpacing: '0.04em',
+                          cursor: 'pointer',
+                          boxShadow: '0 6px 16px rgba(99, 102, 241, 0.32)',
+                        }}
+                      >
+                        GET STARTED
+                      </button>
+                    </div>
+                  </motion.div>
+                )}
+
+                {stage === 'options' && (
+                  <motion.div
+                    key="options"
+                    initial={{ opacity: 0, x: 8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 8 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ display: 'flex', flexDirection: 'column', gap: 12 }}
+                  >
+                    <div style={{
+                      background: '#fff',
+                      border: '1px solid #e2e8f0',
+                      borderRadius: 14,
+                      padding: '14px 16px',
+                      fontSize: '0.86rem',
+                      color: '#334155',
+                    }}>
+                      What would you like to explore?
+                    </div>
+
+                    <button
+                      onClick={() => { onOpenAI && onOpenAI('opportunities'); setOpen(false); }}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 12,
+                        padding: '14px 16px',
+                        background: '#fff',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: 12,
+                        fontSize: '0.88rem',
+                        fontWeight: 700,
+                        color: '#0f172a',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'border-color 0.15s, box-shadow 0.15s',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#6366f1'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(99, 102, 241, 0.15)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.boxShadow = 'none'; }}
+                    >
+                      <span style={{
+                        width: 32, height: 32, borderRadius: 8,
+                        background: 'rgba(99, 102, 241, 0.1)',
+                        color: '#6366f1',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        flexShrink: 0,
+                      }}>
+                        <Zap size={16} />
+                      </span>
+                      <span style={{ flex: 1 }}>Department Opportunities</span>
+                      <ArrowRight size={14} color="#94a3b8" />
+                    </button>
+
+                    <button
+                      onClick={() => { onOpenAI && onOpenAI('streams'); setOpen(false); }}
+                      style={{
+                        display: 'flex', alignItems: 'center', gap: 12,
+                        padding: '14px 16px',
+                        background: '#fff',
+                        border: '1px solid #e2e8f0',
+                        borderRadius: 12,
+                        fontSize: '0.88rem',
+                        fontWeight: 700,
+                        color: '#0f172a',
+                        cursor: 'pointer',
+                        textAlign: 'left',
+                        transition: 'border-color 0.15s, box-shadow 0.15s',
+                      }}
+                      onMouseEnter={e => { e.currentTarget.style.borderColor = '#8b5cf6'; e.currentTarget.style.boxShadow = '0 4px 14px rgba(139, 92, 246, 0.15)'; }}
+                      onMouseLeave={e => { e.currentTarget.style.borderColor = '#e2e8f0'; e.currentTarget.style.boxShadow = 'none'; }}
+                    >
+                      <span style={{
+                        width: 32, height: 32, borderRadius: 8,
+                        background: 'rgba(139, 92, 246, 0.1)',
+                        color: '#8b5cf6',
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        flexShrink: 0,
+                      }}>
+                        <Sparkles size={16} />
+                      </span>
+                      <span style={{ flex: 1 }}>Which stream to choose?</span>
+                      <ArrowRight size={14} color="#94a3b8" />
+                    </button>
+
+                    <button
+                      onClick={() => setStage('welcome')}
+                      style={{
+                        background: 'transparent', border: 'none',
+                        color: '#64748b', fontSize: '0.78rem', fontWeight: 600,
+                        cursor: 'pointer', padding: 4, alignSelf: 'flex-start',
+                      }}
+                    >
+                      ← Back
+                    </button>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-      {isRIT && (
-        <>
-          <motion.button
-            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              const next = !showPlacement;
-              setShowPlacement(next);
-              if (next) {
-                if (isAnnaCol) setShowTneaInfo(false);
-                else if (isExpanded) onToggle();
-              }
-            }}
-            whileHover={{ scale: 1.04, x: 4 }}
-            whileTap={{ scale: 0.96 }}
-            aria-label="Toggle placement highlights"
-          >
-            <span className="pf-glow" />
-            <span className="pf-icon"><Sparkles size={16} /></span>
-            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
-            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-              <ChevronDown size={14} />
-            </motion.span>
-          </motion.button>
-          <AnimatePresence>
-            {showPlacement && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="placement-highlight ph-rit">
-                  <h4 className="ph-title">Career Launchpad – Placements That Deliver</h4>
-                  <div className="ph-grid ph-grid-6">
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>98%</span><span className="ph-lbl">Students Placed</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>₹56 LPA</span><span className="ph-lbl">Highest CTC</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>₹19.75 LPA</span><span className="ph-lbl">Avg. CTC (Top Offers)</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#8b5cf6' }}>25%</span><span className="ph-lbl">Multiple Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>1500+</span><span className="ph-lbl">Total Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#06b6d4' }}>450+</span><span className="ph-lbl">Recruiters</span></div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </>
-      )}
-      {isSaveetha && (
-        <>
-          <motion.button
-            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              const next = !showPlacement;
-              setShowPlacement(next);
-              if (next) {
-                if (isAnnaCol) setShowTneaInfo(false);
-                else if (isExpanded) onToggle();
-              }
-            }}
-            whileHover={{ scale: 1.04, x: 4 }}
-            whileTap={{ scale: 0.96 }}
-            aria-label="Toggle placement highlights"
-          >
-            <span className="pf-glow" />
-            <span className="pf-icon"><Sparkles size={16} /></span>
-            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
-            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-              <ChevronDown size={14} />
-            </motion.span>
-          </motion.button>
-          <AnimatePresence>
-            {showPlacement && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="placement-highlight">
-                  <h4 className="ph-title">Placement Highlights – Where Careers Take Off</h4>
-                  <div className="ph-grid">
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>44</span><span className="ph-lbl">LPA Highest Package</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>97%</span><span className="ph-lbl">Placement Rate</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>5.36</span><span className="ph-lbl">LPA Average Package</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>652+</span><span className="ph-lbl">Recruiting Companies</span></div>
-                  </div>
-                </div>
-                <div className="salary-bracket">
-                  <div className="sb-head">
-                    <h4 className="sb-title">Salary Bracket Breakdown</h4>
-                    <p className="sb-sub">CTC distribution across placed students — 2024-25 batch</p>
-                  </div>
-                  <div className="sb-rows">
-                    {[
-                      { label: 'Above ₹20 LPA', count: 38, pct: 23, color: '#f59e0b' },
-                      { label: '₹10 – ₹20 LPA', count: 86, pct: 28, color: '#ef6b6b' },
-                      { label: '₹5 – ₹10 LPA', count: 342, pct: 52, color: '#6b74e0' },
-                      { label: '₹3 – ₹5 LPA', count: 643, pct: 78, color: '#22c55e' },
-                      { label: 'Total Offers', count: '1300+', pct: 100, color: '#64748b', isTotal: true },
-                    ].map((r, i) => (
-                      <div key={i} className="sb-row">
-                        <span className="sb-row-lbl">{r.label}</span>
-                        <div className="sb-bar-wrap">
-                          <div className="sb-bar" style={{ width: `${r.pct}%`, background: r.color }}>
-                            <span className={`sb-bar-val ${r.isTotal ? 'sb-bar-val-end' : ''}`}>{r.count}</span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </>
-      )}
-      {isKCG && (
-        <>
-          <motion.button
-            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              const next = !showPlacement;
-              setShowPlacement(next);
-              if (next) {
-                if (isAnnaCol) setShowTneaInfo(false);
-                else if (isExpanded) onToggle();
-              }
-            }}
-            whileHover={{ scale: 1.04, x: 4 }}
-            whileTap={{ scale: 0.96 }}
-            aria-label="Toggle placement highlights"
-          >
-            <span className="pf-glow" />
-            <span className="pf-icon"><Sparkles size={16} /></span>
-            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
-            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-              <ChevronDown size={14} />
-            </motion.span>
-          </motion.button>
-          <AnimatePresence>
-            {showPlacement && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="placement-highlight ph-kcg">
-                  <h4 className="ph-title">Placement 2025 – Driving Student Success</h4>
-                  <div className="ph-grid ph-grid-7">
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#d4a373' }}>395</span><span className="ph-lbl">Eligible Students</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>350<sup>*</sup></span><span className="ph-lbl">Students Placed</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>10 LPA</span><span className="ph-lbl">Highest Package</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#8b5cf6' }}>91%<sup>*</sup></span><span className="ph-lbl">Placed %</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#06b6d4' }}>4.5 LPA</span><span className="ph-lbl">Median CTC</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef6b6b' }}>578</span><span className="ph-lbl">Total Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>5 LPA</span><span className="ph-lbl">Average CTC</span></div>
-                  </div>
-                  <p className="ph-footnote">* as reported by college placement cell, 2025 batch</p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </>
-      )}
-      {isCIT && (
-        <>
-          <motion.button
-            className={`placement-fab ${showPlacement ? 'pf-active' : ''}`}
-            onClick={(e) => {
-              e.stopPropagation();
-              const next = !showPlacement;
-              setShowPlacement(next);
-              if (next) {
-                if (isAnnaCol) setShowTneaInfo(false);
-                else if (isExpanded) onToggle();
-              }
-            }}
-            whileHover={{ scale: 1.04, x: 4 }}
-            whileTap={{ scale: 0.96 }}
-            aria-label="Toggle placement highlights"
-          >
-            <span className="pf-glow" />
-            <span className="pf-icon"><Sparkles size={16} /></span>
-            <span className="pf-text">{showPlacement ? 'Hide' : 'View'} Placements</span>
-            <motion.span className="pf-chev" animate={{ rotate: showPlacement ? 180 : 0 }} transition={{ type: 'spring', stiffness: 300 }}>
-              <ChevronDown size={14} />
-            </motion.span>
-          </motion.button>
-          <AnimatePresence>
-            {showPlacement && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: 'hidden' }}
-              >
-                <div className="placement-highlight ph-cit">
-                  <h4 className="ph-title">Placements 2025–26 – Offers Still Rolling In</h4>
-                  <div className="ph-grid">
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#3b82f6' }}>712</span><span className="ph-lbl">Total Job Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#ef4444' }}>593</span><span className="ph-lbl">Single Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#f59e0b' }}>58</span><span className="ph-lbl">Dual Offers</span></div>
-                    <div className="ph-stat"><span className="ph-val" style={{ color: '#22c55e' }}>3</span><span className="ph-lbl">Triple Offers</span></div>
-                  </div>
-                  <p className="ph-footnote">Status as on date • details updating</p>
-                </div>
-                <div className="top-recruiters">
-                  <div className="tr-head">
-                    <h4 className="tr-title">Highest Packages 2025–26</h4>
-                    <p className="tr-sub">Top CTC offers this season</p>
-                  </div>
-                  <div className="tr-grid">
-                    {[
-                      { name: 'D.E. Shaw India', ctc: '₹59 LPA', color: '#60a5fa', bg: 'rgba(96,165,250,0.10)' },
-                      { name: 'Amazon', ctc: '₹30.8 LPA', color: '#f59e0b', bg: 'rgba(245,158,11,0.08)' },
-                      { name: 'KLA', ctc: '₹28 LPA', color: '#6366f1', bg: 'rgba(99,102,241,0.07)' },
-                    ].map((r, i) => (
-                      <div key={i} className="tr-card" style={{ background: r.bg }}>
-                        <span className="tr-name" style={{ color: r.color }}>{r.name}</span>
-                        <span className="tr-ctc">{r.ctc}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </>
-      )}
-    </motion.div>
-  );
-};
 
-/* ── Course Levels ── */
-const CourseLevels = ({ courses }) => {
-  const normalizeDeg = (raw) => {
-    const d = String(raw).trim().toUpperCase().replace(/[.\s]/g, '');
-    if (d === 'BE') return 'B.E';
-    if (d === 'BTECH') return 'B.Tech';
-    if (d === 'ME') return 'M.E';
-    if (d === 'MTECH') return 'M.Tech';
-    return raw;
-  };
+      {/* Floating action bubble */}
+      <motion.button
+        onClick={() => setOpen(o => !o)}
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.92 }}
+        aria-label={open ? 'Close Mentora AI' : 'Open Mentora AI'}
+        style={{
+          width: 58, height: 58,
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+          color: '#fff',
+          border: 'none',
+          cursor: 'pointer',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          boxShadow: '0 12px 28px rgba(99, 102, 241, 0.42)',
+          position: 'relative',
+        }}
+      >
+        <AnimatePresence mode="wait" initial={false}>
+          {open ? (
+            <motion.span key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.18 }} style={{ display: 'flex' }}>
+              <X size={22} />
+            </motion.span>
+          ) : (
+            <motion.span key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.18 }} style={{ display: 'flex' }}>
+              <MessageSquare size={22} />
+            </motion.span>
+          )}
+        </AnimatePresence>
 
-  // eslint-disable-next-line no-unused-vars
-  const DEG_COLORS = { 
-    'B.E': { bg: 'rgba(99,102,241,0.08)', txt: '#6366f1' }, 
-    'B.Tech': { bg: 'rgba(20,184,166,0.08)', txt: '#14b8a6' }, 
-    'M.E': { bg: 'rgba(236,72,153,0.08)', txt: '#ec4899' }, 
-    'M.Tech': { bg: 'rgba(245,158,11,0.08)', txt: '#f59e0b' } 
-  };
+        {/* Pulse ring (hides when open) */}
+        {!open && (
+          <span
+            style={{
+              position: 'absolute', inset: 0,
+              borderRadius: '50%',
+              border: '2px solid rgba(99, 102, 241, 0.4)',
+              animation: 'mentora-pulse 1.8s ease-out infinite',
+              pointerEvents: 'none',
+            }}
+          />
+        )}
+      </motion.button>
 
-  return (
-    <div className="course-levels-premium">
-      <div className="clp-section">
-        <div className="clp-head"><GraduationCap size={18} /><span>Offered Engineering Courses</span></div>
-        <div className="clp-grid">
-          {courses.map((cat, ci) => (
-            cat.branches.map((br, bi) => {
-              const deg = normalizeDeg(br[0]);
-              const dc = DEG_COLORS[deg] || { bg: '#f8fafc', txt: '#64748b' };
-              return (
-                <div key={`${ci}-${bi}`} className="branch-card-modern" style={{'--accent': dc.txt, '--bg': dc.bg}}>
-                  <div className="bc-deg">{deg}</div>
-                  <div className="bc-name" style={{ textTransform: 'uppercase' }}>{br[1]}</div>
-                </div>
-              );
-            })
-          ))}
-        </div>
-      </div>
+      <style>{`
+        @keyframes mentora-pulse {
+          0% { transform: scale(1); opacity: 0.7; }
+          100% { transform: scale(1.55); opacity: 0; }
+        }
+      `}</style>
     </div>
   );
 };
@@ -1120,9 +766,15 @@ const App = () => {
   const [cityFilter, setCityFilter] = useState('');
   const [fillFilter, setFillFilter] = useState('');
   const [cutoffFilter, setCutoffFilter] = useState('');
-  const [showFilters, setShowFilters] = useState(false);
   const [sortBy, setSortBy] = useState('');
   const [reordering, setReordering] = useState(false);
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+
+  const PAGE_SIZE = 25;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+
+  // Reset pagination whenever the filtered set changes
+  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, sortBy]);
 
   const handleSortChange = (next) => {
     setSortBy(prev => (prev === next ? '' : next));
@@ -1296,22 +948,7 @@ const App = () => {
                 <span><strong>12,500+</strong> students guided through Tamil Nadu admissions</span>
               </div>
             </div>
-            {/* Premium AI Guidance Bottom Bar */}
-            <div className="home-bottom-actions">
-              <div className="ba-group">
-                <span className="ba-label">Mentora AI · Intelligent Guidance</span>
-                <div className="ba-btns">
-                  <motion.button className="ba-btn" onClick={() => openAI('opportunities')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Zap size={16} />
-                    <span>Department Opportunities</span>
-                  </motion.button>
-                  <motion.button className="ba-btn" onClick={() => openAI('streams')} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Sparkles size={16} />
-                    <span>Which stream to choose?</span>
-                  </motion.button>
-                </div>
-              </div>
-            </div>
+            {/* Mentora AI now lives as a floating chat bubble (rendered at App root) */}
 
             <div className="cards-row" id="explore">
               <motion.div className="hero-card hc-anna" onClick={() => openExplorer('anna')} whileHover={{ y: -10, scale: 1.02 }}>
@@ -1385,6 +1022,28 @@ const App = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
                   <span className="live-badge"><Zap size={13} /> Live 2025</span>
+                  <motion.button
+                    onClick={() => setView('college-comparison')}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    style={{
+                      background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+                      color: '#fff',
+                      border: 'none',
+                      borderRadius: '10px',
+                      padding: '10px 18px',
+                      fontWeight: 700,
+                      fontSize: '0.9rem',
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap',
+                      boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: 8,
+                    }}
+                  >
+                    ⚖️ Compare Colleges
+                  </motion.button>
                   {category === 'anna' && (
                     <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
                       <BookOpen size={16} />
@@ -1393,146 +1052,309 @@ const App = () => {
                   )}
                 </div>
               </div>
-              <div className="filter-bar">
-                <div className="search-wrap"><Search size={16} className="si" /><input className="search-inp" placeholder="Search college, city, code or department..." value={searchTerm} onChange={e => setSearchTerm(e.target.value)} /></div>
-                <div className="filter-tabs-row">
-                  <div className="filter-tabs">
-                    <button className={`ftab ${subType===''?'ftab-on':''}`} onClick={()=>setSubType('')}>All ({category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})</button>
-                    {category === 'anna' 
-                      ? [
-                          ['university_dept','🏛️ University Department'],
-                          ['government','🏢 Government Colleges'],
-                          ['govt_aided','🤝 Government Aided'],
-                          ['cecri_cipet','🔬 CECRI & CIPET'],
-                          ['constituent','🎓 Constituent Colleges'],
-                          ['autonomous','⭐ Autonomous Colleges'],
-                          ['non_autonomous','📋 Non-Autonomous']
-                        ].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
-                      : [['deemed','Deemed University'],['private','Private University']].map(([v,l])=><button key={v} className={`ftab ${subType===v?'ftab-on':''}`} onClick={()=>setSubType(v)}>{l}</button>)
-                    }
-                  </div>
-                  {category === 'anna' && (
-                    <button className={`filter-toggle-btn ${showFilters ? 'active' : ''}`} onClick={() => setShowFilters(!showFilters)}>
-                      <SlidersHorizontal size={15} /> Filters {activeFilterCount > 0 && <span className="filter-count-badge">{activeFilterCount}</span>}
+              {/* Search bar — full-width, centered above results */}
+              <div style={{ marginTop: 16, marginBottom: 4 }}>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: 10,
+                  padding: '11px 16px',
+                  background: '#fff', border: '1.5px solid #e2e8f0',
+                  borderRadius: 14, boxShadow: '0 2px 8px rgba(15,23,42,0.04)',
+                }}>
+                  <Search size={16} color="#64748b" style={{ flexShrink: 0 }} />
+                  <input
+                    placeholder="Search college, city, code…"
+                    value={searchTerm}
+                    onChange={e => setSearchTerm(e.target.value)}
+                    style={{
+                      flex: 1, border: 'none', outline: 'none',
+                      background: 'transparent', fontSize: '0.95rem', color: '#0f172a',
+                      minWidth: 0,
+                    }}
+                  />
+                  {searchTerm && (
+                    <button onClick={() => setSearchTerm('')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#94a3b8', padding: 0, display: 'flex' }}>
+                      <X size={14} />
                     </button>
                   )}
                 </div>
-                {/* Advanced Filters Panel */}
-                {showFilters && category === 'anna' && (
-                  <motion.div className="adv-filters" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-                    <div className="af-group">
-                      <label className="af-label">🏙️ City</label>
-                      <select className="af-select" value={cityFilter} onChange={e => setCityFilter(e.target.value)}>
-                        <option value="">All Cities</option>
-                        {cityOptions.filter(Boolean).map(c => <option key={c} value={c}>{c}</option>)}
-                      </select>
-                    </div>
-                    <div className="af-group">
-                      <label className="af-label">📊 Fill %</label>
-                      <select className="af-select" value={fillFilter} onChange={e => setFillFilter(e.target.value)}>
-                        <option value="">Any</option>
-                        <option value="90">90-100% (High Demand)</option>
-                        <option value="70">70-89%</option>
-                        <option value="50">50-69%</option>
-                        <option value="below50">Below 50%</option>
-                      </select>
-                    </div>
-                    <div className="af-group">
-                      <label className="af-label">🎯 Cutoff</label>
-                      <select className="af-select" value={cutoffFilter} onChange={e => setCutoffFilter(e.target.value)}>
-                        <option value="">Any</option>
-                        <option value="190">190+ (Elite)</option>
-                        <option value="180">180-190</option>
-                        <option value="170">170-180</option>
-                        <option value="160">160-170</option>
-                        <option value="below160">Below 160</option>
-                      </select>
-                    </div>
-                    {activeFilterCount > 0 && (
-                      <button className="af-clear" onClick={() => { setCityFilter(''); setFillFilter(''); setCutoffFilter(''); setSubType(''); }}>✕ Clear All</button>
-                    )}
-                  </motion.div>
-                )}
               </div>
-              {category === 'anna' && (
-                <div className={`sort-bar ${reordering ? 'sort-bar-pulsing' : ''}`}>
-                  <div className="sort-bar-head">
-                    <span className="sort-bar-title">Sort results</span>
-                    <AnimatePresence>
-                      {reordering && (
-                        <motion.span
-                          className="sort-status"
-                          initial={{ opacity: 0, x: -6 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 6 }}
-                          transition={{ duration: 0.2 }}
-                        >
-                          <span className="sort-spinner" /> Reordering…
-                        </motion.span>
-                      )}
-                    </AnimatePresence>
-                    {sortBy && !reordering && <button className="sort-clear" onClick={() => handleSortChange(sortBy)}>Clear</button>}
-                  </div>
-                  <div className="sort-options">
-                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'demand' ? 'sort-on' : ''}`} onClick={() => handleSortChange('demand')}>
-                      <span className="sort-icon">🔥</span>
-                      <div className="sort-text">
-                        <span className="sort-title">Most In-Demand</span>
-                        <span className="sort-desc">High total seats, fill % & min cutoff</span>
-                      </div>
-                    </motion.button>
-                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'placement' ? 'sort-on' : ''}`} onClick={() => handleSortChange('placement')}>
-                      <span className="sort-icon">💼</span>
-                      <div className="sort-text">
-                        <span className="sort-title">Top Placements</span>
-                        <span className="sort-desc">Highest placement percentage</span>
-                      </div>
-                    </motion.button>
-                    <motion.button whileTap={{ scale: 0.96 }} className={`sort-opt ${sortBy === 'fast' ? 'sort-on' : ''}`} onClick={() => handleSortChange('fast')}>
-                      <span className="sort-icon">⚡</span>
-                      <div className="sort-text">
-                        <span className="sort-title">Fast Fillers</span>
-                        <span className="sort-desc">High Round 1 & total filled</span>
-                      </div>
-                    </motion.button>
-                  </div>
-                </div>
+
+              {/* Mobile filter overlay backdrop */}
+              {mobileFiltersOpen && (
+                <div
+                  className="mobile-filter-overlay"
+                  onClick={() => setMobileFiltersOpen(false)}
+                />
               )}
-              <div className="results-info">
-                <span className="results-count">{filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found</span>
-                {activeFilterCount > 0 && <span className="active-filter-pills">{subType && <span className="af-pill">{({'university_dept':'University Department','government':'Government Colleges','govt_aided':'Government Aided','cecri_cipet':'CECRI & CIPET','constituent':'Constituent Colleges','autonomous':'Autonomous Colleges','non_autonomous':'Non-Autonomous'})[subType]}<X size={12} onClick={()=>setSubType('')}/></span>}{cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={()=>setCityFilter('')}/></span>}{fillFilter && <span className="af-pill">Fill Rate: {fillFilter}%<X size={12} onClick={()=>setFillFilter('')}/></span>}{cutoffFilter && <span className="af-pill">Min. Cutoff: {cutoffFilter}<X size={12} onClick={()=>setCutoffFilter('')}/></span>}</span>}
-              </div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`list-${sortBy || 'default'}`}
-                  className="card-list"
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+
+              {/* careers360-style 2-column layout: filter sidebar + results */}
+              <div
+                className="exp-layout"
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'minmax(240px, 280px) 1fr',
+                  gap: 24,
+                  alignItems: 'start',
+                  marginTop: 16,
+                }}
+              >
+                {/* ── LEFT SIDEBAR ── */}
+                <aside
+                  className={`exp-sidebar${mobileFiltersOpen ? ' mobile-open' : ''}`}
+                  style={{
+                    position: 'relative',
+                    background: '#fff',
+                    border: '1px solid #e2e8f0',
+                    borderRadius: 14,
+                    padding: '18px 16px',
+                    boxShadow: '0 2px 8px rgba(15,23,42,0.04)',
+                  }}
                 >
-                  {sortedColleges.map((c, idx) => {
-                    const uid = c.code || c.name;
-                    return (
-                      <motion.div
-                        key={uid}
-                        initial={{ opacity: 0, y: 14 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: Math.min(idx, 10) * 0.025, ease: [0.4, 0, 0.2, 1] }}
+                  {/* Mobile close button — only shown when drawer is open on mobile */}
+                  {mobileFiltersOpen && (
+                    <button
+                      onClick={() => setMobileFiltersOpen(false)}
+                      aria-label="Close filters"
+                      style={{
+                        position: 'absolute',
+                        top: 12,
+                        right: 12,
+                        width: 30,
+                        height: 30,
+                        borderRadius: '50%',
+                        border: '1px solid #e2e8f0',
+                        background: '#f8fafc',
+                        color: '#64748b',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        flexShrink: 0,
+                      }}
+                    >
+                      <X size={14} />
+                    </button>
+                  )}
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 14 }}>
+                    <span style={{ fontSize: '0.95rem', fontWeight: 800, color: '#0f172a', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                      <SlidersHorizontal size={15} /> Filters
+                      {activeFilterCount > 0 && (
+                        <span style={{ background: '#6366f1', color: '#fff', fontSize: '0.65rem', fontWeight: 700, padding: '1px 6px', borderRadius: 10 }}>
+                          {activeFilterCount}
+                        </span>
+                      )}
+                    </span>
+                    {activeFilterCount > 0 && (
+                      <button
+                        onClick={() => { setCityFilter(''); setFillFilter(''); setCutoffFilter(''); setSubType(''); }}
+                        style={{
+                          background: 'transparent', border: 'none', color: '#ef4444',
+                          fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', padding: 0,
+                        }}
                       >
-                        <CollegeCard
-                          college={c}
-                          category={category}
-                          serial={idx + 1}
-                          isExpanded={expandedCollege === uid}
-                          onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
-                          onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
-                        />
-                      </motion.div>
-                    );
-                  })}
-                </motion.div>
-              </AnimatePresence>
+                        Clear all
+                      </button>
+                    )}
+                  </div>
+
+                  {/* Ownership group */}
+                  <FilterGroup title="Ownership">
+                    <FilterRadioRow
+                      label={`All (${category === 'anna' ? TNEA_DATA.length : DEEMED_DATA.length + PRIVATE_DATA.length})`}
+                      checked={subType === ''}
+                      onClick={() => setSubType('')}
+                    />
+                    {(category === 'anna'
+                      ? [
+                          ['university_dept', 'University Department'],
+                          ['government', 'Government Colleges'],
+                          ['govt_aided', 'Government Aided'],
+                          ['cecri_cipet', 'CECRI & CIPET'],
+                          ['constituent', 'Constituent Colleges'],
+                          ['autonomous', 'Autonomous Colleges'],
+                          ['non_autonomous', 'Self-Finance'],
+                        ]
+                      : [
+                          ['deemed', 'Deemed University'],
+                          ['private', 'Private University'],
+                        ]
+                    ).map(([v, l]) => (
+                      <FilterRadioRow key={v} label={l} checked={subType === v} onClick={() => setSubType(subType === v ? '' : v)} />
+                    ))}
+                  </FilterGroup>
+
+                  {category === 'anna' && (
+                    <>
+                      <FilterGroup title="City">
+                        <select
+                          value={cityFilter}
+                          onChange={e => setCityFilter(e.target.value)}
+                          style={{
+                            width: '100%', padding: '9px 10px',
+                            border: '1px solid #e2e8f0', borderRadius: 8,
+                            fontSize: '0.85rem', color: '#0f172a', background: '#fff',
+                            outline: 'none', cursor: 'pointer',
+                          }}
+                        >
+                          <option value="">All cities</option>
+                          {cityOptions.filter(Boolean).map(c => <option key={c} value={c}>{c}</option>)}
+                        </select>
+                      </FilterGroup>
+
+                      <FilterGroup title="Cut-off Range">
+                        {[
+                          ['', 'Any cut-off'],
+                          ['190', '190 + (Elite)'],
+                          ['180', '180 – 190'],
+                          ['170', '170 – 180'],
+                          ['160', '160 – 170'],
+                          ['below160', 'Below 160'],
+                        ].map(([v, l]) => (
+                          <FilterRadioRow key={v || 'any'} label={l} checked={cutoffFilter === v} onClick={() => setCutoffFilter(v)} />
+                        ))}
+                      </FilterGroup>
+
+                      <FilterGroup title="Fill Rate">
+                        {[
+                          ['', 'Any fill rate'],
+                          ['90', '90 – 100% (High demand)'],
+                          ['70', '70 – 89%'],
+                          ['50', '50 – 69%'],
+                          ['below50', 'Below 50%'],
+                        ].map(([v, l]) => (
+                          <FilterRadioRow key={v || 'any-fill'} label={l} checked={fillFilter === v} onClick={() => setFillFilter(v)} />
+                        ))}
+                      </FilterGroup>
+                    </>
+                  )}
+                  {/* Mobile apply button */}
+                  <button
+                    className="mobile-filter-apply"
+                    onClick={() => setMobileFiltersOpen(false)}
+                  >
+                    Show {filteredColleges.length} College{filteredColleges.length !== 1 ? 's' : ''}
+                  </button>
+                </aside>
+
+                {/* ── MAIN COLUMN ── */}
+                <div className="exp-main-col" style={{ minWidth: 0 }}>
+                  {/* Sort dropdown + result count row */}
+                  <div
+                    style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      gap: 16, flexWrap: 'wrap', marginBottom: 12,
+                      padding: '12px 16px',
+                      background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12,
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '0.9rem', fontWeight: 700, color: '#0f172a' }}>
+                        {filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found
+                      </span>
+                      {activeFilterCount > 0 && (
+                        <span style={{ display: 'inline-flex', flexWrap: 'wrap', gap: 6 }}>
+                          {subType && (
+                            <span className="af-pill">
+                              {({'university_dept':'University Dept','government':'Government','govt_aided':'Govt Aided','cecri_cipet':'CECRI/CIPET','constituent':'Constituent','autonomous':'Autonomous','non_autonomous':'Self-Finance','deemed':'Deemed','private':'Private'})[subType]}
+                              <X size={12} onClick={() => setSubType('')} style={{ cursor: 'pointer' }} />
+                            </span>
+                          )}
+                          {cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={() => setCityFilter('')} style={{ cursor: 'pointer' }} /></span>}
+                          {fillFilter && <span className="af-pill">Fill: {fillFilter}%<X size={12} onClick={() => setFillFilter('')} style={{ cursor: 'pointer' }} /></span>}
+                          {cutoffFilter && <span className="af-pill">Cutoff: {cutoffFilter}<X size={12} onClick={() => setCutoffFilter('')} style={{ cursor: 'pointer' }} /></span>}
+                        </span>
+                      )}
+                    </div>
+
+                    {category === 'anna' && (
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#64748b' }}>Sort by:</span>
+                        <select
+                          value={sortBy}
+                          onChange={e => handleSortChange(e.target.value)}
+                          style={{
+                            padding: '8px 12px', border: '1px solid #e2e8f0', borderRadius: 8,
+                            fontSize: '0.85rem', fontWeight: 600, color: '#0f172a', background: '#fff',
+                            outline: 'none', cursor: 'pointer', minWidth: 180,
+                          }}
+                        >
+                          <option value="">Default (Rank)</option>
+                          <option value="demand">🔥 Most In-Demand</option>
+                          <option value="placement">💼 Top Placements</option>
+                          <option value="fast">⚡ Fast Fillers</option>
+                        </select>
+                        <AnimatePresence>
+                          {reordering && (
+                            <motion.span
+                              initial={{ opacity: 0, x: -6 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: 6 }}
+                              style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontSize: '0.78rem', color: '#6366f1', fontWeight: 600 }}
+                            >
+                              <span className="sort-spinner" /> Reordering…
+                            </motion.span>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    )}
+                  </div>
+
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`list-${sortBy || 'default'}`}
+                      className="card-list"
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+                      style={{ display: 'flex', flexDirection: 'column', gap: 14 }}
+                    >
+                      {sortedColleges.slice(0, visibleCount).map((c, idx) => {
+                        const uid = c.code || c.name;
+                        return (
+                          <motion.div
+                            key={uid}
+                            initial={{ opacity: 0, y: 14 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: Math.min(idx, 10) * 0.025, ease: [0.4, 0, 0.2, 1] }}
+                          >
+                            <CollegeCard
+                              college={c}
+                              category={category}
+                              serial={idx + 1}
+                              isExpanded={expandedCollege === uid}
+                              onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
+                              onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
+                              onCompare={() => setView('college-comparison')}
+                            />
+                          </motion.div>
+                        );
+                      })}
+                    </motion.div>
+                  </AnimatePresence>
+
+                  {visibleCount < sortedColleges.length && (
+                    <div style={{ marginTop: 18, display: 'flex', justifyContent: 'center' }}>
+                      <button
+                        onClick={() => setVisibleCount(v => Math.min(sortedColleges.length, v + PAGE_SIZE))}
+                        style={{
+                          padding: '12px 28px',
+                          background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                          color: '#fff',
+                          border: 'none',
+                          borderRadius: 12,
+                          fontSize: '0.9rem',
+                          fontWeight: 700,
+                          cursor: 'pointer',
+                          boxShadow: '0 6px 18px rgba(99, 102, 241, 0.28)',
+                        }}
+                      >
+                        Load more ({sortedColleges.length - visibleCount} remaining)
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
           </motion.main>
         )}
@@ -1544,6 +1366,11 @@ const App = () => {
         {view === 'comparison' && (
           <motion.main key="comparison" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
             <ComparisonPage onBack={() => setView('dept-details')} />
+          </motion.main>
+        )}
+        {view === 'college-comparison' && (
+          <motion.main key="college-comparison" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <CollegeComparisonPage onBack={() => setView('explorer')} />
           </motion.main>
         )}
         {view === 'ai-counselor' && (
@@ -1558,6 +1385,7 @@ const App = () => {
         )}
       </AnimatePresence>
       <QueryModal isOpen={queryModal.open} onClose={()=>setQueryModal({open:false, college:''})} collegeName={queryModal.college} />
+      <MentoraFAB onOpenAI={openAI} />
       <RegistrationModal
         isOpen={regModal.open}
         dismissable={regModal.dismissable}
@@ -2596,6 +2424,530 @@ const ComparisonPage = ({ onBack }) => {
                       <div style={{ color: '#94a3b8', fontSize: '0.9rem', textAlign: 'center', padding: '20px' }}>
                         <p>Analysis not available for this department.</p>
                       </div>
+                    )}
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+/* ─────────────── COLLEGE COMPARISON PAGE ─────────────── */
+const CollegeComparisonPage = ({ onBack }) => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedColleges, setSelectedColleges] = useState([]);
+  const [showComparison, setShowComparison] = useState(false);
+
+  const allColleges = useMemo(() => {
+    const list = [];
+    TNEA_DATA.forEach(c => list.push({
+      id: `tnea_${c.code}`,
+      name: c.name,
+      short: c.short || c.name,
+      city: c.city,
+      source: 'TNEA',
+      sourceLabel: 'Anna University',
+      rank: c.rank,
+      cutoff: c.cutoff,
+      seats: c.seats,
+      fillpct: c.fillpct,
+      r1: c.r1, r2: c.r2, r3: c.r3,
+      filled: c.filled,
+      vacancy: c.vacancy,
+      type: c.type,
+      code: c.code,
+      deptCount: (TNEA_COURSES_INFO[c.code] || []).reduce((sum, cat) => sum + (cat.branches?.length || 0), 0),
+    }));
+    DEEMED_DATA.forEach((c, i) => list.push({
+      id: `deemed_${i}`,
+      name: c.name,
+      short: c.name,
+      city: c.city,
+      source: 'Deemed',
+      sourceLabel: 'Deemed University',
+      addr: c.addr,
+      status: c.status,
+      coursesCount: (c.courses || []).reduce((a, cat) => a + (cat.branches?.length || 0), 0),
+      categories: (c.courses || []).map(cat => cat.cat),
+    }));
+    PRIVATE_DATA.forEach((c, i) => list.push({
+      id: `priv_${i}`,
+      name: c.name,
+      short: c.name,
+      city: c.city,
+      source: 'Private',
+      sourceLabel: 'Private University',
+      addr: c.addr,
+      status: c.status,
+      coursesCount: (c.courses || []).reduce((a, cat) => a + (cat.branches?.length || 0), 0),
+      categories: (c.courses || []).map(cat => cat.cat),
+    }));
+    return list;
+  }, []);
+
+  const filteredColleges = useMemo(() => {
+    const q = searchTerm.toLowerCase();
+    if (!q) return allColleges;
+    return allColleges.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      (c.city || '').toLowerCase().includes(q) ||
+      (c.code || '').toLowerCase().includes(q)
+    );
+  }, [searchTerm, allColleges]);
+
+  const toggleCollege = (col) => {
+    const isSel = selectedColleges.some(c => c.id === col.id);
+    if (isSel) {
+      setSelectedColleges(selectedColleges.filter(c => c.id !== col.id));
+    } else if (selectedColleges.length < 3) {
+      setSelectedColleges([...selectedColleges, col]);
+      setSearchTerm('');
+    }
+  };
+
+  const sourceColors = ['#6366f1', '#8b5cf6', '#ec4899'];
+  const gradientPairs = [
+    ['#6366f1', '#8b5cf6'],
+    ['#8b5cf6', '#ec4899'],
+    ['#ec4899', '#f59e0b'],
+  ];
+
+  return (
+    <div className="root" style={{ padding: '24px', maxWidth: '1600px', margin: '0 auto', width: '100%', display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <button className="back-pill" onClick={onBack} style={{ marginBottom: 24 }}><ChevronLeft size={16} /> Back</button>
+
+      {!showComparison ? (
+        <>
+          <div style={{ marginBottom: 32 }}>
+            <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Compare Colleges</h1>
+            <p style={{ color: '#64748b' }}>Select up to 3 colleges and compare their rankings, cutoffs, seats, fees, and key characteristics side by side.</p>
+          </div>
+
+          {/* Search Bar */}
+          <div style={{ marginBottom: 24, position: 'relative' }}>
+            <div style={{
+              position: 'relative',
+              borderRadius: '16px',
+              background: 'linear-gradient(135deg, rgba(99,102,241,0.12) 0%, rgba(139,92,246,0.08) 100%)',
+              padding: '2px',
+              boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+              transition: 'box-shadow 0.3s ease',
+            }}>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                background: 'rgba(255,255,255,0.96)',
+                borderRadius: '14px',
+                backdropFilter: 'blur(12px)',
+                padding: '12px 20px',
+                gap: '12px',
+                border: '1px solid rgba(99,102,241,0.15)',
+              }}>
+                <Search size={18} color="#6366f1" />
+                <input
+                  autoFocus
+                  style={{
+                    flex: 1,
+                    border: 'none',
+                    outline: 'none',
+                    background: 'transparent',
+                    fontSize: '1rem',
+                    fontWeight: 500,
+                    color: '#1e293b',
+                    padding: '8px 0',
+                    letterSpacing: '0.01em',
+                  }}
+                  placeholder="Search colleges by name, city, or code..."
+                  value={searchTerm}
+                  onChange={e => setSearchTerm(e.target.value)}
+                />
+                {searchTerm && (
+                  <motion.button
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    onClick={() => setSearchTerm('')}
+                    style={{
+                      width: 28, height: 28,
+                      borderRadius: '50%',
+                      border: 'none',
+                      background: 'rgba(100,116,139,0.12)',
+                      color: '#64748b',
+                      cursor: 'pointer',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      flexShrink: 0,
+                    }}
+                    whileHover={{ background: 'rgba(239,68,68,0.12)', color: '#ef4444' }}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <X size={14} />
+                  </motion.button>
+                )}
+              </div>
+
+              {/* Search Results Dropdown */}
+              {searchTerm && filteredColleges.length > 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    marginTop: 8,
+                    background: '#fff',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+                    overflow: 'hidden',
+                    maxHeight: '420px',
+                    overflowY: 'auto',
+                    zIndex: 10,
+                  }}
+                >
+                  {filteredColleges.slice(0, 25).map((col, idx) => {
+                    const isSelected = selectedColleges.some(c => c.id === col.id);
+                    return (
+                      <motion.button
+                        key={col.id}
+                        onClick={() => toggleCollege(col)}
+                        whileHover={{ background: 'rgba(99,102,241,0.08)' }}
+                        style={{
+                          width: '100%',
+                          padding: '14px 16px',
+                          border: 'none',
+                          background: isSelected ? 'rgba(99,102,241,0.1)' : 'transparent',
+                          cursor: 'pointer',
+                          textAlign: 'left',
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          gap: 12,
+                          borderBottom: idx < Math.min(25, filteredColleges.length) - 1 ? '1px solid #f1f5f9' : 'none',
+                          transition: 'background 0.2s',
+                        }}
+                      >
+                        <div style={{ flex: 1, minWidth: 0 }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4, flexWrap: 'wrap' }}>
+                            <span style={{ fontSize: '0.7rem', fontWeight: 700, color: '#fff', background: 'linear-gradient(135deg, #6366f1, #8b5cf6)', padding: '2px 8px', borderRadius: '6px', letterSpacing: '0.04em' }}>
+                              {col.sourceLabel}
+                            </span>
+                            {col.rank && <span style={{ fontSize: '0.75rem', fontWeight: 700, color: '#0f172a' }}>Rank #{col.rank}</span>}
+                            {col.city && <span style={{ fontSize: '0.75rem', color: '#64748b', display: 'inline-flex', alignItems: 'center', gap: 3 }}><MapPin size={11} />{col.city}</span>}
+                          </div>
+                          <div style={{ fontSize: '0.92rem', fontWeight: 600, color: '#1e293b', lineHeight: 1.3, wordBreak: 'break-word' }}>{col.short}</div>
+                        </div>
+                        {isSelected && (
+                          <motion.div
+                            initial={{ scale: 0, rotate: -180 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            style={{
+                              width: 24,
+                              height: 24,
+                              borderRadius: '50%',
+                              background: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                              display: 'flex',
+                              alignItems: 'center',
+                              justifyContent: 'center',
+                              color: '#fff',
+                              fontWeight: 'bold',
+                              flexShrink: 0,
+                            }}
+                          >
+                            ✓
+                          </motion.div>
+                        )}
+                      </motion.button>
+                    );
+                  })}
+                  {filteredColleges.length > 25 && (
+                    <div style={{
+                      padding: '12px 16px',
+                      textAlign: 'center',
+                      fontSize: '0.85rem',
+                      color: '#94a3b8',
+                      background: '#f8fafc',
+                    }}>
+                      Showing 25 of {filteredColleges.length} results — refine your search
+                    </div>
+                  )}
+                </motion.div>
+              )}
+
+              {/* No results */}
+              {searchTerm && filteredColleges.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  style={{
+                    position: 'absolute',
+                    top: '100%',
+                    left: 0,
+                    right: 0,
+                    marginTop: 8,
+                    background: '#fff',
+                    borderRadius: '12px',
+                    border: '1px solid #e2e8f0',
+                    padding: '24px',
+                    textAlign: 'center',
+                    zIndex: 10,
+                  }}
+                >
+                  <Search size={24} color="#94a3b8" style={{ marginBottom: 12, marginLeft: 'auto', marginRight: 'auto', display: 'block' }} />
+                  <p style={{ color: '#94a3b8', margin: 0 }}>No colleges found</p>
+                </motion.div>
+              )}
+            </div>
+          </div>
+
+          {/* Selected Colleges Pills & Compare Button */}
+          {selectedColleges.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              style={{
+                marginBottom: 24,
+                padding: '16px',
+                background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(99,102,241,0.08))',
+                borderRadius: '12px',
+                border: '1px solid rgba(99,102,241,0.2)',
+              }}
+            >
+              <div style={{
+                display: 'flex',
+                gap: 12,
+                flexWrap: 'wrap',
+                alignItems: 'center',
+                marginBottom: 16,
+              }}>
+                <span style={{ fontSize: '0.9rem', fontWeight: 600, color: '#6366f1', width: '100%' }}>📌 Selected ({selectedColleges.length}/3):</span>
+                {selectedColleges.map((col, idx) => (
+                  <motion.div
+                    key={col.id}
+                    initial={{ scale: 0, rotate: -10 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    exit={{ scale: 0, rotate: 10 }}
+                    whileHover={{ scale: 1.03 }}
+                    style={{
+                      padding: '10px 14px',
+                      background: `linear-gradient(135deg, ${gradientPairs[idx % 3][0]}, ${gradientPairs[idx % 3][1]})`,
+                      color: '#fff',
+                      borderRadius: '20px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 8,
+                      maxWidth: '100%',
+                    }}
+                  >
+                    <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: 280 }}>
+                      {col.short.length > 50 ? col.short.substring(0, 50) + '…' : col.short}
+                    </span>
+                    <motion.button
+                      onClick={() => toggleCollege(col)}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.8 }}
+                      style={{
+                        background: 'rgba(255,255,255,0.3)',
+                        border: 'none',
+                        borderRadius: '50%',
+                        width: 20,
+                        height: 20,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        color: '#fff',
+                        padding: 0,
+                        flexShrink: 0,
+                      }}
+                    >
+                      <X size={12} />
+                    </motion.button>
+                  </motion.div>
+                ))}
+              </div>
+
+              <motion.button
+                onClick={() => setShowComparison(true)}
+                disabled={selectedColleges.length < 2}
+                whileHover={{ scale: selectedColleges.length < 2 ? 1 : 1.02 }}
+                whileTap={{ scale: selectedColleges.length < 2 ? 1 : 0.98 }}
+                style={{
+                  width: '100%',
+                  padding: '14px 20px',
+                  background: selectedColleges.length < 2 ? '#cbd5e1' : 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                  color: '#fff',
+                  border: 'none',
+                  borderRadius: '10px',
+                  fontSize: '0.95rem',
+                  fontWeight: 700,
+                  cursor: selectedColleges.length < 2 ? 'not-allowed' : 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 10,
+                  boxShadow: selectedColleges.length < 2 ? 'none' : '0 8px 24px rgba(99,102,241,0.3)',
+                  transition: 'all 0.3s',
+                }}
+              >
+                <BarChart3 size={16} />
+                {selectedColleges.length < 2
+                  ? 'Select at least 2 colleges to compare'
+                  : `Compare ${selectedColleges.length} College${selectedColleges.length !== 1 ? 's' : ''} →`}
+              </motion.button>
+            </motion.div>
+          )}
+
+          {/* Empty State */}
+          {selectedColleges.length === 0 && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              style={{
+                marginTop: 48,
+                padding: '60px 32px',
+                textAlign: 'center',
+                background: 'rgba(99,102,241,0.08)',
+                borderRadius: '20px',
+                border: '2px dashed rgba(99,102,241,0.3)',
+                flex: 1,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div style={{ fontSize: '3rem', marginBottom: 16 }}>🏛️</div>
+              <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#0f172a', marginBottom: 8 }}>Search for Colleges</h3>
+              <p style={{ color: '#64748b' }}>Type a college name, city, or code above. Select up to 3 colleges, then click Compare to see them side by side.</p>
+            </motion.div>
+          )}
+        </>
+      ) : (
+        // Comparison Results View
+        <>
+          <motion.button
+            onClick={() => setShowComparison(false)}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            style={{
+              marginBottom: 24,
+              padding: '10px 16px',
+              background: 'transparent',
+              border: '1px solid #e2e8f0',
+              borderRadius: '20px',
+              color: '#6366f1',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              width: 'fit-content',
+            }}
+            whileHover={{ background: 'rgba(99,102,241,0.1)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <ChevronLeft size={16} />
+            Edit Selection
+          </motion.button>
+
+          <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a', marginBottom: 8 }}>Comparison Results</h2>
+          <p style={{ color: '#64748b', marginBottom: 32 }}>Side-by-side view of selected colleges. Fields without data are marked as “—”.</p>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: `repeat(${selectedColleges.length}, 1fr)`,
+            gap: 24,
+            flex: 1,
+          }}>
+            {selectedColleges.map((col, idx) => {
+              const grad = gradientPairs[idx % 3];
+              const accent = sourceColors[idx % 3];
+
+              const StatRow = ({ label, value, highlight }) => (
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  padding: '10px 0',
+                  borderBottom: '1px solid #f1f5f9',
+                  gap: 12,
+                }}>
+                  <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 500 }}>{label}</span>
+                  <span style={{
+                    fontSize: '0.92rem',
+                    fontWeight: 700,
+                    color: highlight ? accent : '#0f172a',
+                    textAlign: 'right',
+                    wordBreak: 'break-word',
+                  }}>
+                    {(value === undefined || value === null || value === '') ? '—' : value}
+                  </span>
+                </div>
+              );
+
+              return (
+                <motion.div
+                  key={col.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1 }}
+                  style={{
+                    background: '#fff',
+                    borderRadius: '16px',
+                    border: '1px solid #e2e8f0',
+                    overflow: 'hidden',
+                    boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  <div style={{
+                    padding: '24px',
+                    background: `linear-gradient(135deg, ${grad[0]}, ${grad[1]})`,
+                    color: '#fff',
+                  }}>
+                    <div style={{ fontSize: '0.78rem', fontWeight: 700, opacity: 0.9, marginBottom: 8, letterSpacing: '0.05em' }}>
+                      {col.sourceLabel?.toUpperCase()}
+                    </div>
+                    <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, lineHeight: 1.3 }}>{col.short}</h3>
+                    {col.city && (
+                      <div style={{ marginTop: 10, fontSize: '0.85rem', opacity: 0.92, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+                        <MapPin size={13} /> {col.city}
+                      </div>
+                    )}
+                  </div>
+
+                  <div style={{ padding: '20px 24px', flex: 1 }}>
+                    {col.source === 'TNEA' ? (
+                      <>
+                        <StatRow label="TNEA Rank" value={col.rank ? `#${col.rank}` : null} highlight />
+                        <StatRow label="Code" value={col.code} />
+                        <StatRow label="Type" value={col.type ? col.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : null} />
+                        <StatRow label="Department Count" value={col.deptCount ? col.deptCount.toLocaleString() : null} />
+                        <StatRow label="Cutoff (Min)" value={col.cutoff ? col.cutoff.toFixed(2) : null} highlight />
+                        <StatRow label="Total Seats" value={col.seats?.toLocaleString()} />
+                        <StatRow label="Filled" value={col.filled?.toLocaleString()} />
+                        <StatRow label="Vacancy" value={col.vacancy?.toLocaleString()} />
+                        <StatRow label="Fill %" value={col.fillpct != null ? `${col.fillpct}%` : null} highlight />
+                        <StatRow label="Round 1" value={col.r1?.toLocaleString()} />
+                        <StatRow label="Round 2" value={col.r2?.toLocaleString()} />
+                        <StatRow label="Round 3" value={col.r3?.toLocaleString()} />
+                      </>
+                    ) : (
+                      <>
+                        <StatRow label="Category" value={col.sourceLabel} highlight />
+                        <StatRow label="UGC Status" value={col.status} />
+                        <StatRow label="Address" value={col.addr} />
+                        <StatRow label="Total Courses" value={col.coursesCount?.toLocaleString()} highlight />
+                        <StatRow label="Streams" value={(col.categories || []).join(', ')} />
+                      </>
                     )}
                   </div>
                 </motion.div>

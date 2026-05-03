@@ -1,0 +1,320 @@
+/* ════════════════════════════════════════════════════════════════════
+   THEME REFRESH v2 — kill neo-brutalist remnants, unify palette
+   Targets the heavy black-bordered "GYC brut" rules at lines 5582+
+   with matching/higher specificity so they actually override.
+   ════════════════════════════════════════════════════════════════════ */
+
+  /* — Home page backdrop — */
+  .home-main.gyc-home-v2 {
+    background:
+      radial-gradient(circle at 20% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(20, 184, 166, 0.04) 0%, transparent 45%),
+      var(--c360-bg) !important;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(99, 102, 241, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 80% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(20, 184, 166, 0.04) 0%, transparent 45%) !important;
+  }
+
+  /* — Navbar — */
+  .gyc-navbar,
+  .navbar.gyc-navbar {
+    @apply backdrop-blur-[16px];
+    background: rgba(255, 255, 255, 0.94) !important;
+    border-bottom: 1px solid var(--c360-border) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+  }
+
+  .gyc-navbar .nav-link::before {
+    content: "" !important;
+  }
+
+  .gyc-navbar .nav-link {
+    @apply normal-case font-semibold !important;
+    color: var(--c360-muted) !important;
+  }
+
+  .gyc-navbar .nav-link:hover {
+    background: var(--c360-accent-soft) !important;
+    color: var(--c360-accent) !important;
+  }
+
+  .gyc-navbar .nav-book {
+    @apply bg-white rounded-[10px] !important;
+    border: 1px solid var(--c360-border) !important;
+    color: var(--c360-text) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+  }
+
+  .gyc-navbar .nav-book:hover {
+    @apply bg-[#f8fafc] !important;
+    transform: none !important;
+    box-shadow: var(--c360-shadow-md) !important;
+  }
+
+  .gyc-navbar .nav-register {
+    @apply rounded-[10px] border-0 text-white !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25) !important;
+  }
+
+  .gyc-navbar .nav-register:hover {
+    @apply translate-y-[-1px] !important;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.32) !important;
+  }
+
+  .gyc-brand-text strong {
+    @apply font-inter !important;
+    color: var(--c360-text) !important;
+  }
+
+  .gyc-brand-text span {
+    @apply font-inter font-medium text-[0.78rem] !important;
+    color: var(--c360-muted) !important;
+    transform: none !important;
+  }
+
+  /* — Hero eyebrow chip — */
+  .gyc-hero-eyebrow {
+    @apply rounded-full inline-block font-semibold normal-case !important;
+    background: var(--c360-accent-soft) !important;
+    border: 1px solid rgba(99, 102, 241, 0.2) !important;
+    box-shadow: none !important;
+    color: var(--c360-accent) !important;
+    transform: none !important;
+    letter-spacing: 0.02em !important;
+    padding: 6px 14px !important;
+  }
+
+  /* — Hero h1 — */
+  .gyc-hero-h1 {
+    @apply font-inter font-extrabold !important;
+    letter-spacing: -0.03em !important;
+  }
+
+  .gyc-accent-eng,
+  .gyc-accent-med {
+    @apply border-0 p-0 rounded-none !important;
+    background: linear-gradient(120deg, #6366f1 0%, #8b5cf6 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+
+  .gyc-accent-med {
+    background: linear-gradient(120deg, #ec4899 0%, #f59e0b 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  .gyc-hero-p {
+    @apply font-normal !important;
+    color: var(--c360-muted) !important;
+  }
+
+  .gyc-hero-p strong {
+    @apply rounded bg-[#fef3c7] text-[#92400e] !important;
+  }
+
+  /* — Hero CTAs — */
+  .gyc-btn-primary {
+    @apply border-0 text-white font-bold rounded-xl normal-case !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.3) !important;
+    letter-spacing: 0 !important;
+    padding: 13px 26px !important;
+  }
+
+  .gyc-btn-primary:hover {
+    @apply translate-y-[-2px] !important;
+    box-shadow: 0 10px 26px rgba(99, 102, 241, 0.38) !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  }
+
+  .gyc-btn-secondary {
+    @apply bg-white text-[var(--c360-text)] font-bold rounded-xl normal-case !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    letter-spacing: 0 !important;
+    padding: 13px 26px !important;
+  }
+
+  .gyc-btn-secondary:hover {
+    @apply translate-y-[-2px] bg-[#f8fafc] !important;
+    box-shadow: var(--c360-shadow-md) !important;
+  }
+
+  /* — Trust badge — */
+  .gyc-hero-trust {
+    @apply bg-white !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    color: var(--c360-muted) !important;
+  }
+
+  .gyc-hero-trust strong {
+    color: var(--c360-text) !important;
+  }
+
+  .gyc-ta {
+    @apply border-2 border-white !important;
+    box-shadow: 0 0 0 1px var(--c360-border) !important;
+  }
+
+  /* — Mentora AI bar — */
+  .home-bottom-actions {
+    @apply bg-white rounded-[18px] !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    backdrop-filter: none !important;
+  }
+
+  .ba-label {
+    color: var(--c360-muted) !important;
+    letter-spacing: 0.12em !important;
+  }
+
+  .ba-btn {
+    @apply bg-white rounded-[10px] !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    color: var(--c360-text) !important;
+    padding: 11px 20px !important;
+  }
+
+  .ba-btn:hover {
+    @apply translate-y-[-2px] !important;
+    border-color: rgba(99, 102, 241, 0.4) !important;
+    background: var(--c360-accent-soft) !important;
+    color: var(--c360-accent) !important;
+    box-shadow: var(--c360-shadow-md) !important;
+  }
+
+  /* — Category cards — */
+  .hero-card,
+  .hero-card.hc-anna,
+  .hero-card.hc-med,
+  .hero-card.hc-univ {
+    @apply bg-white rounded-[18px] !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    padding: 28px !important;
+    transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease !important;
+  }
+
+  .hero-card:hover {
+    @apply translate-y-[-4px] !important;
+    box-shadow: var(--c360-shadow-lg) !important;
+    border-color: rgba(99, 102, 241, 0.25) !important;
+  }
+
+  .hc-anna { --c: #6366f1 !important; --c-bg: rgba(99, 102, 241, 0.08) !important; }
+  .hc-med  { --c: #f59e0b !important; --c-bg: rgba(245, 158, 11, 0.08) !important; }
+  .hc-univ { --c: #14b8a6 !important; --c-bg: rgba(20, 184, 166, 0.08) !important; }
+
+  .hero-card .hc-icon {
+    @apply rounded-xl !important;
+    background: var(--c-bg) !important;
+    color: var(--c) !important;
+    border: 1px solid var(--c360-border-soft) !important;
+    box-shadow: none !important;
+  }
+
+  .hero-card .hc-count {
+    @apply rounded-full !important;
+    background: var(--c-bg) !important;
+    color: var(--c) !important;
+    border: 1px solid var(--c360-border-soft) !important;
+  }
+
+  .hero-card .hc-title {
+    @apply font-inter font-extrabold !important;
+  }
+
+  .hero-card .hc-cta {
+    @apply font-bold normal-case !important;
+    color: var(--c) !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* — EXPLORE DEPARTMENTS button — */
+  .explorer-main .dept-details-btn-header,
+  .dept-details-btn-header {
+    @apply border-0 text-white rounded-[10px] font-bold normal-case !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.28) !important;
+    letter-spacing: 0 !important;
+    padding: 10px 18px !important;
+  }
+
+  .explorer-main .dept-details-btn-header:hover,
+  .dept-details-btn-header:hover {
+    @apply translate-y-[-1px] !important;
+    box-shadow: 0 6px 18px rgba(99, 102, 241, 0.36) !important;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6) !important;
+  }
+
+  .explorer-main .dept-details-btn-header span {
+    @apply font-bold normal-case !important;
+    letter-spacing: 0 !important;
+  }
+
+  /* — Live badge — */
+  .explorer-main .live-badge {
+    @apply rounded-full font-bold normal-case !important;
+    background: rgba(16, 185, 129, 0.12) !important;
+    color: #047857 !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+    box-shadow: none !important;
+    transform: none !important;
+    letter-spacing: 0.02em !important;
+  }
+
+  /* — Back pill — */
+  .explorer-main .back-pill,
+  .back-pill {
+    @apply bg-white text-[var(--c360-text)] rounded-[10px] normal-case !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+    letter-spacing: 0 !important;
+    padding: 8px 14px !important;
+  }
+
+  .explorer-main .back-pill:hover {
+    @apply bg-[#f8fafc] !important;
+    transform: none !important;
+    box-shadow: var(--c360-shadow-md) !important;
+  }
+
+  /* — Section eyebrows — */
+  .gyc-sec-eyebrow {
+    @apply inline-block rounded-full uppercase font-bold !important;
+    color: var(--c360-accent) !important;
+    background: var(--c360-accent-soft) !important;
+    border: 1px solid rgba(99, 102, 241, 0.18) !important;
+    padding: 4px 12px !important;
+    letter-spacing: 0.08em !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* — Footer hover — */
+  .gyc-foot-sub-row button:hover {
+    transform: none !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+  }
+
+  /* — Notice board / news cards / why-choose / testimonials — */
+  .gyc-notice-board,
+  .gyc-news-card,
+  .gyc-stats-card,
+  .gyc-why-card,
+  .gyc-testi-card,
+  .gyc-photo-slideshow {
+    @apply bg-white rounded-2xl !important;
+    border: 1px solid var(--c360-border) !important;
+    box-shadow: var(--c360-shadow-sm) !important;
+  }
