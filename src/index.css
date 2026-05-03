@@ -418,6 +418,76 @@ html, body { @apply overflow-x-hidden;
   margin-top: 4px;
 }
 
+/* ── Explore page 2-column layout ── */
+.exp-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 280px) 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 16px;
+}
+
+.exp-sidebar {
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid #f1f5f9;
+  padding: 16px;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.mobile-filter-apply {
+  @apply hidden;
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.mobile-filter-trigger {
+  @apply hidden;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0f172a;
+  background: #fff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 9px 14px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+
+.mobile-filter-trigger-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #6366f1;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.mobile-filter-overlay {
+  @apply hidden;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 99;
+}
+
 .live-badge {
   @apply inline-flex;
   @apply items-center;
@@ -509,6 +579,22 @@ html, body { @apply overflow-x-hidden;
   @apply flex;
   @apply flex-col;
   gap: 10px;
+}
+
+/* ── c360 card layout ── */
+.c360-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  padding: 20px 22px;
+  align-items: flex-start;
+}
+
+.c360-ctas {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 144px;
 }
 
 .college-card {
@@ -7936,6 +8022,54 @@ html, body { @apply overflow-x-hidden;
   }.hero-card { @apply w-full !important;}/* Branch card modern overflow guard */.branch-card-modern { max-width: 100% !important; }/* Placement highlight / recruiters dropdown lists: break long lines */.placement-highlight, .top-recruiters, .salary-bracket {
     padding: 14px !important;
     font-size: 0.86rem !important;
+  }
+  /* Explorer 2-column → single column on mobile */
+  .exp-layout {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+  .exp-sidebar {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    bottom: 0 !important;
+    width: 290px !important;
+    max-width: 85vw !important;
+    max-height: 100vh !important;
+    border-radius: 0 16px 16px 0 !important;
+    padding: 20px 16px !important;
+    overflow-y: auto !important;
+    z-index: 100 !important;
+    transform: translateX(-110%) !important;
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 4px 0 24px rgba(0,0,0,0.12) !important;
+  }
+  .exp-sidebar.mobile-open {
+    transform: translateX(0) !important;
+  }
+  .mobile-filter-trigger {
+    display: flex !important;
+  }
+  .mobile-filter-overlay {
+    display: block !important;
+  }
+  .mobile-filter-apply {
+    display: block !important;
+  }
+  /* College card — stack CTAs below college info on mobile */
+  .c360-header {
+    grid-template-columns: auto 1fr !important;
+    grid-template-rows: auto auto !important;
+  }
+  .c360-ctas {
+    grid-column: 1 / -1 !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    min-width: 0 !important;
+  }
+  .c360-ctas > * {
+    flex: 1 1 calc(50% - 6px) !important;
+    min-width: 0 !important;
   }
 }
 

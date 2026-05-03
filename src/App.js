@@ -48,6 +48,23 @@ const priorityRank = (name) => {
   return Infinity;
 };
 
+/* ─────────── BRANCH & COMMUNITY CONSTANTS ─────────── */
+const POPULAR_BRANCHES = [
+  { label: 'CSE',           search: 'computer science and engineering' },
+  { label: 'AI & DS',       search: 'artificial intelligence' },
+  { label: 'ECE',           search: 'electronics and communication' },
+  { label: 'IT',            search: 'information technology' },
+  { label: 'EEE',           search: 'electrical and electronics' },
+  { label: 'Mechanical',    search: 'mechanical engineering' },
+  { label: 'Civil',         search: 'civil engineering' },
+  { label: 'Aeronautical',  search: 'aeronautical' },
+  { label: 'Chemical',      search: 'chemical engineering' },
+  { label: 'Biomedical',    search: 'biomedical' },
+  { label: 'Automobile',    search: 'automobile' },
+  { label: 'Marine',        search: 'marine engineering' },
+];
+const COMMUNITY_LIST = ['OC', 'BC', 'BCM', 'MBC', 'SC', 'SCA', 'ST'];
+
 /* ─────────── SIDEBAR FILTER PRIMITIVES (careers360-style) ─────────── */
 const FilterGroup = ({ title, children }) => {
   const [open, setOpen] = useState(true);
@@ -769,12 +786,14 @@ const App = () => {
   const [sortBy, setSortBy] = useState('');
   const [reordering, setReordering] = useState(false);
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [branchFilter, setBranchFilter] = useState('');
+  const [communityFilter, setCommunityFilter] = useState('');
 
   const PAGE_SIZE = 25;
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   // Reset pagination whenever the filtered set changes
-  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, sortBy]);
+  useEffect(() => { setVisibleCount(PAGE_SIZE); }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, sortBy, branchFilter, communityFilter]);
 
   const handleSortChange = (next) => {
     setSortBy(prev => (prev === next ? '' : next));
@@ -815,7 +834,7 @@ const App = () => {
     return map;
   }, []);
 
-  const activeFilterCount = [subType, cityFilter, fillFilter, cutoffFilter].filter(Boolean).length;
+  const activeFilterCount = [subType, cityFilter, fillFilter, cutoffFilter, branchFilter, communityFilter].filter(Boolean).length;
 
   const filteredColleges = useMemo(() => {
     let base = category === 'anna'
@@ -857,6 +876,15 @@ const App = () => {
       });
     }
 
+    // Branch filter
+    if (branchFilter && category === 'anna') {
+      base = base.filter(c => {
+        const code = String(c.code).trim();
+        const depts = deptLookup[code] || [];
+        return depts.some(d => d.includes(branchFilter));
+      });
+    }
+
     // Search (name, code, city, AND department)
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
@@ -873,7 +901,7 @@ const App = () => {
     }
 
     return base;
-  }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, deptLookup]);
+  }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, branchFilter, deptLookup]);
 
   const sortedColleges = useMemo(() => {
     const computePlacement = (c) => {
@@ -1079,7 +1107,19 @@ const App = () => {
                 </div>
               </div>
 
-              {/* Mobile filter overlay backdrop */}
+              {/* Mobile filter trigger — only visible on mobile */}
+              <button
+                className="mobile-filter-trigger"
+                onClick={() => setMobileFiltersOpen(true)}
+              >
+                <SlidersHorizontal size={15} />
+                Filters
+                {activeFilterCount > 0 && (
+                  <span className="mobile-filter-trigger-badge">{activeFilterCount}</span>
+                )}
+              </button>
+
+              {/* Overlay backdrop for mobile drawer */}
               {mobileFiltersOpen && (
                 <div
                   className="mobile-filter-overlay"
@@ -1088,27 +1128,10 @@ const App = () => {
               )}
 
               {/* careers360-style 2-column layout: filter sidebar + results */}
-              <div
-                className="exp-layout"
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'minmax(240px, 280px) 1fr',
-                  gap: 24,
-                  alignItems: 'start',
-                  marginTop: 16,
-                }}
-              >
+              <div className="exp-layout">
                 {/* ── LEFT SIDEBAR ── */}
                 <aside
                   className={`exp-sidebar${mobileFiltersOpen ? ' mobile-open' : ''}`}
-                  style={{
-                    position: 'relative',
-                    background: '#fff',
-                    border: '1px solid #e2e8f0',
-                    borderRadius: 14,
-                    padding: '18px 16px',
-                    boxShadow: '0 2px 8px rgba(15,23,42,0.04)',
-                  }}
                 >
                   {/* Mobile close button — only shown when drawer is open on mobile */}
                   {mobileFiltersOpen && (
@@ -1146,7 +1169,7 @@ const App = () => {
                     </span>
                     {activeFilterCount > 0 && (
                       <button
-                        onClick={() => { setCityFilter(''); setFillFilter(''); setCutoffFilter(''); setSubType(''); }}
+                        onClick={() => { setCityFilter(''); setFillFilter(''); setCutoffFilter(''); setSubType(''); setBranchFilter(''); setCommunityFilter(''); }}
                         style={{
                           background: 'transparent', border: 'none', color: '#ef4444',
                           fontSize: '0.75rem', fontWeight: 700, cursor: 'pointer', padding: 0,
@@ -1225,6 +1248,53 @@ const App = () => {
                           <FilterRadioRow key={v || 'any-fill'} label={l} checked={fillFilter === v} onClick={() => setFillFilter(v)} />
                         ))}
                       </FilterGroup>
+
+                      <FilterGroup title="Branch / Department">
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                          {POPULAR_BRANCHES.map(b => (
+                            <button
+                              key={b.search}
+                              onClick={() => setBranchFilter(branchFilter === b.search ? '' : b.search)}
+                              style={{
+                                padding: '5px 10px', borderRadius: 20,
+                                border: `1.5px solid ${branchFilter === b.search ? '#6366f1' : '#e2e8f0'}`,
+                                background: branchFilter === b.search ? 'rgba(99,102,241,0.1)' : '#f8fafc',
+                                color: branchFilter === b.search ? '#6366f1' : '#475569',
+                                fontWeight: branchFilter === b.search ? 700 : 500,
+                                fontSize: '0.78rem', cursor: 'pointer', whiteSpace: 'nowrap',
+                                transition: 'all 0.15s',
+                              }}
+                            >
+                              {b.label}
+                            </button>
+                          ))}
+                        </div>
+                      </FilterGroup>
+
+                      <FilterGroup title="My Community">
+                        <p style={{ fontSize: '0.73rem', color: '#64748b', margin: '0 0 8px' }}>
+                          Highlights seat allocation for your category
+                        </p>
+                        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                          {COMMUNITY_LIST.map(c => (
+                            <button
+                              key={c}
+                              onClick={() => setCommunityFilter(communityFilter === c ? '' : c)}
+                              style={{
+                                padding: '5px 12px', borderRadius: 20,
+                                border: `1.5px solid ${communityFilter === c ? '#ec4899' : '#e2e8f0'}`,
+                                background: communityFilter === c ? 'rgba(236,72,153,0.08)' : '#f8fafc',
+                                color: communityFilter === c ? '#be185d' : '#475569',
+                                fontWeight: communityFilter === c ? 700 : 500,
+                                fontSize: '0.8rem', cursor: 'pointer',
+                                transition: 'all 0.15s',
+                              }}
+                            >
+                              {c}
+                            </button>
+                          ))}
+                        </div>
+                      </FilterGroup>
                     </>
                   )}
                   {/* Mobile apply button */}
@@ -1262,6 +1332,8 @@ const App = () => {
                           {cityFilter && <span className="af-pill">{cityFilter}<X size={12} onClick={() => setCityFilter('')} style={{ cursor: 'pointer' }} /></span>}
                           {fillFilter && <span className="af-pill">Fill: {fillFilter}%<X size={12} onClick={() => setFillFilter('')} style={{ cursor: 'pointer' }} /></span>}
                           {cutoffFilter && <span className="af-pill">Cutoff: {cutoffFilter}<X size={12} onClick={() => setCutoffFilter('')} style={{ cursor: 'pointer' }} /></span>}
+                          {branchFilter && <span className="af-pill">{POPULAR_BRANCHES.find(b => b.search === branchFilter)?.label || branchFilter}<X size={12} onClick={() => setBranchFilter('')} style={{ cursor: 'pointer' }} /></span>}
+                          {communityFilter && <span className="af-pill" style={{ background: 'rgba(236,72,153,0.08)', color: '#be185d', border: '1px solid rgba(236,72,153,0.25)' }}>Community: {communityFilter}<X size={12} onClick={() => setCommunityFilter('')} style={{ cursor: 'pointer' }} /></span>}
                         </span>
                       )}
                     </div>
@@ -1326,6 +1398,8 @@ const App = () => {
                               onToggle={() => setExpandedCollege(expandedCollege === uid ? null : uid)}
                               onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
                               onCompare={() => setView('college-comparison')}
+                              branchFilter={branchFilter}
+                              communityFilter={communityFilter}
                             />
                           </motion.div>
                         );

@@ -388,7 +388,9 @@ const BrochureButton = ({ college }) => {
 };
 
 /* ──────── COLLEGE CARD (careers360-style horizontal layout) ──────── */
-const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onCompare, serial }) => {
+const COMMUNITY_IDX = { OC: 0, BC: 1, BCM: 2, MBC: 3, SC: 4, SCA: 5, ST: 6 };
+
+const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onCompare, serial, branchFilter, communityFilter }) => {
   const isAnna = category === 'anna';
   const codeKey = String(college.code || '').trim();
   const courses = useMemo(() => {
@@ -399,6 +401,21 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
   const seats = college.seats || 0;
   const filled = college.filled || 0;
   const fillpct = college.fillpct || 0;
+
+  // Community seats for selected filter
+  const communitySeats = useMemo(() => {
+    if (!communityFilter || !codeKey) return null;
+    const idx = COMMUNITY_IDX[communityFilter];
+    if (idx === undefined) return null;
+    const matrix = TNEA_MATRIX_DATA[codeKey] || [];
+    if (branchFilter) {
+      const matched = matrix.filter(b => b.name.toLowerCase().includes(branchFilter));
+      const total = matched.reduce((s, b) => s + (b.seats[idx] || 0), 0);
+      return { total, branch: branchFilter };
+    }
+    const total = matrix.reduce((s, b) => s + (b.seats[idx] || 0), 0);
+    return { total, branch: null };
+  }, [communityFilter, branchFilter, codeKey]);
 
   // Tabs replace the legacy section toggles. The card opens via the chevron / view toggle button.
   const [activeTab, setActiveTab] = useState('courses');
@@ -501,16 +518,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
       )}
 
       {/* ── HEADER — careers360 horizontal layout ── */}
-      <div
-        className="c360-header"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'auto 1fr auto',
-          gap: 18,
-          padding: '20px 22px',
-          alignItems: 'flex-start',
-        }}
-      >
+      <div className="c360-header">
         {/* Rank badge */}
         <div
           className="c360-rank"
@@ -583,6 +591,16 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
                 border: '1px solid #fed7aa',
               }}>
                 {cutoffRank}
+              </span>
+            )}
+            {communitySeats !== null && (
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: 4,
+                fontSize: '0.72rem', fontWeight: 700, color: '#be185d',
+                background: 'rgba(236,72,153,0.09)', padding: '4px 10px', borderRadius: 14,
+                border: '1px solid rgba(236,72,153,0.25)',
+              }}>
+                {communityFilter}: {communitySeats.total > 0 ? `${communitySeats.total} seats` : 'No seats'}
               </span>
             )}
           </div>
@@ -691,7 +709,6 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
         {/* Right CTA stack */}
         <div
           className="c360-ctas"
-          style={{ display: 'flex', flexDirection: 'column', gap: 10, minWidth: 144 }}
           onClick={e => e.stopPropagation()}
         >
           <BrochureButton college={college} />
