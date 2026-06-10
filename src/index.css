@@ -6453,6 +6453,8 @@ html, body { @apply overflow-x-hidden;
 
 .gyc-home-v2 .hc-univ { background: var(--gyc-mint); }
 
+.gyc-home-v2 .hc-career { background: var(--gyc-lilac); }
+
 .gyc-home-v2 .hc-icon {
   @apply bg-white !important;
   border: 2px solid var(--gyc-ink);

@@ -22,6 +22,8 @@ import {
   SiteFooter,
 } from './components/HomeSections';
 import CollegeCard from './components/CollegeCard';
+import { BranchesGuide } from './components/BranchesGuide';
+
 
 /* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
 const PRIORITY_COLLEGE_MATCHERS = [
@@ -128,7 +130,7 @@ const FilterRadioRow = ({ label, checked, onClick }) => (
 );
 
 /* ─────────────────── NAVBAR ─────────────────── */
-const Navbar = ({ onHome, onRegistration }) => {
+const Navbar = ({ onHome, onRegistration, onBranchGuide }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <>
@@ -145,6 +147,7 @@ const Navbar = ({ onHome, onRegistration }) => {
             <a className="nav-link" href="#notices">Notices</a>
             <a className="nav-link" href="#explore">Explore</a>
             <a className="nav-link" href="#news">News</a>
+            <a className="nav-link" href="#career-guide" onClick={(e) => { e.preventDefault(); onBranchGuide(); }}>Career Guide</a>
             <span className="nav-sep" />
             <button className="nav-cta nav-book" onClick={onRegistration}><Phone size={14} /> Book Slot</button>
             <button className="nav-cta nav-register" onClick={onHome}>Home</button>
@@ -172,6 +175,7 @@ const Navbar = ({ onHome, onRegistration }) => {
                 <a className="mobile-nav-link" href="#notices" onClick={() => setMobileOpen(false)}>Notices</a>
                 <a className="mobile-nav-link" href="#explore" onClick={() => setMobileOpen(false)}>Explore</a>
                 <a className="mobile-nav-link" href="#news" onClick={() => setMobileOpen(false)}>News</a>
+                <a className="mobile-nav-link" href="#career-guide" onClick={(e) => { e.preventDefault(); onBranchGuide(); setMobileOpen(false); }}>Career Guide</a>
                 <button className="nav-cta nav-book mobile-nav-btn" onClick={() => { onRegistration(); setMobileOpen(false); }}><Phone size={14} /> Book Slot</button>
                 <button className="nav-cta nav-register mobile-nav-btn" onClick={() => { onHome(); setMobileOpen(false); }}>Home</button>
               </div>
@@ -774,7 +778,12 @@ const MentoraFAB = ({ onOpenAI }) => {
 /* ─────────────── MAIN APP ─────────────────────── */
 const App = () => {
   const [view, setView] = useState('home');
+  const [selectedBranchId, setSelectedBranchId] = useState(null);
+  const [branchGuideOrigin, setBranchGuideOrigin] = useState(null);
+  const [selectedDept, setSelectedDept] = useState(null);
+  const [showAllColleges, setShowAllColleges] = useState(false);
   const [aiMode, setAiMode] = useState('opportunities');
+
   const [category, setCategory] = useState('');
   const [subType, setSubType] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
@@ -936,11 +945,19 @@ const App = () => {
   const openAI = (mode) => { setAiMode(mode); setView('ai-counselor'); window.scrollTo(0,0); };
   const openDeptDetails = (code = TNEA_DATA[0]?.code) => { setView('dept-details'); window.scrollTo(0, 0); };
   const openRegistration = () => { setView('registration'); window.scrollTo(0, 0); };
+  const openBranchGuide = (branchId = null, origin = null) => {
+    setSelectedBranchId(branchId);
+    const newOrigin = origin || (view !== 'branches-guide' ? view : branchGuideOrigin);
+    setBranchGuideOrigin(newOrigin);
+    setView('branches-guide');
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="root">
       <div className="noise-overlay" />
-      <Navbar onHome={goHome} onRegistration={openRegistration} />
+      <Navbar onHome={goHome} onRegistration={openRegistration} onBranchGuide={openBranchGuide} />
+
       <AnimatePresence mode="wait">
         {view === 'home' && (
           <motion.main key="home" className="home-main gyc-home-v2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
@@ -996,6 +1013,12 @@ const App = () => {
                 <div className="hc-top"><div className="hc-icon"><Globe size={26} /></div><span className="hc-count">{DEEMED_DATA.length + PRIVATE_DATA.length}+</span></div>
                 <h2 className="hc-title">Universities</h2><p className="hc-sub">Deemed & Private TN Campuses · Merit</p>
                 <div className="hc-cta">Explore Universities <ArrowRight size={16} /></div>
+              </motion.div>
+
+              <motion.div className="hero-card hc-career" onClick={() => openBranchGuide()} whileHover={{ y: -10, scale: 1.02 }} style={{ borderTop: '4px solid #6366f1' }}>
+                <div className="hc-top"><div className="hc-icon"><Sparkles size={26} color="#6366f1" /></div><span className="hc-count">10+</span></div>
+                <h2 className="hc-title" style={{ color: '#0f172a' }}>Career Guide</h2><p className="hc-sub">Engineering Branches · Salaries · Placement Matrix</p>
+                <div className="hc-cta" style={{ color: '#6366f1' }}>Explore Careers <ArrowRight size={16} /></div>
               </motion.div>
             </div>
 
@@ -1434,7 +1457,16 @@ const App = () => {
         )}
         {view === 'dept-details' && (
           <motion.main key="dept-details" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-            <DepartmentDetailsPage onBack={() => setView('explorer')} onCompare={() => setView('comparison')} onOpenQuery={(name) => setQueryModal({ open: true, college: name })} />
+            <DepartmentDetailsPage
+              onBack={() => setView('explorer')}
+              onCompare={() => setView('comparison')}
+              onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
+              onOpenBranchGuide={openBranchGuide}
+              selectedDept={selectedDept}
+              setSelectedDept={setSelectedDept}
+              showAllColleges={showAllColleges}
+              setShowAllColleges={setShowAllColleges}
+            />
           </motion.main>
         )}
         {view === 'comparison' && (
@@ -1455,6 +1487,30 @@ const App = () => {
         {view === 'registration' && (
           <motion.main key="registration" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
             <StudentRegistration onBack={goHome} />
+          </motion.main>
+        )}
+        {view === 'branches-guide' && (
+          <motion.main key="branches-guide" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <BranchesGuide
+              selectedBranchId={selectedBranchId}
+              setSelectedBranchId={setSelectedBranchId}
+              branchGuideOrigin={branchGuideOrigin}
+              onBackToHome={() => {
+                if (branchGuideOrigin && branchGuideOrigin !== 'branches-guide') {
+                  setView(branchGuideOrigin);
+                } else {
+                  setView('home');
+                }
+              }}
+              onBackToPrev={() => {
+                if (branchGuideOrigin === 'dept-details') {
+                  setView('dept-details');
+                  setSelectedBranchId(null);
+                } else {
+                  setSelectedBranchId(null);
+                }
+              }}
+            />
           </motion.main>
         )}
       </AnimatePresence>
@@ -2515,6 +2571,7 @@ const CollegeComparisonPage = ({ onBack }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedColleges, setSelectedColleges] = useState([]);
   const [showComparison, setShowComparison] = useState(false);
+  const [expandedDepts, setExpandedDepts] = useState({});
 
   const allColleges = useMemo(() => {
     const list = [];
@@ -2943,84 +3000,288 @@ const CollegeComparisonPage = ({ onBack }) => {
             {selectedColleges.map((col, idx) => {
               const grad = gradientPairs[idx % 3];
               const accent = sourceColors[idx % 3];
+              const accentLight = [`rgba(99,102,241,0.08)`, `rgba(139,92,246,0.08)`, `rgba(236,72,153,0.08)`][idx % 3];
 
-              const StatRow = ({ label, value, highlight }) => (
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '10px 0',
-                  borderBottom: '1px solid #f1f5f9',
-                  gap: 12,
-                }}>
-                  <span style={{ fontSize: '0.82rem', color: '#64748b', fontWeight: 500 }}>{label}</span>
-                  <span style={{
-                    fontSize: '0.92rem',
-                    fontWeight: 700,
-                    color: highlight ? accent : '#0f172a',
-                    textAlign: 'right',
-                    wordBreak: 'break-word',
-                  }}>
-                    {(value === undefined || value === null || value === '') ? '—' : value}
-                  </span>
-                </div>
-              );
+              const departments = col.source === 'TNEA'
+                ? (TNEA_COURSES_INFO[col.code] || []).flatMap(cat => (cat.branches || []).map(b => `${b[0]} - ${b[1]}`))
+                : [];
+              const DEPT_SHOW = 5;
+              const deptKey = col.id;
+              const showAllDepts = expandedDepts[deptKey];
+              const visibleDepts = showAllDepts ? departments : departments.slice(0, DEPT_SHOW);
+
+              const fillColor = col.fillpct >= 95 ? '#10b981' : col.fillpct >= 80 ? '#f59e0b' : '#ef4444';
 
               return (
                 <motion.div
                   key={col.id}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.12, type: 'spring', stiffness: 200, damping: 24 }}
                   style={{
                     background: '#fff',
-                    borderRadius: '16px',
+                    borderRadius: '20px',
                     border: '1px solid #e2e8f0',
                     overflow: 'hidden',
-                    boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
+                    boxShadow: '0 8px 32px rgba(0,0,0,0.06)',
                     display: 'flex',
                     flexDirection: 'column',
                   }}
                 >
+                  {/* Header */}
                   <div style={{
-                    padding: '24px',
+                    padding: '28px 24px 20px',
                     background: `linear-gradient(135deg, ${grad[0]}, ${grad[1]})`,
                     color: '#fff',
+                    position: 'relative',
+                    overflow: 'hidden',
                   }}>
-                    <div style={{ fontSize: '0.78rem', fontWeight: 700, opacity: 0.9, marginBottom: 8, letterSpacing: '0.05em' }}>
-                      {col.sourceLabel?.toUpperCase()}
+                    <div style={{ position: 'absolute', top: -30, right: -30, width: 100, height: 100, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
+                    <div style={{ position: 'absolute', bottom: -20, left: -20, width: 60, height: 60, borderRadius: '50%', background: 'rgba(255,255,255,0.06)' }} />
+                    <div style={{ fontSize: '0.72rem', fontWeight: 700, opacity: 0.85, marginBottom: 10, letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+                      {col.sourceLabel}
                     </div>
-                    <h3 style={{ fontSize: '1.1rem', fontWeight: 800, margin: 0, lineHeight: 1.3 }}>{col.short}</h3>
+                    <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, lineHeight: 1.35 }}>{col.short}</h3>
                     {col.city && (
-                      <div style={{ marginTop: 10, fontSize: '0.85rem', opacity: 0.92, display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                        <MapPin size={13} /> {col.city}
+                      <div style={{ marginTop: 10, fontSize: '0.82rem', opacity: 0.9, display: 'inline-flex', alignItems: 'center', gap: 5 }}>
+                        <MapPin size={12} /> {col.city}
                       </div>
                     )}
                   </div>
 
-                  <div style={{ padding: '20px 24px', flex: 1 }}>
+                  <div style={{ padding: '20px 24px', flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
                     {col.source === 'TNEA' ? (
                       <>
-                        <StatRow label="TNEA Rank" value={col.rank ? `#${col.rank}` : null} highlight />
-                        <StatRow label="Code" value={col.code} />
-                        <StatRow label="Type" value={col.type ? col.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : null} />
-                        <StatRow label="Department Count" value={col.deptCount ? col.deptCount.toLocaleString() : null} />
-                        <StatRow label="Cutoff (Min)" value={col.cutoff ? col.cutoff.toFixed(2) : null} highlight />
-                        <StatRow label="Total Seats" value={col.seats?.toLocaleString()} />
-                        <StatRow label="Filled" value={col.filled?.toLocaleString()} />
-                        <StatRow label="Vacancy" value={col.vacancy?.toLocaleString()} />
-                        <StatRow label="Fill %" value={col.fillpct != null ? `${col.fillpct}%` : null} highlight />
-                        <StatRow label="Round 1" value={col.r1?.toLocaleString()} />
-                        <StatRow label="Round 2" value={col.r2?.toLocaleString()} />
-                        <StatRow label="Round 3" value={col.r3?.toLocaleString()} />
+                        {/* Code & Type - inline badges */}
+                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                          <span style={{
+                            padding: '6px 12px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 700,
+                            background: accentLight, color: accent, letterSpacing: '0.02em',
+                          }}>
+                            Code: {col.code || '—'}
+                          </span>
+                          <span style={{
+                            padding: '6px 12px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600,
+                            background: '#f1f5f9', color: '#475569',
+                          }}>
+                            {col.type ? col.type.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()) : '—'}
+                          </span>
+                        </div>
+
+                        {/* Admissions Stats - visual cards */}
+                        <div style={{
+                          background: 'linear-gradient(135deg, #f8fafc, #f1f5f9)',
+                          borderRadius: '14px', padding: '16px',
+                          border: '1px solid #e2e8f0',
+                        }}>
+                          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12 }}>
+                            Admissions Overview
+                          </div>
+
+                          {/* Cutoff */}
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 10 }}>
+                            <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 500 }}>Min. Cutoff</span>
+                            <span style={{
+                              fontSize: '1.1rem', fontWeight: 800, color: accent,
+                              background: accentLight, padding: '4px 10px', borderRadius: '8px',
+                            }}>
+                              {col.cutoff ? col.cutoff.toFixed(2) : '—'}
+                            </span>
+                          </div>
+
+                          {/* Seats bar */}
+                          <div style={{ marginBottom: 10 }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 4 }}>
+                              <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 500 }}>Total Seats</span>
+                              <span style={{ fontSize: '0.88rem', fontWeight: 700, color: '#0f172a' }}>{col.seats?.toLocaleString() || '—'}</span>
+                            </div>
+                            {col.seats && col.filled != null && (
+                              <div style={{ height: 8, borderRadius: 4, background: '#e2e8f0', overflow: 'hidden' }}>
+                                <motion.div
+                                  initial={{ width: 0 }}
+                                  animate={{ width: `${(col.filled / col.seats) * 100}%` }}
+                                  transition={{ duration: 1, delay: idx * 0.15 + 0.3, ease: 'easeOut' }}
+                                  style={{ height: '100%', borderRadius: 4, background: `linear-gradient(90deg, ${grad[0]}, ${grad[1]})` }}
+                                />
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Vacancy & Fill % */}
+                          <div style={{ display: 'flex', gap: 8 }}>
+                            <div style={{
+                              flex: 1, padding: '10px', borderRadius: '10px', background: '#fff',
+                              border: '1px solid #e2e8f0', textAlign: 'center',
+                            }}>
+                              <div style={{ fontSize: '1rem', fontWeight: 800, color: col.vacancy === 0 ? '#10b981' : '#ef4444' }}>
+                                {col.vacancy != null ? col.vacancy.toLocaleString() : '—'}
+                              </div>
+                              <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600, marginTop: 2 }}>Vacancy</div>
+                            </div>
+                            <div style={{
+                              flex: 1, padding: '10px', borderRadius: '10px', background: '#fff',
+                              border: '1px solid #e2e8f0', textAlign: 'center',
+                            }}>
+                              <div style={{ fontSize: '1rem', fontWeight: 800, color: fillColor }}>
+                                {col.fillpct != null ? `${col.fillpct}%` : '—'}
+                              </div>
+                              <div style={{ fontSize: '0.7rem', color: '#94a3b8', fontWeight: 600, marginTop: 2 }}>Fill Rate</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Counselling Rounds */}
+                        <div style={{
+                          background: '#fff', borderRadius: '14px', padding: '16px',
+                          border: '1px solid #e2e8f0',
+                        }}>
+                          <div style={{ fontSize: '0.72rem', fontWeight: 700, color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 12 }}>
+                            Counselling Rounds (Seats Filled)
+                          </div>
+                          <div style={{ display: 'flex', gap: 8 }}>
+                            {[
+                              { label: 'R1', val: col.r1 },
+                              { label: 'R2', val: col.r2 },
+                              { label: 'R3', val: col.r3 },
+                            ].map((r, ri) => (
+                              <div key={ri} style={{
+                                flex: 1, textAlign: 'center', padding: '12px 6px', borderRadius: '12px',
+                                background: r.val ? `linear-gradient(135deg, ${grad[0]}12, ${grad[1]}12)` : '#f8fafc',
+                                border: `1px solid ${r.val ? accent + '30' : '#e2e8f0'}`,
+                                position: 'relative', overflow: 'hidden',
+                              }}>
+                                {r.val && (
+                                  <div style={{
+                                    position: 'absolute', bottom: 0, left: 0, right: 0,
+                                    height: `${Math.min(100, (r.val / (col.seats || 1)) * 100)}%`,
+                                    background: `${accent}08`, transition: 'height 0.6s ease',
+                                  }} />
+                                )}
+                                <div style={{ fontSize: '0.68rem', fontWeight: 700, color: accent, marginBottom: 4, position: 'relative' }}>
+                                  {r.label}
+                                </div>
+                                <div style={{ fontSize: '1rem', fontWeight: 800, color: '#0f172a', position: 'relative' }}>
+                                  {r.val != null ? r.val.toLocaleString() : '—'}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Department Count */}
+                        <div style={{
+                          display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px',
+                          background: accentLight, borderRadius: '12px', border: `1px solid ${accent}20`,
+                        }}>
+                          <GraduationCap size={18} color={accent} />
+                          <div>
+                            <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>Departments Offered</div>
+                            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: accent }}>{departments.length || col.deptCount || '—'}</div>
+                          </div>
+                        </div>
+
+                        {/* Department List */}
+                        {departments.length > 0 && (
+                          <div style={{
+                            borderRadius: '14px', border: '1px solid #e2e8f0', overflow: 'hidden',
+                          }}>
+                            <div style={{
+                              padding: '12px 16px', background: '#f8fafc',
+                              fontSize: '0.72rem', fontWeight: 700, color: '#94a3b8',
+                              textTransform: 'uppercase', letterSpacing: '0.06em',
+                              borderBottom: '1px solid #e2e8f0',
+                            }}>
+                              Department List
+                            </div>
+                            <div style={{ maxHeight: showAllDepts ? 400 : 'none', overflowY: showAllDepts ? 'auto' : 'visible' }}>
+                              <AnimatePresence initial={false}>
+                                {visibleDepts.map((dept, di) => (
+                                  <motion.div
+                                    key={dept}
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                    style={{
+                                      padding: '10px 16px',
+                                      fontSize: '0.8rem', color: '#334155', fontWeight: 500,
+                                      borderBottom: '1px solid #f1f5f9',
+                                      display: 'flex', alignItems: 'center', gap: 8,
+                                    }}
+                                  >
+                                    <span style={{
+                                      width: 6, height: 6, borderRadius: '50%', flexShrink: 0,
+                                      background: `linear-gradient(135deg, ${grad[0]}, ${grad[1]})`,
+                                    }} />
+                                    <span style={{ lineHeight: 1.3 }}>{dept}</span>
+                                  </motion.div>
+                                ))}
+                              </AnimatePresence>
+                            </div>
+                            {departments.length > DEPT_SHOW && (
+                              <motion.button
+                                onClick={() => setExpandedDepts(prev => ({ ...prev, [deptKey]: !prev[deptKey] }))}
+                                whileHover={{ background: accentLight }}
+                                whileTap={{ scale: 0.98 }}
+                                style={{
+                                  width: '100%', padding: '10px 16px',
+                                  background: '#fafbfc', border: 'none', borderTop: '1px solid #e2e8f0',
+                                  color: accent, fontSize: '0.78rem', fontWeight: 700,
+                                  cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6,
+                                }}
+                              >
+                                {showAllDepts ? 'Show Less' : `Load ${departments.length - DEPT_SHOW} More`}
+                                <ChevronDown size={14} style={{ transform: showAllDepts ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s' }} />
+                              </motion.button>
+                            )}
+                          </div>
+                        )}
                       </>
                     ) : (
                       <>
-                        <StatRow label="Category" value={col.sourceLabel} highlight />
-                        <StatRow label="UGC Status" value={col.status} />
-                        <StatRow label="Address" value={col.addr} />
-                        <StatRow label="Total Courses" value={col.coursesCount?.toLocaleString()} highlight />
-                        <StatRow label="Streams" value={(col.categories || []).join(', ')} />
+                        <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                          <span style={{
+                            padding: '6px 12px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 700,
+                            background: accentLight, color: accent,
+                          }}>
+                            {col.sourceLabel}
+                          </span>
+                          {col.status && (
+                            <span style={{
+                              padding: '6px 12px', borderRadius: '8px', fontSize: '0.78rem', fontWeight: 600,
+                              background: '#f0fdf4', color: '#16a34a',
+                            }}>
+                              {col.status}
+                            </span>
+                          )}
+                        </div>
+                        {col.addr && (
+                          <div style={{ fontSize: '0.82rem', color: '#64748b', lineHeight: 1.4, display: 'flex', alignItems: 'flex-start', gap: 6 }}>
+                            <MapPin size={14} style={{ flexShrink: 0, marginTop: 2 }} />
+                            {col.addr}
+                          </div>
+                        )}
+                        <div style={{
+                          display: 'flex', alignItems: 'center', gap: 10, padding: '14px 16px',
+                          background: accentLight, borderRadius: '12px', border: `1px solid ${accent}20`,
+                        }}>
+                          <BookOpen size={18} color={accent} />
+                          <div>
+                            <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>Total Courses</div>
+                            <div style={{ fontSize: '1.15rem', fontWeight: 800, color: accent }}>{col.coursesCount || '—'}</div>
+                          </div>
+                        </div>
+                        {col.categories?.length > 0 && (
+                          <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                            {col.categories.map((cat, ci) => (
+                              <span key={ci} style={{
+                                padding: '4px 10px', borderRadius: '6px', fontSize: '0.72rem', fontWeight: 600,
+                                background: '#f1f5f9', color: '#475569',
+                              }}>
+                                {cat}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </>
                     )}
                   </div>
@@ -3034,15 +3295,30 @@ const CollegeComparisonPage = ({ onBack }) => {
   );
 };
 
-const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery }) => {
+const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery, onOpenBranchGuide, selectedDept, setSelectedDept, showAllColleges, setShowAllColleges }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedDept, setSelectedDept] = useState(null);
   const [expandedCollegeCode, setExpandedCollegeCode] = useState(null);
+
+  const findMatchingBranchId = (deptName) => {
+    const name = String(deptName).toLowerCase();
+    if (name.includes('computer science') || name.includes('cse') || name.includes('artificial intelligence') || name.includes('information technology')) return 'computer-science';
+    if (name.includes('mechanical')) return 'mechanical-engineering';
+    if (name.includes('electronics') || name.includes('ece') || name.includes('telecommunication')) return 'electronics-communication';
+    if (name.includes('electrical')) return 'electrical-engineering';
+    if (name.includes('civil')) return 'civil-engineering';
+    if (name.includes('chemical')) return 'chemical-engineering';
+    if (name.includes('aerospace')) return 'aerospace-engineering';
+    if (name.includes('aeronautical')) return 'mechanical-engineering';
+    if (name.includes('biotech') || name.includes('bio-tech')) return 'biotechnology';
+    if (name.includes('automobile')) return 'automobile-engineering';
+    if (name.includes('instrumentation')) return 'instrumentation-engineering';
+    return null;
+  };
+
 
   const [aiProgress, setAiProgress] = useState(0);
   const [aiAnalysis, setAiAnalysis] = useState(null);
   const [aiError, setAiError] = useState(null);
-  const [showAllColleges, setShowAllColleges] = useState(false);
 
   const normalizeDeg = (raw) => {
     const d = String(raw).trim().toUpperCase().replace(/[.\s]/g, '');
@@ -3109,7 +3385,7 @@ const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery }) => {
     }, STEP_MS);
 
     return () => clearInterval(interval);
-  }, [selectedDept]);
+  }, [selectedDept, setShowAllColleges]);
 
   const sortedColleges = useMemo(() => {
     if (!selectedDept) return [];
@@ -3209,9 +3485,55 @@ const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery }) => {
           <div style={{ position:'absolute', bottom:-40, left:'30%', width:180, height:180, borderRadius:'50%', background:'rgba(99,102,241,0.12)', pointerEvents:'none' }} />
           
           <div style={{ maxWidth:1200, margin:'0 auto', position:'relative' }}>
-            <button className="back-pill" onClick={() => { setSelectedDept(null); setShowAllColleges(false); }} style={{ marginBottom:24, background:'rgba(255,255,255,0.12)', color:'#e0e7ff', border:'1px solid rgba(255,255,255,0.2)' }}>
-              <ChevronLeft size={16} /> Back to Departments
-            </button>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 24, flexWrap: 'wrap', gap: 12 }}>
+              <button className="back-pill" onClick={() => { setSelectedDept(null); setShowAllColleges(false); }} style={{ margin: 0, background: 'rgba(255,255,255,0.12)', color: '#e0e7ff', border: '1px solid rgba(255,255,255,0.2)' }}>
+                <ChevronLeft size={16} /> Back to Departments
+              </button>
+              {findMatchingBranchId(selectedDept.name) && (
+                <motion.button
+                  onClick={() => {
+                    const bId = findMatchingBranchId(selectedDept.name);
+                    if (bId) {
+                      onOpenBranchGuide(bId, 'dept-details');
+                    }
+                  }}
+                  animate={{
+                    boxShadow: [
+                      "0 0 8px rgba(250, 204, 21, 0.4)",
+                      "0 0 22px rgba(250, 204, 21, 0.8)",
+                      "0 0 8px rgba(250, 204, 21, 0.4)"
+                    ]
+                  }}
+                  transition={{
+                    duration: 1.8,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  whileHover={{ scale: 1.05, boxShadow: "0 0 28px rgba(250, 204, 21, 0.95)" }}
+                  whileTap={{ scale: 0.96 }}
+                  style={{
+                    margin: 0,
+                    background: 'linear-gradient(135deg, #fef08a, #facc15, #f97316)',
+                    color: '#0f172a',
+                    border: '1.5px solid rgba(255, 255, 255, 0.6)',
+                    fontWeight: 900,
+                    fontSize: '0.82rem',
+                    letterSpacing: '0.04em',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 8,
+                    padding: '10px 20px',
+                    borderRadius: '30px',
+                    cursor: 'pointer',
+                    textTransform: 'uppercase',
+                    boxShadow: '0 0 10px rgba(250, 204, 21, 0.4)'
+                  }}
+                >
+                  <Sparkles size={15} color="#0f172a" />
+                  <span>CAREER GUIDE 🚀</span>
+                </motion.button>
+              )}
+            </div>
 
             {/* Degree badge */}
             <div style={{ display:'inline-flex', alignItems:'center', gap:8, background:'rgba(255,255,255,0.12)', backdropFilter:'blur(10px)', border:'1px solid rgba(255,255,255,0.2)', borderRadius:30, padding:'6px 16px', marginBottom:16 }}>
