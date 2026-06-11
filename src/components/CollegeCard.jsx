@@ -2,14 +2,13 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin, Building2, Sparkles, Globe,
-  GraduationCap, PieChart, Info, Mail, Phone, ExternalLink,
+  GraduationCap, PieChart, Mail, Phone, ExternalLink,
   User, Train, Bus, IndianRupee, ArrowRight, FileText, Download,
   MessageSquare, Scale, Send, Star, BookOpen, Award, Users
 } from 'lucide-react';
 import TNEA_PDF_INFO from '../tnea_pdf_data.json';
 import TNEA_COURSES_INFO from '../tnea_courses_data.json';
 import TNEA_MATRIX_DATA from '../branch_matrix_data.json';
-import LATERAL_CUTOFF_DATA from '../lateral_cutoff_data.json';
 
 /* ─────────── ROUND DISTRIBUTION ─────────── */
 const SeatDistribution = ({ college, seats }) => {
@@ -110,212 +109,6 @@ const PlacementRing = ({ pct }) => {
   );
 };
 
-/* ──────── COUNSELING MATRIX ──────── */
-const CounselingMatrix = ({ code }) => {
-  const matrix = TNEA_MATRIX_DATA[code] || [];
-  if (matrix.length === 0) return <div className="no-matrix">Seat matrix data not available for this institution.</div>;
-
-  return (
-    <div className="counseling-matrix-wrap" onClick={e => e.stopPropagation()}>
-      <div className="cm-header-premium">
-        <div className="cm-h-left">
-          <PieChart size={18} />
-          <div className="cm-h-titles">
-            <span className="cm-h-main">OFFICIAL FULL SEAT MATRIX</span>
-            <span className="cm-h-sub">GENERAL ACADEMIC MATRIX • 2025 SESSION</span>
-          </div>
-        </div>
-        <div className="cm-h-right">
-          <span className="tag-live-pulse" />
-          <span className="cm-h-live">LIVE ANALYTICS</span>
-        </div>
-      </div>
-      <div className="cm-table-scroll">
-        <table className="cm-table-premium">
-          <thead>
-            <tr>
-              <th className="th-branch">BRANCH / COURSE NAME</th>
-              <th>OC</th><th>BC</th><th>BCM</th><th>MBC</th><th>SC</th><th>SCA</th><th>ST</th>
-              <th className="th-total">TOTAL</th>
-            </tr>
-          </thead>
-          <tbody>
-            {matrix.map((row, i) => {
-              const total = row.seats.reduce((a,b)=>a+b, 0);
-              return (
-                <tr key={i} className={total === 0 ? 'row-empty' : ''}>
-                  <td className="td-branch">
-                    <div className="td-b-code">{row.code}</div>
-                    <div className="td-b-name">{row.name}</div>
-                  </td>
-                  {row.seats.map((s, si) => (
-                    <td key={si} className={`td-num ${s === 0 ? 'val-zero' : 'val-high'}`}>{s}</td>
-                  ))}
-                  <td className="td-total-val">{total}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </div>
-      <div className="cm-footer-premium">
-        <Info size={12} />
-        <span>Data represents the complete seat matrix for the 2025 session.</span>
-      </div>
-    </div>
-  );
-};
-
-/* ──────── LATERAL ENTRY CUTOFF ──────── */
-const LateralEntryCutoff = ({ code }) => {
-  const lateralData = LATERAL_CUTOFF_DATA[code];
-  const [selectedCategory, setSelectedCategory] = useState('OC');
-  const [searchTerm, setSearchTerm] = useState('');
-
-  if (!lateralData) return null;
-
-  const branches = Object.entries(lateralData);
-  const filteredBranches = branches.filter(([brCode, brInfo]) => {
-    const term = searchTerm.toLowerCase();
-    return (
-      brCode.toLowerCase().includes(term) ||
-      brInfo.branch_name.toLowerCase().includes(term)
-    );
-  });
-
-  const categories = ['OC', 'BC', 'BCM', 'MBC', 'SC', 'SCA', 'ST'];
-
-  return (
-    <div className="lateral-cutoff-wrap" onClick={e => e.stopPropagation()} style={{ marginTop: 24 }}>
-      <div className="cm-header-premium" style={{ background: 'linear-gradient(135deg, #0f766e, #14b8a6)', boxShadow: '0 6px 14px rgba(20,184,166,0.15)' }}>
-        <div className="cm-h-left">
-          <GraduationCap size={18} />
-          <div className="cm-h-titles">
-            <span className="cm-h-main">LATERAL ENTRY CUT-OFF (2025 SESSION)</span>
-            <span className="cm-h-sub">DIRECT 2ND YEAR ADMISSIONS • MAX & MIN CUT-OFFS</span>
-          </div>
-        </div>
-        <div className="cm-h-right">
-          <span className="tag-live-pulse" style={{ backgroundColor: '#14b8a6', boxShadow: '0 0 0 0 rgba(20,184,166,0.7)' }} />
-          <span className="cm-h-live">DIPLOMA QUOTA</span>
-        </div>
-      </div>
-
-      <div style={{
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: 12,
-        padding: '14px 18px',
-        background: '#f8fafc',
-        borderBottom: '1px solid #e2e8f0',
-        alignItems: 'center',
-        justifyContent: 'space-between'
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexWrap: 'wrap' }}>
-          <span style={{ fontSize: '0.78rem', fontWeight: 700, color: '#475569', marginRight: 4 }}>COMMUNITY:</span>
-          <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap' }}>
-            {categories.map(cat => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                style={{
-                  padding: '4px 10px',
-                  fontSize: '0.78rem',
-                  fontWeight: 700,
-                  borderRadius: 6,
-                  border: '1px solid',
-                  borderColor: selectedCategory === cat ? '#0f766e' : '#cbd5e1',
-                  background: selectedCategory === cat ? '#0f766e' : '#fff',
-                  color: selectedCategory === cat ? '#fff' : '#475569',
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
-          <input
-            type="text"
-            placeholder="Search branch..."
-            value={searchTerm}
-            onChange={e => setSearchTerm(e.target.value)}
-            style={{
-              padding: '6px 12px',
-              fontSize: '0.8rem',
-              borderRadius: 8,
-              border: '1px solid #cbd5e1',
-              outline: 'none',
-              width: 160,
-              transition: 'border-color 0.15s'
-            }}
-            onFocus={e => e.target.style.borderColor = '#14b8a6'}
-            onBlur={e => e.target.style.borderColor = '#cbd5e1'}
-          />
-        </div>
-      </div>
-
-      <div className="cm-table-scroll">
-        <table className="cm-table-premium">
-          <thead>
-            <tr>
-              <th className="th-branch">BRANCH / COURSE NAME</th>
-              <th style={{ textAlign: 'center', width: 140 }}>MIN CUTOFF (%)</th>
-              <th style={{ textAlign: 'center', width: 140 }}>MAX CUTOFF (%)</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredBranches.length > 0 ? (
-              filteredBranches.map(([brCode, brInfo]) => {
-                const cut = brInfo.cutoffs[selectedCategory] || { min: '-', max: '-' };
-                const isEmpty = cut.min === '-' && cut.max === '-';
-                return (
-                  <tr key={brCode} className={isEmpty ? 'row-empty' : ''} style={{ transition: 'background-color 0.15s' }}>
-                    <td className="td-branch">
-                      <div className="td-b-code" style={{ color: '#0f766e', borderColor: 'rgba(15,118,110,0.2)' }}>{brCode}</div>
-                      <div className="td-b-name">{brInfo.branch_name}</div>
-                    </td>
-                    <td style={{
-                      textAlign: 'center',
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      fontSize: '0.88rem',
-                      color: cut.min === '-' ? '#cbd5e1' : '#0f172a'
-                    }}>
-                      {cut.min}
-                    </td>
-                    <td style={{
-                      textAlign: 'center',
-                      fontFamily: 'monospace',
-                      fontWeight: 700,
-                      fontSize: '0.88rem',
-                      color: cut.max === '-' ? '#cbd5e1' : '#0f766e'
-                    }}>
-                      {cut.max}
-                    </td>
-                  </tr>
-                );
-              })
-            ) : (
-              <tr>
-                <td colSpan={3} style={{ padding: '24px', textAlign: 'center', color: '#94a3b8', fontSize: '0.82rem' }}>
-                  No branches matched your search or selection.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
-      <div className="cm-footer-premium">
-        <Info size={12} />
-        <span>Cut-off marks represent maximum & minimum percentage of qualifying marks for direct 2nd-year entry in the 2025 session.</span>
-      </div>
-    </div>
-  );
-};
 
 /* ──────── SAVEETHA ADMISSION PANEL ──────── */
 const SaveethaAdmissionPanel = () => {
@@ -966,13 +759,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
                             <SeatDistribution college={college} seats={seats} />
                           </div>
                         )}
-                        <CounselingMatrix code={college.code} />
-                        {LATERAL_CUTOFF_DATA[college.code] && (
-                          <>
-                            <div className="section-divider" style={{ marginTop: 24, marginBottom: 16 }}>LATERAL ENTRY CUT-OFF</div>
-                            <LateralEntryCutoff code={college.code} />
-                          </>
-                        )}
+
                       </>
                     ) : (
                       <div style={{ padding: 24, textAlign: 'center', color: '#94a3b8' }}>
