@@ -962,7 +962,7 @@
       }
     },
     "AT": {
-      "branch_name": "AT",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE (SS)",
       "cutoffs": {
         "OC": {
           "max": "96.8809",
@@ -1292,7 +1292,7 @@
       }
     },
     "RP": {
-      "branch_name": "RP",
+      "branch_name": "RUBBER AND PLASTIC TECHNOLOGY",
       "cutoffs": {
         "OC": {
           "max": "86.6666",
@@ -1327,7 +1327,7 @@
   },
   "5": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "85.2962",
@@ -1393,7 +1393,7 @@
       }
     },
     "CF": {
-      "branch_name": "CF",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)",
       "cutoffs": {
         "OC": {
           "max": "89.7333",
@@ -2327,7 +2327,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "77",
@@ -2931,7 +2931,7 @@
   },
   "1112": {
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "68.9523",
@@ -2964,7 +2964,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "68.2619",
@@ -4234,7 +4234,7 @@
   },
   "1122": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "73",
@@ -4500,7 +4500,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "81.25",
@@ -4599,7 +4599,7 @@
       }
     },
     "MU": {
-      "branch_name": "MU",
+      "branch_name": "MECHANICAL AND AUTOMATION ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "89.0681",
@@ -4733,7 +4733,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "83.9523",
@@ -6207,7 +6207,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "91.8571",
@@ -6473,7 +6473,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "79.7222",
@@ -6539,7 +6539,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "80.0238",
@@ -6770,7 +6770,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -6972,7 +6972,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "84.7857",
@@ -7038,7 +7038,7 @@
       }
     },
     "CI": {
-      "branch_name": "CI",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (INTERNET OF THINGS)",
       "cutoffs": {
         "OC": {
           "max": "82.8148",
@@ -7636,7 +7636,7 @@
       }
     },
     "MU": {
-      "branch_name": "MU",
+      "branch_name": "MECHANICAL AND AUTOMATION ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "82.7058",
@@ -8582,7 +8582,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "72.3333",
@@ -8984,7 +8984,7 @@
   },
   "1301": {
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "65.6666",
@@ -9318,7 +9318,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "86.8333",
@@ -9384,7 +9384,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "77.7592",
@@ -9648,7 +9648,7 @@
       }
     },
     "AO": {
-      "branch_name": "AO",
+      "branch_name": "AEROSPACE ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "69.0476",
@@ -9817,7 +9817,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "76.1136",
@@ -10450,7 +10450,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "80.9523",
@@ -10916,7 +10916,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "70.4047",
@@ -10984,7 +10984,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "77.4047",
@@ -11215,7 +11215,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "82.1136",
@@ -11318,7 +11318,7 @@
       }
     },
     "PA": {
-      "branch_name": "PA",
+      "branch_name": "PLASTIC TECHNOLOGY",
       "cutoffs": {
         "OC": {
           "max": "89.8055",
@@ -11922,7 +11922,7 @@
   },
   "1335": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "92.7045",
@@ -12089,7 +12089,7 @@
   },
   "1399": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -12155,7 +12155,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "81.037",
@@ -12353,7 +12353,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "73.5106",
@@ -12452,7 +12452,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -13928,7 +13928,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "69",
@@ -14159,7 +14159,7 @@
       }
     },
     "IX": {
-      "branch_name": "IX",
+      "branch_name": "ELECTRONICS INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "88.9545",
@@ -14225,7 +14225,7 @@
       }
     },
     "MU": {
-      "branch_name": "MU",
+      "branch_name": "MECHANICAL AND AUTOMATION ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "64.8809",
@@ -15466,7 +15466,7 @@
   },
   "1432": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "84.8888",
@@ -15565,7 +15565,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "63.8936",
@@ -16973,7 +16973,7 @@
       }
     },
     "IC": {
-      "branch_name": "IC",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "76.8333",
@@ -17608,7 +17608,7 @@
   },
   "1509": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "61.468",
@@ -19212,7 +19212,7 @@
   },
   "1523": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "70.9047",
@@ -20183,7 +20183,7 @@
   },
   "2006": {
     "AS": {
-      "branch_name": "AS",
+      "branch_name": "AUTOMOBILE ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "94.5952",
@@ -20216,7 +20216,7 @@
       }
     },
     "BS": {
-      "branch_name": "BS",
+      "branch_name": "BIO TECHNOLOGY (SS)",
       "cutoffs": {
         "OC": {
           "max": "89.1428",
@@ -20315,7 +20315,7 @@
       }
     },
     "CG": {
-      "branch_name": "CG",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING) (SS)",
       "cutoffs": {
         "OC": {
           "max": "98.8214",
@@ -20381,7 +20381,7 @@
       }
     },
     "CN": {
-      "branch_name": "CN",
+      "branch_name": "CIVIL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "94.1777",
@@ -20513,7 +20513,7 @@
       }
     },
     "ES": {
-      "branch_name": "ES",
+      "branch_name": "ELECTRICAL AND ELECTRONICS (SANDWICH) (SS)",
       "cutoffs": {
         "OC": {
           "max": "92.2592",
@@ -20546,7 +20546,7 @@
       }
     },
     "FY": {
-      "branch_name": "FY",
+      "branch_name": "FASHION TECHNOLOGY (SS)",
       "cutoffs": {
         "OC": {
           "max": "99.2857",
@@ -20612,7 +20612,7 @@
       }
     },
     "IY": {
-      "branch_name": "IY",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "97.119",
@@ -20678,7 +20678,7 @@
       }
     },
     "MF": {
-      "branch_name": "MF",
+      "branch_name": "MECHANICAL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "95.5882",
@@ -20711,7 +20711,7 @@
       }
     },
     "MS": {
-      "branch_name": "MS",
+      "branch_name": "MECHANICAL ENGINEERING (SANDWICH) (SS)",
       "cutoffs": {
         "OC": {
           "max": "90.5454",
@@ -20744,7 +20744,7 @@
       }
     },
     "MT": {
-      "branch_name": "MT",
+      "branch_name": "METALLURGICAL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "95.5714",
@@ -20777,7 +20777,7 @@
       }
     },
     "MY": {
-      "branch_name": "MY",
+      "branch_name": "METALLURGICAL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -20810,7 +20810,7 @@
       }
     },
     "PN": {
-      "branch_name": "PN",
+      "branch_name": "PRODUCTION ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -20876,7 +20876,7 @@
       }
     },
     "PS": {
-      "branch_name": "PS",
+      "branch_name": "PRODUCTION ENGINEERING (SANDWICH) (SS)",
       "cutoffs": {
         "OC": {
           "max": "90.1162",
@@ -21010,7 +21010,7 @@
   },
   "2007": {
     "AT": {
-      "branch_name": "AT",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND DATA SCIENCE (SS)",
       "cutoffs": {
         "OC": {
           "max": "94.7777",
@@ -21307,7 +21307,7 @@
       }
     },
     "EY": {
-      "branch_name": "EY",
+      "branch_name": "ELECTRICAL AND ELECTRONICS ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "93.4883",
@@ -21406,7 +21406,7 @@
       }
     },
     "MF": {
-      "branch_name": "MF",
+      "branch_name": "MECHANICAL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "92.5714",
@@ -21573,7 +21573,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "91.2352",
@@ -22107,7 +22107,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "66.7777",
@@ -22239,7 +22239,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "81.6862",
@@ -22272,7 +22272,7 @@
       }
     },
     "XS": {
-      "branch_name": "XS",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (TAMIL MEDIUM)",
       "cutoffs": {
         "OC": {
           "max": "75.0952",
@@ -22810,7 +22810,7 @@
   },
   "2343": {
     "HT": {
-      "branch_name": "HT",
+      "branch_name": "HANDLOOM AND TEXTILE TECHNOLOGY",
       "cutoffs": {
         "OC": {
           "max": "98.2142",
@@ -23445,7 +23445,7 @@
   },
   "2349": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "65.7619",
@@ -24981,7 +24981,7 @@
       }
     },
     "IC": {
-      "branch_name": "IC",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "93.6904",
@@ -25517,7 +25517,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "81.9047",
@@ -25781,7 +25781,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "88.9523",
@@ -25882,7 +25882,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "94.8",
@@ -26047,7 +26047,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "92.0952",
@@ -26379,7 +26379,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "80.7142",
@@ -26480,7 +26480,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "81.2619",
@@ -26711,7 +26711,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "88.8571",
@@ -26911,7 +26911,7 @@
       }
     },
     "CY": {
-      "branch_name": "CY",
+      "branch_name": "CYBER SECURITY",
       "cutoffs": {
         "OC": {
           "max": "77.2592",
@@ -27076,7 +27076,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "88.4285",
@@ -27443,7 +27443,7 @@
       }
     },
     "SF": {
-      "branch_name": "SF",
+      "branch_name": "SAFETY AND FIRE ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "67.9523",
@@ -27909,7 +27909,7 @@
       }
     },
     "MT": {
-      "branch_name": "MT",
+      "branch_name": "METALLURGICAL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "91.8888",
@@ -28410,7 +28410,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "89.1111",
@@ -28641,7 +28641,7 @@
       }
     },
     "EF": {
-      "branch_name": "EF",
+      "branch_name": "ELECTRICAL AND COMPUTER ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "77.4444",
@@ -28674,7 +28674,7 @@
       }
     },
     "EX": {
-      "branch_name": "EX",
+      "branch_name": "ELECTRONICS AND INSTRUMENTATION ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "88.8333",
@@ -28806,7 +28806,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "96.7555",
@@ -29107,7 +29107,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "65.8095",
@@ -29371,7 +29371,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "85.0238",
@@ -29472,7 +29472,7 @@
       }
     },
     "CO": {
-      "branch_name": "CO",
+      "branch_name": "COMPUTER AND COMMUNICATION ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "74.7407",
@@ -30505,7 +30505,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "86.9285",
@@ -30740,7 +30740,7 @@
   },
   "2632": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "75.6666",
@@ -31404,7 +31404,7 @@
       }
     },
     "SF": {
-      "branch_name": "SF",
+      "branch_name": "SAFETY AND FIRE ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "79.1666",
@@ -33639,7 +33639,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "89.0476",
@@ -34707,7 +34707,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "86.7906",
@@ -34740,7 +34740,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "77.5476",
@@ -34971,7 +34971,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "85.6428",
@@ -35039,7 +35039,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "65.5925",
@@ -35270,7 +35270,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "76.5714",
@@ -35472,7 +35472,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "93.9767",
@@ -35703,7 +35703,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "80.6744",
@@ -35837,7 +35837,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "70.5",
@@ -36235,7 +36235,7 @@
   },
   "2708": {
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "70.6666",
@@ -36532,7 +36532,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "71.8809",
@@ -36932,7 +36932,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "74.4186",
@@ -37033,7 +37033,7 @@
   },
   "2711": {
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "62.7142",
@@ -37363,7 +37363,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "79",
@@ -37794,7 +37794,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "92.6176",
@@ -38394,7 +38394,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "65.5476",
@@ -38596,7 +38596,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "78.8",
@@ -38860,7 +38860,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "89.7619",
@@ -39326,7 +39326,7 @@
       }
     },
     "IC": {
-      "branch_name": "IC",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "71",
@@ -39427,7 +39427,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "84.4888",
@@ -39493,7 +39493,7 @@
       }
     },
     "CI": {
-      "branch_name": "CI",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (INTERNET OF THINGS)",
       "cutoffs": {
         "OC": {
           "max": "66.619",
@@ -40027,7 +40027,7 @@
   },
   "2726": {
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "85",
@@ -40060,7 +40060,7 @@
       }
     },
     "AO": {
-      "branch_name": "AO",
+      "branch_name": "AEROSPACE ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "65.9047",
@@ -40324,7 +40324,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "84.2954",
@@ -40392,7 +40392,7 @@
       }
     },
     "AL": {
-      "branch_name": "AL",
+      "branch_name": "ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING",
       "cutoffs": {
         "OC": {
           "max": "78.119",
@@ -40557,7 +40557,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "65.5476",
@@ -40691,7 +40691,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "72.2142",
@@ -40889,7 +40889,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "65.75",
@@ -41557,7 +41557,7 @@
       }
     },
     "MO": {
-      "branch_name": "MO",
+      "branch_name": "MECHANICAL AND MECHATRONICS ENGINEERING (ADDITIVE MANUFACTURING)",
       "cutoffs": {
         "OC": {
           "max": "71.0714",
@@ -41590,7 +41590,7 @@
       }
     },
     "SB": {
-      "branch_name": "SB",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (INTERNET OF THINGS AND CYBER SECURITY INCLUDING BLOCK CHAIN TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "75.2857",
@@ -41623,7 +41623,7 @@
       }
     },
     "TS": {
-      "branch_name": "TS",
+      "branch_name": "COMPUTER SCIENCE AND TECHNOLOGY",
       "cutoffs": {
         "OC": {
           "max": "69.3777",
@@ -42126,7 +42126,7 @@
   },
   "2739": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "84.6511",
@@ -42159,7 +42159,7 @@
       }
     },
     "CO": {
-      "branch_name": "CO",
+      "branch_name": "COMPUTER AND COMMUNICATION ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "70.0238",
@@ -43258,7 +43258,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "66.0952",
@@ -43458,7 +43458,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "83.5555",
@@ -44025,7 +44025,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "72.6904",
@@ -44124,7 +44124,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "72.4761",
@@ -44256,7 +44256,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "74",
@@ -44357,7 +44357,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "80.738",
@@ -44390,7 +44390,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "88.1666",
@@ -44658,7 +44658,7 @@
   },
   "2753": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "74.738",
@@ -45225,7 +45225,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "68.0476",
@@ -45627,7 +45627,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "89.119",
@@ -45693,7 +45693,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "80.9285",
@@ -45957,7 +45957,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "89.6279",
@@ -46126,7 +46126,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "63.8333",
@@ -46392,7 +46392,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -46693,7 +46693,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "82.6818",
@@ -46726,7 +46726,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "87.3571",
@@ -46827,7 +46827,7 @@
       }
     },
     "CF": {
-      "branch_name": "CF",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (DATA SCIENCE)",
       "cutoffs": {
         "OC": {
           "max": "85.119",
@@ -46860,7 +46860,7 @@
       }
     },
     "CK": {
-      "branch_name": "CK",
+      "branch_name": "CIVIL ENGINEERING (ENVIRONMENTAL ENGINEERING)",
       "cutoffs": {
         "OC": {
           "max": "74.1428",
@@ -46992,7 +46992,7 @@
       }
     },
     "EF": {
-      "branch_name": "EF",
+      "branch_name": "ELECTRICAL AND COMPUTER ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "83.1666",
@@ -47025,7 +47025,7 @@
       }
     },
     "EV": {
-      "branch_name": "EV",
+      "branch_name": "ELECTRONICS ENGINEERING (VLSI DESIGN AND TECHNOLOGY)",
       "cutoffs": {
         "OC": {
           "max": "88.9047",
@@ -47091,7 +47091,7 @@
       }
     },
     "MB": {
-      "branch_name": "MB",
+      "branch_name": "MECHANICAL ENGINEERING (AUTOMOBILE)",
       "cutoffs": {
         "OC": {
           "max": "77.4523",
@@ -47157,7 +47157,7 @@
       }
     },
     "MJ": {
-      "branch_name": "MJ",
+      "branch_name": "MECHANICAL AND SMART MANUFACTURING",
       "cutoffs": {
         "OC": {
           "max": "79.8888",
@@ -49796,7 +49796,7 @@
   },
   "3782": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "66.3333",
@@ -50062,7 +50062,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "79.372",
@@ -51064,7 +51064,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "75.4523",
@@ -52600,7 +52600,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "73.2857",
@@ -52633,7 +52633,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "64.2727",
@@ -52765,7 +52765,7 @@
       }
     },
     "IC": {
-      "branch_name": "IC",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "65.5555",
@@ -52866,7 +52866,7 @@
   },
   "3820": {
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "77.6818",
@@ -54948,7 +54948,7 @@
   },
   "3857": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "70.3095",
@@ -55717,7 +55717,7 @@
   },
   "3920": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "77.8809",
@@ -57018,7 +57018,7 @@
   },
   "4670": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "76.1481",
@@ -57352,7 +57352,7 @@
   },
   "4675": {
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "93.6785",
@@ -60199,7 +60199,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "92.8409",
@@ -60368,7 +60368,7 @@
   },
   "4953": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "75.1481",
@@ -60735,7 +60735,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "86.2045",
@@ -60768,7 +60768,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "65.8333",
@@ -61100,7 +61100,7 @@
       }
     },
     "IC": {
-      "branch_name": "IC",
+      "branch_name": "INSTRUMENTATION AND CONTROL ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "85.5185",
@@ -61533,7 +61533,7 @@
       }
     },
     "MZ": {
-      "branch_name": "MZ",
+      "branch_name": "MECHATRONICS ENGINEERING",
       "cutoffs": {
         "OC": {
           "max": "-",
@@ -64007,7 +64007,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "75.9285",
@@ -64506,7 +64506,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "64.1904",
@@ -66114,7 +66114,7 @@
       }
     },
     "CG": {
-      "branch_name": "CG",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING) (SS)",
       "cutoffs": {
         "OC": {
           "max": "92.7111",
@@ -66180,7 +66180,7 @@
       }
     },
     "CN": {
-      "branch_name": "CN",
+      "branch_name": "CIVIL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "83.8518",
@@ -66246,7 +66246,7 @@
       }
     },
     "CW": {
-      "branch_name": "CW",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM (SS)",
       "cutoffs": {
         "OC": {
           "max": "92.2619",
@@ -66378,7 +66378,7 @@
       }
     },
     "EY": {
-      "branch_name": "EY",
+      "branch_name": "ELECTRICAL AND ELECTRONICS ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "89.6511",
@@ -66477,7 +66477,7 @@
       }
     },
     "MF": {
-      "branch_name": "MF",
+      "branch_name": "MECHANICAL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "87.3571",
@@ -66510,7 +66510,7 @@
       }
     },
     "MG": {
-      "branch_name": "MG",
+      "branch_name": "MECHATRONICS (SS)",
       "cutoffs": {
         "OC": {
           "max": "86.7058",
@@ -66879,7 +66879,7 @@
   },
   "5012": {
     "CC": {
-      "branch_name": "CC",
+      "branch_name": "CHEMICAL AND ELECTROCHEMICAL ENGINEERING (SS)",
       "cutoffs": {
         "OC": {
           "max": "94.7857",
@@ -67547,7 +67547,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "68.8571",
@@ -67914,7 +67914,7 @@
   },
   "5536": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "75.8571",
@@ -68048,7 +68048,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "66.3333",
@@ -68281,7 +68281,7 @@
   },
   "5832": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "69.8809",
@@ -69219,7 +69219,7 @@
       }
     },
     "CI": {
-      "branch_name": "CI",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (INTERNET OF THINGS)",
       "cutoffs": {
         "OC": {
           "max": "67.1428",
@@ -69685,7 +69685,7 @@
   },
   "5910": {
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "64.3095",
@@ -70584,7 +70584,7 @@
       }
     },
     "CB": {
-      "branch_name": "CB",
+      "branch_name": "COMPUTER SCIENCE AND BUSINESS SYSTEM",
       "cutoffs": {
         "OC": {
           "max": "82.119",
@@ -70918,7 +70918,7 @@
   },
   "5919": {
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "73.5555",
@@ -72019,7 +72019,7 @@
       }
     },
     "AM": {
-      "branch_name": "AM",
+      "branch_name": "COMPUTER SCIENCE AND ENGINEERING (ARTIFICIAL INTELLIGENCE AND MACHINE LEARNING)",
       "cutoffs": {
         "OC": {
           "max": "70.5",
