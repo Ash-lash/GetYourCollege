@@ -1106,10 +1106,16 @@ const App = () => {
                     ⚖️ Compare Colleges
                   </motion.button>
                   {category === 'anna' && (
-                    <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
-                      <BookOpen size={16} />
-                      <span>EXPLORE DEPARTMENTS</span>
-                    </button>
+                    <>
+                      <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
+                        <BookOpen size={16} />
+                        <span>EXPLORE DEPARTMENTS</span>
+                      </button>
+                      <button className="dept-details-btn-header" onClick={() => openLateralPredictor()} style={{ background: 'linear-gradient(135deg, #10b981, #14b8a6)' }}>
+                        <Zap size={16} />
+                        <span>LATERAL PREDICTOR</span>
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
