@@ -2,13 +2,15 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   MapPin, Building2, Sparkles, Globe,
-  GraduationCap, PieChart, Mail, Phone, ExternalLink,
+  GraduationCap, PieChart, Info, Mail, Phone, ExternalLink,
   User, Train, Bus, IndianRupee, ArrowRight, FileText, Download,
-  MessageSquare, Scale, Send, Star, BookOpen, Award, Users
+  MessageSquare, Scale, Send, Star, BookOpen, Award, Users,
+  Search, Table, Grid, ArrowUpDown, ChevronDown
 } from 'lucide-react';
 import TNEA_PDF_INFO from '../tnea_pdf_data.json';
 import TNEA_COURSES_INFO from '../tnea_courses_data.json';
 import TNEA_MATRIX_DATA from '../branch_matrix_data.json';
+import VELS_COURSES_DATA from '../vels_courses_data.json';
 
 /* ─────────── ROUND DISTRIBUTION ─────────── */
 const SeatDistribution = ({ college, seats }) => {
@@ -250,6 +252,500 @@ const CourseLevels = ({ courses }) => {
           ))}
         </div>
       </div>
+    </div>
+  );
+};
+
+/* ──────── VELS COURSE EXPLORER ──────── */
+const VelsCourseExplorer = () => {
+  const [viewMode, setViewMode] = useState('catalog'); // 'catalog' | 'sheet'
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSchool, setSelectedSchool] = useState('ALL');
+  
+  // Sorting state for Spreadsheet view
+  const [sortField, setSortField] = useState('sno');
+  const [sortAsc, setSortAsc] = useState(true);
+
+  // Expanded schools in Catalog view
+  const [expandedSchools, setExpandedSchools] = useState({
+    'Allied Health Sciences': true,
+    'Computing Sciences': true,
+    'Engineering': true
+  });
+
+  const toggleSchool = (sch) => {
+    setExpandedSchools(prev => ({
+      ...prev,
+      [sch]: !prev[sch]
+    }));
+  };
+
+  // Grouped unique schools for the filter dropdown
+  const schoolsList = useMemo(() => {
+    const set = new Set();
+    VELS_COURSES_DATA.forEach(c => set.add(c.school));
+    return ['ALL', ...Array.from(set).sort()];
+  }, []);
+
+  // Filter & Search
+  const filteredCourses = useMemo(() => {
+    return VELS_COURSES_DATA.filter(item => {
+      // School filter
+      if (selectedSchool !== 'ALL' && item.school !== selectedSchool) return false;
+      
+      // Search term filter
+      if (searchTerm.trim()) {
+        const term = searchTerm.toLowerCase();
+        return (
+          item.school.toLowerCase().includes(term) ||
+          item.degree.toLowerCase().includes(term) ||
+          item.programme.toLowerCase().includes(term)
+        );
+      }
+      return true;
+    });
+  }, [searchTerm, selectedSchool]);
+
+  // Sort
+  const sortedCourses = useMemo(() => {
+    const list = [...filteredCourses];
+    list.sort((a, b) => {
+      let valA = a[sortField];
+      let valB = b[sortField];
+
+      // Handle string vs number sorting
+      if (typeof valA === 'string') {
+        valA = valA.toLowerCase();
+        valB = valB.toLowerCase();
+      }
+
+      if (valA < valB) return sortAsc ? -1 : 1;
+      if (valA > valB) return sortAsc ? 1 : -1;
+      return 0;
+    });
+    return list;
+  }, [filteredCourses, sortField, sortAsc]);
+
+  // Grouped courses for Catalog View
+  const groupedCatalog = useMemo(() => {
+    const groups = {};
+    filteredCourses.forEach(item => {
+      const sch = item.school;
+      const deg = item.degree;
+      
+      if (!groups[sch]) groups[sch] = {};
+      if (!groups[sch][deg]) groups[sch][deg] = [];
+      
+      groups[sch][deg].push(item.programme);
+    });
+    return groups;
+  }, [filteredCourses]);
+
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortAsc(!sortAsc);
+    } else {
+      setSortField(field);
+      setSortAsc(true);
+    }
+  };
+
+  // Unique color schemes for different Schools to look premium
+  const getSchoolStyles = (schoolName) => {
+    const name = schoolName.toLowerCase();
+    if (name.includes('health') || name.includes('paramedical')) {
+      return { border: '#10b981', bg: 'rgba(16,185,129,0.06)', text: '#059669' };
+    }
+    if (name.includes('engineering') || name.includes('comput') || name.includes('art')) {
+      return { border: '#6366f1', bg: 'rgba(99,102,241,0.06)', text: '#4f46e5' };
+    }
+    if (name.includes('maritime')) {
+      return { border: '#0ea5e9', bg: 'rgba(14,165,233,0.06)', text: '#0284c7' };
+    }
+    if (name.includes('law')) {
+      return { border: '#b45309', bg: 'rgba(245,158,11,0.06)', text: '#b45309' };
+    }
+    if (name.includes('management')) {
+      return { border: '#ec4899', bg: 'rgba(236,72,153,0.06)', text: '#db2777' };
+    }
+    return { border: '#8b5cf6', bg: 'rgba(139,92,246,0.06)', text: '#7c3aed' };
+  };
+
+  return (
+    <div className="vels-explorer-wrap" onClick={e => e.stopPropagation()} style={{ marginTop: 16 }}>
+      {/* Self-contained styling */}
+      <style>{`
+        .vels-view-toggle {
+          display: flex;
+          background: #f1f5f9;
+          border-radius: 10px;
+          padding: 3px;
+          border: 1px solid #cbd5e1;
+          gap: 2px;
+        }
+        .vels-toggle-btn {
+          flex: 1;
+          padding: 8px 14px;
+          border: none;
+          background: transparent;
+          font-weight: 700;
+          font-size: 0.8rem;
+          color: #475569;
+          border-radius: 8px;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 6px;
+          transition: all 0.15s;
+        }
+        .vels-toggle-btn.active {
+          background: #fff;
+          color: #6366f1;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+        }
+        .vels-filter-row {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 12px;
+          margin-bottom: 20px;
+          align-items: center;
+        }
+        .vels-search-input-wrap {
+          position: relative;
+          flex: 1;
+          min-width: 200px;
+        }
+        .vels-search-input {
+          width: 100%;
+          padding: 10px 12px 10px 38px;
+          border: 1px solid #cbd5e1;
+          border-radius: 10px;
+          font-size: 0.88rem;
+          color: #0f172a;
+          outline: none;
+          box-sizing: border-box;
+          transition: border-color 0.15s;
+        }
+        .vels-search-input:focus {
+          border-color: #6366f1;
+        }
+        .vels-select {
+          padding: 10px 14px;
+          border: 1px solid #cbd5e1;
+          border-radius: 10px;
+          font-size: 0.88rem;
+          font-weight: 600;
+          color: #334155;
+          background: #fff;
+          outline: none;
+          cursor: pointer;
+        }
+        /* Sheet view table styles */
+        .vels-sheet-table-scroll {
+          overflow-x: auto;
+          border-radius: 12px;
+          border: 1px solid #e2e8f0;
+          box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+          background: #fff;
+        }
+        .vels-sheet-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-size: 0.85rem;
+          text-align: left;
+        }
+        .vels-sheet-table th {
+          background: #f8fafc;
+          padding: 12px 16px;
+          font-weight: 700;
+          color: #475569;
+          border-bottom: 2px solid #e2e8f0;
+          cursor: pointer;
+          user-select: none;
+          white-space: nowrap;
+          transition: background 0.15s;
+        }
+        .vels-sheet-table th:hover {
+          background: #f1f5f9;
+        }
+        .vels-sheet-table td {
+          padding: 12px 16px;
+          border-bottom: 1px solid #f1f5f9;
+          color: #334155;
+          vertical-align: middle;
+        }
+        .vels-sheet-table tr:last-child td {
+          border-bottom: none;
+        }
+        .vels-sheet-table tr:hover td {
+          background: #fafbff;
+        }
+        .vels-th-content {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+        /* Catalog view styles */
+        .vels-school-card {
+          margin-bottom: 14px;
+          border: 1px solid #e2e8f0;
+          border-radius: 14px;
+          background: #fff;
+          overflow: hidden;
+          box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+          transition: box-shadow 0.2s;
+        }
+        .vels-school-card:hover {
+          box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        .vels-school-header {
+          padding: 16px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          cursor: pointer;
+          user-select: none;
+          background: #fafbff;
+          border-bottom: 1px solid #f1f5f9;
+        }
+        .vels-school-header-left {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+        .vels-school-title {
+          font-weight: 800;
+          font-size: 0.95rem;
+          color: #0f172a;
+        }
+        .vels-school-content {
+          padding: 20px;
+          background: #fff;
+        }
+        .vels-degree-section {
+          margin-bottom: 18px;
+        }
+        .vels-degree-section:last-child {
+          margin-bottom: 0;
+        }
+        .vels-degree-header {
+          font-size: 0.72rem;
+          font-weight: 800;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          margin-bottom: 8px;
+          display: inline-flex;
+          padding: 3px 8px;
+          border-radius: 6px;
+        }
+        .vels-programme-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+          gap: 10px;
+        }
+        .vels-prog-tag {
+          padding: 10px 14px;
+          background: #f8fafc;
+          border: 1px solid #e2e8f0;
+          border-radius: 10px;
+          font-size: 0.8rem;
+          font-weight: 600;
+          color: #334155;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          transition: all 0.15s;
+        }
+        .vels-prog-tag:hover {
+          border-color: #cbd5e1;
+          background: #f1f5f9;
+          transform: translateY(-1px);
+        }
+      `}</style>
+
+      {/* TOP FILTERS & TOGGLE ROW */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap', marginBottom: 16 }}>
+        <h2 style={{ fontSize: '0.92rem', fontWeight: 855, color: '#0f172a', margin: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+          <GraduationCap size={18} color="#6366f1" /> Academic Course Guide
+        </h2>
+        
+        {/* Toggle switches */}
+        <div className="vels-view-toggle">
+          <button className={`vels-toggle-btn ${viewMode === 'catalog' ? 'active' : ''}`} onClick={() => setViewMode('catalog')}>
+            <Grid size={13} /> Interactive Catalog
+          </button>
+          <button className={`vels-toggle-btn ${viewMode === 'sheet' ? 'active' : ''}`} onClick={() => setViewMode('sheet')}>
+            <Table size={13} /> Excel Spreadsheet
+          </button>
+        </div>
+      </div>
+
+      {/* SEARCH & FILTERS BAR */}
+      <div className="vels-filter-row">
+        <div className="vels-search-input-wrap">
+          <Search size={15} color="#94a3b8" style={{ position: 'absolute', left: 12, top: 11 }} />
+          <input
+            type="text"
+            className="vels-search-input"
+            placeholder="Search school, degree, or specialization..."
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+        </div>
+
+        {/* Dropdown for quick School filtering */}
+        <select className="vels-select" value={selectedSchool} onChange={e => setSelectedSchool(e.target.value)}>
+          <option value="ALL">All Schools ({schoolsList.length - 1})</option>
+          {schoolsList.filter(s => s !== 'ALL').map(sch => (
+            <option key={sch} value={sch}>{sch}</option>
+          ))}
+        </select>
+      </div>
+
+      {/* VIEW RENDER */}
+      <AnimatePresence mode="wait">
+        {viewMode === 'sheet' ? (
+          /* ──────── SHEET VIEW (Innovative Excel-style Table) ──────── */
+          <motion.div
+            key="sheet"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="vels-sheet-table-scroll"
+          >
+            <table className="vels-sheet-table">
+              <thead>
+                <tr>
+                  <th style={{ width: 70 }} onClick={() => handleSort('sno')}>
+                    <div className="vels-th-content">S.No <ArrowUpDown size={12} /></div>
+                  </th>
+                  <th onClick={() => handleSort('school')}>
+                    <div className="vels-th-content">School / Department <ArrowUpDown size={12} /></div>
+                  </th>
+                  <th style={{ width: 140 }} onClick={() => handleSort('degree')}>
+                    <div className="vels-th-content">Degree <ArrowUpDown size={12} /></div>
+                  </th>
+                  <th onClick={() => handleSort('programme')}>
+                    <div className="vels-th-content">Programme / Specialization <ArrowUpDown size={12} /></div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {sortedCourses.length > 0 ? (
+                  sortedCourses.map((c, i) => {
+                    const styles = getSchoolStyles(c.school);
+                    return (
+                      <tr key={i}>
+                        <td style={{ fontWeight: 700, color: '#64748b', fontFamily: 'monospace' }}>{c.sno}</td>
+                        <td style={{ fontWeight: 600 }}>
+                          <span style={{
+                            padding: '3px 8px', borderRadius: 6,
+                            background: styles.bg, color: styles.text, border: `1px solid ${styles.border}20`
+                          }}>
+                            {c.school}
+                          </span>
+                        </td>
+                        <td style={{ fontWeight: 700, color: '#0f172a' }}>{c.degree}</td>
+                        <td style={{ fontWeight: 600, color: '#334155' }}>{c.programme}</td>
+                      </tr>
+                    );
+                  })
+                ) : (
+                  <tr>
+                    <td colSpan={4} style={{ padding: 32, textAlign: 'center', color: '#94a3b8' }}>
+                      No programmes matched your filter or search criteria.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </motion.div>
+        ) : (
+          /* ──────── CATALOG VIEW (Interactive Collapsible Accordions) ──────── */
+          <motion.div
+            key="catalog"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+          >
+            {Object.keys(groupedCatalog).length > 0 ? (
+              Object.entries(groupedCatalog).map(([schoolName, degrees]) => {
+                const isExpanded = !!expandedSchools[schoolName];
+                const styles = getSchoolStyles(schoolName);
+                const totalProgs = Object.values(degrees).reduce((s, p) => s + p.length, 0);
+
+                return (
+                  <div key={schoolName} className="vels-school-card" style={{ borderLeft: `4px solid ${styles.border}` }}>
+                    {/* ACCORDION TRIGGER */}
+                    <div className="vels-school-header" onClick={() => toggleSchool(schoolName)}>
+                      <div className="vels-school-header-left">
+                        <div style={{
+                          width: 32, height: 32, borderRadius: 8,
+                          background: styles.bg, color: styles.text,
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          fontWeight: 800, fontSize: '0.85rem'
+                        }}>
+                          {schoolName.substring(0, 2).toUpperCase()}
+                        </div>
+                        <div>
+                          <div className="vels-school-title">School of {schoolName}</div>
+                          <div style={{ fontSize: '0.72rem', color: '#64748b', fontWeight: 600 }}>
+                            {totalProgs} {totalProgs === 1 ? 'programme' : 'programmes'} offered
+                          </div>
+                        </div>
+                      </div>
+                      <motion.div animate={{ rotate: isExpanded ? 180 : 0 }} style={{ display: 'flex' }}>
+                        <ChevronDown size={18} color="#64748b" />
+                      </motion.div>
+                    </div>
+
+                    {/* COLLAPSIBLE ACCORDION BODY */}
+                    <AnimatePresence initial={false}>
+                      {isExpanded && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: 'auto', opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          style={{ overflow: 'hidden' }}
+                        >
+                          <div className="vels-school-content">
+                            {Object.entries(degrees).map(([degName, progs]) => (
+                              <div key={degName} className="vels-degree-section">
+                                <div className="vels-degree-header" style={{ background: styles.bg, color: styles.text }}>
+                                  {degName} Courses
+                                </div>
+                                <div className="vels-programme-grid">
+                                  {progs.map((prog, pi) => (
+                                    <div key={pi} className="vels-prog-tag">
+                                      <BookOpen size={13} color={styles.border} style={{ flexShrink: 0 }} />
+                                      <span>{prog}</span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                );
+              })
+            ) : (
+              <div style={{
+                padding: '48px 24px', border: '1px dashed #cbd5e1',
+                borderRadius: 14, textAlign: 'center', color: '#94a3b8', background: '#fff'
+              }}>
+                <Info size={32} style={{ marginBottom: 12, opacity: 0.5 }} />
+                <h3 style={{ fontSize: '0.92rem', fontWeight: 800, color: '#334155', margin: '0 0 4px 0' }}>No Match Catalogues</h3>
+                <p style={{ fontSize: '0.82rem', margin: 0 }}>Try clearing search criteria or selecting a different school.</p>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -723,7 +1219,9 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
               <AnimatePresence mode="wait">
                 {activeTab === 'courses' && (
                   <motion.div key="courses" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                    {courses.length > 0 ? (
+                    {college.name && college.name.toLowerCase().includes('vels') ? (
+                      <VelsCourseExplorer />
+                    ) : courses.length > 0 ? (
                       <CourseLevels courses={courses} />
                     ) : (
                       <div style={{ padding: 24, textAlign: 'center', color: '#94a3b8' }}>
