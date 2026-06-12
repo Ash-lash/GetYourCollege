@@ -25,6 +25,14 @@ import CollegeCard from './components/CollegeCard';
 import { BranchesGuide } from './components/BranchesGuide';
 import LateralPredictor from './components/LateralPredictor';
 
+// Pre-process Deemed and Private universities to assign static ranks based on original order
+DEEMED_DATA.forEach((c, idx) => {
+  if (c && !c.rank) c.rank = idx + 1;
+});
+PRIVATE_DATA.forEach((c, idx) => {
+  if (c && !c.rank) c.rank = idx + 1;
+});
+
 
 /* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
 const PRIORITY_COLLEGE_MATCHERS = [

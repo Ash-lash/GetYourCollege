@@ -410,6 +410,47 @@ const getSalaryRange = (school) => {
   return '₹ 3.6L – ₹ 7.5L / year';
 };
 
+const getDegreeDurationAndLevel = (deg) => {
+  const d = String(deg).trim();
+
+  // 6 Years
+  if (d === 'Pharm.D') return { duration: '6 Years', level: 'Integrated Doctor' };
+
+  // 5 Years
+  if (d.includes('LL.B') && (d.includes('B.A') || d.includes('B.B.A') || d.includes('B.Com'))) {
+    return { duration: '5 Years', level: 'Integrated Law' };
+  }
+
+  // 4.5 Years
+  if (d === 'B.P.T' || d === 'B.O.T') return { duration: '4.5 Years', level: 'UG Degree' };
+
+  // 4 Years
+  if (d === 'B.E' || d === 'B.Tech' || d === 'B.Pharm') return { duration: '4 Years', level: 'UG Degree' };
+
+  // 3 Years
+  if (
+    d === 'B.A' || d === 'B.B.A' || d === 'B.C.A' || d === 'B.Com' ||
+    d === 'B.Sc' || d === 'B.Sc Hons' || d === 'LL.B' || d === 'Diploma (AICTE)' || d === 'Pharm.D (PB)'
+  ) {
+    const isDip = d.includes('Diploma');
+    return {
+      duration: '3 Years',
+      level: isDip ? 'Diploma' : (d === 'Pharm.D (PB)' ? 'PG Degree' : 'UG Degree')
+    };
+  }
+
+  // 2 Years
+  if (d === 'M.B.A' || d === 'M.C.A' || d === 'HND') {
+    return { duration: '2 Years', level: d === 'HND' ? 'Diploma' : 'PG Degree' };
+  }
+
+  // 1 Year
+  if (d === 'GME') return { duration: '1 Year', level: 'PG Diploma' };
+
+  // Fallback
+  return { duration: '3 Years', level: 'UG Degree' };
+};
+
 const VelsCourseExplorer = () => {
   const [viewMode, setViewMode] = useState('os'); // 'os' | 'pathfinder' | 'terminal'
   const [activeSchool, setActiveSchool] = useState('Allied Health Sciences');
@@ -1228,11 +1269,16 @@ const VelsCourseExplorer = () => {
                           </div>
                           
                           {/* Duration Tag */}
-                          <div className="os-pill-grp">
-                            <span className="os-pill-badge">⏱️ 3 Years</span>
-                            <span className="os-pill-badge">🎓 UG Degree</span>
-                            <span className="os-pill-badge" style={{ color: '#10b981', borderColor: 'rgba(16,185,129,0.2)' }}>✓ Counselling Open</span>
-                          </div>
+                          {(() => {
+                            const { duration, level } = getDegreeDurationAndLevel(item.degree);
+                            return (
+                              <div className="os-pill-grp">
+                                <span className="os-pill-badge">⏱️ {duration}</span>
+                                <span className="os-pill-badge">🎓 {level}</span>
+                                <span className="os-pill-badge" style={{ color: '#10b981', borderColor: 'rgba(16,185,129,0.2)' }}>✓ Counselling Open</span>
+                              </div>
+                            );
+                          })()}
 
                           <hr style={{ border: 'none', borderTop: '1px solid #cbd5e1', margin: '4px 0' }} />
 
@@ -1601,6 +1647,9 @@ const VelsCourseExplorer = () => {
                       <th onClick={() => handleSort('programme')}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>Programme / Specialization <ArrowUpDown size={12} /></div>
                       </th>
+                      <th style={{ width: 120 }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>Pathfinder</div>
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -1626,12 +1675,44 @@ const VelsCourseExplorer = () => {
                             </td>
                             <td style={{ fontWeight: 750, color: '#0f172a' }}>{c.degree}</td>
                             <td style={{ fontWeight: 600, color: '#334155' }}>{c.programme}</td>
+                            <td>
+                              <button
+                                onClick={() => {
+                                  setPathProgram(c.programme);
+                                  setViewMode('pathfinder');
+                                }}
+                                style={{
+                                  background: rowMeta.bgLight,
+                                  border: `1px solid ${rowMeta.accent}30`,
+                                  color: rowMeta.accent,
+                                  padding: '4px 10px',
+                                  borderRadius: '6px',
+                                  fontSize: '0.74rem',
+                                  fontWeight: 750,
+                                  cursor: 'pointer',
+                                  display: 'inline-flex',
+                                  alignItems: 'center',
+                                  gap: 6,
+                                  transition: 'all 0.15s ease'
+                                }}
+                                onMouseEnter={e => {
+                                  e.currentTarget.style.background = rowMeta.accent;
+                                  e.currentTarget.style.color = '#fff';
+                                }}
+                                onMouseLeave={e => {
+                                  e.currentTarget.style.background = rowMeta.bgLight;
+                                  e.currentTarget.style.color = rowMeta.accent;
+                                }}
+                              >
+                                <Compass size={12} /> Explore
+                              </button>
+                            </td>
                           </tr>
                         );
                       })
                     ) : (
                       <tr>
-                        <td colSpan={4} style={{ padding: 32, textAlign: 'center', color: '#64748b' }}>
+                        <td colSpan={5} style={{ padding: 32, textAlign: 'center', color: '#64748b' }}>
                           No matching records found.
                         </td>
                       </tr>
@@ -1876,7 +1957,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
             {isAnna ? 'TNEA' : 'NIRF'}
           </div>
           <div style={{ fontSize: '1.55rem', fontWeight: 800, lineHeight: 1, marginTop: 4 }}>
-            #{serial || college.rank || '—'}
+            #{college.rank || serial || '—'}
           </div>
         </div>
 
@@ -1955,7 +2036,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
                 {Math.min(5, Math.max(3.6, ((college.cutoff || 170) - 140) / 12)).toFixed(1)}
               </span>
               <span style={{ fontSize: '0.75rem', color: '#64748b', marginLeft: 4 }}>
-                / 5 · {Math.max(28, Math.floor((college.seats || 100) / 6) + (200 - (serial || 50)))} reviews
+                / 5 · {Math.max(28, Math.floor((college.seats || 100) / 6) + (200 - (college.rank || serial || 50)))} reviews
               </span>
             </div>
             {isAnna && (
@@ -2319,7 +2400,7 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
                   <motion.div key="reviews" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
                     {(() => {
                       const score = Math.min(5, Math.max(3.6, ((college.cutoff || 170) - 140) / 12));
-                      const reviewCount = Math.max(28, Math.floor((college.seats || 100) / 6) + (200 - (serial || 50)));
+                      const reviewCount = Math.max(28, Math.floor((college.seats || 100) / 6) + (200 - (college.rank || serial || 50)));
 
                       // Hardcoded review scores: [Academics, Infrastructure, Placements, Campus Life, Value for Money]
                       const COLLEGE_REVIEW_SCORES = {
