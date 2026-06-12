@@ -1476,6 +1476,7 @@ const App = () => {
             <DepartmentDetailsPage
               onBack={() => setView('explorer')}
               onCompare={() => setView('comparison')}
+              onLateralPredictor={openLateralPredictor}
               onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
               onOpenBranchGuide={openBranchGuide}
               selectedDept={selectedDept}
@@ -3323,7 +3324,7 @@ const CollegeComparisonPage = ({ onBack }) => {
   );
 };
 
-const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery, onOpenBranchGuide, selectedDept, setSelectedDept, showAllColleges, setShowAllColleges }) => {
+const DepartmentDetailsPage = ({ onBack, onCompare, onLateralPredictor, onOpenQuery, onOpenBranchGuide, selectedDept, setSelectedDept, showAllColleges, setShowAllColleges }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedCollegeCode, setExpandedCollegeCode] = useState(null);
 
@@ -3790,25 +3791,48 @@ const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery, onOpenBranchGui
           <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Explore Departments</h1>
           <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
         </div>
-        <motion.button
-          onClick={onCompare}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '10px',
-            padding: '10px 18px',
-            fontWeight: 700,
-            fontSize: '0.9rem',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
-          }}
-        >
-          ⚖️ Compare Departments
-        </motion.button>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <motion.button
+            onClick={onCompare}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '10px',
+              padding: '10px 18px',
+              fontWeight: 700,
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+            }}
+          >
+            ⚖️ Compare Departments
+          </motion.button>
+          {onLateralPredictor && (
+            <motion.button
+              onClick={onLateralPredictor}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: 'linear-gradient(135deg, #10b981, #14b8a6)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '10px 18px',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 12px rgba(16,185,129,0.3)',
+              }}
+            >
+              🎓 Cut-off Predictor
+            </motion.button>
+          )}
+        </div>
       </div>
 
       <div style={{ marginBottom: 32, position: 'relative' }}>
