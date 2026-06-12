@@ -728,10 +728,6 @@ const VelsCourseExplorer = () => {
         .os-workspace {
           background: #ffffff;
           overflow-y: auto;
-          padding: 24px;
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
         }
         @media(max-width: 991px) {
           .os-workspace {
@@ -919,8 +915,9 @@ const VelsCourseExplorer = () => {
           border-radius: 8px;
           padding: 10px 14px;
           display: flex;
-          justify-content: space-between;
-          align-items: center;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 4px;
           font-size: 0.76rem;
         }
         .terminal-status-lbl {
@@ -1127,7 +1124,8 @@ const VelsCourseExplorer = () => {
 
               {/* WORKSPACE FOR SELECTED SCHOOL */}
               <main className="os-workspace">
-                {/* School Profile Header */}
+                <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '20px', minHeight: '100%' }}>
+                  {/* School Profile Header */}
                 <div 
                   className="os-hero-banner"
                   style={{
@@ -1281,6 +1279,7 @@ const VelsCourseExplorer = () => {
                       No programs match this filter combination.
                     </div>
                   )}
+                </div>
                 </div>
               </main>
             </motion.div>
@@ -1613,8 +1612,14 @@ const VelsCourseExplorer = () => {
                             <td style={{ fontFamily: 'monospace', fontWeight: 700, color: '#64748b' }}>{c.sno}</td>
                             <td style={{ fontWeight: 600 }}>
                               <span style={{
-                                padding: '3px 8px', borderRadius: 6,
-                                background: rowMeta.bgLight, color: rowMeta.accent, border: `1px solid ${rowMeta.accent}25`
+                                display: 'inline-block',
+                                verticalAlign: 'middle',
+                                lineHeight: '1.35',
+                                padding: '4px 8px',
+                                borderRadius: 6,
+                                background: rowMeta.bgLight,
+                                color: rowMeta.accent,
+                                border: `1px solid ${rowMeta.accent}25`
                               }}>
                                 {c.school}
                               </span>
