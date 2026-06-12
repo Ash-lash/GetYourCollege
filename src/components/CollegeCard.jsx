@@ -410,8 +410,20 @@ const getSalaryRange = (school) => {
   return '₹ 3.6L – ₹ 7.5L / year';
 };
 
-const getDegreeDurationAndLevel = (deg) => {
+const getDegreeDurationAndLevel = (deg, prog, school) => {
   const d = String(deg).trim();
+  const p = String(prog || '').trim().toLowerCase();
+  const s = String(school || '').trim();
+
+  // Allied Health Sciences B.Sc. courses are 4 Years (3+1)
+  if (s === 'Allied Health Sciences' && d === 'B.Sc') {
+    return { duration: '4 Years', level: 'UG Degree (3+1)' };
+  }
+
+  // B.Sc in Nursing under Paramedical is 4 Years
+  if (p.includes('nursing') && d === 'B.Sc') {
+    return { duration: '4 Years', level: 'UG Degree' };
+  }
 
   // 6 Years
   if (d === 'Pharm.D') return { duration: '6 Years', level: 'Integrated Doctor' };
@@ -1270,7 +1282,7 @@ const VelsCourseExplorer = () => {
                           
                           {/* Duration Tag */}
                           {(() => {
-                            const { duration, level } = getDegreeDurationAndLevel(item.degree);
+                            const { duration, level } = getDegreeDurationAndLevel(item.degree, item.programme, item.school);
                             return (
                               <div className="os-pill-grp">
                                 <span className="os-pill-badge">⏱️ {duration}</span>
