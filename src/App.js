@@ -23,6 +23,15 @@ import {
 } from './components/HomeSections';
 import CollegeCard from './components/CollegeCard';
 import { BranchesGuide } from './components/BranchesGuide';
+import LateralPredictor from './components/LateralPredictor';
+
+// Pre-process Deemed and Private universities to assign static ranks based on original order
+DEEMED_DATA.forEach((c, idx) => {
+  if (c && !c.rank) c.rank = idx + 1;
+});
+PRIVATE_DATA.forEach((c, idx) => {
+  if (c && !c.rank) c.rank = idx + 1;
+});
 
 
 /* ─────────── PRIORITY COLLEGES (pinned to top in all views) ─────────── */
@@ -130,7 +139,7 @@ const FilterRadioRow = ({ label, checked, onClick }) => (
 );
 
 /* ─────────────────── NAVBAR ─────────────────── */
-const Navbar = ({ onHome, onRegistration, onBranchGuide }) => {
+const Navbar = ({ onHome, onRegistration, onBranchGuide, onLateralPredictor }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   return (
     <>
@@ -148,6 +157,7 @@ const Navbar = ({ onHome, onRegistration, onBranchGuide }) => {
             <a className="nav-link" href="#explore">Explore</a>
             <a className="nav-link" href="#news">News</a>
             <a className="nav-link" href="#career-guide" onClick={(e) => { e.preventDefault(); onBranchGuide(); }}>Career Guide</a>
+            <a className="nav-link" href="#lateral-predictor" onClick={(e) => { e.preventDefault(); onLateralPredictor(); }}>Lateral Predictor</a>
             <span className="nav-sep" />
             <button className="nav-cta nav-book" onClick={onRegistration}><Phone size={14} /> Book Slot</button>
             <button className="nav-cta nav-register" onClick={onHome}>Home</button>
@@ -176,6 +186,7 @@ const Navbar = ({ onHome, onRegistration, onBranchGuide }) => {
                 <a className="mobile-nav-link" href="#explore" onClick={() => setMobileOpen(false)}>Explore</a>
                 <a className="mobile-nav-link" href="#news" onClick={() => setMobileOpen(false)}>News</a>
                 <a className="mobile-nav-link" href="#career-guide" onClick={(e) => { e.preventDefault(); onBranchGuide(); setMobileOpen(false); }}>Career Guide</a>
+                <a className="mobile-nav-link" href="#lateral-predictor" onClick={(e) => { e.preventDefault(); onLateralPredictor(); setMobileOpen(false); }}>Lateral Predictor</a>
                 <button className="nav-cta nav-book mobile-nav-btn" onClick={() => { onRegistration(); setMobileOpen(false); }}><Phone size={14} /> Book Slot</button>
                 <button className="nav-cta nav-register mobile-nav-btn" onClick={() => { onHome(); setMobileOpen(false); }}>Home</button>
               </div>
@@ -897,7 +908,10 @@ const App = () => {
     // Search (name, code, city, AND department)
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
+      const cleanTerm = term.replace(/[^a-z0-9]/g, '');
       base = base.filter(c => {
+        const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (cleanName.includes(cleanTerm)) return true;
         if (c.name.toLowerCase().includes(term)) return true;
         if (String(c.code).includes(term)) return true;
         if (c.city && c.city.toLowerCase().includes(term)) return true;
@@ -952,11 +966,12 @@ const App = () => {
     setView('branches-guide');
     window.scrollTo(0, 0);
   };
+  const openLateralPredictor = () => { setView('lateral-predictor'); window.scrollTo(0, 0); };
 
   return (
     <div className="root">
       <div className="noise-overlay" />
-      <Navbar onHome={goHome} onRegistration={openRegistration} onBranchGuide={openBranchGuide} />
+      <Navbar onHome={goHome} onRegistration={openRegistration} onBranchGuide={openBranchGuide} onLateralPredictor={openLateralPredictor} />
 
       <AnimatePresence mode="wait">
         {view === 'home' && (
@@ -1019,6 +1034,12 @@ const App = () => {
                 <div className="hc-top"><div className="hc-icon"><Sparkles size={26} color="#6366f1" /></div><span className="hc-count">10+</span></div>
                 <h2 className="hc-title" style={{ color: '#0f172a' }}>Career Guide</h2><p className="hc-sub">Engineering Branches · Salaries · Placement Matrix</p>
                 <div className="hc-cta" style={{ color: '#6366f1' }}>Explore Careers <ArrowRight size={16} /></div>
+              </motion.div>
+
+              <motion.div className="hero-card hc-lateral" onClick={() => openLateralPredictor()} whileHover={{ y: -10, scale: 1.02 }} style={{ borderTop: '4px solid #10b981' }}>
+                <div className="hc-top"><div className="hc-icon" style={{ backgroundColor: 'rgba(16,185,129,0.1)' }}><Zap size={26} color="#10b981" /></div><span className="hc-count">Live</span></div>
+                <h2 className="hc-title" style={{ color: '#0f172a' }}>Lateral Predictor</h2><p className="hc-sub">Direct 2nd Year Admissions · 2025 Cutoff Marks</p>
+                <div className="hc-cta" style={{ color: '#10b981' }}>Predict Chances <ArrowRight size={16} /></div>
               </motion.div>
             </div>
 
@@ -1096,10 +1117,16 @@ const App = () => {
                     ⚖️ Compare Colleges
                   </motion.button>
                   {category === 'anna' && (
-                    <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
-                      <BookOpen size={16} />
-                      <span>EXPLORE DEPARTMENTS</span>
-                    </button>
+                    <>
+                      <button className="dept-details-btn-header" onClick={() => openDeptDetails()}>
+                        <BookOpen size={16} />
+                        <span>EXPLORE DEPARTMENTS</span>
+                      </button>
+                      <button className="dept-details-btn-header" onClick={() => openLateralPredictor()} style={{ background: 'linear-gradient(135deg, #10b981, #14b8a6)' }}>
+                        <Zap size={16} />
+                        <span>LATERAL PREDICTOR</span>
+                      </button>
+                    </>
                   )}
                 </div>
               </div>
@@ -1460,6 +1487,7 @@ const App = () => {
             <DepartmentDetailsPage
               onBack={() => setView('explorer')}
               onCompare={() => setView('comparison')}
+              onLateralPredictor={openLateralPredictor}
               onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
               onOpenBranchGuide={openBranchGuide}
               selectedDept={selectedDept}
@@ -1510,6 +1538,18 @@ const App = () => {
                   setSelectedBranchId(null);
                 }
               }}
+            />
+          </motion.main>
+        )}
+        {view === 'lateral-predictor' && (
+          <motion.main key="lateral-predictor" className="explorer-main" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
+            <LateralPredictor
+              onBack={goHome}
+              onCompare={(college) => {
+                setView('college-comparison');
+              }}
+              onOpenQuery={(name) => setQueryModal({ open: true, college: name })}
+              tneaData={TNEA_DATA}
             />
           </motion.main>
         )}
@@ -2623,11 +2663,14 @@ const CollegeComparisonPage = ({ onBack }) => {
   const filteredColleges = useMemo(() => {
     const q = searchTerm.toLowerCase();
     if (!q) return allColleges;
-    return allColleges.filter(c =>
-      c.name.toLowerCase().includes(q) ||
-      (c.city || '').toLowerCase().includes(q) ||
-      (c.code || '').toLowerCase().includes(q)
-    );
+    const cleanQ = q.replace(/[^a-z0-9]/g, '');
+    return allColleges.filter(c => {
+      const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return cleanName.includes(cleanQ) ||
+        c.name.toLowerCase().includes(q) ||
+        (c.city || '').toLowerCase().includes(q) ||
+        (c.code || '').toLowerCase().includes(q);
+    });
   }, [searchTerm, allColleges]);
 
   const toggleCollege = (col) => {
@@ -3295,7 +3338,7 @@ const CollegeComparisonPage = ({ onBack }) => {
   );
 };
 
-const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery, onOpenBranchGuide, selectedDept, setSelectedDept, showAllColleges, setShowAllColleges }) => {
+const DepartmentDetailsPage = ({ onBack, onCompare, onLateralPredictor, onOpenQuery, onOpenBranchGuide, selectedDept, setSelectedDept, showAllColleges, setShowAllColleges }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [expandedCollegeCode, setExpandedCollegeCode] = useState(null);
 
@@ -3762,25 +3805,48 @@ const DepartmentDetailsPage = ({ onBack, onCompare, onOpenQuery, onOpenBranchGui
           <h1 style={{ fontSize: '2rem', fontWeight: 800, marginBottom: 8, color: '#0f172a' }}>Explore Departments</h1>
           <p style={{ color: '#64748b' }}>Search globally across all Anna University affiliated campuses to find your desired stream.</p>
         </div>
-        <motion.button
-          onClick={onCompare}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          style={{
-            background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '10px',
-            padding: '10px 18px',
-            fontWeight: 700,
-            fontSize: '0.9rem',
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-            boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
-          }}
-        >
-          ⚖️ Compare Departments
-        </motion.button>
+        <div style={{ display: 'flex', gap: 12 }}>
+          <motion.button
+            onClick={onCompare}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              background: 'linear-gradient(135deg, #8b5cf6, #6366f1)',
+              color: '#fff',
+              border: 'none',
+              borderRadius: '10px',
+              padding: '10px 18px',
+              fontWeight: 700,
+              fontSize: '0.9rem',
+              cursor: 'pointer',
+              whiteSpace: 'nowrap',
+              boxShadow: '0 4px 12px rgba(99,102,241,0.3)',
+            }}
+          >
+            ⚖️ Compare Departments
+          </motion.button>
+          {onLateralPredictor && (
+            <motion.button
+              onClick={onLateralPredictor}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: 'linear-gradient(135deg, #10b981, #14b8a6)',
+                color: '#fff',
+                border: 'none',
+                borderRadius: '10px',
+                padding: '10px 18px',
+                fontWeight: 700,
+                fontSize: '0.9rem',
+                cursor: 'pointer',
+                whiteSpace: 'nowrap',
+                boxShadow: '0 4px 12px rgba(16,185,129,0.3)',
+              }}
+            >
+              🎓 Cut-off Predictor
+            </motion.button>
+          )}
+        </div>
       </div>
 
       <div style={{ marginBottom: 32, position: 'relative' }}>

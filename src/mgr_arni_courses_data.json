@@ -1,0 +1,248 @@
+[
+  {
+    "sno": 1,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Artificial Intelligence"
+  },
+  {
+    "sno": 2,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science and Engineering"
+  },
+  {
+    "sno": 3,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Information Technology"
+  },
+  {
+    "sno": 4,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering"
+  },
+  {
+    "sno": 5,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering"
+  },
+  {
+    "sno": 6,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering"
+  },
+  {
+    "sno": 7,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Optometry"
+  },
+  {
+    "sno": 8,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Cardiac Care Technology"
+  },
+  {
+    "sno": 9,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Cardio Pulmonary Perfusion Care Technology"
+  },
+  {
+    "sno": 10,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Emergency and Trauma Care"
+  },
+  {
+    "sno": 11,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Operation Theater and Anesthesia Technology"
+  },
+  {
+    "sno": 12,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Physician Assistant"
+  },
+  {
+    "sno": 13,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Radiology and Images Technology"
+  },
+  {
+    "sno": 14,
+    "school": "Paramedical",
+    "degree": "B.P.T",
+    "programme": "Physiotherapy"
+  },
+  {
+    "sno": 15,
+    "school": "Paramedical",
+    "degree": "M.P.T",
+    "programme": "Mater Of Physiotherapy"
+  },
+  {
+    "sno": 16,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Human Resource Management"
+  },
+  {
+    "sno": 17,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Political Science"
+  },
+  {
+    "sno": 18,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Public Administration"
+  },
+  {
+    "sno": 19,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Bachelor of Physical Education and Spots [BPES]"
+  },
+  {
+    "sno": 20,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Psychology"
+  },
+  {
+    "sno": 21,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Animation and Visual Communication"
+  },
+  {
+    "sno": 22,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Computer Science"
+  },
+  {
+    "sno": 23,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Information Science and Cyber Forensics"
+  },
+  {
+    "sno": 24,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Criminology and Forensic Science"
+  },
+  {
+    "sno": 25,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Data Science"
+  },
+  {
+    "sno": 26,
+    "school": "Arts & Science",
+    "degree": "B.C.A",
+    "programme": "General"
+  },
+  {
+    "sno": 27,
+    "school": "Arts & Science",
+    "degree": "B.C.A",
+    "programme": "Digital Technology"
+  },
+  {
+    "sno": 28,
+    "school": "Arts & Science",
+    "degree": "B.C.A",
+    "programme": "Artificial Intelligence & Data Science"
+  },
+  {
+    "sno": 29,
+    "school": "Management Studies",
+    "degree": "MCA",
+    "programme": "Mater in Computer Application"
+  },
+  {
+    "sno": 30,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "General"
+  },
+  {
+    "sno": 31,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Corporate Secretaryship"
+  },
+  {
+    "sno": 32,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Accounts and Finance"
+  },
+  {
+    "sno": 33,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Computer Applications"
+  },
+  {
+    "sno": 34,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Hotel Management and Catering Technology"
+  },
+  {
+    "sno": 35,
+    "school": "Arts & Science",
+    "degree": "B.B.A",
+    "programme": "General"
+  },
+  {
+    "sno": 36,
+    "school": "Arts & Science",
+    "degree": "B.B.A",
+    "programme": "Financial Planning"
+  },
+  {
+    "sno": 37,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Master of Business Administration"
+  },
+  {
+    "sno": 38,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Human Resource Management"
+  },
+  {
+    "sno": 39,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Financial Management"
+  },
+  {
+    "sno": 40,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Business Analytics"
+  },
+  {
+    "sno": 41,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Logistics and Supply Chain Management"
+  }
+]
