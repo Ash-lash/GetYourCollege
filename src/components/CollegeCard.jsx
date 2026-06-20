@@ -656,8 +656,10 @@ const VelsCourseExplorer = ({ college }) => {
 
   // Grouped unique schools list
   const schoolsList = useMemo(() => {
-    return Object.keys(SCHOOL_META).sort();
-  }, []);
+    return Object.keys(SCHOOL_META)
+      .filter(sch => coursesData.some(c => c.school === sch))
+      .sort();
+  }, [coursesData]);
 
   const meta = SCHOOL_META[activeSchool] || SCHOOL_META['Arts & Science'];
   const ActiveSchoolIcon = meta.icon || GraduationCap;
