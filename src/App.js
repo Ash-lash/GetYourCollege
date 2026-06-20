@@ -317,6 +317,10 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
   const [otpSent, setOtpSent] = useState(false);
   const [otp, setOtp] = useState('');
 
+  // Keyboard navigation & focus refs
+  const firstInputRef = React.useRef(null);
+  const [highlightedIndex, setHighlightedIndex] = useState(-1);
+
   useEffect(() => {
     if (isOpen) {
       setMode('register'); setFirstName(''); setLastName(''); setRegNum('');
@@ -324,6 +328,32 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
       setPhone(''); setOtpSent(false); setOtp('');
     }
   }, [isOpen]);
+
+  // Sync focus to first field when open or tab mode changes
+  useEffect(() => {
+    if (isOpen) {
+      const timer = setTimeout(() => {
+        firstInputRef.current?.focus();
+      }, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen, mode]);
+
+  // Close modal on Escape key press
+  useEffect(() => {
+    const handleGlobalKeyDown = (e) => {
+      if (isOpen && dismissable && e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [isOpen, dismissable, onClose]);
+
+  // Reset highlighted index when dropdown list changes
+  useEffect(() => {
+    setHighlightedIndex(-1);
+  }, [districtQuery, showDistricts]);
 
   if (!isOpen) return null;
 
@@ -337,6 +367,39 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
 
   const handleSendOtp = () => { if (canSendOtp) setOtpSent(true); };
   const handleVerify = () => { if (otp === '1234') onComplete(); };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!otpSent) {
+      if (canSendOtp) handleSendOtp();
+    } else {
+      if (otp === '1234') handleVerify();
+    }
+  };
+
+  const handleDistrictKeyDown = (e) => {
+    if (!showDistricts || filteredDistricts.length === 0) return;
+
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev + 1) % filteredDistricts.length);
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      setHighlightedIndex(prev => (prev - 1 + filteredDistricts.length) % filteredDistricts.length);
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      const idx = highlightedIndex >= 0 ? highlightedIndex : 0;
+      const selected = filteredDistricts[idx];
+      if (selected) {
+        setDistrict(selected);
+        setDistrictQuery('');
+        setShowDistricts(false);
+      }
+    } else if (e.key === 'Escape') {
+      e.preventDefault();
+      setShowDistricts(false);
+    }
+  };
 
   const inputStyle = {
     width:'100%', padding:'12px 14px', border:'1px solid #e2e8f0',
@@ -364,150 +427,179 @@ const RegistrationModal = ({ isOpen, dismissable, onClose, onComplete }) => {
           maxHeight:'92vh', overflowY:'auto'
         }}
       >
-        {dismissable && (
-          <button
-            onClick={onClose}
-            style={{
-              position:'absolute', top:12, right:12, background:'transparent',
-              border:'none', cursor:'pointer', color:'#64748b', padding:6
-            }}
-            aria-label="Close"
-          >
-            <X size={20} />
-          </button>
-        )}
-
-        <div style={{ textAlign:'center', marginBottom:18 }}>
-          <div style={{ fontSize:'1.5rem', fontWeight:800, color:'#0f172a', letterSpacing:'0.02em' }}>
-            GET YOUR <span style={{ color:'#10b981' }}>COLLEGE</span>
-          </div>
-          <div style={{ fontSize:'0.7rem', fontWeight:700, letterSpacing:'0.2em', color:'#64748b', marginTop:4 }}>
-            QUANTUM SHIFT TO YOUR CAREER
-          </div>
-        </div>
-
-        <h2 style={{ fontSize:'1.1rem', fontWeight:700, color:'#0f172a', marginBottom:16 }}>
-          Let's get you started...
-        </h2>
-
-        <div style={{ display:'flex', background:'#f1f5f9', borderRadius:10, padding:4, marginBottom:18 }}>
-          <button
-            onClick={() => setMode('login')}
-            style={{
-              flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
-              background: mode==='login' ? '#2563eb' : 'transparent',
-              color: mode==='login' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
-              transition:'all 0.2s'
-            }}
-          >Login</button>
-          <button
-            onClick={() => setMode('register')}
-            style={{
-              flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
-              background: mode==='register' ? '#2563eb' : 'transparent',
-              color: mode==='register' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
-              transition:'all 0.2s'
-            }}
-          >Register</button>
-        </div>
-
-        {mode === 'register' && (
-          <>
-            <div style={{ marginBottom:12 }}>
-              <label style={labelStyle}>First Name <span style={{ color:'#ef4444' }}>*</span></label>
-              <input style={inputStyle} placeholder="Enter first name" value={firstName} onChange={e => setFirstName(e.target.value)} />
-            </div>
-            <div style={{ marginBottom:12 }}>
-              <label style={labelStyle}>Last Name</label>
-              <input style={inputStyle} placeholder="Enter last name" value={lastName} onChange={e => setLastName(e.target.value)} />
-            </div>
-            <div style={{ marginBottom:12 }}>
-              <label style={labelStyle}>12th Register Number <span style={{ color:'#ef4444' }}>*</span></label>
-              <input style={inputStyle} placeholder="XXXXXXXXX" value={regNum} onChange={e => setRegNum(e.target.value)} />
-            </div>
-            <div style={{ marginBottom:12, position:'relative' }}>
-              <label style={labelStyle}>District <span style={{ color:'#ef4444' }}>*</span></label>
-              <input
-                style={inputStyle}
-                placeholder="Search by district"
-                value={district || districtQuery}
-                onChange={e => { setDistrictQuery(e.target.value); setDistrict(''); setShowDistricts(true); }}
-                onFocus={() => setShowDistricts(true)}
-              />
-              {showDistricts && !district && districtQuery && filteredDistricts.length > 0 && (
-                <div style={{
-                  position:'absolute', top:'100%', left:0, right:0, background:'#fff',
-                  border:'1px solid #e2e8f0', borderRadius:10, marginTop:4, maxHeight:160,
-                  overflowY:'auto', zIndex:10, boxShadow:'0 8px 20px rgba(0,0,0,0.08)'
-                }}>
-                  {filteredDistricts.map(d => (
-                    <div key={d}
-                      onClick={() => { setDistrict(d); setDistrictQuery(''); setShowDistricts(false); }}
-                      style={{ padding:'10px 14px', cursor:'pointer', fontSize:'0.88rem', color:'#334155' }}
-                      onMouseEnter={e => e.currentTarget.style.background='#f1f5f9'}
-                      onMouseLeave={e => e.currentTarget.style.background='#fff'}
-                    >{d}</div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </>
-        )}
-
-        <div style={{ marginBottom:16 }}>
-          <label style={labelStyle}>
-            {mode === 'login' ? 'Mobile Number' : 'Provide your mobile number to send OTP'}
-          </label>
-          <input
-            style={inputStyle}
-            placeholder="+91"
-            value={phone}
-            onChange={e => setPhone(e.target.value.replace(/\D/g,'').slice(0,10))}
-          />
-        </div>
-
-        {!otpSent && (
-          <button
-            disabled={!canSendOtp}
-            onClick={handleSendOtp}
-            style={{
-              width:'100%', padding:'13px', border:'none', borderRadius:10,
-              background: canSendOtp ? '#2563eb' : '#93c5fd',
-              color:'#fff', fontWeight:700, fontSize:'0.95rem',
-              cursor: canSendOtp ? 'pointer' : 'not-allowed', transition:'all 0.2s'
-            }}
-          >Get OTP</button>
-        )}
-
-        {otpSent && (
-          <>
-            <div style={{ marginBottom:12 }}>
-              <label style={labelStyle}>OTP Sent (demo: 1234)</label>
-              <input
-                style={inputStyle}
-                placeholder="Enter OTP"
-                value={otp}
-                onChange={e => setOtp(e.target.value.replace(/\D/g,'').slice(0,4))}
-              />
-            </div>
+        <form onSubmit={handleSubmit}>
+          {dismissable && (
             <button
-              disabled={otp !== '1234'}
-              onClick={handleVerify}
+              type="button"
+              onClick={onClose}
+              style={{
+                position:'absolute', top:12, right:12, background:'transparent',
+                border:'none', cursor:'pointer', color:'#64748b', padding:6
+              }}
+              aria-label="Close"
+            >
+              <X size={20} />
+            </button>
+          )}
+
+          <div style={{ textAlign:'center', marginBottom:18 }}>
+            <div style={{ fontSize:'1.5rem', fontWeight:800, color:'#0f172a', letterSpacing:'0.02em' }}>
+              GET YOUR <span style={{ color:'#10b981' }}>COLLEGE</span>
+            </div>
+            <div style={{ fontSize:'0.7rem', fontWeight:700, letterSpacing:'0.2em', color:'#64748b', marginTop:4 }}>
+              QUANTUM SHIFT TO YOUR CAREER
+            </div>
+          </div>
+
+          <h2 style={{ fontSize:'1.1rem', fontWeight:700, color:'#0f172a', marginBottom:16 }}>
+            Let's get you started...
+          </h2>
+
+          <div style={{ display:'flex', background:'#f1f5f9', borderRadius:10, padding:4, marginBottom:18 }}>
+            <button
+              type="button"
+              onClick={() => setMode('login')}
+              style={{
+                flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
+                background: mode==='login' ? '#2563eb' : 'transparent',
+                color: mode==='login' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
+                transition:'all 0.2s'
+              }}
+            >Login</button>
+            <button
+              type="button"
+              onClick={() => setMode('register')}
+              style={{
+                flex:1, padding:'10px', border:'none', borderRadius:8, cursor:'pointer',
+                background: mode==='register' ? '#2563eb' : 'transparent',
+                color: mode==='register' ? '#fff' : '#64748b', fontWeight:600, fontSize:'0.9rem',
+                transition:'all 0.2s'
+              }}
+            >Register</button>
+          </div>
+
+          {mode === 'register' && (
+            <>
+              <div style={{ marginBottom:12 }}>
+                <label style={labelStyle}>First Name <span style={{ color:'#ef4444' }}>*</span></label>
+                <input
+                  ref={firstInputRef}
+                  style={inputStyle}
+                  placeholder="Enter first name"
+                  value={firstName}
+                  onChange={e => setFirstName(e.target.value)}
+                />
+              </div>
+              <div style={{ marginBottom:12 }}>
+                <label style={labelStyle}>Last Name</label>
+                <input
+                  style={inputStyle}
+                  placeholder="Enter last name"
+                  value={lastName}
+                  onChange={e => setLastName(e.target.value)}
+                />
+              </div>
+              <div style={{ marginBottom:12 }}>
+                <label style={labelStyle}>12th Register Number <span style={{ color:'#ef4444' }}>*</span></label>
+                <input
+                  style={inputStyle}
+                  placeholder="XXXXXXXXX"
+                  value={regNum}
+                  onChange={e => setRegNum(e.target.value)}
+                />
+              </div>
+              <div style={{ marginBottom:12, position:'relative' }}>
+                <label style={labelStyle}>District <span style={{ color:'#ef4444' }}>*</span></label>
+                <input
+                  style={inputStyle}
+                  placeholder="Search by district"
+                  value={district || districtQuery}
+                  onChange={e => { setDistrictQuery(e.target.value); setDistrict(''); setShowDistricts(true); }}
+                  onFocus={() => setShowDistricts(true)}
+                  onKeyDown={handleDistrictKeyDown}
+                />
+                {showDistricts && !district && districtQuery && filteredDistricts.length > 0 && (
+                  <div style={{
+                    position:'absolute', top:'100%', left:0, right:0, background:'#fff',
+                    border:'1px solid #e2e8f0', borderRadius:10, marginTop:4, maxHeight:160,
+                    overflowY:'auto', zIndex:10, boxShadow:'0 8px 20px rgba(0,0,0,0.08)'
+                  }}>
+                    {filteredDistricts.map((d, idx) => {
+                      const isHighlighted = idx === highlightedIndex;
+                      return (
+                        <div key={d}
+                          onClick={() => { setDistrict(d); setDistrictQuery(''); setShowDistricts(false); }}
+                          style={{
+                            padding:'10px 14px', cursor:'pointer', fontSize:'0.88rem',
+                            color:'#334155',
+                            background: isHighlighted ? '#f1f5f9' : '#fff'
+                          }}
+                          onMouseEnter={() => setHighlightedIndex(idx)}
+                        >{d}</div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+
+          <div style={{ marginBottom:16 }}>
+            <label style={labelStyle}>
+              {mode === 'login' ? 'Mobile Number' : 'Provide your mobile number to send OTP'}
+            </label>
+            <input
+              ref={mode === 'login' ? firstInputRef : undefined}
+              style={inputStyle}
+              placeholder="+91"
+              value={phone}
+              onChange={e => setPhone(e.target.value.replace(/\D/g,'').slice(0,10))}
+            />
+          </div>
+
+          {!otpSent && (
+            <button
+              type="submit"
+              disabled={!canSendOtp}
               style={{
                 width:'100%', padding:'13px', border:'none', borderRadius:10,
-                background: otp === '1234' ? '#10b981' : '#a7f3d0',
+                background: canSendOtp ? '#2563eb' : '#93c5fd',
                 color:'#fff', fontWeight:700, fontSize:'0.95rem',
-                cursor: otp === '1234' ? 'pointer' : 'not-allowed', transition:'all 0.2s'
+                cursor: canSendOtp ? 'pointer' : 'not-allowed', transition:'all 0.2s'
               }}
-            >Verify & Continue</button>
-          </>
-        )}
+            >Get OTP</button>
+          )}
 
-        {!dismissable && (
-          <div style={{ marginTop:14, fontSize:'0.75rem', color:'#94a3b8', textAlign:'center' }}>
-            Please complete registration to continue using the site.
-          </div>
-        )}
+          {otpSent && (
+            <>
+              <div style={{ marginBottom:12 }}>
+                <label style={labelStyle}>OTP Sent (demo: 1234)</label>
+                <input
+                  style={inputStyle}
+                  placeholder="Enter OTP"
+                  value={otp}
+                  onChange={e => setOtp(e.target.value.replace(/\D/g,'').slice(0,4))}
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={otp !== '1234'}
+                style={{
+                  width:'100%', padding:'13px', border:'none', borderRadius:10,
+                  background: otp === '1234' ? '#10b981' : '#a7f3d0',
+                  color:'#fff', fontWeight:700, fontSize:'0.95rem',
+                  cursor: otp === '1234' ? 'pointer' : 'not-allowed', transition:'all 0.2s'
+                }}
+              >Verify & Continue</button>
+            </>
+          )}
+
+          {!dismissable && (
+            <div style={{ marginTop:14, fontSize:'0.75rem', color:'#94a3b8', textAlign:'center' }}>
+              Please complete registration to continue using the site.
+            </div>
+          )}
+        </form>
       </motion.div>
     </div>
   );

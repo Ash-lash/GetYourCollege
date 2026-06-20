@@ -14,6 +14,7 @@ import TNEA_MATRIX_DATA from '../branch_matrix_data.json';
 import VELS_COURSES_DATA from '../vels_courses_data.json';
 import MGR_CHENNAI_COURSES_DATA from '../mgr_chennai_courses_data.json';
 import MGR_ARNI_COURSES_DATA from '../mgr_arni_courses_data.json';
+import VELTECH_COURSES_DATA from '../veltech_courses_data.json';
 
 /* ─────────── ROUND DISTRIBUTION ─────────── */
 const SeatDistribution = ({ college, seats }) => {
@@ -439,7 +440,10 @@ const getDegreeDurationAndLevel = (deg, prog, school) => {
     return { duration: '5 Years', level: 'UG Degree' };
   }
   // Integrated Law (BA LLB, BBA LLB, BCom LLB, etc.)
-  if (cleanD.includes('llb') && (cleanD.includes('ba') || cleanD.includes('bba') || cleanD.includes('bcom'))) {
+  if (
+    (cleanD.includes('llb') && (cleanD.includes('ba') || cleanD.includes('bba') || cleanD.includes('bcom'))) ||
+    (p.includes('llb') && (p.includes('ba') || p.includes('bba') || p.includes('bcom') || p.includes('b.a') || p.includes('b.com')))
+  ) {
     return { duration: '5 Years', level: 'Integrated Law' };
   }
 
@@ -456,7 +460,8 @@ const getDegreeDurationAndLevel = (deg, prog, school) => {
   // 2 Years (PG degrees and 2-year diplomas)
   if (
     cleanD === 'msc' || cleanD === 'mcom' || cleanD === 'mpt' || cleanD === 'moptom' ||
-    cleanD === 'mba' || cleanD === 'mca' || cleanD === 'dpharm' || cleanD === 'hnd'
+    cleanD === 'mba' || cleanD === 'mca' || cleanD === 'dpharm' || cleanD === 'hnd' ||
+    cleanD === 'ma' || cleanD === 'me'
   ) {
     const isDip = cleanD === 'dpharm' || cleanD === 'hnd';
     return { duration: '2 Years', level: isDip ? 'Diploma' : 'PG Degree' };
@@ -487,26 +492,27 @@ const getDegreeDurationAndLevel = (deg, prog, school) => {
 const VelsCourseExplorer = ({ college }) => {
   const isVels = college?.name?.toLowerCase().includes('vels');
   const isArni = college?.name?.toLowerCase().includes('arni');
+  const isVeltech = college?.name?.toLowerCase().includes('vel tech') || college?.name?.toLowerCase().includes('veltech');
   
   const coursesData = isVels 
     ? VELS_COURSES_DATA 
-    : (isArni ? MGR_ARNI_COURSES_DATA : MGR_CHENNAI_COURSES_DATA);
+    : (isVeltech ? VELTECH_COURSES_DATA : (isArni ? MGR_ARNI_COURSES_DATA : MGR_CHENNAI_COURSES_DATA));
     
   const defaultSchool = isVels 
     ? 'Allied Health Sciences' 
-    : (isArni ? 'Engineering' : 'Allied Health Sciences');
+    : (isVeltech ? 'Engineering' : (isArni ? 'Engineering' : 'Allied Health Sciences'));
     
   const defaultProgram = isVels 
     ? 'Biomedical Sciences' 
-    : (isArni ? 'Artificial Intelligence' : 'Cardiac Care Technology');
+    : (isVeltech ? 'Aeronautical Engineering with Specialization in Aerospace & Defence' : (isArni ? 'Artificial Intelligence' : 'Cardiac Care Technology'));
     
   const csvFileName = isVels 
     ? 'Vels_University_UG_Courses.csv' 
-    : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv');
+    : (isVeltech ? 'Veltech_University_Courses.csv' : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv'));
 
   const shortName = isVels 
     ? 'VELS' 
-    : (isArni ? 'Dr. M.G.R. (Arni)' : 'Dr. M.G.R. (Chennai)');
+    : (isVeltech ? 'Vel Tech' : (isArni ? 'Dr. M.G.R. (Arni)' : 'Dr. M.G.R. (Chennai)'));
 
   const [viewMode, setViewMode] = useState('os'); // 'os' | 'pathfinder' | 'terminal'
   const [activeSchool, setActiveSchool] = useState(defaultSchool);
@@ -1668,7 +1674,7 @@ const VelsCourseExplorer = ({ college }) => {
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Database Index</span>
-                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>{isVels ? 'VISTAS_UG_2026' : (isArni ? 'MGR_ARNI_2026' : 'MGR_CHENNAI_2026')}</span>
+                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>{isVels ? 'VISTAS_UG_2026' : (isVeltech ? 'VELTECH_2026' : (isArni ? 'MGR_ARNI_2026' : 'MGR_CHENNAI_2026'))}</span>
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Total Courses</span>
@@ -2262,7 +2268,13 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
               <AnimatePresence mode="wait">
                 {activeTab === 'courses' && (
                   <motion.div key="courses" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                    {college.name && (college.name.toLowerCase().includes('vels') || college.name.toLowerCase().includes('m.g.r') || college.name.toLowerCase().includes('mgr')) ? (
+                    {college.name && (
+                      college.name.toLowerCase().includes('vels') || 
+                      college.name.toLowerCase().includes('m.g.r') || 
+                      college.name.toLowerCase().includes('mgr') || 
+                      college.name.toLowerCase().includes('vel tech') || 
+                      college.name.toLowerCase().includes('veltech')
+                    ) ? (
                       <VelsCourseExplorer college={college} />
                     ) : courses.length > 0 ? (
                       <CourseLevels courses={courses} />

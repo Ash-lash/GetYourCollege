@@ -1,0 +1,704 @@
+[
+  {
+    "sno": 1,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Aeronautical Engineering with Specialization in Aerospace & Defence"
+  },
+  {
+    "sno": 2,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Aeronautical Engineering with Specialization in Artificial Intelligence & Machine Learning"
+  },
+  {
+    "sno": 3,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Aeronautical Engineering with Specialization in Product Design & Development"
+  },
+  {
+    "sno": 4,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Aeronautical Engineering with Specialization in Unmanned Aircraft System"
+  },
+  {
+    "sno": 5,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Bio Medical Engineering"
+  },
+  {
+    "sno": 6,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Bio Medical Engineering with Specialization in Artificial Intelligence in Healthcare"
+  },
+  {
+    "sno": 7,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Biotechnology"
+  },
+  {
+    "sno": 8,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Biotechnology with Specialization in Food and Precision Agriculture"
+  },
+  {
+    "sno": 9,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Biotechnology with Specialization in Regenerative Medicine and Health diagnostics"
+  },
+  {
+    "sno": 10,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Civil Engineering"
+  },
+  {
+    "sno": 11,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Civil Engineering with Specialization in Computer Aided Infrastructure Engineering"
+  },
+  {
+    "sno": 12,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering"
+  },
+  {
+    "sno": 13,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 14,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Artificial Intelligence and Data Science"
+  },
+  {
+    "sno": 15,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Artificial Intelligence and Robotics"
+  },
+  {
+    "sno": 16,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Business Intelligence System"
+  },
+  {
+    "sno": 17,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Cloud Computing"
+  },
+  {
+    "sno": 18,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Cyber Security"
+  },
+  {
+    "sno": 19,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in IoT and Unmanned vehicles"
+  },
+  {
+    "sno": 20,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Quantum Computing"
+  },
+  {
+    "sno": 21,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Animation and Game Design"
+  },
+  {
+    "sno": 22,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Bio Informatics"
+  },
+  {
+    "sno": 23,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering with Specialization in Blockchain Technology"
+  },
+  {
+    "sno": 24,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With EEE Minor Degree in Electronic Vechile Technology"
+  },
+  {
+    "sno": 25,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With EEE Minor Degree in Renewable Energy"
+  },
+  {
+    "sno": 26,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With Mechanical Minor Degree in Automation and Robotics"
+  },
+  {
+    "sno": 27,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With Mechanical Minor Degree in Additive Manufacturing"
+  },
+  {
+    "sno": 28,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With Management Studies"
+  },
+  {
+    "sno": 29,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With ECE Minor Smart Communication Technologies"
+  },
+  {
+    "sno": 30,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With ECE Minor Smart Automation"
+  },
+  {
+    "sno": 31,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With ECE Minor Semiconductor Technologies"
+  },
+  {
+    "sno": 32,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With ECE Minor Internet of Things (IOT)"
+  },
+  {
+    "sno": 33,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering With ECE Minor 5G and Beyond"
+  },
+  {
+    "sno": 34,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Artificial Intelligence (AI) and Data Science"
+  },
+  {
+    "sno": 35,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science and Engineering (Artificial Intelligence & Machine Learning)"
+  },
+  {
+    "sno": 36,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science and Engineering (Cyber Security)"
+  },
+  {
+    "sno": 37,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science and Engineering (Data Science)"
+  },
+  {
+    "sno": 38,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering"
+  },
+  {
+    "sno": 39,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering Minor Degree in Computer Systems"
+  },
+  {
+    "sno": 40,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering Minor Degree in Electric Vehicles"
+  },
+  {
+    "sno": 41,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering With CSE Minor Degree in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 42,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering With CSE Minor Degree in Computer Science & Engineering"
+  },
+  {
+    "sno": 43,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering With Mechanical Minor Degree in Automation and Robotics"
+  },
+  {
+    "sno": 44,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical and Electronics Engineering With Mechanical Minor Degree in Additive Manufacturing"
+  },
+  {
+    "sno": 45,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering"
+  },
+  {
+    "sno": 46,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering Minor Degree in Artificial Intelligence and Data science"
+  },
+  {
+    "sno": 47,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering Minor Degree in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 48,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering Minor Degree in Cyber Security"
+  },
+  {
+    "sno": 49,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering Minor Degree in Internet of Things (IoT)"
+  },
+  {
+    "sno": 50,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering Minor Degree in Integrated Circuit Technology"
+  },
+  {
+    "sno": 51,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Information Technology"
+  },
+  {
+    "sno": 52,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Information Technology with Specialization in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 53,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Information Technology with Specialization in Cloud Computing"
+  },
+  {
+    "sno": 54,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering"
+  },
+  {
+    "sno": 55,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering with Specialization in Artificial Intelligence and Robotics"
+  },
+  {
+    "sno": 56,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering with Specialization in Energy Management"
+  },
+  {
+    "sno": 57,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering with Specialization in Mechatronics"
+  },
+  {
+    "sno": 58,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 59,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Computer Science & Engineering"
+  },
+  {
+    "sno": 60,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With ECE Minor Degrees in Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 61,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With ECE Minor Degrees in Computer Science & Engineering"
+  },
+  {
+    "sno": 62,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Smart Communication Technologies"
+  },
+  {
+    "sno": 63,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Smart Automation"
+  },
+  {
+    "sno": 64,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Semiconductor Technologies"
+  },
+  {
+    "sno": 65,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in Internet of Things (IoT)"
+  },
+  {
+    "sno": 66,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With CSE Minor Degrees in 5G and Beyond"
+  },
+  {
+    "sno": 67,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With EEE Minor Degree in Electronic Vechile Technology"
+  },
+  {
+    "sno": 68,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering With EEE Minor Degree in Renewable Energy"
+  },
+  {
+    "sno": 69,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Visual Communication"
+  },
+  {
+    "sno": 70,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Multimedia"
+  },
+  {
+    "sno": 71,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "General"
+  },
+  {
+    "sno": 72,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Accounting and Finance"
+  },
+  {
+    "sno": 73,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Computer Applications"
+  },
+  {
+    "sno": 74,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Corporate Secretaryship"
+  },
+  {
+    "sno": 75,
+    "school": "Arts & Science",
+    "degree": "B.Com",
+    "programme": "Professional Accounting"
+  },
+  {
+    "sno": 76,
+    "school": "Management Studies",
+    "degree": "B.B.A",
+    "programme": "Business Analytics"
+  },
+  {
+    "sno": 77,
+    "school": "Management Studies",
+    "degree": "B.B.A",
+    "programme": "Human Resource Management"
+  },
+  {
+    "sno": 78,
+    "school": "Management Studies",
+    "degree": "B.B.A",
+    "programme": "Finance"
+  },
+  {
+    "sno": 79,
+    "school": "Management Studies",
+    "degree": "B.B.A",
+    "programme": "International Business Management"
+  },
+  {
+    "sno": 80,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Business Analytics"
+  },
+  {
+    "sno": 81,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Digital Marketing"
+  },
+  {
+    "sno": 82,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Finance"
+  },
+  {
+    "sno": 83,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Human Resource"
+  },
+  {
+    "sno": 84,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Logistics and Shipping Management"
+  },
+  {
+    "sno": 85,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Technopreneurship"
+  },
+  {
+    "sno": 86,
+    "school": "Law",
+    "degree": "LLB",
+    "programme": "B.A., LL.B. (Hons)"
+  },
+  {
+    "sno": 87,
+    "school": "Law",
+    "degree": "LLB",
+    "programme": "B.Com., LL.B. (Hons)"
+  },
+  {
+    "sno": 88,
+    "school": "Law",
+    "degree": "LLB",
+    "programme": "Ph.D"
+  },
+  {
+    "sno": 89,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Aeronautical Engineering (Unmanned Aerial Vehicles)"
+  },
+  {
+    "sno": 90,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Big Data Analytics"
+  },
+  {
+    "sno": 91,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Biotechnology (DBT Sponsored GAT B Programme)"
+  },
+  {
+    "sno": 92,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Computer Systems and Technologies"
+  },
+  {
+    "sno": 93,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Computer Science and Engineering"
+  },
+  {
+    "sno": 94,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Embedded Systems and Technologies"
+  },
+  {
+    "sno": 95,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Environmental Engineering"
+  },
+  {
+    "sno": 96,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Industrial Safety and Engineering"
+  },
+  {
+    "sno": 97,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Information and Cyber Security"
+  },
+  {
+    "sno": 98,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Metallurgical and Material Science Engineering"
+  },
+  {
+    "sno": 99,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Power Electronics"
+  },
+  {
+    "sno": 100,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Structural Engineering"
+  },
+  {
+    "sno": 101,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Business Analytics"
+  },
+  {
+    "sno": 102,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Digital Marketing"
+  },
+  {
+    "sno": 103,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Finance"
+  },
+  {
+    "sno": 104,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Human Resource"
+  },
+  {
+    "sno": 105,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Logistics and Shipping Management"
+  },
+  {
+    "sno": 106,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Technopreneurship"
+  },
+  {
+    "sno": 107,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Mathematics"
+  },
+  {
+    "sno": 108,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Physics"
+  },
+  {
+    "sno": 109,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Chemistry"
+  },
+  {
+    "sno": 110,
+    "school": "Arts & Science",
+    "degree": "M.A",
+    "programme": "English"
+  },
+  {
+    "sno": 111,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Data Analytics"
+  },
+  {
+    "sno": 112,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science"
+  },
+  {
+    "sno": 113,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science With Artificial Intelligence"
+  },
+  {
+    "sno": 114,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics and Communication Engineering"
+  },
+  {
+    "sno": 115,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Biotechnology"
+  },
+  {
+    "sno": 116,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science Engineering with Artificial Intelligence and Machine Learning"
+  },
+  {
+    "sno": 117,
+    "school": "Engineering",
+    "degree": "MBA",
+    "programme": "MBA"
+  }
+]
