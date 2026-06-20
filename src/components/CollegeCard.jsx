@@ -376,15 +376,16 @@ const SCHOOL_META = {
   }
 };
 
-const getPathfinderAISummary = (programme, degree, school) => {
+const getPathfinderAISummary = (programme, degree, school, shortName) => {
+  const name = shortName || 'University';
   if (school === 'Maritime Studies') {
     return `Pursuing a ${degree} in ${programme} within the School of Maritime Studies represents a premier pathway to international shipping careers. Accredited by the Directorate General of Shipping (Govt of India), this track equips cadets with advanced navigation, nautical science, and offshore design competencies. Top graduates secure global merchant vessel positions with tax-free starting packages ranging from ₹8.0L to ₹24.0L per annum, primarily with elite partners like Maersk, MSC Cruises, and Chevron.`;
   }
   if (school === 'Engineering') {
-    return `The ${degree} in ${programme} at VISTAS School of Engineering aligns with Industry 4.0 standards. Incorporating practical laboratory modules in AI, robotics, and advanced coding, this track bridges foundational engineering concepts with cutting-edge tech deployment. Software engineers and machine learning developers from this program receive lucrative offers from tech firms including Google and Amazon, with salary projections climbing up to ₹16.0L per annum.`;
+    return `The ${degree} in ${programme} at ${name} School of Engineering aligns with Industry 4.0 standards. Incorporating practical laboratory modules in AI, robotics, and advanced coding, this track bridges foundational engineering concepts with cutting-edge tech deployment. Software engineers and machine learning developers from this program receive lucrative offers from tech firms including Google and Amazon, with salary projections climbing up to ₹16.0L per annum.`;
   }
   if (school === 'Law') {
-    return `Completing a ${degree} in ${programme} provides a comprehensive jurisprudential training approved by the Bar Council of India. Students specialize in corporate compliance, maritime law, and international disputes, training in VISTAS' on-campus Moot Court Hall. Legal advisors and counsels from this track land roles at top-tier legal firms like Trilegal and Amarchand Mangaldas, with average salaries starting between ₹6.0L and ₹15.0L per annum.`;
+    return `Completing a ${degree} in ${programme} provides a comprehensive jurisprudential training approved by the Bar Council of India. Students specialize in corporate compliance, maritime law, and international disputes, training in ${name}'s on-campus Moot Court Hall. Legal advisors and counsels from this track land roles at top-tier legal firms like Trilegal and Amarchand Mangaldas, with average salaries starting between ₹6.0L and ₹15.0L per annum.`;
   }
   if (school === 'Management Studies') {
     return `The ${degree} in ${programme} is tailored for the high-growth fields of aviation, shipping logistics, and digital commerce. With core coursework covering logistics strategy, supply chain management, and business analytics, students are prepared to enter global corporate networks. Leading logistics and consulting firms like DHL, Deloitte, and Amazon Operations recruit managers from this program at starting packages of ₹4.5L to ₹12.0L per annum.`;
@@ -502,6 +503,10 @@ const VelsCourseExplorer = ({ college }) => {
   const csvFileName = isVels 
     ? 'Vels_University_UG_Courses.csv' 
     : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv');
+
+  const shortName = isVels 
+    ? 'VELS' 
+    : (isArni ? 'Dr. M.G.R. (Arni)' : 'Dr. M.G.R. (Chennai)');
 
   const [viewMode, setViewMode] = useState('os'); // 'os' | 'pathfinder' | 'terminal'
   const [activeSchool, setActiveSchool] = useState(defaultSchool);
@@ -1154,7 +1159,7 @@ const VelsCourseExplorer = ({ college }) => {
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <div className="os-dot-indicator" />
               <span style={{ fontSize: '0.78rem', fontWeight: 800, color: '#475569', letterSpacing: '0.05em' }}>
-                VISTAS ACADEMIC OS v1.0
+                MENTORA AI ACADEMIC OS v1.0
               </span>
             </div>
           </div>
@@ -1610,7 +1615,7 @@ const VelsCourseExplorer = ({ college }) => {
                       </span>
                     </div>
                     <p style={{ fontSize: '0.82rem', color: '#334155', margin: 0, lineHeight: 1.5 }}>
-                      {getPathfinderAISummary(pathfinderDetail.programme, pathfinderDetail.degree, pathfinderDetail.school)}
+                      {getPathfinderAISummary(pathfinderDetail.programme, pathfinderDetail.degree, pathfinderDetail.school, shortName)}
                     </p>
                   </div>
                 )}
@@ -1633,7 +1638,7 @@ const VelsCourseExplorer = ({ college }) => {
                     <Table size={18} color="#4f46e5" /> Interactive Spreadsheet Grid
                   </h3>
                   <p style={{ fontSize: '0.82rem', color: '#64748b', margin: '4px 0 0' }}>
-                    Search, sort, filter and export the official Vels UG course catalog containing 81 branches.
+                    Search, sort, filter and export the official {shortName} UG course catalog containing {coursesData.length} branches.
                   </p>
                 </div>
 
@@ -1663,11 +1668,11 @@ const VelsCourseExplorer = ({ college }) => {
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Database Index</span>
-                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>VISTAS_UG_2026</span>
+                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>{isVels ? 'VISTAS_UG_2026' : (isArni ? 'MGR_ARNI_2026' : 'MGR_CHENNAI_2026')}</span>
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Total Courses</span>
-                  <span className="terminal-status-val">81 Courses</span>
+                  <span className="terminal-status-val">{coursesData.length} Courses</span>
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Encryption</span>
