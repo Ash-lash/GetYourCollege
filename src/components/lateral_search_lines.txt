@@ -1,0 +1,8 @@
+Line 18: const [searchTerm, setSearchTerm] = useState('');
+Line 123: if (searchTerm.trim()) {
+Line 124: const term = searchTerm.toLowerCase();
+Line 156: }, [cutoffVal, selectedCommunity, selectedCity, searchTerm, selectedChanceFilter, collegeMap]);
+Line 164: // Loop through unfiltered results to get true counts
+Line 415: value={searchTerm}
+Line 433: {(selectedCity || searchTerm || selectedChanceFilter !== 'ALL') && (
+Line 717: {(selectedCity || searchTerm || selectedChanceFilter !== 'ALL') && (

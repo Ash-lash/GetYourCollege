@@ -130,8 +130,10 @@ export default function LateralPredictor({ onBack, onCompare, onOpenQuery, tneaD
         const branchName = item.branchName.toLowerCase();
         const branchCode = item.branchCode.toLowerCase();
         
+        const matchesSju = cleanTerm === 'sju' && cleanCollegeName.includes('joseph');
         if (!collegeName.includes(term) && 
             !cleanCollegeName.includes(cleanTerm) &&
+            !matchesSju &&
             !collegeCode.includes(term) && 
             !city.includes(term) && 
             !branchName.includes(term) && 

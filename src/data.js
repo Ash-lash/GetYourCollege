@@ -8334,8 +8334,136 @@ export const PRIVATE_DATA = [
     {cat:"Arts & Science",branches:[["B.Com","Commerce"],["BBA","Business Administration"],["B.Sc","Computer Science / Mathematics / Physics / Chemistry / Biotechnology"],["BCA","Computer Applications"]]}
   ]},
   {name:"St. Joseph University",addr:"Keezhathanur Village, Tindivanam Taluk, Villupuram – 604305",city:"Villupuram",status:"2(f)",courses:[
-    {cat:"Engineering",branches:[["B.Tech","CSE"],["B.Tech","AI & Data Science"],["B.Tech","ECE"],["B.Tech","EEE"],["B.Tech","Mechanical Engineering"]]},
-    {cat:"Arts & Science",branches:[["B.Sc","Computer Science / Mathematics / Physics / Chemistry"],["B.Com","Commerce"],["BBA","Business Administration"],["BCA","Computer Applications"]]}
+    {
+      cat: "Engineering",
+      branches: [
+        ["B.Tech", "Computer Science & Medical Engineering"],
+        ["B.Tech", "Electrical & Electronics Engineering"],
+        ["B.Tech", "Electronics & Communication Engineering"],
+        ["B.Tech", "Mechanical Engineering"],
+        ["B.Tech", "Agricultural Engineering"],
+        ["B.Tech", "Computer Science & Engineering"],
+        ["B.Tech", "Computer Science & Engineering (Cyber Security)"],
+        ["B.Tech", "Computer Science & Engineering (AI & DS)"],
+        ["B.Tech", "Computer Science & Engineering (AI & ML)"],
+        ["B.Tech", "Information Technology"],
+        ["B.C.A", "Bachelor of Computer Applications"],
+        ["B.Sc", "Computer Science"],
+        ["B.Sc", "Artificial Intelligence"],
+        ["B.Sc", "Data Science"],
+        ["M.Tech", "Computer Science & Engineering"],
+        ["M.Tech", "Computer Science & Engineering (Integrated)"],
+        ["MCA", "Master of Computer Applications"],
+        ["M.Sc", "Computer Science"],
+        ["M.Sc", "Computer Science (Data Science)"],
+        ["Diploma", "Computer Science & Engineering"]
+      ]
+    },
+    {
+      cat: "Allied Health Sciences",
+      branches: [
+        ["B.Sc", "Hons (Allied Health Sciences)"],
+        ["B.Sc", "Anaesthesia Technology"],
+        ["B.Sc", "Cardiovascular Perfusion Technology"],
+        ["B.Sc", "Cardio Technology"],
+        ["B.Sc", "Clinical Nutrition & Dietetics"],
+        ["B.Sc", "Critical Care Technology"],
+        ["B.Sc", "Diabetic Care Technology"],
+        ["B.Sc", "Renal Dialysis Technology"],
+        ["B.Sc", "Medical Imaging Technology"],
+        ["B.Sc", "Medical Laboratory Technology"],
+        ["B.Sc", "Medical Record Sciences"],
+        ["B.Sc", "Neuro Electro Physiology"],
+        ["B.Sc", "Operation Theatre Technology"],
+        ["B.Sc", "Optometry"],
+        ["B.Sc", "Physician Assistant"],
+        ["B.Sc", "Respiratory Care Technology"],
+        ["B.Sc", "Accident and Emergency Care Technology"],
+        ["B.Sc", "Radiology and Imaging Technology"],
+        ["M.Sc", "Clinical Psychology"],
+        ["M.Sc", "Cardiovascular Perfusion Technology"],
+        ["M.Sc", "Neuro Electrophysiology"],
+        ["M.Sc", "Medical Imaging Technology"],
+        ["M.Sc", "Medical Laboratory Technology"]
+      ]
+    },
+    {
+      cat: "Arts & Science",
+      branches: [
+        ["B.Sc", "Mathematics"],
+        ["B.Sc", "Advanced Zoology & Biotechnology"],
+        ["B.Sc", "Physics"],
+        ["B.Sc", "Statistics"],
+        ["B.Sc", "Chemistry"],
+        ["B.Sc", "Plant Biology & Plant Biotechnology"],
+        ["B.A", "English"],
+        ["B.A", "Economics"],
+        ["B.A", "History"],
+        ["B.A", "Sociology"],
+        ["B.A", "Tamil"],
+        ["BSW", "Social Work"],
+        ["M.Sc", "Physics"],
+        ["M.Sc", "Statistics"],
+        ["M.Sc", "Chemistry"],
+        ["M.Sc", "Mathematics"],
+        ["M.Sc", "Zoology"],
+        ["M.Sc", "Food Chemistry & Food Processing"],
+        ["M.Sc", "Counselling Psychology"],
+        ["M.Sc", "Biotechnology"],
+        ["MSW", "Social Work"],
+        ["B.P.Ed", "Bachelor of Physical Education"],
+        ["BPES", "Bachelor of Physical Education & Sports"],
+        ["B.Sc", "Visual Communication"],
+        ["B.Sc", "Animation & Graphics"],
+        ["B.Sc", "Mass Media & Communication"],
+        ["M.Sc", "Visual Communication"],
+        ["B.Sc", "Agriculture"],
+        ["B.Sc", "Horticulture"]
+      ]
+    },
+    {
+      cat: "Paramedical",
+      branches: [
+        ["BPT", "Bachelor of Physiotherapy"],
+        ["MPT", "Orthopedics & Manual Therapy"],
+        ["MPT", "Neurological Physiotherapy"],
+        ["MPT", "Cardiopulmonary Physiotherapy"],
+        ["MPT", "Sports & Manual Therapy"],
+        ["MPT", "Pediatrics Physiotherapy"],
+        ["B.Sc", "Nursing"],
+        ["B.Pharm", "Bachelor of Pharmacy"]
+      ]
+    },
+    {
+      cat: "Law",
+      branches: [
+        ["BA LLB (Hons)", "BA LLB (Hons)"],
+        ["BCom LLB (Hons)", "B.Com LLB (Hons)"],
+        ["LLB (Hons)", "LLB (Hons)"]
+      ]
+    },
+    {
+      cat: "Management Studies",
+      branches: [
+        ["B.Com", "Corporate Secretaryship"],
+        ["B.Com", "Accounting & Finance"],
+        ["B.Com", "International Finance"],
+        ["B.Com", "Professional Accounting"],
+        ["M.Com", "Commerce"],
+        ["MBA", "AI in Business Management"],
+        ["MBA", "Business Analytics"],
+        ["MBA", "Entrepreneurship and Leadership"],
+        ["MBA", "E-commerce and Retail Management"],
+        ["MBA", "Finance and Fintech"],
+        ["MBA", "Human Resource Management"],
+        ["MBA", "Digital Marketing and Consumer Psychology"],
+        ["MBA", "Project Management"],
+        ["MBA", "Advertising and Media Management"],
+        ["MBA", "Verticals - Industry Oriented Program"],
+        ["MBA", "MBA - Healthcare Management"],
+        ["MBA", "MBA - Logistics and Supply Chai"]
+      ]
+    }
   ]},
   {name:"Takshashila University",addr:"Ongur (Post), Tindivanam Taluk, Villupuram District – 604305",city:"Villupuram",status:"2(f)",courses:[
     {cat:"Engineering",branches:[["B.Tech","CSE"],["B.Tech","AI & Data Science"],["B.Tech","ECE"],["B.Tech","Mechanical Engineering"],["B.Tech","Civil Engineering"]]},

@@ -1,0 +1,45 @@
+Line 892: const [searchTerm, setSearchTerm] = useState('');
+Line 908: useEffect(() => { setVisibleCount(PAGE_SIZE); }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, sortBy, branchFilter, communityFilter]);
+Line 951: const filteredColleges = useMemo(() => {
+Line 1001: if (searchTerm.trim()) {
+Line 1002: const term = searchTerm.toLowerCase();
+Line 1019: }, [category, subType, searchTerm, cityFilter, fillFilter, cutoffFilter, branchFilter, deptLookup]);
+Line 1031: filteredColleges.forEach(c => {
+Line 1047: }, [filteredColleges, sortBy]);
+Line 1236: value={searchTerm}
+Line 1244: {searchTerm && (
+Line 1447: Show {filteredColleges.length} College{filteredColleges.length !== 1 ? 's' : ''}
+Line 1464: {filteredColleges.length} college{filteredColleges.length !== 1 ? 's' : ''} found
+Line 2223: const [searchTerm, setSearchTerm] = useState('');
+Line 2229: const normalizeDeg = (raw) => {
+Line 2243: const deg = normalizeDeg(b[0]);
+Line 2256: const q = searchTerm.toLowerCase();
+Line 2261: }, [searchTerm, allUniqueDepartments]);
+Line 2316: boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+Line 2344: value={searchTerm}
+Line 2347: {searchTerm && (
+Line 2371: {searchTerm && filteredDepts.length > 0 && (
+Line 2454: {searchTerm && filteredDepts.length === 0 && (
+Line 2703: const [searchTerm, setSearchTerm] = useState('');
+Line 2755: const filteredColleges = useMemo(() => {
+Line 2756: const q = searchTerm.toLowerCase();
+Line 2766: }, [searchTerm, allColleges]);
+Line 2803: boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+Line 2831: value={searchTerm}
+Line 2834: {searchTerm && (
+Line 2858: {searchTerm && filteredColleges.length > 0 && (
+Line 2878: {filteredColleges.slice(0, 25).map((col, idx) => {
+Line 2896: borderBottom: idx < Math.min(25, filteredColleges.length) - 1 ? '1px solid #f1f5f9' : 'none',
+Line 2933: {filteredColleges.length > 25 && (
+Line 2941: Showing 25 of {filteredColleges.length} results — refine your search
+Line 2948: {searchTerm && filteredColleges.length === 0 && (
+Line 3434: const [searchTerm, setSearchTerm] = useState('');
+Line 3458: const normalizeDeg = (raw) => {
+Line 3472: const deg = normalizeDeg(b[0]);
+Line 3487: const term = searchTerm.trim().toLowerCase();
+Line 3490: }, [allUniqueDepartments, searchTerm]);
+Line 3950: boxShadow: searchTerm ? '0 0 0 3px rgba(99,102,241,0.15), 0 8px 32px rgba(99,102,241,0.12)' : '0 4px 20px rgba(0,0,0,0.06)',
+Line 3989: value={searchTerm}
+Line 3994: {searchTerm && (
+Line 4018: {searchTerm && (
+Line 4040: {!searchTerm && (

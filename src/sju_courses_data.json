@@ -1,0 +1,602 @@
+[
+  {
+    "sno": 1,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Medical Engineering"
+  },
+  {
+    "sno": 2,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electrical & Electronics Engineering"
+  },
+  {
+    "sno": 3,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Electronics & Communication Engineering"
+  },
+  {
+    "sno": 4,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Mechanical Engineering"
+  },
+  {
+    "sno": 5,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Agricultural Engineering"
+  },
+  {
+    "sno": 6,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Hons (Allied Health Sciences)"
+  },
+  {
+    "sno": 7,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Anaesthesia Technology"
+  },
+  {
+    "sno": 8,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Cardiovascular Perfusion Technology"
+  },
+  {
+    "sno": 9,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Cardio Technology"
+  },
+  {
+    "sno": 10,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Clinical Nutrition & Dietetics"
+  },
+  {
+    "sno": 11,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Critical Care Technology"
+  },
+  {
+    "sno": 12,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Diabetic Care Technology"
+  },
+  {
+    "sno": 13,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Renal Dialysis Technology"
+  },
+  {
+    "sno": 14,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Medical Imaging Technology"
+  },
+  {
+    "sno": 15,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Medical Laboratory Technology"
+  },
+  {
+    "sno": 16,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Medical Record Sciences"
+  },
+  {
+    "sno": 17,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Neuro Electro Physiology"
+  },
+  {
+    "sno": 18,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Operation Theatre Technology"
+  },
+  {
+    "sno": 19,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Optometry"
+  },
+  {
+    "sno": 20,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Physician Assistant"
+  },
+  {
+    "sno": 21,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Respiratory Care Technology"
+  },
+  {
+    "sno": 22,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Accident and Emergency Care Technology"
+  },
+  {
+    "sno": 23,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Radiology and Imaging Technology"
+  },
+  {
+    "sno": 24,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Clinical Psychology"
+  },
+  {
+    "sno": 25,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Cardiovascular Perfusion Technology"
+  },
+  {
+    "sno": 26,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Neuro Electrophysiology"
+  },
+  {
+    "sno": 27,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Medical Imaging Technology"
+  },
+  {
+    "sno": 28,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Medical Laboratory Technology"
+  },
+  {
+    "sno": 29,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Mathematics"
+  },
+  {
+    "sno": 30,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Advanced Zoology & Biotechnology"
+  },
+  {
+    "sno": 31,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Physics"
+  },
+  {
+    "sno": 32,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Statistics"
+  },
+  {
+    "sno": 33,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Chemistry"
+  },
+  {
+    "sno": 34,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Plant Biology & Plant Biotechnology"
+  },
+  {
+    "sno": 35,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "English"
+  },
+  {
+    "sno": 36,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Economics"
+  },
+  {
+    "sno": 37,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "History"
+  },
+  {
+    "sno": 38,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Sociology"
+  },
+  {
+    "sno": 39,
+    "school": "Arts & Science",
+    "degree": "B.A",
+    "programme": "Tamil"
+  },
+  {
+    "sno": 40,
+    "school": "Arts & Science",
+    "degree": "BSW",
+    "programme": "Social Work"
+  },
+  {
+    "sno": 41,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Physics"
+  },
+  {
+    "sno": 42,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Statistics"
+  },
+  {
+    "sno": 43,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Chemistry"
+  },
+  {
+    "sno": 44,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Mathematics"
+  },
+  {
+    "sno": 45,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Zoology"
+  },
+  {
+    "sno": 46,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Food Chemistry & Food Processing"
+  },
+  {
+    "sno": 47,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Counselling Psychology"
+  },
+  {
+    "sno": 48,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Biotechnology"
+  },
+  {
+    "sno": 49,
+    "school": "Arts & Science",
+    "degree": "MSW",
+    "programme": "Social Work"
+  },
+  {
+    "sno": 50,
+    "school": "Paramedical",
+    "degree": "BPT",
+    "programme": "Bachelor of Physiotherapy"
+  },
+  {
+    "sno": 51,
+    "school": "Paramedical",
+    "degree": "MPT",
+    "programme": "Orthopedics & Manual Therapy"
+  },
+  {
+    "sno": 52,
+    "school": "Paramedical",
+    "degree": "MPT",
+    "programme": "Neurological Physiotherapy"
+  },
+  {
+    "sno": 53,
+    "school": "Paramedical",
+    "degree": "MPT",
+    "programme": "Cardiopulmonary Physiotherapy"
+  },
+  {
+    "sno": 54,
+    "school": "Paramedical",
+    "degree": "MPT",
+    "programme": "Sports & Manual Therapy"
+  },
+  {
+    "sno": 55,
+    "school": "Paramedical",
+    "degree": "MPT",
+    "programme": "Pediatrics Physiotherapy"
+  },
+  {
+    "sno": 56,
+    "school": "Arts & Science",
+    "degree": "B.P.Ed",
+    "programme": "Bachelor of Physical Education"
+  },
+  {
+    "sno": 57,
+    "school": "Arts & Science",
+    "degree": "BPES",
+    "programme": "Bachelor of Physical Education & Sports"
+  },
+  {
+    "sno": 58,
+    "school": "Paramedical",
+    "degree": "B.Sc",
+    "programme": "Nursing"
+  },
+  {
+    "sno": 59,
+    "school": "Law",
+    "degree": "BA LLB (Hons)",
+    "programme": "BA LLB (Hons)"
+  },
+  {
+    "sno": 60,
+    "school": "Law",
+    "degree": "BCom LLB (Hons)",
+    "programme": "B.Com LLB (Hons)"
+  },
+  {
+    "sno": 61,
+    "school": "Law",
+    "degree": "LLB (Hons)",
+    "programme": "LLB (Hons)"
+  },
+  {
+    "sno": 62,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Visual Communication"
+  },
+  {
+    "sno": 63,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Animation & Graphics"
+  },
+  {
+    "sno": 64,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Mass Media & Communication"
+  },
+  {
+    "sno": 65,
+    "school": "Arts & Science",
+    "degree": "M.Sc",
+    "programme": "Visual Communication"
+  },
+  {
+    "sno": 66,
+    "school": "Management Studies",
+    "degree": "B.Com",
+    "programme": "Corporate Secretaryship"
+  },
+  {
+    "sno": 67,
+    "school": "Management Studies",
+    "degree": "B.Com",
+    "programme": "Accounting & Finance"
+  },
+  {
+    "sno": 68,
+    "school": "Management Studies",
+    "degree": "B.Com",
+    "programme": "International Finance"
+  },
+  {
+    "sno": 69,
+    "school": "Management Studies",
+    "degree": "B.Com",
+    "programme": "Professional Accounting"
+  },
+  {
+    "sno": 70,
+    "school": "Management Studies",
+    "degree": "M.Com",
+    "programme": "Commerce"
+  },
+  {
+    "sno": 71,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Agriculture"
+  },
+  {
+    "sno": 72,
+    "school": "Arts & Science",
+    "degree": "B.Sc",
+    "programme": "Horticulture"
+  },
+  {
+    "sno": 73,
+    "school": "Paramedical",
+    "degree": "B.Pharm",
+    "programme": "Bachelor of Pharmacy"
+  },
+  {
+    "sno": 74,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "AI in Business Management"
+  },
+  {
+    "sno": 75,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Business Analytics"
+  },
+  {
+    "sno": 76,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Entrepreneurship and Leadership"
+  },
+  {
+    "sno": 77,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "E-commerce and Retail Management"
+  },
+  {
+    "sno": 78,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Finance and Fintech"
+  },
+  {
+    "sno": 79,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Human Resource Management"
+  },
+  {
+    "sno": 80,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Digital Marketing and Consumer Psychology"
+  },
+  {
+    "sno": 81,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Project Management"
+  },
+  {
+    "sno": 82,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Advertising and Media Management"
+  },
+  {
+    "sno": 83,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Verticals - Industry Oriented Program"
+  },
+  {
+    "sno": 84,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "MBA - Healthcare Management"
+  },
+  {
+    "sno": 85,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "MBA - Logistics and Supply Chai"
+  },
+  {
+    "sno": 86,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering"
+  },
+  {
+    "sno": 87,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering (Cyber Security)"
+  },
+  {
+    "sno": 88,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering (AI & DS)"
+  },
+  {
+    "sno": 89,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Computer Science & Engineering (AI & ML)"
+  },
+  {
+    "sno": 90,
+    "school": "Engineering",
+    "degree": "B.Tech",
+    "programme": "Information Technology"
+  },
+  {
+    "sno": 91,
+    "school": "Engineering",
+    "degree": "B.C.A",
+    "programme": "Bachelor of Computer Applications"
+  },
+  {
+    "sno": 92,
+    "school": "Engineering",
+    "degree": "B.Sc",
+    "programme": "Computer Science"
+  },
+  {
+    "sno": 93,
+    "school": "Engineering",
+    "degree": "B.Sc",
+    "programme": "Artificial Intelligence"
+  },
+  {
+    "sno": 94,
+    "school": "Engineering",
+    "degree": "B.Sc",
+    "programme": "Data Science"
+  },
+  {
+    "sno": 95,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Computer Science & Engineering"
+  },
+  {
+    "sno": 96,
+    "school": "Engineering",
+    "degree": "M.Tech",
+    "programme": "Computer Science & Engineering (Integrated)"
+  },
+  {
+    "sno": 97,
+    "school": "Engineering",
+    "degree": "MCA",
+    "programme": "Master of Computer Applications"
+  },
+  {
+    "sno": 98,
+    "school": "Engineering",
+    "degree": "M.Sc",
+    "programme": "Computer Science"
+  },
+  {
+    "sno": 99,
+    "school": "Engineering",
+    "degree": "M.Sc",
+    "programme": "Computer Science (Data Science)"
+  },
+  {
+    "sno": 100,
+    "school": "Engineering",
+    "degree": "Diploma",
+    "programme": "Computer Science & Engineering"
+  }
+]
