@@ -908,7 +908,10 @@ const App = () => {
     // Search (name, code, city, AND department)
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
+      const cleanTerm = term.replace(/[^a-z0-9]/g, '');
       base = base.filter(c => {
+        const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+        if (cleanName.includes(cleanTerm)) return true;
         if (c.name.toLowerCase().includes(term)) return true;
         if (String(c.code).includes(term)) return true;
         if (c.city && c.city.toLowerCase().includes(term)) return true;
@@ -2660,11 +2663,14 @@ const CollegeComparisonPage = ({ onBack }) => {
   const filteredColleges = useMemo(() => {
     const q = searchTerm.toLowerCase();
     if (!q) return allColleges;
-    return allColleges.filter(c =>
-      c.name.toLowerCase().includes(q) ||
-      (c.city || '').toLowerCase().includes(q) ||
-      (c.code || '').toLowerCase().includes(q)
-    );
+    const cleanQ = q.replace(/[^a-z0-9]/g, '');
+    return allColleges.filter(c => {
+      const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+      return cleanName.includes(cleanQ) ||
+        c.name.toLowerCase().includes(q) ||
+        (c.city || '').toLowerCase().includes(q) ||
+        (c.code || '').toLowerCase().includes(q);
+    });
   }, [searchTerm, allColleges]);
 
   const toggleCollege = (col) => {

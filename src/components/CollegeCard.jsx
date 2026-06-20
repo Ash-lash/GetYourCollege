@@ -12,6 +12,8 @@ import TNEA_PDF_INFO from '../tnea_pdf_data.json';
 import TNEA_COURSES_INFO from '../tnea_courses_data.json';
 import TNEA_MATRIX_DATA from '../branch_matrix_data.json';
 import VELS_COURSES_DATA from '../vels_courses_data.json';
+import MGR_CHENNAI_COURSES_DATA from '../mgr_chennai_courses_data.json';
+import MGR_ARNI_COURSES_DATA from '../mgr_arni_courses_data.json';
 
 /* ─────────── ROUND DISTRIBUTION ─────────── */
 const SeatDistribution = ({ college, seats }) => {
@@ -412,81 +414,127 @@ const getSalaryRange = (school) => {
 
 const getDegreeDurationAndLevel = (deg, prog, school) => {
   const d = String(deg).trim();
+  const cleanD = d.toLowerCase().replace(/[^a-z0-9]/g, '');
   const p = String(prog || '').trim().toLowerCase();
   const s = String(school || '').trim();
 
-  // Allied Health Sciences B.Sc. courses are 4 Years (3+1)
-  if (s === 'Allied Health Sciences' && d === 'B.Sc') {
+  // Allied Health Sciences B.Sc./B.Optom. courses are 4 Years (3+1)
+  if (s === 'Allied Health Sciences' && (cleanD === 'bsc' || cleanD === 'boptom')) {
     return { duration: '4 Years', level: 'UG Degree (3+1)' };
   }
 
   // B.Sc in Nursing under Paramedical is 4 Years
-  if (p.includes('nursing') && d === 'B.Sc') {
+  if (p.includes('nursing') && cleanD === 'bsc') {
     return { duration: '4 Years', level: 'UG Degree' };
   }
 
   // 6 Years
-  if (d === 'Pharm.D') return { duration: '6 Years', level: 'Integrated Doctor' };
+  if (cleanD === 'pharmd') {
+    return { duration: '6 Years', level: 'Integrated Doctor' };
+  }
 
   // 5 Years
-  if (d.includes('LL.B') && (d.includes('B.A') || d.includes('B.B.A') || d.includes('B.Com'))) {
+  if (cleanD === 'barch') {
+    return { duration: '5 Years', level: 'UG Degree' };
+  }
+  // Integrated Law (BA LLB, BBA LLB, BCom LLB, etc.)
+  if (cleanD.includes('llb') && (cleanD.includes('ba') || cleanD.includes('bba') || cleanD.includes('bcom'))) {
     return { duration: '5 Years', level: 'Integrated Law' };
   }
 
   // 4.5 Years
-  if (d === 'B.P.T' || d === 'B.O.T') return { duration: '4.5 Years', level: 'UG Degree' };
+  if (cleanD === 'bpt' || cleanD === 'bot') {
+    return { duration: '4.5 Years', level: 'UG Degree' };
+  }
 
   // 4 Years
-  if (d === 'B.E' || d === 'B.Tech' || d === 'B.Pharm') return { duration: '4 Years', level: 'UG Degree' };
+  if (cleanD === 'be' || cleanD === 'btech' || cleanD === 'bpharm' || cleanD === 'boptom') {
+    return { duration: '4 Years', level: 'UG Degree' };
+  }
 
-  // 3 Years
+  // 2 Years (PG degrees and 2-year diplomas)
   if (
-    d === 'B.A' || d === 'B.B.A' || d === 'B.C.A' || d === 'B.Com' ||
-    d === 'B.Sc' || d === 'B.Sc Hons' || d === 'LL.B' || d === 'Diploma (AICTE)' || d === 'Pharm.D (PB)'
+    cleanD === 'msc' || cleanD === 'mcom' || cleanD === 'mpt' || cleanD === 'moptom' ||
+    cleanD === 'mba' || cleanD === 'mca' || cleanD === 'dpharm' || cleanD === 'hnd'
   ) {
-    const isDip = d.includes('Diploma');
+    const isDip = cleanD === 'dpharm' || cleanD === 'hnd';
+    return { duration: '2 Years', level: isDip ? 'Diploma' : 'PG Degree' };
+  }
+
+  // 3 Years (standard UG degrees and others)
+  if (
+    cleanD === 'ba' || cleanD === 'bba' || cleanD === 'bca' || cleanD === 'bcom' ||
+    cleanD === 'bsc' || cleanD === 'bschons' || cleanD === 'bdes' || cleanD === 'bpes' ||
+    cleanD === 'llb' || cleanD === 'diplomaaicte' || cleanD === 'pharmdpb'
+  ) {
+    const isDip = cleanD.includes('diploma');
     return {
       duration: '3 Years',
-      level: isDip ? 'Diploma' : (d === 'Pharm.D (PB)' ? 'PG Degree' : 'UG Degree')
+      level: isDip ? 'Diploma' : (cleanD === 'pharmdpb' ? 'PG Degree' : 'UG Degree')
     };
   }
 
-  // 2 Years
-  if (d === 'M.B.A' || d === 'M.C.A' || d === 'HND') {
-    return { duration: '2 Years', level: d === 'HND' ? 'Diploma' : 'PG Degree' };
-  }
-
   // 1 Year
-  if (d === 'GME') return { duration: '1 Year', level: 'PG Diploma' };
+  if (cleanD === 'gme') {
+    return { duration: '1 Year', level: 'PG Diploma' };
+  }
 
   // Fallback
   return { duration: '3 Years', level: 'UG Degree' };
 };
 
-const VelsCourseExplorer = () => {
+const VelsCourseExplorer = ({ college }) => {
+  const isVels = college?.name?.toLowerCase().includes('vels');
+  const isArni = college?.name?.toLowerCase().includes('arni');
+  
+  const coursesData = isVels 
+    ? VELS_COURSES_DATA 
+    : (isArni ? MGR_ARNI_COURSES_DATA : MGR_CHENNAI_COURSES_DATA);
+    
+  const defaultSchool = isVels 
+    ? 'Allied Health Sciences' 
+    : (isArni ? 'Engineering' : 'Allied Health Sciences');
+    
+  const defaultProgram = isVels 
+    ? 'Biomedical Sciences' 
+    : (isArni ? 'Artificial Intelligence' : 'Cardiac Care Technology');
+    
+  const csvFileName = isVels 
+    ? 'Vels_University_UG_Courses.csv' 
+    : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv');
+
   const [viewMode, setViewMode] = useState('os'); // 'os' | 'pathfinder' | 'terminal'
-  const [activeSchool, setActiveSchool] = useState('Allied Health Sciences');
+  const [activeSchool, setActiveSchool] = useState(defaultSchool);
   const [activeDegreeFilter, setActiveDegreeFilter] = useState('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   
   // Pathfinder State
-  const [pathProgram, setPathProgram] = useState('Biomedical Sciences');
+  const [pathProgram, setPathProgram] = useState(defaultProgram);
 
   // Spreadsheet sort state
   const [sortField, setSortField] = useState('sno');
   const [sortAsc, setSortAsc] = useState(true);
 
+  // Sync state when college changes
+  useEffect(() => {
+    setActiveSchool(defaultSchool);
+    setPathProgram(defaultProgram);
+    setActiveDegreeFilter('ALL');
+    setSearchTerm('');
+    setViewMode('os');
+  }, [college, defaultSchool, defaultProgram]);
+
   // Sync Pathfinder active program when switching schools
   const handleSchoolChange = (sch) => {
     setActiveSchool(sch);
-    const firstProg = VELS_COURSES_DATA.find(c => c.school === sch);
+    const firstProg = coursesData.find(c => c.school === sch);
     if (firstProg) setPathProgram(firstProg.programme);
     setActiveDegreeFilter('ALL');
   };
 
   // Filter & Search data
   const filteredCourses = useMemo(() => {
-    return VELS_COURSES_DATA.filter(item => {
+    return coursesData.filter(item => {
       if (searchTerm.trim()) {
         const term = searchTerm.toLowerCase();
         return (
@@ -497,25 +545,25 @@ const VelsCourseExplorer = () => {
       }
       return true;
     });
-  }, [searchTerm]);
+  }, [searchTerm, coursesData]);
 
   // Specific filtered list for active School in OS view
   const schoolSpecificCourses = useMemo(() => {
-    return VELS_COURSES_DATA.filter(item => {
+    return coursesData.filter(item => {
       if (item.school !== activeSchool) return false;
       if (activeDegreeFilter !== 'ALL' && item.degree !== activeDegreeFilter) return false;
       return true;
     });
-  }, [activeSchool, activeDegreeFilter]);
+  }, [activeSchool, activeDegreeFilter, coursesData]);
 
   // Degrees available under the selected School
   const schoolDegrees = useMemo(() => {
     const set = new Set();
-    VELS_COURSES_DATA.forEach(c => {
+    coursesData.forEach(c => {
       if (c.school === activeSchool) set.add(c.degree);
     });
     return ['ALL', ...Array.from(set).sort()];
-  }, [activeSchool]);
+  }, [activeSchool, coursesData]);
 
   // Sorting logic for spreadsheet view
   const sortedCourses = useMemo(() => {
@@ -545,7 +593,7 @@ const VelsCourseExplorer = () => {
 
   // Mapped details for selected program in Pathfinder Flow
   const pathfinderDetail = useMemo(() => {
-    const matched = VELS_COURSES_DATA.find(c => c.programme === pathProgram);
+    const matched = coursesData.find(c => c.programme === pathProgram);
     if (!matched) return null;
     const meta = SCHOOL_META[matched.school] || SCHOOL_META['Arts & Science'];
     return {
@@ -554,17 +602,17 @@ const VelsCourseExplorer = () => {
       degree: matched.degree,
       meta
     };
-  }, [pathProgram]);
+  }, [pathProgram, coursesData]);
 
   const downloadCSV = () => {
     let csvContent = "data:text/csv;charset=utf-8,S.No,School,Degree,Programme\n";
-    VELS_COURSES_DATA.forEach(r => {
+    coursesData.forEach(r => {
       csvContent += `${r.sno},"${r.school}","${r.degree}","${r.programme}"\n`;
     });
     const encodedUri = encodeURI(csvContent);
     const link = document.createElement("a");
     link.setAttribute("href", encodedUri);
-    link.setAttribute("download", "Vels_University_UG_Courses.csv");
+    link.setAttribute("download", csvFileName);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -1152,7 +1200,7 @@ const VelsCourseExplorer = () => {
                   const active = activeSchool === sch;
                   const itemMeta = SCHOOL_META[sch];
                   const Icon = itemMeta.icon || GraduationCap;
-                  const count = VELS_COURSES_DATA.filter(c => c.school === sch).length;
+                  const count = coursesData.filter(c => c.school === sch).length;
 
                   return (
                     <button
@@ -1212,7 +1260,7 @@ const VelsCourseExplorer = () => {
                   {/* School Highlights & Stats Banner */}
                   <div className="os-school-stats">
                     <div className="os-school-stat-box">
-                      <div className="os-school-stat-val">{VELS_COURSES_DATA.filter(c => c.school === activeSchool).length}</div>
+                      <div className="os-school-stat-val">{coursesData.filter(c => c.school === activeSchool).length}</div>
                       <div className="os-school-stat-lbl">Programs</div>
                     </div>
                     <div className="os-school-stat-box">
@@ -1382,7 +1430,7 @@ const VelsCourseExplorer = () => {
                         boxShadow: '0 2px 6px rgba(0,0,0,0.03)'
                       }}
                     >
-                      {VELS_COURSES_DATA.map((c, i) => (
+                      {coursesData.map((c, i) => (
                         <option key={i} value={c.programme}>
                           {c.degree} · {c.programme}
                         </option>
@@ -2209,8 +2257,8 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
               <AnimatePresence mode="wait">
                 {activeTab === 'courses' && (
                   <motion.div key="courses" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>
-                    {college.name && college.name.toLowerCase().includes('vels') ? (
-                      <VelsCourseExplorer />
+                    {college.name && (college.name.toLowerCase().includes('vels') || college.name.toLowerCase().includes('m.g.r') || college.name.toLowerCase().includes('mgr')) ? (
+                      <VelsCourseExplorer college={college} />
                     ) : courses.length > 0 ? (
                       <CourseLevels courses={courses} />
                     ) : (

@@ -7213,9 +7213,885 @@ export const DEEMED_DATA = [
   {name:"Chennai Mathematical Institute",addr:"H1, SIPCOT IT Park, Siruseri, Kelambakkam",city:"Chennai",status:"Section-III",courses:[
     {cat:"Science & Research",branches:[["B.Sc","Mathematics & Computer Science"],["B.Sc","Mathematics & Physics"],["M.Sc","Mathematics"],["M.Sc","Computer Science"],["M.Sc","Data Science"],["Ph.D","Mathematics"],["Ph.D","Computer Science"],["Ph.D","Physics"]]}
   ]},
-  {name:"Dr. M.G.R. Educational and Research Institute",addr:"E.V.R Periyar Salai, Maduravoyal, Chennai",city:"Chennai",status:"Section-III",courses:[
-    {cat:"Engineering",branches:[["B.Tech","Computer Engineering"],["B.Tech","EEE"],["B.Tech","Mechanical Engineering"],["B.Tech","Bio-Technology"],["B.Tech","Civil Engineering"],["B.Tech","Chemical Engineering"],["B.Tech","Cyber Forensics & Information Security"],["B.Tech","Bio-Medical Engineering"],["B.Tech","CSE (Artificial Intelligence)"],["B.Tech","CSE (Data Science)"],["B.Tech","ECE"],["B.Tech","Information Technology"],["B.Tech","Robotics & Automation"],["B.Tech","Mechanical & Smart Manufacturing"],["B.Tech","Mechanical (Electric Vehicles)"],["B.Tech","Automobile Engineering"],["B.Tech","Aeronautical Engineering"]]}
-  ]},
+    {
+  "name": "Dr. M.G.R. Educational and Research Institute",
+  "addr": "E.V.R Periyar Salai, Maduravoyal, Chennai",
+  "city": "Chennai",
+  "status": "Section-III",
+  "courses": [
+    {
+      "cat": "Allied Health Sciences",
+      "branches": [
+        [
+          "B.Sc",
+          "Cardiac Care Technology"
+        ],
+        [
+          "B.Sc",
+          "Cardio Pulmonary Perfusion Care Technology"
+        ],
+        [
+          "B.Sc",
+          "Clinical Nutrition"
+        ],
+        [
+          "B.Sc",
+          "Emergency and Trauma Care"
+        ],
+        [
+          "B.Sc",
+          "Cardiac & Perfusion Technology"
+        ],
+        [
+          "B.Sc",
+          "Medical Laboratory Technology"
+        ],
+        [
+          "B.Sc",
+          "Operation Theater and Anesthesia Technology"
+        ],
+        [
+          "B.Sc",
+          "Physician Assistant"
+        ],
+        [
+          "B.Sc",
+          "Radiology and Images Technology"
+        ],
+        [
+          "B.Sc",
+          "Renal Dialysis Technology"
+        ],
+        [
+          "B.Sc",
+          "Respiratory Care Technology"
+        ],
+        [
+          "B.Optom",
+          "Optometry"
+        ],
+        [
+          "M.Sc",
+          "Medical Laboratory Technology"
+        ],
+        [
+          "M.Sc",
+          "Medical Imaging Technology"
+        ],
+        [
+          "M.Optom",
+          "Optometry"
+        ]
+      ]
+    },
+    {
+      "cat": "Arts & Science",
+      "branches": [
+        [
+          "B.A",
+          "Defence Strategic Studies"
+        ],
+        [
+          "B.A",
+          "Economics"
+        ],
+        [
+          "B.A",
+          "Tamil"
+        ],
+        [
+          "B.A",
+          "English"
+        ],
+        [
+          "B.A",
+          "Political Science"
+        ],
+        [
+          "B.A",
+          "Culinary Arts"
+        ],
+        [
+          "B.A",
+          "Travels & Tourism"
+        ],
+        [
+          "B.A",
+          "Human Resource Management"
+        ],
+        [
+          "B.A",
+          "Public Administration"
+        ],
+        [
+          "B.A",
+          "Social Work"
+        ],
+        [
+          "B.Com",
+          "General"
+        ],
+        [
+          "B.Com",
+          "Corporate Secretaryship"
+        ],
+        [
+          "B.Com",
+          "Accounts and Finance"
+        ],
+        [
+          "B.Com",
+          "Banking Management"
+        ],
+        [
+          "B.Com",
+          "Cost and Management Accounting"
+        ],
+        [
+          "B.Com",
+          "Computer Applications"
+        ],
+        [
+          "B.Com",
+          "Information System Management"
+        ],
+        [
+          "B.Com",
+          "Marketing Management"
+        ],
+        [
+          "B.Com",
+          "Statistic & Finance"
+        ],
+        [
+          "B.Com",
+          "Financial Analysics"
+        ],
+        [
+          "B.Com",
+          "International A/c & Finance Integrated with (ACCA)"
+        ],
+        [
+          "B.Com",
+          "Honours"
+        ],
+        [
+          "BPES",
+          "Physical Education"
+        ],
+        [
+          "B.Sc",
+          "Animation and Visual Communication"
+        ],
+        [
+          "B.Sc",
+          "Advanced Animation"
+        ],
+        [
+          "B.Sc",
+          "Ai In Multimedia & Web Designing"
+        ],
+        [
+          "B.Sc",
+          "Ai Visual Media"
+        ],
+        [
+          "B.Sc",
+          "Animation & Visual With Minor Degree In Film Technology"
+        ],
+        [
+          "B.Sc",
+          "Vfx (Visual Effects)"
+        ],
+        [
+          "B.Sc",
+          "Editing & Vfx"
+        ],
+        [
+          "B.Sc",
+          "Bio Chemistry"
+        ],
+        [
+          "B.Sc",
+          "Bio Technology"
+        ],
+        [
+          "B.Sc",
+          "Chemistry"
+        ],
+        [
+          "B.Sc",
+          "Computer Science and Networking"
+        ],
+        [
+          "B.Sc",
+          "Criminology"
+        ],
+        [
+          "B.Sc",
+          "Computer Science"
+        ],
+        [
+          "B.Sc",
+          "Fashion Design"
+        ],
+        [
+          "B.Sc",
+          "Geology"
+        ],
+        [
+          "B.Sc",
+          "Ds (Data Science)"
+        ],
+        [
+          "B.Sc",
+          "Information Science and Cyber Forensics"
+        ],
+        [
+          "B.Sc",
+          "Mathematics"
+        ],
+        [
+          "B.Sc",
+          "Physics"
+        ],
+        [
+          "B.Sc",
+          "Psychology"
+        ],
+        [
+          "B.C.A",
+          "Bachelor of Computer Applications"
+        ],
+        [
+          "B.C.A",
+          "Artificial Intelligence & Data Science"
+        ],
+        [
+          "B.C.A",
+          "Generative Ai"
+        ],
+        [
+          "B.C.A",
+          "Data Engineering"
+        ],
+        [
+          "B.C.A",
+          "Data Science"
+        ],
+        [
+          "B.C.A",
+          "Cyber Security"
+        ],
+        [
+          "B.C.A",
+          "Financial Technology"
+        ],
+        [
+          "B.C.A",
+          "Digital Marketing"
+        ],
+        [
+          "B.C.A",
+          "AI in Gaming"
+        ],
+        [
+          "B.C.A",
+          "Digital Technology"
+        ],
+        [
+          "MCA",
+          "Master of Computer Applications"
+        ],
+        [
+          "B.Sc",
+          "Aviation"
+        ],
+        [
+          "B.B.A",
+          "Aviation"
+        ]
+      ]
+    },
+    {
+      "cat": "Engineering",
+      "branches": [
+        [
+          "B.Tech",
+          "Artificial Intelligence and Machine Learning"
+        ],
+        [
+          "B.Tech",
+          "Data Science & Artificial Intelligence"
+        ],
+        [
+          "B.Tech",
+          "Bio Medical Engineering"
+        ],
+        [
+          "B.Tech",
+          "Bio Technology"
+        ],
+        [
+          "B.Tech",
+          "Chemical Engineering"
+        ],
+        [
+          "B.Tech",
+          "Civil Engineering"
+        ],
+        [
+          "B.Tech",
+          "Computer Science and Engineering"
+        ],
+        [
+          "B.Tech",
+          "Cyber Forensic and Information Security"
+        ],
+        [
+          "B.Tech",
+          "Computer Science and Engineering (Data Science)"
+        ],
+        [
+          "B.Tech",
+          "Electrical and Electronics Engineering"
+        ],
+        [
+          "B.Tech",
+          "Electronics and Communication Engineering - IoT & AI"
+        ],
+        [
+          "B.Tech",
+          "Electronics and Communication Engineering"
+        ],
+        [
+          "B.Tech",
+          "Computer Science and Engineering - Business System"
+        ],
+        [
+          "B.Tech",
+          "Information Technology"
+        ],
+        [
+          "B.Tech",
+          "Computer Science and Engineering ( Artificial Intelligence)"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Engineering"
+        ],
+        [
+          "B.Des",
+          "Bachelor of Design"
+        ],
+        [
+          "B.Arch",
+          "Bachelor of Architecture"
+        ],
+        [
+          "B.Tech",
+          "Cse& Business Systems"
+        ],
+        [
+          "B.Tech",
+          "Cse & Design"
+        ],
+        [
+          "B.Tech",
+          "Cse & Iot"
+        ],
+        [
+          "B.Tech",
+          "Cse & Networks"
+        ],
+        [
+          "B.Tech",
+          "Electronics Engineering (Vlsi) Design & Technology"
+        ],
+        [
+          "B.Tech",
+          "Cyber Physical System (Oracle)"
+        ],
+        [
+          "B.Tech",
+          "Cse Content Computing"
+        ],
+        [
+          "B.Tech",
+          "Ai&Ml"
+        ],
+        [
+          "B.Tech",
+          "Cyber Security"
+        ],
+        [
+          "B.Tech",
+          "Cse Minor Degree & Robotics"
+        ],
+        [
+          "B.Tech",
+          "Ece Ai & Ml (Imaticus Learning)"
+        ],
+        [
+          "B.Tech",
+          "Ece-Cybersecurity"
+        ],
+        [
+          "B.Tech",
+          "Ece-Robotics"
+        ],
+        [
+          "B.Tech",
+          "Ece-Iot (Ibm)"
+        ],
+        [
+          "B.Tech",
+          "Ece-Data Science"
+        ],
+        [
+          "B.Tech",
+          "Ece Minor Degree - Electric Vehicle"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Minor Degree & Data Science"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Minor Degree & Cyber Security"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Minor Degree & Aiml"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Robotics"
+        ],
+        [
+          "B.Tech",
+          "It-Data Science"
+        ],
+        [
+          "B.Tech",
+          "It-Advance Tech Development"
+        ],
+        [
+          "B.Tech",
+          "Eee-Electric Vehicle"
+        ],
+        [
+          "B.Tech",
+          "Eee-Sustainable Energy Engineering"
+        ],
+        [
+          "B.Tech",
+          "Eee-Electrical & Computer Engineering"
+        ],
+        [
+          "B.Tech",
+          "Biotech Minor Degree & Data Science"
+        ],
+        [
+          "B.Tech",
+          "Civil Smart City"
+        ],
+        [
+          "B.Tech",
+          "Civil Advance Learn Technology"
+        ]
+      ]
+    },
+    {
+      "cat": "Management Studies",
+      "branches": [
+        [
+          "B.Sc",
+          "Hotel Management and Catering Technology"
+        ],
+        [
+          "B.Sc",
+          "Food Science and Nutrition"
+        ],
+        [
+          "B.B.A",
+          "General"
+        ],
+        [
+          "B.B.A",
+          "Financial Planning"
+        ],
+        [
+          "B.B.A",
+          "Marketing"
+        ],
+        [
+          "MBA",
+          "Management Studies"
+        ],
+        [
+          "MBA",
+          "General Management"
+        ],
+        [
+          "MBA",
+          "Innovation Entrepreneurship and Venture Development"
+        ],
+        [
+          "M.Sc",
+          "Computer Science"
+        ],
+        [
+          "M.Sc",
+          "Data Science"
+        ],
+        [
+          "M.Sc",
+          "Cyber Forensic & Information Security"
+        ],
+        [
+          "M.Sc",
+          "Criminology"
+        ],
+        [
+          "M.Sc",
+          "Animation & Visual Communication"
+        ],
+        [
+          "M.Sc",
+          "Game Art & Animation"
+        ],
+        [
+          "M.Sc",
+          "Clinical Psychology"
+        ],
+        [
+          "M.Sc",
+          "Psychotherapy & Counselling"
+        ],
+        [
+          "M.Sc",
+          "Psychology Training & Counselling"
+        ],
+        [
+          "M.Sc",
+          "Bio Technology"
+        ],
+        [
+          "M.Sc",
+          "Fashion Design"
+        ],
+        [
+          "M.Com",
+          "General"
+        ],
+        [
+          "M.Sc",
+          "Nutrition & Dietetics"
+        ],
+        [
+          "M.Sc",
+          "Hotel Management and Catering Technology"
+        ],
+        [
+          "M.Sc",
+          "Real Estate Value"
+        ],
+        [
+          "MBA",
+          "Logistic & Supply Chain Management"
+        ],
+        [
+          "MBA",
+          "Aviation & Airport Management"
+        ],
+        [
+          "MBA",
+          "Human Resource Management"
+        ],
+        [
+          "MBA",
+          "General"
+        ],
+        [
+          "MBA",
+          "HR"
+        ],
+        [
+          "MBA",
+          "Business Analytic"
+        ],
+        [
+          "MBA",
+          "ISM"
+        ],
+        [
+          "MBA",
+          "FM"
+        ],
+        [
+          "MCA",
+          "Master of Computer Applications"
+        ],
+        [
+          "MCA",
+          "Ai&Ml"
+        ],
+        [
+          "MCA",
+          "Cloud/Com"
+        ],
+        [
+          "MCA",
+          "ALL"
+        ]
+      ]
+    },
+    {
+      "cat": "Law",
+      "branches": [
+        [
+          "BA LLB (Hons)",
+          "BA LLB (Hons)"
+        ],
+        [
+          "BBA LLB (Hons)",
+          "BBA LLB (Hons)"
+        ],
+        [
+          "BCom LLB (Hons)",
+          "BCom LLB (Hons)"
+        ],
+        [
+          "LLB (Hons)",
+          "LLB (Hons)"
+        ]
+      ]
+    },
+    {
+      "cat": "Paramedical",
+      "branches": [
+        [
+          "B.Sc",
+          "Nursing"
+        ],
+        [
+          "B.Pharm",
+          "Bachelor of Pharmacy"
+        ],
+        [
+          "B.P.T",
+          "Physiotherapy"
+        ],
+        [
+          "Pharm.D",
+          "Doctor of Pharmacy"
+        ],
+        [
+          "D.Pharm",
+          "Diplomo in Pharmacy"
+        ]
+      ]
+    }
+  ]
+},
+  {
+  "name": "Dr. M.G.R. Educational and Research Institute (Arni Campus)",
+  "addr": "Arni Campus, Tiruvannamalai District",
+  "city": "Arni",
+  "status": "Section-III",
+  "courses": [
+    {
+      "cat": "Engineering",
+      "branches": [
+        [
+          "B.Tech",
+          "Artificial Intelligence"
+        ],
+        [
+          "B.Tech",
+          "Computer Science and Engineering"
+        ],
+        [
+          "B.Tech",
+          "Information Technology"
+        ],
+        [
+          "B.Tech",
+          "Electronics and Communication Engineering"
+        ],
+        [
+          "B.Tech",
+          "Electrical and Electronics Engineering"
+        ],
+        [
+          "B.Tech",
+          "Mechanical Engineering"
+        ]
+      ]
+    },
+    {
+      "cat": "Allied Health Sciences",
+      "branches": [
+        [
+          "B.Sc",
+          "Optometry"
+        ],
+        [
+          "B.Sc",
+          "Cardiac Care Technology"
+        ],
+        [
+          "B.Sc",
+          "Cardio Pulmonary Perfusion Care Technology"
+        ],
+        [
+          "B.Sc",
+          "Emergency and Trauma Care"
+        ],
+        [
+          "B.Sc",
+          "Operation Theater and Anesthesia Technology"
+        ],
+        [
+          "B.Sc",
+          "Physician Assistant"
+        ],
+        [
+          "B.Sc",
+          "Radiology and Images Technology"
+        ]
+      ]
+    },
+    {
+      "cat": "Paramedical",
+      "branches": [
+        [
+          "B.P.T",
+          "Physiotherapy"
+        ],
+        [
+          "M.P.T",
+          "Mater Of Physiotherapy"
+        ]
+      ]
+    },
+    {
+      "cat": "Arts & Science",
+      "branches": [
+        [
+          "B.A",
+          "Human Resource Management"
+        ],
+        [
+          "B.A",
+          "Political Science"
+        ],
+        [
+          "B.A",
+          "Public Administration"
+        ],
+        [
+          "B.Sc",
+          "Bachelor of Physical Education and Spots [BPES]"
+        ],
+        [
+          "B.Sc",
+          "Psychology"
+        ],
+        [
+          "B.Sc",
+          "Animation and Visual Communication"
+        ],
+        [
+          "B.Sc",
+          "Computer Science"
+        ],
+        [
+          "B.Sc",
+          "Information Science and Cyber Forensics"
+        ],
+        [
+          "B.Sc",
+          "Criminology and Forensic Science"
+        ],
+        [
+          "B.Sc",
+          "Data Science"
+        ],
+        [
+          "B.C.A",
+          "General"
+        ],
+        [
+          "B.C.A",
+          "Digital Technology"
+        ],
+        [
+          "B.C.A",
+          "Artificial Intelligence & Data Science"
+        ],
+        [
+          "B.Com",
+          "General"
+        ],
+        [
+          "B.Com",
+          "Corporate Secretaryship"
+        ],
+        [
+          "B.Com",
+          "Accounts and Finance"
+        ],
+        [
+          "B.Com",
+          "Computer Applications"
+        ],
+        [
+          "B.Sc",
+          "Hotel Management and Catering Technology"
+        ],
+        [
+          "B.B.A",
+          "General"
+        ],
+        [
+          "B.B.A",
+          "Financial Planning"
+        ]
+      ]
+    },
+    {
+      "cat": "Management Studies",
+      "branches": [
+        [
+          "MCA",
+          "Mater in Computer Application"
+        ],
+        [
+          "MBA",
+          "Master of Business Administration"
+        ],
+        [
+          "MBA",
+          "Human Resource Management"
+        ],
+        [
+          "MBA",
+          "Financial Management"
+        ],
+        [
+          "MBA",
+          "Business Analytics"
+        ],
+        [
+          "MBA",
+          "Logistics and Supply Chain Management"
+        ]
+      ]
+    }
+  ]
+},
   {name:"Hindustan Institute of Technology & Science (HITS)",addr:"Rajiv Gandhi Salai, Padur, Kelambakkam, Chennai",city:"Chennai",status:"Section-III",courses:[
     {cat:"Engineering",branches:[["B.Tech","Aeronautical Engineering"],["B.Tech","Aerospace Engineering"],["B.Tech","Biotechnology"],["B.Tech","Automobile Engineering"],["B.Tech","Biomedical Engineering"],["B.Tech","Civil Engineering"],["B.Tech","CSE (IOT/Blockchain/Cloud - IBM)"],["B.Tech","Computer Science Engineering"],["B.Tech","CSE-AI & ML (IBM)"],["B.Tech","CSE-Cyber Security (IBM)"],["B.Tech","AI & Data Science"],["B.Tech","Information Technology"],["B.Tech","Mechanical Engineering"],["B.Tech","Mechatronics Engineering"],["B.Tech","Robotics & AI"],["B.Tech","EEE"],["B.Tech","ECE"]]},
     {cat:"Architecture & Arts",branches:[["B.Arch","Architecture"],["B.Des","Gaming Design"],["BA","Political Science"],["BA","Economics"],["B.Sc","Visual Communication"],["B.Sc","Computer Science"],["B.Sc","Mathematics"]]}

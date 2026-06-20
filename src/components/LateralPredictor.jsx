@@ -122,13 +122,16 @@ export default function LateralPredictor({ onBack, onCompare, onOpenQuery, tneaD
       // Search term filter (college name, code, city, branch name, or branch code)
       if (searchTerm.trim()) {
         const term = searchTerm.toLowerCase();
+        const cleanTerm = term.replace(/[^a-z0-9]/g, '');
         const collegeName = item.college.name.toLowerCase();
+        const cleanCollegeName = collegeName.replace(/[^a-z0-9]/g, '');
         const collegeCode = String(item.college.code).toLowerCase();
         const city = (item.college.city || '').toLowerCase();
         const branchName = item.branchName.toLowerCase();
         const branchCode = item.branchCode.toLowerCase();
         
         if (!collegeName.includes(term) && 
+            !cleanCollegeName.includes(cleanTerm) &&
             !collegeCode.includes(term) && 
             !city.includes(term) && 
             !branchName.includes(term) && 
