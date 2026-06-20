@@ -1005,6 +1005,7 @@ const App = () => {
         const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
         if (cleanName.includes(cleanTerm)) return true;
         if (cleanTerm === 'sju' && cleanName.includes('joseph')) return true;
+        if ((cleanTerm === 'svu' || cleanTerm.includes('venkatesh')) && cleanName.includes('venkates')) return true;
         if (c.name.toLowerCase().includes(term)) return true;
         if (String(c.code).includes(term)) return true;
         if (c.city && c.city.toLowerCase().includes(term)) return true;
@@ -2761,6 +2762,7 @@ const CollegeComparisonPage = ({ onBack }) => {
       const cleanName = c.name.toLowerCase().replace(/[^a-z0-9]/g, '');
       return cleanName.includes(cleanQ) ||
         (cleanQ === 'sju' && cleanName.includes('joseph')) ||
+        ((cleanQ === 'svu' || cleanQ.includes('venkatesh')) && cleanName.includes('venkates')) ||
         c.name.toLowerCase().includes(q) ||
         (c.city || '').toLowerCase().includes(q) ||
         (c.code || '').toLowerCase().includes(q);

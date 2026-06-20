@@ -1,0 +1,170 @@
+[
+  {
+    "sno": 1,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Medical Laboratory Technology"
+  },
+  {
+    "sno": 2,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Renal Dialysis Technology"
+  },
+  {
+    "sno": 3,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Radiology & Imaging Technology"
+  },
+  {
+    "sno": 4,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Optometry"
+  },
+  {
+    "sno": 5,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Emergency Care Technology"
+  },
+  {
+    "sno": 6,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Anaesthesia Technology"
+  },
+  {
+    "sno": 7,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Cardiac Care Technology"
+  },
+  {
+    "sno": 8,
+    "school": "Allied Health Sciences",
+    "degree": "B.Sc",
+    "programme": "Physician Associate"
+  },
+  {
+    "sno": 9,
+    "school": "Paramedical",
+    "degree": "B.Sc",
+    "programme": "Nursing"
+  },
+  {
+    "sno": 10,
+    "school": "Paramedical",
+    "degree": "B.Pharm",
+    "programme": "Pharmacy"
+  },
+  {
+    "sno": 11,
+    "school": "Paramedical",
+    "degree": "D.Pharm",
+    "programme": "Pharmacy"
+  },
+  {
+    "sno": 12,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Anatomy"
+  },
+  {
+    "sno": 13,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Physiology"
+  },
+  {
+    "sno": 14,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Biochemistry"
+  },
+  {
+    "sno": 15,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Microbiology"
+  },
+  {
+    "sno": 16,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Pharmacology"
+  },
+  {
+    "sno": 17,
+    "school": "Allied Health Sciences",
+    "degree": "M.Sc",
+    "programme": "Clinical Embryology"
+  },
+  {
+    "sno": 18,
+    "school": "Allied Health Sciences",
+    "degree": "BPT",
+    "programme": "Physiotherapy"
+  },
+  {
+    "sno": 19,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Musculoskeletal Science"
+  },
+  {
+    "sno": 20,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Neuroscience"
+  },
+  {
+    "sno": 21,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Cardio Pulmonary Science"
+  },
+  {
+    "sno": 22,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Sports Science"
+  },
+  {
+    "sno": 23,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Paediatric & Neonatal Sciences"
+  },
+  {
+    "sno": 24,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Obstetrics & Gynecology Sciences"
+  },
+  {
+    "sno": 25,
+    "school": "Allied Health Sciences",
+    "degree": "MPT",
+    "programme": "Oncology Science"
+  },
+  {
+    "sno": 26,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Hospital Management"
+  },
+  {
+    "sno": 27,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Artificial Intelligence & Data Science"
+  },
+  {
+    "sno": 28,
+    "school": "Management Studies",
+    "degree": "MBA",
+    "programme": "Dual Specialization"
+  }
+]

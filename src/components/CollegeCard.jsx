@@ -16,6 +16,7 @@ import MGR_CHENNAI_COURSES_DATA from '../mgr_chennai_courses_data.json';
 import MGR_ARNI_COURSES_DATA from '../mgr_arni_courses_data.json';
 import VELTECH_COURSES_DATA from '../veltech_courses_data.json';
 import SJU_COURSES_DATA from '../sju_courses_data.json';
+import SVU_COURSES_DATA from '../svu_courses_data.json';
 
 
 /* ─────────── ROUND DISTRIBUTION ─────────── */
@@ -496,26 +497,47 @@ const VelsCourseExplorer = ({ college }) => {
   const isArni = college?.name?.toLowerCase().includes('arni');
   const isVeltech = college?.name?.toLowerCase().includes('vel tech') || college?.name?.toLowerCase().includes('veltech');
   const isSju = college?.name?.toLowerCase().includes('joseph') || college?.name?.toLowerCase().includes('sju');
+  const isSvu = college?.name?.toLowerCase().includes('venkateswara') || college?.name?.toLowerCase().includes('svu');
   
   const coursesData = isVels 
     ? VELS_COURSES_DATA 
-    : (isSju ? SJU_COURSES_DATA : (isVeltech ? VELTECH_COURSES_DATA : (isArni ? MGR_ARNI_COURSES_DATA : MGR_CHENNAI_COURSES_DATA)));
+    : (isSju 
+        ? SJU_COURSES_DATA 
+        : (isSvu 
+            ? SVU_COURSES_DATA 
+            : (isVeltech ? VELTECH_COURSES_DATA : (isArni ? MGR_ARNI_COURSES_DATA : MGR_CHENNAI_COURSES_DATA))));
     
   const defaultSchool = isVels 
     ? 'Allied Health Sciences' 
-    : (isSju ? 'Engineering' : (isVeltech ? 'Engineering' : (isArni ? 'Engineering' : 'Allied Health Sciences')));
+    : (isSju 
+        ? 'Engineering' 
+        : (isSvu 
+            ? 'Allied Health Sciences' 
+            : (isVeltech ? 'Engineering' : (isArni ? 'Engineering' : 'Allied Health Sciences'))));
     
   const defaultProgram = isVels 
     ? 'Biomedical Sciences' 
-    : (isSju ? 'Computer Science & Medical Engineering' : (isVeltech ? 'Aeronautical Engineering with Specialization in Aerospace & Defence' : (isArni ? 'Artificial Intelligence' : 'Cardiac Care Technology')));
+    : (isSju 
+        ? 'Computer Science & Medical Engineering' 
+        : (isSvu 
+            ? 'Medical Laboratory Technology' 
+            : (isVeltech ? 'Aeronautical Engineering with Specialization in Aerospace & Defence' : (isArni ? 'Artificial Intelligence' : 'Cardiac Care Technology'))));
     
   const csvFileName = isVels 
     ? 'Vels_University_UG_Courses.csv' 
-    : (isSju ? 'SJU_University_Courses.csv' : (isVeltech ? 'Veltech_University_Courses.csv' : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv')));
+    : (isSju 
+        ? 'SJU_University_Courses.csv' 
+        : (isSvu 
+            ? 'SVU_University_Courses.csv' 
+            : (isVeltech ? 'Veltech_University_Courses.csv' : (isArni ? 'MGR_University_Arni_Courses.csv' : 'MGR_University_Chennai_Courses.csv'))));
 
   const shortName = isVels 
     ? 'VELS' 
-    : (isSju ? 'St. Joseph' : (isVeltech ? 'Vel Tech' : (isArni ? 'Dr. M.G.R. (Arni)' : 'Dr. M.G.R. (Chennai)')));
+    : (isSju 
+        ? 'St. Joseph' 
+        : (isSvu 
+            ? 'SVU' 
+            : (isVeltech ? 'Vel Tech' : (isArni ? 'Dr. M.G.R. (Arni)' : 'Dr. M.G.R. (Chennai)'))));
 
   const [viewMode, setViewMode] = useState('os'); // 'os' | 'pathfinder' | 'terminal'
   const [activeSchool, setActiveSchool] = useState(defaultSchool);
@@ -1677,7 +1699,7 @@ const VelsCourseExplorer = ({ college }) => {
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Database Index</span>
-                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>{isVels ? 'VISTAS_UG_2026' : (isSju ? 'SJU_2026' : (isVeltech ? 'VELTECH_2026' : (isArni ? 'MGR_ARNI_2026' : 'MGR_CHENNAI_2026')))}</span>
+                  <span className="terminal-status-val" style={{ color: '#4f46e5' }}>{isVels ? 'VISTAS_UG_2026' : (isSju ? 'SJU_2026' : (isSvu ? 'SVU_2026' : (isVeltech ? 'VELTECH_2026' : (isArni ? 'MGR_ARNI_2026' : 'MGR_CHENNAI_2026'))))}</span>
                 </div>
                 <div className="terminal-status-item">
                   <span className="terminal-status-lbl">Total Courses</span>
@@ -2278,7 +2300,9 @@ const CollegeCard = ({ college, category, isExpanded, onToggle, onOpenQuery, onC
                       college.name.toLowerCase().includes('vel tech') || 
                       college.name.toLowerCase().includes('veltech') ||
                       college.name.toLowerCase().includes('joseph') ||
-                      college.name.toLowerCase().includes('sju')
+                      college.name.toLowerCase().includes('sju') ||
+                      college.name.toLowerCase().includes('venkateswara') ||
+                      college.name.toLowerCase().includes('svu')
                     ) ? (
                       <VelsCourseExplorer college={college} />
                     ) : courses.length > 0 ? (

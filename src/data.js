@@ -8330,8 +8330,49 @@ export const PRIVATE_DATA = [
     {cat:"Arts & Science",branches:[["B.Sc","Physics"],["B.Sc","Chemistry"],["B.Sc","Mathematics"],["BA","Economics"],["BA","English"],["BA","Philosophy"],["B.Des","Design"],["MBA","Business Administration"],["Ph.D","Various Disciplines"]]}
   ]},
   {name:"Sri Venkateswaraa University",addr:"Ettayapuram, Thoothukudi District – 628902",city:"Thoothukudi",status:"2(f)",courses:[
-    {cat:"Engineering",branches:[["B.Tech","Computer Science Engineering"],["B.Tech","AI & Data Science"],["B.Tech","ECE"],["B.Tech","EEE"],["B.Tech","Mechanical Engineering"],["B.Tech","Civil Engineering"],["B.Tech","Biotechnology"]]},
-    {cat:"Arts & Science",branches:[["B.Com","Commerce"],["BBA","Business Administration"],["B.Sc","Computer Science / Mathematics / Physics / Chemistry / Biotechnology"],["BCA","Computer Applications"]]}
+    {
+      cat: "Allied Health Sciences",
+      branches: [
+        ["B.Sc", "Medical Laboratory Technology"],
+        ["B.Sc", "Renal Dialysis Technology"],
+        ["B.Sc", "Radiology & Imaging Technology"],
+        ["B.Sc", "Optometry"],
+        ["B.Sc", "Emergency Care Technology"],
+        ["B.Sc", "Anaesthesia Technology"],
+        ["B.Sc", "Cardiac Care Technology"],
+        ["B.Sc", "Physician Associate"],
+        ["M.Sc", "Anatomy"],
+        ["M.Sc", "Physiology"],
+        ["M.Sc", "Biochemistry"],
+        ["M.Sc", "Microbiology"],
+        ["M.Sc", "Pharmacology"],
+        ["M.Sc", "Clinical Embryology"],
+        ["BPT", "Physiotherapy"],
+        ["MPT", "Musculoskeletal Science"],
+        ["MPT", "Neuroscience"],
+        ["MPT", "Cardio Pulmonary Science"],
+        ["MPT", "Sports Science"],
+        ["MPT", "Paediatric & Neonatal Sciences"],
+        ["MPT", "Obstetrics & Gynecology Sciences"],
+        ["MPT", "Oncology Science"]
+      ]
+    },
+    {
+      cat: "Paramedical",
+      branches: [
+        ["B.Sc", "Nursing"],
+        ["B.Pharm", "Pharmacy"],
+        ["D.Pharm", "Pharmacy"]
+      ]
+    },
+    {
+      cat: "Management Studies",
+      branches: [
+        ["MBA", "Hospital Management"],
+        ["MBA", "Artificial Intelligence & Data Science"],
+        ["MBA", "Dual Specialization"]
+      ]
+    }
   ]},
   {name:"St. Joseph University",addr:"Keezhathanur Village, Tindivanam Taluk, Villupuram – 604305",city:"Villupuram",status:"2(f)",courses:[
     {

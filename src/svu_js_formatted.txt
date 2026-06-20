@@ -1,0 +1,45 @@
+[
+    {
+      cat: "Allied Health Sciences",
+      branches: [
+        ["B.Sc", "Medical Laboratory Technology"],
+        ["B.Sc", "Renal Dialysis Technology"],
+        ["B.Sc", "Radiology & Imaging Technology"],
+        ["B.Sc", "Optometry"],
+        ["B.Sc", "Emergency Care Technology"],
+        ["B.Sc", "Anaesthesia Technology"],
+        ["B.Sc", "Cardiac Care Technology"],
+        ["B.Sc", "Physician Associate"],
+        ["M.Sc", "Anatomy"],
+        ["M.Sc", "Physiology"],
+        ["M.Sc", "Biochemistry"],
+        ["M.Sc", "Microbiology"],
+        ["M.Sc", "Pharmacology"],
+        ["M.Sc", "Clinical Embryology"],
+        ["BPT", "Physiotherapy"],
+        ["MPT", "Musculoskeletal Science"],
+        ["MPT", "Neuroscience"],
+        ["MPT", "Cardio Pulmonary Science"],
+        ["MPT", "Sports Science"],
+        ["MPT", "Paediatric & Neonatal Sciences"],
+        ["MPT", "Obstetrics & Gynecology Sciences"],
+        ["MPT", "Oncology Science"]
+      ]
+    },
+    {
+      cat: "Paramedical",
+      branches: [
+        ["B.Sc", "Nursing"],
+        ["B.Pharm", "Pharmacy"],
+        ["D.Pharm", "Pharmacy"]
+      ]
+    },
+    {
+      cat: "Management Studies",
+      branches: [
+        ["MBA", "Hospital Management"],
+        ["MBA", "Artificial Intelligence & Data Science"],
+        ["MBA", "Dual Specialization"]
+      ]
+    }
+  ]

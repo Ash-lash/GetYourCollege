@@ -131,9 +131,11 @@ export default function LateralPredictor({ onBack, onCompare, onOpenQuery, tneaD
         const branchCode = item.branchCode.toLowerCase();
         
         const matchesSju = cleanTerm === 'sju' && cleanCollegeName.includes('joseph');
+        const matchesSvu = (cleanTerm === 'svu' || cleanTerm.includes('venkatesh')) && cleanCollegeName.includes('venkates');
         if (!collegeName.includes(term) && 
             !cleanCollegeName.includes(cleanTerm) &&
             !matchesSju &&
+            !matchesSvu &&
             !collegeCode.includes(term) && 
             !city.includes(term) && 
             !branchName.includes(term) && 
